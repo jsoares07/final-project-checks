@@ -104,11 +104,11 @@ export const Footer = () => (
 		</div>
 
 						{/*Copyright Section  */}
-						<div class="py-4 bg-dark-gray text-gray-300">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-md-6 text-center text-md-start">
-                                <p class="text-sm mb-md-0">&copy; 2022, Book Exchange, All rights reserved</p>
+						<div className="py-4 bg-dark-gray text-gray-300 justify-content-center">
+                    <div className="container expand">
+                        <div className="row align-items-center">
+                            <div className="col-md-6 text-center text-md-start">
+                                <p className=" expand text-center text-white">&copy; 2022, Book Exchange, All rights reserved</p>
                             </div>
                         </div>
 

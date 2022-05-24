@@ -7,8 +7,11 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { Navbar } from "./component/navbar.js";
+import { Footer } from "./component/footer.js";
+import Jumbotron from "./component/jumbotron.js";
+import ListCards from "./component/listCards.js"; 
+import Map from "./component/map.js";
 
 //create your first component
 const Layout = () => {
@@ -21,6 +24,9 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
+					<Jumbotron />
+					<ListCards />
+					<Map />
 					<Switch>
 						<Route exact path="/">
 							<Home />
