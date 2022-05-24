@@ -1,7 +1,48 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.bg-gray {
+    background-color: #e9ecef;
+}
+.py-6 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+.text-heading {
+    color: #343a40;
+}
+.text-para {
+    color: #6c757d;
+}
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+.list-unstyled li a {
+    text-decoration: none;
+}
+.list-unstyled li a:hover {
+    text-decoration: underline;
+}
+.bg-transparent {
+    background-color: rgba(0,0,0,0) !important;
+}
+.border-dark {
+    border-color: #343a40 !important;
+}
+.border-end-0 {
+    border-right: 0;
+}
+.py-4 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.bg-dark-gray {
+    background-color: #343a40;
+}
+.text-gray-300 {
+    color: #dee2e6;
+}
+.contacts {
+    padding-top: 1rem;
+}
+.navbar {
+    background-color: #343a40;
+}

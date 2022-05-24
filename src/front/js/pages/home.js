@@ -21,6 +21,11 @@ export const Home = () => {
 					Read documentation
 				</a>
 			</p>
+
+
+			{/*   Footer  */}
+
+	
 		</div>
 	);
 };
