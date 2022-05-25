@@ -46,3 +46,8 @@
 .navbar {
     background-color: #343a40;
 }
+.jumbotron {
+    margin-top: 20px;
+    background-image: url(../img/lovereading.jpg);
+    background-color: #F0F1EA;
+}

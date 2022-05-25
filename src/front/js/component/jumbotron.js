@@ -2,20 +2,27 @@ import React from "react";
 
 const Jumbotron = () => {
 	return (
-		<div className="jumbotron jumbotron-fluid px-2 mb-5">
-			<h1 className="display-1 justify-content-center">A Warm Welcome!</h1>
+		<div className="container center">
+		<div className="jumbotron jumbotron-fluid p-5 ">
+			<h1 className="display-1 justify-content-center">BookCrossing</h1>
 			<p className="lead fs-4">
-				Lorem Ipsum dolor sit amet, consectetur adipsicing elti. Ipsa,
-				ipsam, eligendi, in quo sunt possimus non incidunt odit vero
-				aliquid similique quaerat nam noblis illo aspernatur viotae
-				fugiat numquam repellat.
+				
+<div class="input-group rounded center">
+  <input type="search" class="form-control rounded" placeholder="Search for a book nearby you" aria-label="Search" aria-describedby="search-addon" />
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</div>
 			</p>
-			<div className="my-4">
-				<a className="btn btn-primary btn-lg" href="#" role="button">
+			<div className="my-5">
+				{/* <a className="btn btn-primary btn-lg" href="#" role="button">
 					Call to action!
-				</a>
+				</a> */}
+
 			</div>
 		</div>
+		</div>
+		
 	);
 };
 

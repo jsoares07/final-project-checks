@@ -8,7 +8,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div>
+		<div className="container center">
 			<h1>Hello Rigo!!</h1>
 			<p>
 				<img src={rigoImageUrl} />
