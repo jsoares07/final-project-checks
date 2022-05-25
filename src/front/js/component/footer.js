@@ -87,10 +87,10 @@ export const Footer = () => (
 										<a className="text-para" href="#" title="facebook"> <i className="fa-brands fa-facebook"></i></a>
 									</li>
 									<li className="list-inline-item">
-										<a className="text-para" href="#" title="Instagram"> <i class="fa-brands fa-instagram"></i> </a>
+										<a className="text-para" href="#" title="Instagram"> <i className="fa-brands fa-instagram"></i> </a>
 									</li>
 									<li className="list-inline-item">
-										<a className="text-para" href="#" title="Twitter"> <i class="fa-brands fa-twitter"></i> </a>
+										<a className="text-para" href="#" title="Twitter"> <i className="fa-brands fa-twitter"></i> </a>
 									</li>
 								</ul>
 						</div>

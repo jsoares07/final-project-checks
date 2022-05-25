@@ -1,35 +1,43 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./card.js";
+import {Catcher} from "./../../img/catcher.jpg"
+import {Crime} from "./../../img/crime.jpg"
+import {littleprince} from "./../../img/littleprince.jpg"
+import {we} from "./../../img/we.jpg"
 
 const listCards = () => {
 	const list = [
 		{
-			title: "Card title",
-			imageUrl: "https://dummyimage.com/500x325/cccccc/827f82",
+			title: "The Catcher in the Rye",
+			title2: "by J. D. Salinger",
+			imageUrl: 'catcher.jpg',
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapiente esse necessitatibus neque.",
+				"It is an all-time classic in coming-of-age literature- an elegy to teenage alienation, capturing the deeply human need for connection and the bewildering sense of loss as we leave childhood behind.",
 			buttonLabel: "Find Out More!",
 		},
 		{
-			title: "Card title",
-			imageUrl: "https://dummyimage.com/500x325/cccccc/827f82",
+			title: "We",
+			title2: "by Yevgeny Zamyatin",
+			imageUrl: 'we.jpg',
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Explicabo magno sapiente, tempore debitis beatae culpa natus architecto.",
+				"We is set in the twenty-sixth century AD in the OneState: a totalitarian society completely based on rationality and mathematics.",
 			buttonLabel: "Find Out More!",
 		},
 		{
-			title: "Card title",
-			imageUrl: "https://dummyimage.com/500x325/cccccc/827f82",
+			title: "Little Prince",
+			title2: "by Antoine de Saint-Exupéry",
+			imageUrl: 'littleprince.jpg',
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapiente esse necessitatibus neque.",
+				"The Little Prince is a poetic tale, with watercolor illustrations by the author, in which a pilot stranded in the desert meets a young prince visiting Earth from a tiny asteroid.",
 			buttonLabel: "Find Out More!",
 		},
 		{
-			title: "Card title",
-			imageUrl: "https://dummyimage.com/500x325/cccccc/827f82",
+			title: "Crime and Punishment",
+			title2: "by Fiodor Dostoevsky",
+			imageUrl: 'crime.jpg',
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Explicabo magno sapiente, tempore debitis beatae culpa natus architecto.",
+				"It is about many things—the psychology of crime, the destiny of families, the vanity and anguish of single men adrift.",
 			buttonLabel: "Find Out More!",
 		},
 	];
@@ -37,6 +45,7 @@ const listCards = () => {
 		return (
 			<Card
 				title={cardItem.title}
+				title2={cardItem.title2}
 				imageUrl={cardItem.imageUrl}
 				description={cardItem.description}
 				buttonLabel={cardItem.buttonLabel}

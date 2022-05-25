@@ -7,10 +7,10 @@ const Jumbotron = () => {
 			<h1 className="display-1 justify-content-center">BookCrossing</h1>
 			<p className="lead fs-4">
 				
-<div class="input-group rounded center">
-  <input type="search" class="form-control rounded" placeholder="Search for a book nearby you" aria-label="Search" aria-describedby="search-addon" />
-  <span class="input-group-text border-0" id="search-addon">
-    <i class="fas fa-search"></i>
+<div className="input-group rounded center">
+  <input type="search" className="form-control rounded" placeholder="Search for a book nearby you" aria-label="Search" aria-describedby="search-addon" />
+  <span className="input-group-text border-0" id="search-addon">
+    <i className="fas fa-search"></i>
   </span>
 </div>
 			</p>
