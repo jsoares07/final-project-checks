@@ -10,10 +10,10 @@ export const Navbar = () => {
 					<span className="navbar-brand mb-0 h1">LOGO</span>
 				</Link>
 				<div className="ml-auto">
-					<Link to="/demo">
+					<Link to="/login">
 						<button type="button" className="btn btn-outline-light me-1">Log In</button>
 					</Link>
-					<Link to="/demo">
+					<Link to="/signup">
 						<button type="button" className="btn btn-outline-light ms-1">Sign Up</button>
 					</Link>
 				</div>
@@ -21,3 +21,5 @@ export const Navbar = () => {
 		</nav>
 	);
 };
+
+export default Navbar;

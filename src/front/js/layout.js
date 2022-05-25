@@ -3,15 +3,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
+import { Login } from "./component/login.js";
+import { Signup } from "./component/signup.js";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar.js";
-import { Footer } from "./component/footer.js";
-import Jumbotron from "./component/jumbotron.js";
-import ListCards from "./component/listCards.js"; 
-import Map from "./component/map.js";
 
 //create your first component
 const Layout = () => {
@@ -23,25 +18,20 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
-					<Jumbotron />
-					<ListCards />
-					<Map />
 					<Switch>
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/login">
+							<Login />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/signup">
+							<Signup />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
-					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
