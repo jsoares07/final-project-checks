@@ -93,8 +93,12 @@ export const Signup = () => {
 			<Link to="/">
 				<button className="btn btn-primary justify-content-center m-5">Back home</button>
 			</Link>
-            <Footer />
+
 		</div>
+
+        <Footer />
         </div>
+
+        
 	);
 };
