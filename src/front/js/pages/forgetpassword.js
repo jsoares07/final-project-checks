@@ -51,8 +51,8 @@ export const Forgetpassword = () => {
 
                     <h6>You are registered? 
 
-<Link to="/signup">
-<a>Sign Up here</a>
+<Link to="/login">
+<a>Click here</a>
 </Link> 
 </h6>
 
