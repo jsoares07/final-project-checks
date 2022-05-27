@@ -57,8 +57,8 @@ export const Profile = () => {
                   <p>Day / Month / Year</p>
                 </div>
                 <div className="col-md-12">
-                  <label className="labels">Address Line 1</label>
-                  <p>Address Line 1</p>
+                  <label className="labels">Address Line</label>
+                  <p>Address Line</p>
                 </div>
                 <div className="col-md-12">
                   <label className="labels">Postcode</label>
