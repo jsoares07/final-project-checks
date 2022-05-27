@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Login } from "./component/login.js";
 import { Signup } from "./component/signup.js";
 import { Forgetpassword } from "./pages/forgetpassword.js";
+import { Emailtoreset } from "./component/emailtoreset.js";
 import injectContext from "./store/appContext";
 
 
@@ -28,6 +29,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/forgetpassword">
 							<Forgetpassword />
+						</Route>
+						<Route exact path="/emailtoreset">
+							<Emailtoreset />
 						</Route>
 						<Route exact path="/signup">
 							<Signup />

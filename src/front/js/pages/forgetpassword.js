@@ -28,7 +28,7 @@ export const Forgetpassword = () => {
                             
                             <div className="mt-5 mb-5 text-center">
 
-              <Link to="/">
+              <Link to="/emailtoreset">
                 <button className="btn btn-primary justify-content-center">
                   Send Email
                 </button>
@@ -49,13 +49,12 @@ export const Forgetpassword = () => {
 
 					<div className="col-md-9">
 
-					<h6>You forgot your password 
-	
-						<Link to="/">
-						<a>Click here</a>
-						</Link> 
-					</h6>
+                    <h6>You are registered? 
 
+<Link to="/signup">
+<a>Sign Up here</a>
+</Link> 
+</h6>
 
 					</div>
 					</div>
@@ -68,6 +67,8 @@ export const Forgetpassword = () => {
 			<Link to="/">
 				<button className="btn btn-primary justify-content-center m-5">Back home</button>
 			</Link> */}
+
+
 
 		</div>
 
