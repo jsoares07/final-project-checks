@@ -36,20 +36,36 @@ export const Resetpassword = () => {
                     <input type="text" className="form-control" value="" />
                   </div>
   
+  <br />
+  <br />
+
+                <h6>Password Strength:</h6>
+              <p>
+                    Your password must be at least 8 characters and should include a combination of numbers, letters and special characters (!$%&@). Don´t use a password from another site, or something too obvious like your pet´s name
+                  </p>
+              </div>
+  
+
               <div className="mt-5 mb-5 text-left">
 
-                  <Link to="/emailtoreset">
+              <div className="row">
+						   
+						   <div class="col">
+								   <button type="submit" className="btn btn-primary float-end mt-5 me-5">Submit</button>
+							</div>
+
+                            <Link to="/emailtoreset">
                     <button className="btn btn-primary justify-content-center">
                         Send Email
                     </button>
                   </Link>
+                  
+				</div>
+	   
+
+
+               
               </div>
-                  <p>
-                      Please enter your email address in the field above, once completed, 
-                      you will receive an email from BookSwap containing a link to reset your password.
-                  </p>
-              </div>
-  
   
           </div>
 
