@@ -12,21 +12,19 @@ export const Signup = () => {
 
 	return (
 
-	    <div className="container">
-            <Navbar />
-			<br />
-            <div className="container center m-5">
+	<div className="">
+        <Navbar />
 
-            <form>
-
-            <div className="row">
-
-
-
-                        <div className="col-md-6 ">
-
+            <div className="container center mt-5 mb-5">
 
                         <h1>Sign Up</h1>
+
+                    <div className="col-md-12 border-right border border-dark p-5">
+
+                    <div className="row">
+                        <div className="col-md-6">
+
+
                             <label for="exampleInputEmail1" className="form-label">Email address</label>
                             <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email Address" aria-describedby="emailHelp" />
 
@@ -63,7 +61,7 @@ export const Signup = () => {
                             {/* <form action="/action_page.php">
                             <label for="birthday">Date Of Birth</label>
                             <br></br>
-                        </form>  */}
+                            </form>  */}
                        
                         </div>
 
@@ -72,33 +70,27 @@ export const Signup = () => {
                         <div className="col-md-6">
                                
                             <div className="wrapper">
-                                <input type="file" className="my_file mt-5"></input>
-
-                                
-                                
+                                <input type="file" className="my_file mt-1"></input>
                             </div>
 
                             <div class="col text-center">
                             <button type="submit" className="btn btn-primary text-center">Submit</button>
                             </div>
+
                         </div>
 
 
+                    </div>
+                </div>
             </div>
 
 
-            </form>
-
-
-			<Link to="/">
+			{/* <Link to="/">
 				<button className="btn btn-primary justify-content-center m-5">Back home</button>
-			</Link>
+			</Link> */}
 
-		</div>
-
-        <Footer />
-        </div>
-
-        
+    <Footer />
+    </div>
+   
 	);
 };
