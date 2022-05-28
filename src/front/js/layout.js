@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Login } from "./component/login.js";
 import { Signup } from "./component/signup.js";
+import { Resetpassword } from "./pages/resetpassword.js"
 import injectContext from "./store/appContext";
 
 
@@ -27,6 +28,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/signup">
 							<Signup />
+						</Route>
+						<Route exact path="/resetpassword">
+							<Resetpassword />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
