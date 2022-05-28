@@ -24,7 +24,7 @@ export const Login = () => {
 
 				<div className="row">
 
-					<div className="col-md-9  center mx-auto">
+					<div className="col-md-12 center mx-auto">
 
 
 						<label for="exampleInputEmail1" className="form-label">Email address</label>
@@ -42,7 +42,7 @@ export const Login = () => {
 				<div className="row">
 						   
 						   <div class="col">
-								   <button type="submit" className="btn btn-primary float-end mt-5">Submit</button>
+								   <button type="submit" className="btn btn-primary float-end mt-5 me-5">Submit</button>
 							</div>
 				</div>
 	   
@@ -54,7 +54,7 @@ export const Login = () => {
 
 					<div className="col-md-6 center mx-auto">
 
-						<h6>You are registered? 
+						<h6>You are registered?   
 	
 						<Link to="/signup">
 						<a>Sign Up here</a>
@@ -72,7 +72,7 @@ export const Login = () => {
 
 						<h6>You forgot your password 
 
-						<Link to="/">
+						<Link to="/forgetpassword">
 						<a>Click here</a>
 						</Link> 
 						</h6>
