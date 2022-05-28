@@ -10,87 +10,84 @@ export const Login = () => {
 
 	return (
 
-	    <div className="container">
-            <Navbar />
-			<br />
-            <div className="container center m-5">
+		
+	<div className="">
+	<Navbar />
 
-            <form>
+		<div className="container mt-5 mb-5 ">
 
-            <div className="row">
+					<h1 className="col-md-6 center mx-auto">Log In</h1>
 
-                        <div className="col-md-6 ">
 
-                        <h1>Log In</h1>
-                            <label for="exampleInputEmail1" className="form-label m-2">Email address</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email Address" aria-describedby="emailHelp" />
 
-                            <label for="exampleInputPassword1" className="form-label m-2 mt-4">Password</label>
-                            <input type="password" className="form-control" placeholder="Password" id="exampleInputPassword1" />
- 
-                        </div>
+			<div className="col-md-6 border-right border border-dark p-5 center mx-auto">
 
-						</div>
-   
-   
-						<div className="row">
+				<div className="row">
 
-						<div className="col-md-6">
+					<div className="col-md-9  center mx-auto">
 
-						<div class="col text-center">
-                            <button type="submit" className="btn btn-primary text-center mt-5">Submit</button>
-                            </div>
 
+						<label for="exampleInputEmail1" className="form-label">Email address</label>
+						<input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email Address" aria-describedby="emailHelp" />
+
+						<label for="exampleInputPassword1" className="form-label mt-3">Password</label>
+						<input type="password" className="form-control" placeholder="Password" id="exampleInputPassword1" />
+
+				   
+					</div>
+
+
+				</div>
+
+				<div className="row">
+						   
+						   <div class="col">
+								   <button type="submit" className="btn btn-primary float-end mt-5">Submit</button>
 							</div>
+				</div>
+	   
 
+			</div>
 
-						</div>
+			
+				<div className="row mt-5">
 
-						<div className="row mt-5">
+					<div className="col-md-6 center mx-auto">
 
-						<div className="col-md-9">
-
-							<h6>You are registered? 
-							
-							<Link to="/signup">
-							<a>Sign Up here</a>
-							</Link> 
-							</h6>
-
-
-							</div>
-							</div>
-
-
-							<div className="row">
-
-					<div className="col-md-9">
-
-					<h6>You forgot your password 
+						<h6>You are registered? 
 	
+						<Link to="/signup">
+						<a>Sign Up here</a>
+						</Link> 
+						</h6>
+
+
+					</div>
+				</div>
+
+
+				<div className="row">
+
+					<div className="col-md-6 center mx-auto">
+
+						<h6>You forgot your password 
+
 						<Link to="/">
 						<a>Click here</a>
 						</Link> 
-					</h6>
+						</h6>
 
 
 					</div>
-					</div>
+				</div>
+			</div>
 
+		{/* <Link to="/">
+			<button className="btn btn-primary justify-content-center m-5">Back home</button>
+		</Link> */}
 
+<Footer />
+</div>
 
-            </form>
-
-{/* 
-			<Link to="/">
-				<button className="btn btn-primary justify-content-center m-5">Back home</button>
-			</Link> */}
-
-		</div>
-
-        <Footer />
-        </div>
-
-        
 	);
 };
