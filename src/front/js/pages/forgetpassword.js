@@ -10,71 +10,72 @@ export const Forgetpassword = () => {
 
 	return (
 
-	    <div className="container">
-            <Navbar />
-			<br />
-            <div className="container center m-5">
+			
+    <div className="">
+    <Navbar />
+  
+      <div className="container mt-5 mb-5 ">
+  
+            <h3 className="col-md-6 center mx-auto">Did you forget your password?</h3>
+  
+  
+  
+        <div className="col-md-6 border-right border border-dark p-5 center mx-auto">
+  
+          <div className="row">
+  
+            <div className="col-md-12 center mx-auto">
+  
+  
+              <label for="exampleInputEmail1" className="form-label">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email Address" aria-describedby="emailHelp" />
+  
+              <div className="mt-5 mb-5 text-left">
 
-            <form>
+                  <Link to="/emailtoreset">
+                    <button className="btn btn-primary justify-content-center">
+                        Send Email
+                    </button>
+                  </Link>
+              </div>
+                  <p>
+                      Please enter your email address in the field above, once completed, 
+                      you will receive an email from BookSwap containing a link to reset your password.
+                  </p>
+              </div>
+  
+  
+          </div>
 
-            <div className="row">
-
-                        <div className="col-md-6 ">
-
-                        <h1>Log In</h1>
-                            <label for="exampleInputEmail1" className="form-label m-2">Email address</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email Address" aria-describedby="emailHelp" />
-
-                            
-                            <div className="mt-5 mb-5 text-center">
-
-              <Link to="/emailtoreset">
-                <button className="btn btn-primary justify-content-center">
-                  Send Email
-                </button>
-              </Link>
-            
-            </div>
-                            <p>
-                                    Please enter your email address in the field above, once completed, 
-                                    you will receive an email from BookSwap containing a link to reset your password.
-                            </p>
-                        </div>
-
-						</div>
-   
-   
-					
-							<div className="row">
-
-					<div className="col-md-9">
-
-                    <h6>You are registered? 
-
-<Link to="/login">
-<a>Click here</a>
-</Link> 
-</h6>
-
-					</div>
-					</div>
-
-
-
-            </form>
-
-{/* 
-			<Link to="/">
-				<button className="btn btn-primary justify-content-center m-5">Back home</button>
-			</Link> */}
-
-
-
-		</div>
-
-        <Footer />
+       
+  
         </div>
-
+  
         
+          <div className="row mt-5">
+  
+            <div className="col-md-6 center mx-auto">
+  
+              <h6>You are registered?   
+    
+              <Link to="/signup">
+              <a>Sign Up here</a>
+              </Link> 
+              </h6>
+  
+  
+            </div>
+          </div>
+  
+  
+
+        </div>
+  
+      {/* <Link to="/">
+        <button className="btn btn-primary justify-content-center m-5">Back home</button>
+      </Link> */}
+  
+  <Footer />
+  </div>
 	);
 };

@@ -9,60 +9,75 @@ export const Emailtoreset = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
+    <div className="">
+    <Navbar />
+  
+      <div className="container mt-5 mb-5 ">
+  
+            <h3 className="col-md-6 center mx-auto">Did you forget your password?</h3>
+  
+  
+  
+        <div className="col-md-6 border-right border border-dark p-5 center mx-auto">
+  
+          <div className="row">
+  
+            <div className="col-md-12 center mx-auto">
+  
 
-	   <div className="">
-      <Navbar />
-      <div className="container m-5 m-5">
-        <div className="row">
-          <h1>Did you forget your password?</h1>
-          <div className="col-md-12 border-right border border-dark">
-            <div className="p-3 py-5">
-              <div className="d-flex justify-content-between align-items-center m-5">
+  
+              <div className="m-5 text-center">
+
+
+              </div>
                 
               </div>
-              <div className="row mt-2">
-                <div className="col-md-12">
-                  <p>
-                   
+  
+  
+          </div>
+
+          <div className="row mt-5">
+
+          <p>
+                  We have sent an email to User@gmail.com from BookSwap containing a link to reset you password
                   </p>
-                  <div className="col-md-8">
-                    <h5></h5>
-
-                  </div>
-                  <p>
-                   We have sent an email to User@gmail.com from BookSwap containing a link to reset you password
-                  </p>
-                  <div className="col-md-8">
-                    <h5></h5>
-
-                  </div>
-                  <div className="col-md-8">
-                    <h5></h5>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-9">
+          </div>
 
 
-          
+          <div className="row mt-5">
+          </div>
+  
+
+          <div className="row mt-5">
           </div>
         </div>
 
-        <h6>You are registered? 
 
-<Link to="/signup">
-<a>Sign Up here</a>
-</Link> 
-</h6>
-
-
-</div>
-      </div>
-      <Footer />
-    </div>
         
+          <div className="row mt-5">
+  
+            <div className="col-md-6 center mx-auto">
+  
+              <h6>You are registered?   
+    
+              <Link to="/signup">
+              <a>Sign Up here</a>
+              </Link> 
+              </h6>
+  
+  
+            </div>
+          </div>
+  
+  
+
+        </div>
+  
+      {/* <Link to="/">
+        <button className="btn btn-primary justify-content-center m-5">Back home</button>
+      </Link> */}
+  
+  <Footer />
+  </div>
 	);
 };
