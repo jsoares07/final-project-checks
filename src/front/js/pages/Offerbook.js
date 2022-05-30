@@ -2,15 +2,15 @@ import React, { useContext } from "react"
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-import Navbar from "./../component/navbar.js";
 import Footer from "./../component/footer";
+import Navbarlogin from "../component/navbar-login";
 
 export const Offerbook = () => {
     const { store, actions } = useContext(Context);
 
     return (  
     <div>
-        <Navbar />
+        <Navbarlogin />
         <div className=" container card">
             <div className="card-body">
                 <form>
