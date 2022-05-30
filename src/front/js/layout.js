@@ -6,7 +6,7 @@ import { Home } from "./pages/home";
 import { Login } from "./component/login.js";
 import { Signup } from "./component/signup.js";
 import injectContext from "./store/appContext";
-
+import { Offerbook } from "./pages/Offerbook";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +27,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/signup">
 							<Signup />
+						</Route>
+						<Route exact path="/offerbook">
+							<Offerbook />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
