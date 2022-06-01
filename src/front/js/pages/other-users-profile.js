@@ -22,6 +22,7 @@ export const Other_users_profile = () => {
                 <p>Name: </p>
                 <p>City: </p>
                 <p>Member since: </p>
+                <p>Rating: </p>
             </div>
         </div>
         {/* Book history */}
