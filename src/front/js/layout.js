@@ -3,10 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { Login } from "./component/login.js";
-import { Signup } from "./component/signup.js";
+
 import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
+import { Login } from "./pages/login.js";
+import { Signup } from "./pages/signup.js";
+
 import injectContext from "./store/appContext";
 
 
