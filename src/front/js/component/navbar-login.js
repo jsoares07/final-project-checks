@@ -12,10 +12,10 @@ function Navbarlogin() {
 				</Link>
 				<div className="ml-auto">
 					<Link to="/login">
-						<button type="button" className="btn btn-outline-light me-1"><i class="fa-brands fa-gratipay"></i></button>
+						<button type="button" className="btn btn-outline-light me-1"><i className="fa-brands fa-gratipay"></i></button>
 					</Link>
 					<Link to="/signup">
-						<button type="button" className="btn btn-outline-light ms-1"><i class="fa-solid fa-circle-user"></i></button>
+						<button type="button" className="btn btn-outline-light ms-1"><i className="fa-solid fa-circle-user"></i></button>
 					</Link>
 				</div>
 			</div>

@@ -12,7 +12,7 @@ export const Other_users_profile = () => {
         <Navbarlogin />
         <div className="card align-items-center" style={{top: "10px"}} >
             <h3>Personal info</h3>
-            <div class="card-body">
+            <div className="card-body">
               <img
                   className="rounded-circle mt-5"
                   width="150px"
@@ -26,12 +26,12 @@ export const Other_users_profile = () => {
             </div>
         </div>
         {/* Book history */}
-        <div class="row">
+        <div className="row">
             
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Username books offered</h5>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username books offered</h5>
                   <ul>
                     <li>Random book 1</li>
                     <li>Random book 2</li>
@@ -40,10 +40,10 @@ export const Other_users_profile = () => {
                 </div>
               </div>
             </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Username books swapped</h5>
+            <div className="col-sm-6">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Username books swapped</h5>
                   <ul>
                     <li>Random book 1</li>
                     <li>Random book 2</li>

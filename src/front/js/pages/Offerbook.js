@@ -44,11 +44,11 @@ export const Offerbook = () => {
                             <input type="text" className="form-control" id="language" />
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="descriptn" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="descriptn" placeholder="Decribe briefly the synopsis of the book" />
+                    <div className="mb-3">
+                        <label for="descriptn" className="form-label">Description</label>
+                        <input type="text" className="form-control" id="descriptn" placeholder="Decribe briefly the synopsis of the book" />
                     </div>
-                    <div class="mb-3">
+                    <div className="mb-3">
                         <label for="formFileMultiple" className="form-label">Upload file(s)</label>
                         <input className="form-control" type="file" id="formFileMultiple" multiple />
                     </div>
