@@ -33,12 +33,6 @@ class User(db.Model):
 
     # users = relationship('books')    
 
-    def set_password(self,password):
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self,password):
-        return check_password_hash(self.password_hash, password)
-
     def __repr__(self):
         return f'<User {self.email}>'
 
@@ -88,35 +82,35 @@ class User(db.Model):
      
    
    
-# class Book(db.Model):
-#     __tablename__ = 'books'
+class Book(db.Model):
+    __tablename__ = 'books'
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     title = db.Column(db.String(120), unique=True, nullable=False)
-#     author = db.Column(db.String(80), unique=False, nullable=False)
-#     editor = db.Column(db.String(120), unique=False, nullable=False)
-#     genre = db.Column(db.String(120), unique=False, nullable=False)
-#     language = db.Column(db.String(120), unique=False, nullable=False)
-#     description = db.Column(db.String(120), unique=False, nullable=False)  
-#     book_picture = db.Column(db.Text())
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), unique=True, nullable=False)
+    author = db.Column(db.String(80), unique=False, nullable=False)
+    editor = db.Column(db.String(120), unique=False, nullable=False)
+    genre = db.Column(db.String(120), unique=False, nullable=False)
+    language = db.Column(db.String(120), unique=False, nullable=False)
+    description = db.Column(db.String(120), unique=False, nullable=False)  
+    book_picture = db.Column(db.Text())
 
-#     # books = relationship('users')    
+    # books = relationship('users')    
 
-#     def __repr__(self):
-#         return f'<Book {self.email}>'
+    def __repr__(self):
+        return f'<Book {self.email}>'
 
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "title": self.title,
-#             "author": self.author,
-#             "editor": self.editor,
-#             "genre": self.genre,          
-#             "language": self.language,
-#             "description": self.description,
-#             "book_picture": self.book_picture,
-#             # do not serialize the password, its a security breach
-#         }
+    def serialize(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "author": self.author,
+            "editor": self.editor,
+            "genre": self.genre,          
+            "language": self.language,
+            "description": self.description,
+            "book_picture": self.book_picture,
+            # do not serialize the password, its a security breach
+        }
 
 
 # # render_er(db.Model, 'diagram.png')
