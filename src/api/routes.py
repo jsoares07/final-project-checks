@@ -24,7 +24,7 @@ api = Blueprint('api', __name__)
 
 
 
-@api.route('/signup', methods=['POST'])
+@api.route('/signup', methods=['POST', 'GET'])
 def signup():
 
     form = request.form 
