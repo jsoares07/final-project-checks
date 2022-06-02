@@ -24,27 +24,36 @@ api = Blueprint('api', __name__)
 
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+@api.route('/signup', methods=['POST'])
+def signup():
 
+    form = request.form 
     email = 'Olga'
     password = '123'
     access_token = create_access_token(identity=email)
 
     user = User(
-        email = email,
-        password = password
+        email = 'email',
+        password = 'password',
+        first_name = 'email',
+        user_name = 'password',
+
     )
 
-    user.serialize()
+        # user.set_password('password')
+        # db.session.add(user)
+        # db.session.commit()
+        # return "Succesfully registered"
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-        "access_token": access_token,
-        "user": user.serialize()
-    }
+    # user.serialize()
 
-    return jsonify(response_body), 200
+    # response_body = {
+    #     "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+    #     "access_token": access_token,
+    #     "user": user.serialize()
+    # }
+
+    return jsonify(access_token), 200
 
     #save the user (from models.py)
     # our_user.save_user()
@@ -52,20 +61,20 @@ def handle_hello():
     # return jsonify(our_user.serialize())
 
 
-# @api.route('/login', methods=['GET', 'POST'])
-# def login_user(email, password):
+@api.route('/login', methods=['POST'])
+def login_user(email, password):
 
-#     email = request.json.get("email", None)
-#     password = request.json.get("password", None)
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
 
-#     print('email', email, 'password', password)
+    print('email', email, 'password', password)
 
-#     if email != "test" or password != "test":
-#         return {"error": "Wrong email or password"}, 400
+    if email != "test" or password != "test":
+        return {"error": "Wrong email or password"}, 400
 
-#     # access_token = create_access_token(identity=email)
-#     # response = {"access_token":access_token}
-#     return response.jsonify({"msg": "user created"}), 200
+    # access_token = create_access_token(identity=email)
+    # response = {"access_token":access_token}
+    return response.jsonify({"msg": "user created"}), 200
 
 
 

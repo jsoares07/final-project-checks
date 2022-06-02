@@ -24,7 +24,7 @@ export const Signup = () => {
                     <div className="row">
                         <div className="col-md-6">
 
-
+                        <div className="Form" action='/signup' method='post'>
                             <label for="exampleInputEmail1" className="form-label">Email address</label>
                             <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email Address" aria-describedby="emailHelp" />
 
@@ -63,6 +63,7 @@ export const Signup = () => {
                             <br></br>
                             </form>  */}
                        
+                       </div>
                         </div>
 
 
