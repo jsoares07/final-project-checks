@@ -87,6 +87,7 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), unique=True, nullable=False)
     author = db.Column(db.String(80), unique=False, nullable=False)
+    
 #     editor = db.Column(db.String(120), unique=False, nullable=False)
 #     genre = db.Column(db.String(120), unique=False, nullable=False)
 #     language = db.Column(db.String(120), unique=False, nullable=False)

@@ -23,11 +23,19 @@ api = Blueprint('api', __name__)
 #     return jsonify(access_token=access_token) 
 
 
+@api.route('/hello', methods=['GET'])
+def hello():
+    print('hello world')
+    return 'valid response'
 
 @api.route('/signup', methods=['POST', 'GET'])
 def signup():
+    print('hola me estan llamando')
 
-    form = request.form 
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+
+
     email = 'Olga'
     password = '123'
     access_token = create_access_token(identity=email)
