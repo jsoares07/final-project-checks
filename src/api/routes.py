@@ -35,8 +35,8 @@ def signup():
     user = User(
         email = 'email',
         password = 'password',
-        first_name = 'email',
-        user_name = 'password',
+        first_name = 'first_name',
+        user_name = 'user_name',
 
     )
 
