@@ -11,7 +11,7 @@ export const Signup = () => {
   const { store, actions } = useContext(Context);
 
   const URLbase =
-    "https://3001-heylga-finalproject-yddd4mn8nwc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654505083214";
+    "https://3001-heylga-finalproject-n9ed77grnlm.ws-eu46.gitpod.io";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -31,7 +31,8 @@ export const Signup = () => {
     // city no vacio
     // password === repeatpassword
 
-    if (email && password && repeatPassword && firstName && userName && city) {
+    // if (email && password && repeatPassword && firstName && userName && city) {
+    if (email && password && repeatPassword) {
       if (password === repeatPassword) {
         // hacemos el fetch
         onFetchSignUp(email, password);
@@ -49,6 +50,7 @@ export const Signup = () => {
     // fetch
     const post = {
       method: "POST",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -103,7 +105,6 @@ export const Signup = () => {
     console.log(e.target.value);
     setCity(e.target.value);
   };
-
 
   return (
     <div className="">

@@ -10,27 +10,9 @@ from sqlalchemy import create_engine
 db = SQLAlchemy()
 
 class User(db.Model):
-    # __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-
-    # first_name = db.Column(db.String(120), unique=False, nullable=False)
-    # user_name = db.Column(db.String(120), unique=False, nullable=False)
-    # last_name = db.Column(db.String(120), unique=False, nullable=False)
-    # profile_picture = db.Column(db.Text())
-    # date_of_birth = db.Column(db.Date)    
-    # mobile_number = db.Column(db.String(120), unique=False, nullable=False)
-    # address_line = db.Column(db.String(120), unique=False, nullable=False)
-    # postcode = db.Column(db.String(120), unique=False, nullable=False)
-    # state = db.Column(db.String(120), unique=False, nullable=False)
-    # city = db.Column(db.String(120), unique=False, nullable=False)
-    # country = db.Column(db.String(120), unique=False, nullable=False)
-
-
-    # users = relationship('books')    
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -39,45 +21,12 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "password": self.password,
-            # "first_name": self.first_name,
-            # "last_name": self.last_name,
-            # "user_name": self.user_name,           
-            # "date_of_birth": self.date_of_birth,          
-            # "profile_picture": self.profile_picture,
-            # "mobile_number": self.mobile_number,
-            # "address_line": self.address_line,
-            # "postcode": self.postcode,
-            # "state": self.state,
-            # "city": self.city,
-            # "country": self.country,
             # do not serialize the password, its a security breach
         }
 
-#     def login_user(email, password):
-#         user = User.query.filter_by(email=email, password=password).first()
-#         return user
-    
-#     def login_user(event):
-#         user = User(email=email, password=password)
-#         db.session.add(user)
-     
-#    #this function will save the new user in the database
-#     def save_user(email, password):
-        
-#         #lets save the user in the database
-#         db.session.add(user)
-#         db.session.commit()
-
-#     def signup_user():
-       
-#         user = User(email=email, password=password, first_name=first_name, user_name=user_name, city=city)
-#         db.session.add(user)
-
-#     # def edit_user():
-       
-#     #     user = User(first_name=first_name, last_name=last_name, date_of_birth=date_of_birth, email=email, mobile_number=mobile_number, city=city, country=country, profile_picture=profile_picture)
-#     #     db.session.add(user)
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
      
    
    

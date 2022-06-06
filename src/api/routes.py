@@ -32,43 +32,31 @@ def hello():
 
 @api.route('/signup', methods=['POST'])
 def signup():
-    print('hola me estan llamando')
+
+    request_body = request.get_json(force=True)
+
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
 
-
-    email = 'Olga'
-    password = '123'
     access_token = create_access_token(identity=email)
+    print('hola me estan llamando', request_body, access_token)
 
     user = User(
-        email = 'email',
-        password = 'password',
-        first_name = 'first_name',
-        user_name = 'user_name',
-
+        email = email,
+        password = password,
     )
 
-        # user.set_password('password')
-        # db.session.add(user)
-        # db.session.commit()
-        # return "Succesfully registered"
+    user.create()
 
-    # user.serialize()
+    response_body = {
+         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request",
+         "access_token": access_token,
+         "user": user.serialize()
+     }
 
-    # response_body = {
-    #     "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    #     "access_token": access_token,
-    #     "user": user.serialize()
-    # }
-
-    return jsonify(access_token), 200
-
-    #save the user (from models.py)
-    # our_user.save_user()
+    return jsonify(response_body), 200
     
-    # return jsonify(our_user.serialize())
 
 
 @api.route('/login', methods=['POST'])
