@@ -11,21 +11,27 @@ export const Signup = () => {
   const { store, actions } = useContext(Context);
 
   const URLbase =
-    "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346";
+    "https://3001-heylga-finalproject-yddd4mn8nwc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654505083214";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [repeatPassword, setRepeatPassword] = useState();
+  const [firstName, setFirstName] = useState();
+  const [userName, setUserName] = useState();
+  const [city, setCity] = useState();
 
   const onSubmitClicked = () => {
     console.log("estoy haciendo click en submit");
-    // obtener email, password, repeatpassword
+    // obtener email, password, repeatpassword, firstName, userName, city
     // email no vacio
     // password no vacio
     // repeatpassword no vacio
+    // firstName no vacio
+    // userName no vacio
+    // city no vacio
     // password === repeatpassword
 
-    if (email && password && repeatPassword) {
+    if (email && password && repeatPassword && firstName && userName && city) {
       if (password === repeatPassword) {
         // hacemos el fetch
         onFetchSignUp(email, password);
@@ -39,7 +45,7 @@ export const Signup = () => {
     }
   };
 
-  const onFetchSignUp = (email, password) => {
+  const onFetchSignUp = (email, password, firstName, userName, city) => {
     // fetch
     const post = {
       method: "POST",
@@ -49,6 +55,9 @@ export const Signup = () => {
       body: JSON.stringify({
         email: email,
         password: password,
+        firstName: firstName,
+        userName: userName,
+        city: city,
       }),
     };
 
@@ -56,7 +65,7 @@ export const Signup = () => {
 
     fetch(
       // "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346/api/hello"
-      "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346/api/signup",
+      "https://3001-heylga-finalproject-yddd4mn8nwc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654506773081/api/signup",
       post
     )
       // fetch(`${URLbase}/api/signup`, signup)
@@ -79,6 +88,22 @@ export const Signup = () => {
     console.log(e.target.value);
     setRepeatPassword(e.target.value);
   };
+
+  const OnTypeFirstName = (e) => {
+    console.log(e.target.value);
+    setFirstName(e.target.value);
+  };
+
+  const OnTypeUserName = (e) => {
+    console.log(e.target.value);
+    setUserName(e.target.value);
+  };
+
+  const onTypeCity = (e) => {
+    console.log(e.target.value);
+    setCity(e.target.value);
+  };
+
 
   return (
     <div className="">
@@ -137,6 +162,8 @@ export const Signup = () => {
                   placeholder="First name"
                   aria-label="First name"
                   id="firstname"
+                  value={firstName}
+                  onChange={OnTypeFirstName}
                 />
 
                 {/* <label for="lastname" className="form-label">Last Name</label>
@@ -151,6 +178,8 @@ export const Signup = () => {
                   placeholder="User Name"
                   aria-label="User Name"
                   id="username"
+                  value={userName}
+                  onChange={OnTypeUserName}
                 />
 
                 {/* <label for="inputAddress2" className="form-label">Address 2</label>
@@ -164,6 +193,8 @@ export const Signup = () => {
                   className="form-control"
                   placeholder="City"
                   id="inputCity"
+                  value={city}
+                  onChange={onTypeCity}
                 ></input>
 
                 {/* <label for="inputState" className="form-label">State</label>

@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
+# from models import User, Book
+
 
 
 api = Blueprint('api', __name__)
@@ -28,7 +30,7 @@ def hello():
     print('hello world')
     return 'valid response'
 
-@api.route('/signup', methods=['POST', 'GET'])
+@api.route('/signup', methods=['POST'])
 def signup():
     print('hola me estan llamando')
 
