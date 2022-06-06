@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,6 +8,59 @@ import Footer from "./../component/footer";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState();
+	const [password, setPassword] = useState();
+
+	const urlBase = "https://3001-heylga-finalproject-yddd4mn8nwc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654515287113/api/";
+
+	const onTypeEmail = (e) => {
+		console.log(e.target.value);
+		setEmail(e.target.value);
+	  };
+	
+	  const onTypePassword = (e) => {
+		console.log(e.target.value);
+		setPassword(e.target.value);
+	  };
+	
+	const onSubmitClicked = () => {
+	
+		if (email && password) {
+			 // hacemos el fetch
+			 onFetchLogIn(email, password);
+			} else {
+				//te faltan datos
+				alert("information is missing");
+			}
+	}
+
+	const onFetchLogIn  = (email, password) => {
+		 // fetch
+		 const post = {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			  },
+			redirect: 'follow',
+			body: JSON.stringify({
+				email: email,
+				password: password,
+			  }),
+			}
+		};
+
+			// console.log("info login", post);
+
+			//   fetch('${urlBase}/api/login'
+			// 	,
+			// 	post
+			//   )
+			// 	// fetch(`${URLbase}/api/login`, login)
+			// 	.then((response) => response.text())
+			// 	.then((result) => console.log(result))
+			// 	.catch((error) => console.log("error", error));
+
 
 	return (
 
@@ -26,14 +80,31 @@ export const Login = () => {
 
 					<div className="col-md-12 center mx-auto">
 
+					<label for="exampleInputEmail1" className="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  placeholder="Email Address"
+                  aria-describedby="emailHelp"
+                  value={email}
+                  onChange={onTypeEmail}
+                />
 
-						<label for="exampleInputEmail1" className="form-label">Email address</label>
-						<input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email Address" aria-describedby="emailHelp" />
+                <label for="exampleInputPassword1" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  id="exampleInputPassword1"
+                  value={password}
+                  onChange={onTypePassword}
+                />
 
-						<label for="exampleInputPassword1" className="form-label mt-3">Password</label>
-						<input type="password" className="form-control" placeholder="Password" id="exampleInputPassword1" />
-
-				   
 					</div>
 
 
@@ -42,7 +113,11 @@ export const Login = () => {
 				<div className="row">
 						   
 						   <div class="col">
-								   <button type="submit" className="btn btn-primary float-end mt-5 me-5">Submit</button>
+								   <button type="submit" 
+								   className="btn btn-primary float-end mt-5 me-5"
+								   onClick={onSubmitClicked}>
+									   Submit
+									</button>
 							</div>
 				</div>
 	   
