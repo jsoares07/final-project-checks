@@ -1,15 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import Navbar from "../component/navbar";
 import Footer from "../component/footer.js";
 import "../../styles/index.css";
+import Navbarlogin from "../component/navbar-login";
 
 export const Profile = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="">
-      <Navbar />
+      
+     {/* Navbar */}
+
+     <Navbarlogin />
+
+
       <div className="container rounded bg-white mt-5 mb-5">
         <div className="row">
           {/* Profile photo starts */}
