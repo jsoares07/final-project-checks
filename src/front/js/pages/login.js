@@ -130,7 +130,7 @@ export const Login = () => {
 
 					<div className="col-md-6 center mx-auto">
 
-						<h6>You are registered?   
+						<h6>You are NOT registered?   
 	
 						<Link to="/signup">
 						<a>Sign Up here</a>

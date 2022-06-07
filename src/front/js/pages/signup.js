@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 
 import Navbar from "./../component/navbar.js";
 import Footer from "./../component/footer";
+import { useJsApiLoader } from "@react-google-maps/api";
+import { applyStyles } from "@popperjs/core";
 
 export const Signup = () => {
   const { store, actions } = useContext(Context);
@@ -19,6 +21,18 @@ export const Signup = () => {
   const [firstName, setFirstName] = useState();
   const [userName, setUserName] = useState();
   const [city, setCity] = useState();
+  const [picture, setPicture] = useState();
+
+//   const cors = requiere("cors")
+
+// app.use(
+//   cors({
+//     origin: "https://3001-heylga-finalproject-091b2g05key.ws-eu46.gitpod.io"
+//   }
+
+//   )
+// )
+
 
   const onSubmitClicked = () => {
     console.log("estoy haciendo click en submit");
@@ -46,7 +60,10 @@ export const Signup = () => {
     }
   };
 
-  const onFetchSignUp = (email, password, firstName, userName, city) => {
+ 
+
+
+  const onFetchSignUp = (email, password, firstName, userName, city, picture) => {
     // fetch
     const post = {
       method: "POST",
@@ -60,6 +77,7 @@ export const Signup = () => {
         firstName: firstName,
         userName: userName,
         city: city,
+        picture: picture,
       }),
     };
 
@@ -105,6 +123,12 @@ export const Signup = () => {
     console.log(e.target.value);
     setCity(e.target.value);
   };
+
+  const onTypePicture = (e) => {
+    console.log(e.target.value);
+    setPicture(e.target.value);
+  };
+
 
   return (
     <div className="">
@@ -216,13 +240,16 @@ export const Signup = () => {
 
             <div className="col-md-6">
               <div className="wrapper">
-                <input type="file" className="my_file mt-1"></input>
+                <input type="file" className="my_file mt-1"
+                onChange={onTypePicture}>
+                </input>
               </div>
 
               <div className="col text-center">
                 <button
                   type="submit"
                   onClick={onSubmitClicked}
+
                   className="btn btn-primary text-center"
                 >
                   Submit
