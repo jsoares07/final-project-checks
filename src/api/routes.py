@@ -50,7 +50,7 @@ def signup():
     user.create()
 
     response_body = {
-         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request",
+         "message": "User created",
          "access_token": access_token,
          "user": user.serialize()
      }
@@ -72,7 +72,7 @@ def login_user(email, password):
 
     # access_token = create_access_token(identity=email)
     # response = {"access_token":access_token}
-    return response.jsonify({"msg": "user created"}), 200
+    return response.jsonify({"msg": "user logged in"}), 200
 
 
 
