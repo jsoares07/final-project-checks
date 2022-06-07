@@ -3,9 +3,15 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { Login } from "./component/login.js";
-import { Signup } from "./component/signup.js";
+
+import { Login } from "./pages/login.js";
+import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
+import { EditProfile } from "./pages/edit-profile.js";
+import { Resetpassword } from "./pages/resetpassword.js"
+import { Forgetpassword } from "./pages/forgetpassword.js";
+import { Emailtoreset } from "./component/emailtoreset.js";
+import { Profile } from "./pages/profile.js";
 import { Security } from "./pages/security";
 
 //create your first component
@@ -28,6 +34,21 @@ const Layout = () => {
             <Route exact path="/signup">
               <Signup />
             </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/edit-profile">
+              <EditProfile />
+            </Route>
+						<Route exact path="/forgetpassword">
+							<Forgetpassword />
+						</Route>
+						<Route exact path="/emailtoreset">
+							<Emailtoreset />
+						</Route>
+						<Route exact path="/resetpassword">
+							<Resetpassword />
+						</Route>
             <Route exact path="/security">
               <Security />
             </Route>
