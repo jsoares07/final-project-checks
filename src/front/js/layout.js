@@ -3,8 +3,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { Login } from "./component/login.js";
-import { Signup } from "./component/signup.js";
+
+import { Resetpassword } from "./pages/resetpassword.js"
+import { Forgetpassword } from "./pages/forgetpassword.js";
+import { Emailtoreset } from "./component/emailtoreset.js";
+import { Login } from "./pages/login.js";
+import { Signup } from "./pages/signup.js";
+
+
 import injectContext from "./store/appContext";
 import { Profile } from "./pages/profile.js";
 
@@ -31,6 +37,15 @@ const Layout = () => {
             <Route exact path="/profile">
               <Profile />
             </Route>
+						<Route exact path="/forgetpassword">
+							<Forgetpassword />
+						</Route>
+						<Route exact path="/emailtoreset">
+							<Emailtoreset />
+						</Route>
+						<Route exact path="/resetpassword">
+							<Resetpassword />
+						</Route>
             <Route>
               <h1>Not found!</h1>
             </Route>
