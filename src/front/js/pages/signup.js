@@ -23,16 +23,6 @@ export const Signup = () => {
   const [city, setCity] = useState();
   const [picture, setPicture] = useState();
 
-//   const cors = requiere("cors")
-
-// app.use(
-//   cors({
-//     origin: "https://3001-heylga-finalproject-091b2g05key.ws-eu46.gitpod.io"
-//   }
-
-//   )
-// )
-
 
   const onSubmitClicked = () => {
     console.log("estoy haciendo click en submit");
@@ -63,11 +53,11 @@ export const Signup = () => {
  
 
 
-  const onFetchSignUp = (email, password, firstName, userName, city, picture) => {
+  const onFetchSignUp = (email, password, firstName, userName, city) => {
     // fetch
     const post = {
       method: "POST",
-      mode: "cors",
+      // mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -85,7 +75,7 @@ export const Signup = () => {
 
     fetch(
       // "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346/api/hello"
-      "https://3001-heylga-finalproject-343yz6xrup8.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654590198503/api/signup",
+      "https://3001-heylga-finalp¡roject-091b2g05key.ws-eu46.gitpod.io/api/signup",
       post
     )
       // fetch(`${URLbase}/api/signup`, signup)
