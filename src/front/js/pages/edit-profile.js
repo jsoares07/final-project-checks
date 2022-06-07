@@ -4,13 +4,17 @@ import Navbar from "../component/navbar";
 import Footer from "../component/footer.js";
 import { Link } from "react-router-dom";
 import "../../styles/index.css";
+import Navbarlogin from "../component/navbar-login";
 
 export const EditProfile = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="">
-      <Navbar />
+            
+     {/* Navbar */}
+     <Navbarlogin />
+
       <div className="container rounded bg-white mt-5 mb-5 border border-dark">
         <div className="row">
           {/* Profile Info starts */}
@@ -104,6 +108,10 @@ export const EditProfile = () => {
                   />
                 </div>
               </div>
+
+              <Link to="/security">
+              <button type="button" class="btn btn-outline-secondary my-3">Change Password</button>
+              </Link>
               <p>
                 Looking to manage account security settings? You can find them
                 in the <a href="#">Password and authentication</a> page.
