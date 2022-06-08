@@ -11,7 +11,8 @@ export const Login = () => {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 
-	const urlBase = "https://3001-heylga-finalproject-a4zlwqcm7cc.ws-eu47.gitpod.io";
+	const URLbase =
+    "https://3001-heylga-finalproject-vicufwdsixf.ws-eu47.gitpod.io";
 
 	const onTypeEmail = (e) => {
 		console.log(e.target.value);
@@ -24,6 +25,7 @@ export const Login = () => {
 	  };
 	
 	const onSubmitClicked = () => {
+		// onFetchLogIn("TEST3", "TEST3", "TEST3", "TEST3", "TEST3");
 	
 		if (email && password) {
 			 // hacemos el fetch
@@ -39,7 +41,6 @@ export const Login = () => {
 		// fetch
 		const post = {
 		  method: "POST",
-		//   mode: "cors",
 		  headers: {
 			"Content-Type": "application/json",
 		  },
@@ -52,11 +53,10 @@ export const Login = () => {
 		console.log("info login", post);
 	
 		fetch(
-		  // "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346/api/hello"
-		  "https://3001-heylga-finalproject-a4zlwqcm7cc.ws-eu47.gitpod.io/api/login",
+		  `${URLbase}/api/login`,
 		  post
 		)
-		  // fetch(`${URLbase}/api/signup`, signup)
+	
 		  .then((response) => response.text())
 		  .then((result) => console.log(result))
 		  .catch((error) => console.log("error", error));
