@@ -13,7 +13,7 @@ export const Signup = () => {
   const { store, actions } = useContext(Context);
 
   const URLbase =
-    "https://3001-heylga-finalproject-343yz6xrup8.ws-eu46.gitpod.io";
+    "https://3001-heylga-finalproject-a4zlwqcm7cc.ws-eu47.gitpod.io";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -75,7 +75,7 @@ export const Signup = () => {
 
     fetch(
       // "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346/api/hello"
-      "https://3001-heylga-finalp¡roject-091b2g05key.ws-eu46.gitpod.io/api/signup",
+      "https://3001-heylga-finalproject-a4zlwqcm7cc.ws-eu47.gitpod.io/api/signup",
       post
     )
       // fetch(`${URLbase}/api/signup`, signup)
