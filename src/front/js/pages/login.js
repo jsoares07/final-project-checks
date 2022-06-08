@@ -36,6 +36,9 @@ export const Login = () => {
 			}
 	}
 
+	const onChangeProfile = () => {
+		
+	}
 
 	const onFetchLogIn = (email, password) => {
 		// fetch
