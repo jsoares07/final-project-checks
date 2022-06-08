@@ -33,7 +33,10 @@ class User(db.Model):
     def create(self):
         # este usuario existe?
         # si? retorna, error, el usuario ya existe
-        return 'error, el usuario ya existe'
+
+
+        # return 'error, el usuario ya existe'
+        
         # no? crealo
         db.session.add(self)
         db.session.commit()
