@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
-import Navbar from "../component/navbar";
+import { Link, useParams } from "react-router-dom";
+import propTypes from "prop-types";
+
+
+import Navbarlogin from "../component/navbar-login";
 import Footer from "../component/footer.js";
 import "../../styles/index.css";
-import Navbarlogin from "../component/navbar-login";
+
 
 export const Profile = () => {
   const { store, actions } = useContext(Context);
+  const {id}=useParams()
 
   return (
     <div className="">
@@ -111,4 +115,14 @@ export const Profile = () => {
       <Footer />
     </div>
   );
+
+    Profile.propTypes = {
+      id: propTypes.string,
+      email: propTypes.string,
+      first_name: propTypes.string,
+      user_name: propTypes.string,
+      last_name: propTypes.string,
+    }
+
+
 };

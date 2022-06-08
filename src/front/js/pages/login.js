@@ -39,7 +39,7 @@ export const Login = () => {
 		// fetch
 		const post = {
 		  method: "POST",
-		  mode: "no cors",
+		//   mode: "cors",
 		  headers: {
 			"Content-Type": "application/json",
 		  },
