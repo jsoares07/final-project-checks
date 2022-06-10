@@ -25,34 +25,34 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/" component={Home}>
               <Home />
             </Route>
-            <Route exact path="/login">
+            <Route exact path="/login" component={Login}>
               <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/profile">
-              <Profile />
             </Route>
             <Route exact path="/login/:id">
               <Profile />
             </Route>
-            <Route exact path="/edit-profile">
+            <Route exact path="/signup" component={Signup}>
+              <Signup />
+            </Route>
+            <Route exact path="/profile" component={Profile}>
+              <Profile />
+            </Route>
+            <Route exact path="/edit-profile" component={EditProfile}>
               <EditProfile />
             </Route>
-						<Route exact path="/forgetpassword">
+						<Route exact path="/forgetpassword" component={Forgetpassword}>
 							<Forgetpassword />
 						</Route>
-						<Route exact path="/emailtoreset">
+						<Route exact path="/emailtoreset" component={Emailtoreset}>
 							<Emailtoreset />
 						</Route>
-						<Route exact path="/resetpassword">
+						<Route exact path="/resetpassword" component={Resetpassword}>
 							<Resetpassword />
 						</Route>
-            <Route exact path="/security">
+            <Route exact path="/security" component={Security}>
               <Security />
             </Route>
             <Route>

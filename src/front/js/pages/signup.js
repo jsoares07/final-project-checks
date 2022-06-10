@@ -13,7 +13,7 @@ export const Signup = () => {
   const { store, actions } = useContext(Context);
 
   const URLbase =
-    "https://3001-heylga-finalproject-vicufwdsixf.ws-eu47.gitpod.io";
+    "https://3001-heylga-finalproject-ykjz531x6hh.ws-eu47.gitpod.io";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();

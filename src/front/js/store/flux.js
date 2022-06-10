@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: [],
+			isLoggedIn: false,
 
 		},
 		actions: {
@@ -10,13 +11,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			getUser: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/login")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
+			login: () => {
+
+				setStore({isLoggedIn: false}
+				
+				// 	// fetching data from the backend
+				// fetch(process.env.BACKEND_URL + "/api/login")
+				// 	.then(resp => resp.json())
+				// 	.then(data => setStore({ message: data.message }))
+				// 	.catch(error => console.log("Error loading message from backend", error));
+				
+			)},
+
+			logout: () => {
+
+				setStore({isLoggedIn: false}
+				
+			)},
 
 			getMessage: () => {
 				// fetching data from the backend

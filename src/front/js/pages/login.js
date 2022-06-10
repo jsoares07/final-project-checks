@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 import Navbar from "./../component/navbar";
@@ -10,9 +11,10 @@ export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [loggedIn, setLoggedIn] = useState(false);
 
 	const URLbase =
-    "https://3001-heylga-finalproject-vicufwdsixf.ws-eu47.gitpod.io";
+    "https://3001-heylga-finalproject-ykjz531x6hh.ws-eu47.gitpod.io";
 
 	const onTypeEmail = (e) => {
 		console.log(e.target.value);
@@ -34,6 +36,9 @@ export const Login = () => {
 				//te faltan datos
 				alert("information is missing");
 			}
+
+		// onClick={actions.login()}
+		// {...store.setLoggedIn ? <Redirect to={"/Profile"} /> : <p>You are not logged in</p>}
 	}
 
 	const onChangeProfile = () => {
@@ -70,6 +75,10 @@ export const Login = () => {
 
 		
 	<div className="">
+
+	{/* {store.setLoggedIn ? <Redirect to={"/Profile"} /> : <p>You are not logged in  
+		<button onClick={() => actions.login} /> </p>} */}
+
 	<Navbar />
 
 		<div className="container mt-5 mb-5 ">

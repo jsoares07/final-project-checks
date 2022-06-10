@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import propTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 
 
 import Navbarlogin from "../component/navbar-login";
@@ -12,9 +13,15 @@ import "../../styles/index.css";
 export const Profile = () => {
   const { store, actions } = useContext(Context);
   const {id}=useParams()
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
+
     <div className="">
+
+      {/* {store.setLoggedIn ? (<p>Welcome to your Profile, <button onClick={() => actions.logout} /> </p>) : ( 
+        <Redirect to={"/"} />
+      )} */}
       
      {/* Navbar */}
 
