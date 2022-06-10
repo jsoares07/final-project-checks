@@ -12,7 +12,7 @@ import "../../styles/index.css";
 
 export const Profile = () => {
   const { store, actions } = useContext(Context);
-  const {id}=useParams()
+  const {user_name}=useParams()
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
@@ -123,7 +123,7 @@ export const Profile = () => {
     </div>
   );
 
-    Profile.propTypes = {
+    User.propTypes = {
       id: propTypes.string,
       email: propTypes.string,
       first_name: propTypes.string,

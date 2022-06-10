@@ -3,7 +3,7 @@ import { URLbase } from "../../../../secrets";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: {},
+			user: [],
 			isLoggedIn: false,
 			accessToken: null,
 
@@ -50,6 +50,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					accessToken: null,
 				})
 			},
+
+			loadData: () => {
+				fetch(`${URLbase}/api/signup`)
+					.then(response => response.json())
+					.then(data => setStore({ character: data.results }))
+					.catch(error => console.error(error));
+			},
+
+
 
 			getMessage: () => {
 				// fetching data from the backend
