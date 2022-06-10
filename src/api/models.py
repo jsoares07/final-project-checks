@@ -43,7 +43,6 @@ class User(db.Model):
         return 'success, el usuario ha sido creado'
      
    
-   
 class Book(db.Model):
     # __tablename__ = 'books'
 

@@ -1,33 +1,55 @@
+import { URLbase } from "../../../../secrets";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: [],
+			user: {},
 			isLoggedIn: false,
+			accessToken: null,
 
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+
+			login: (email, password) => {
+				// fetch
+				const post = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password,
+					}),
+				};
+
+				console.log("info login desde las actions", post);
+
+				fetch(
+					`${URLbase}/api/login`,
+					post
+				)
+
+					.then((response) => response.json())
+					.then((result) => {
+						console.log('result from actions', result)
+						setStore({
+							user: result?.user,
+							accessToken: result?.access_token,
+							isLoggedIn: true,
+						})
+					})
+					.catch((error) => console.log("error", error));
 			},
-
-			login: () => {
-
-				setStore({isLoggedIn: false}
-				
-				// 	// fetching data from the backend
-				// fetch(process.env.BACKEND_URL + "/api/login")
-				// 	.then(resp => resp.json())
-				// 	.then(data => setStore({ message: data.message }))
-				// 	.catch(error => console.log("Error loading message from backend", error));
-				
-			)},
 
 			logout: () => {
 
-				setStore({isLoggedIn: false}
-				
-			)},
+				setStore({
+					user: null,
+					isLoggedIn: false,
+					accessToken: null,
+				})
+			},
 
 			getMessage: () => {
 				// fetching data from the backend
