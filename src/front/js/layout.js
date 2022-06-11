@@ -20,39 +20,39 @@ const Layout = () => {
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
   const basename = process.env.BASENAME || "";
 
+
   return (
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Switch>
-            <Route exact path="/" component={Home}>
+            <Route exact path="/" element={Home}>
               <Home />
             </Route>
-            <Route exact path="/login" component={Login}>
+            <Route exact path="/login" element={Login}>
               <Login />
             </Route>
             <Route exact path="/login/:id">
               <Profile />
             </Route>
-            <Route exact path="/signup" component={Signup}>
+            <Route exact path="/signup" element={Signup}>
               <Signup />
             </Route>
-            <Route exact path="/profile" component={Profile}>
-              <Profile />
+            <Route exact path="/profile" element={Profile}>
             </Route>
-            <Route exact path="/edit-profile" component={EditProfile}>
+            <Route exact path="/edit-profile" element={EditProfile}>
               <EditProfile />
             </Route>
-						<Route exact path="/forgetpassword" component={Forgetpassword}>
+						<Route exact path="/forgetpassword" element={Forgetpassword}>
 							<Forgetpassword />
 						</Route>
-						<Route exact path="/emailtoreset" component={Emailtoreset}>
+						<Route exact path="/emailtoreset" element={Emailtoreset}>
 							<Emailtoreset />
 						</Route>
-						<Route exact path="/resetpassword" component={Resetpassword}>
+						<Route exact path="/resetpassword" element={Resetpassword}>
 							<Resetpassword />
 						</Route>
-            <Route exact path="/security" component={Security}>
+            <Route exact path="/security" element={Security}>
               <Security />
             </Route>
             <Route>

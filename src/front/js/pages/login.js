@@ -11,6 +11,7 @@ export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [userName, setUserName] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	const URLbase =
@@ -26,8 +27,12 @@ export const Login = () => {
 		setPassword(e.target.value);
 	};
 
+	const OnTypeUserName = (e) => {
+		console.log(e.target.value);
+		setUserName(e.target.value);
+	  };
+
 	const onSubmitClicked = () => {
-		// onFetchLogIn("TEST3", "TEST3", "TEST3", "TEST3", "TEST3");
 
 		if (email && password) {
 			// hacemos el fetch
@@ -62,6 +67,19 @@ export const Login = () => {
 			<div className="row">
 
 				<div className="col-md-12 center mx-auto">
+
+				<label for="username" className="form-label">
+                  User Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="User Name"
+                  aria-label="User Name"
+                  id="username"
+                  value={userName}
+                  onChange={OnTypeUserName}
+                />
 
 					<label for="exampleInputEmail1" className="form-label">
 						Email address
@@ -155,16 +173,9 @@ export const Login = () => {
 
 		<div className="">
 
-			{/* {store.setLoggedIn ? <Redirect to={"/Profile"} /> : <p>You are not logged in  
-		<button onClick={() => actions.login} /> </p>} */}
-
 			<Navbar />
 
 			{loginLogicRender}
-
-			{/* <Link to="/">
-			<button className="btn btn-primary justify-content-center m-5">Back home</button>
-		</Link> */}
 
 			<Footer />
 		</div>
