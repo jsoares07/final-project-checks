@@ -14,6 +14,7 @@ export const Login = () => {
 	const [userName, setUserName] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
 
+
 	const URLbase =
 		"https://3001-heylga-finalproject-ykjz531x6hh.ws-eu47.gitpod.io";
 
@@ -159,9 +160,44 @@ export const Login = () => {
 	</div>
 
 	const notLoggedInRender = <div>
-		{'se ha loggeado el usuario ' + store.user?.email}
+		{'You are succesfully logged in' + '  ' + store.user?.email}
 		{logOutRender}
 	</div>
+
+
+	const loggedInWindow = 
+	<div>
+		 <div className="container mt-5 mb-5">
+        <div className="row">
+          <h1>Dashboard</h1>
+          <div className="col-md-12 border-right border border-dark">
+            <div className="p-3 py-5">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h4 className="text-right">Congradulations, you are succesfully logged in!</h4>
+              </div>
+              <div className="row mt-2">
+                <div className="col-md-12">
+                  <p>
+				  You are in the dashboard area. Now you able to adjust your profile, add your books and swap whichever book you would like to.
+					Enjoy it!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 mb-5 text-center">
+
+              <Link to="/profile">
+                <button className="btn btn-primary justify-content-center">
+                  My Profile
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+
 
 
 	const loginLogicRender = store.isLoggedIn ? notLoggedInRender : loggedInRender;
