@@ -1,5 +1,8 @@
 .jumbotron {
-    background-image: url("../img/lovereading.jpg");
+    background: url("../img/lovereading.jpg") center center;
     background-size: cover;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
     margin-top: 20px;
   }
