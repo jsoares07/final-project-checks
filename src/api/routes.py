@@ -8,8 +8,6 @@ from flask_jwt_extended import create_access_token
 # from models import User, Book
 
 
-
-
 api = Blueprint('api', __name__)
 
 # Create a route to authenticate your users and return JWTs. The

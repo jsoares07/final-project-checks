@@ -13,6 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
+    # username = db.Column(db.String(200), nullable = False)
     # first_name = db.Column(db.String(120), unique=False, nullable=False)
     # username = db.Column(db.String(120), nullable=False)
     # last_name = db.Column(db.String(120), unique=False, nullable=False)
@@ -24,19 +25,16 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            # "username": self.username,
             # "first_name": self.first_name,
             # "username": self.username,
             # "last_name": self.last_name,
             # do not serialize the password, its a security breach
         }
-
     def create(self):
         # este usuario existe?
         # si? retorna, error, el usuario ya existe
-
-
         # return 'error, el usuario ya existe'
-        
         # no? crealo
         db.session.add(self)
         db.session.commit()
