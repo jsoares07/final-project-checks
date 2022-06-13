@@ -1,8 +1,11 @@
-.jumbotron {
-    background: url("../img/lovereading.jpg") center center;
+.jumbotron-fluid {
+    background: url("../img/jumbotron.jpg") center center;
+    background-size: cover;
+    margin-top: 20px;
     background-size: cover;
     width: 100%;
     min-height: 100%;
     overflow: hidden;
-    margin-top: 20px;
+    position: relative;
+    color:white;
   }
