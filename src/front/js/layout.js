@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 
+
 import { Login } from "./pages/login.js";
 import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
@@ -12,6 +13,9 @@ import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
 import { Profile } from "./pages/profile.js";
+import { Offerbook } from "./pages/Offerbook";
+import { Other_users_profile } from "./pages/other-users-profile"
+
 
 //create your first component
 const Layout = () => {
@@ -45,6 +49,15 @@ const Layout = () => {
 						<Route exact path="/emailtoreset">
 							<Emailtoreset />
 						</Route>
+
+						<Route exact path="/offerbook">
+							<Offerbook />
+						</Route>
+						<Route exact path="/other-users-profile">
+							<Other_users_profile />
+						</Route>
+						<Route>
+							<h1>Not found!</h1>
 						<Route exact path="/resetpassword">
 							<Resetpassword />
 						</Route>
