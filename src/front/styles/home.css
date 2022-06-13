@@ -1,54 +1,59 @@
 .bg-gray {
-    background-color: #e9ecef;
+  background-color: #e9ecef;
 }
 .py-6 {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 .text-heading {
-    color: #343a40;
+  color: #343a40;
 }
 .text-para {
-    color: #6c757d;
+  color: #6c757d;
 }
 .list-unstyled {
-    padding-left: 0;
-    list-style: none;
+  padding-left: 0;
+  list-style: none;
 }
 .list-unstyled li a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .list-unstyled li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .bg-transparent {
-    background-color: rgba(0,0,0,0) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 .border-dark {
-    border-color: #343a40 !important;
+  border-color: #343a40 !important;
 }
 .border-end-0 {
-    border-right: 0;
+  border-right: 0;
 }
 .py-4 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .bg-dark-gray {
-    background-color: #343a40;
+  background-color: #343a40;
 }
 .text-gray-300 {
-    color: #dee2e6;
+  color: #dee2e6;
 }
 .contacts {
-    padding-top: 1rem;
+  padding-top: 1rem;
 }
 .navbar {
-    background-color: #343a40;
+  background-color: #343a40;
 }
 .jumbotron {
-    margin-top: 20px;
-    background-image: url('./../img/booksmall.jpg');
-    background-size: cover;
-    background-color: #dee2e6;
+  margin-top: 20px;
+  background-image: url("./../img/booksmall.jpg");
+  background-size: cover;
+  background-color: #dee2e6;
+}
+
+.map-container {
+  width: 100%;
+  height: 100vh;
 }
