@@ -11,7 +11,7 @@ export const Signup = () => {
   const { store, actions } = useContext(Context);
 
   const URLbase =
-    "https://3001-heylga-finalproject-n9ed77grnlm.ws-eu46.gitpod.io";
+    "https://3001-heylga-finalproject-343yz6xrup8.ws-eu46.gitpod.io";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -31,11 +31,11 @@ export const Signup = () => {
     // city no vacio
     // password === repeatpassword
 
-    // if (email && password && repeatPassword && firstName && userName && city) {
-    if (email && password && repeatPassword) {
+    if (email && password && repeatPassword && firstName && userName && city) {
+    // if (email && password && repeatPassword) {
       if (password === repeatPassword) {
         // hacemos el fetch
-        onFetchSignUp(email, password);
+        onFetchSignUp(email, password, firstName, userName, city);
       } else {
         // las pass tienen que coincidir
         alert("the passwords have to be iqual");
@@ -67,7 +67,7 @@ export const Signup = () => {
 
     fetch(
       // "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346/api/hello"
-      "https://3001-heylga-finalproject-yddd4mn8nwc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654506773081/api/signup",
+      "https://3001-heylga-finalproject-343yz6xrup8.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654590198503/api/signup",
       post
     )
       // fetch(`${URLbase}/api/signup`, signup)
@@ -219,7 +219,7 @@ export const Signup = () => {
                 <input type="file" className="my_file mt-1"></input>
               </div>
 
-              <div class="col text-center">
+              <div className="col text-center">
                 <button
                   type="submit"
                   onClick={onSubmitClicked}
