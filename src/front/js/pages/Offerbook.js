@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -6,59 +6,199 @@ import Footer from "./../component/footer";
 import Navbarlogin from "../component/navbar-login";
 
 export const Offerbook = () => {
-    const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const [title, setTitle] = useState();
+  const [author, setAuthor] = useState();
+  const [editor, setEditor] = useState();
+  const [genre, setGenre] = useState();
+  const [language, setLanguage] = useState();
+  const [description, setDescription] = useState();
 
-    return (  
+  const URLbase =
+    "https://3001-heylga-finalproject-q16xycwi6oq.ws-eu47.gitpod.io";
+
+  const onSubmit = () => {
+    console.log("submit working");
+
+    if (title && author) {
+      // hacemos el fetch
+      FetchOfferBook(title, author);
+      alert("Your book has been added");
+    } else {
+      //te faltan datos
+      alert("Information is missing");
+    }
+  };
+
+  const FetchOfferBook = (title, author) => {
+    // fetch
+    const post = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        author: author,
+      }),
+    };
+
+    console.log("info after fetch --->", post);
+
+    fetch(`${URLbase}/api/offerbook`, post)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  const onTypeTitle = (e) => {
+    console.log(e.target.value);
+    setTitle(e.target.value);
+  };
+
+  const onTypeAuthor = (e) => {
+    console.log(e.target.value);
+    setAuthor(e.target.value);
+  };
+
+  const onTypeEditor = (e) => {
+    console.log(e.target.value);
+    setEditor(e.target.value);
+  };
+
+  const onTypeGenre = (e) => {
+    console.log(e.target.value);
+    setGenre(e.target.value);
+  };
+
+  const onTypeLanguage = (e) => {
+    console.log(e.target.value);
+    setLanguage(e.target.value);
+  };
+
+  const onTypeDescription = (e) => {
+    console.log(e.target.value);
+    setDescription(e.target.value);
+  };
+
+  return (
     <div>
-        <Navbarlogin />
-        <div className=" container card">
-            <div className="card-body">
-                <form>
-                    <div className="row mb-3">
-                        <label for="bookTitle" className="col-sm-2 col-form-label">Title of the book</label>
-                        <div className="col-sm-10">
-                            <input type="text" className="form-control" id="bookTitle" />
-                        </div>
-                    </div>
-                    <div className="row mb-3">
-                        <label for="author" className="col-sm-2 col-form-label">Author</label>
-                        <div className="col-sm-10">
-                            <input type="text" className="form-control" id="author" />
-                        </div>
-                    </div>
-                    <div className="row mb-3">
-                        <label for="editor" className="col-sm-2 col-form-label">Editor</label>
-                        <div className="col-sm-10">
-                            <input type="text" className="form-control" id="editor" />
-                        </div>
-                    </div>
-                    <div className="row mb-3">
-                        <label for="genre" className="col-sm-2 col-form-label">Genre</label>
-                        <div className="col-sm-10">
-                            <input type="text" className="form-control" id="genre" />
-                        </div>
-                    </div>
-                    <div className="row mb-3">
-                        <label for="language" className="col-sm-2 col-form-label">Language</label>
-                        <div className="col-sm-10">
-                            <input type="text" className="form-control" id="language" />
-                        </div>
-                    </div>
-                    <div className="mb-3">
-                        <label for="descriptn" className="form-label">Description</label>
-                        <input type="text" className="form-control" id="descriptn" placeholder="Decribe briefly the synopsis of the book" />
-                    </div>
-                    <div className="container d-flex">
-                        <div className="mb-3">
-                            <label for="formFileMultiple" className="form-label">Upload file(s)</label>
-                            <input className="form-control" type="file" id="formFileMultiple" multiple />
-                        </div>
-                    </div>
-                    <input className="btn btn-primary" type="submit" value="Submit"></input>
-                </form>
+      <Navbarlogin />
+      <div className=" container card">
+        <div className="card-body">
+          <form>
+            <div className="row mb-3">
+              <label for="bookTitle" className="col-sm-2 col-form-label">
+                Title of the book
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="title"
+                  className="form-control"
+                  id="bookTitle"
+                  placeholder="Title of the Book"
+                  value={title}
+                  onChange={onTypeTitle}
+                />
+              </div>
             </div>
+            <div className="row mb-3">
+              <label for="author" className="col-sm-2 col-form-label">
+                Author
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="author"
+                  className="form-control"
+                  id="author"
+                  placeholder="Author"
+                  value={author}
+                  onChange={onTypeAuthor}
+                />
+              </div>
+            </div>
+            <div className="row mb-3">
+              <label for="editor" className="col-sm-2 col-form-label">
+                Editor
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="editor"
+                  className="form-control"
+                  id="editor"
+                  placeholder="Editor"
+                  value={editor}
+                  onChange={onTypeEditor}
+                />
+              </div>
+            </div>
+            <div className="row mb-3">
+              <label for="genre" className="col-sm-2 col-form-label">
+                Genre
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="genre"
+                  className="form-control"
+                  id="genre"
+                  placeholder="Genre"
+                  value={genre}
+                  onChange={onTypeGenre}
+                />
+              </div>
+            </div>
+            <div className="row mb-3">
+              <label for="language" className="col-sm-2 col-form-label">
+                Language
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="language"
+                  className="form-control"
+                  id="language"
+                  placeholder="Language"
+                  value={language}
+                  onChange={onTypeLanguage}
+                />
+              </div>
+            </div>
+            <div className="mb-3">
+              <label for="descriptn" className="form-label">
+                Description
+              </label>
+              <input
+                type="description"
+                className="form-control"
+                id="description"
+                placeholder="Decribe briefly the synopsis of the book"
+                value={description}
+                onChange={onTypeDescription}
+              />
+            </div>
+            <div className="container d-flex">
+              <div className="mb-3">
+                <label for="formFileMultiple" className="form-label">
+                  Upload file(s)
+                </label>
+                <input
+                  className="form-control"
+                  type="file"
+                  id="formFileMultiple"
+                  multiple
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary float-end mt-5 me-5"
+              onClick={onSubmit}
+            >
+              Submit
+            </button>
+          </form>
         </div>
-        <Footer />
-    </div> 
-    );
+      </div>
+      <Footer />
+    </div>
+  );
 };

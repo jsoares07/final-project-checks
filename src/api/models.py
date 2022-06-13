@@ -1,4 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+import os
+import sys
+from sqlalchemy import  Table, Column, ForeignKey, Integer, String, Date
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine
 
 db = SQLAlchemy()
 
@@ -17,3 +24,23 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), unique=True, nullable=False)
+    author = db.Column(db.String(120), unique=True, nullable=False)
+
+    def generateId(self):
+        return randint(0, 99999999)
+
+
+    def serialize(self):
+        return {
+            "title": self.title,
+            "author": self.author,
+        }
+    
+    def addBook(self):
+        db.session.add(self)
+        db.session.commit()
+        return "The book has been added"
