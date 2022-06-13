@@ -71,7 +71,7 @@ function Navbarlogin() {
         </div> */}
 
 
-					{/* <Link to="/login">
+					 <Link to="/login">
 
 						<button type="button" className="btn btn-outline-light me-1"><i className="fa-brands fa-gratipay"></i></button>
 					</Link>
@@ -85,6 +85,6 @@ function Navbarlogin() {
 		</nav>
 </div>
   )
-}
+} 
 
 export default Navbarlogin
