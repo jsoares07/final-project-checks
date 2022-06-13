@@ -5,6 +5,7 @@ import "../../styles/home.css";
 function Navbarlogin() {
   return (
 <div>
+
         <nav className="navbar navbar-expand-md">
 			<div className="container">
 				<Link to="/">
@@ -71,11 +72,14 @@ function Navbarlogin() {
 
 
 					{/* <Link to="/login">
+
 						<button type="button" className="btn btn-outline-light me-1"><i className="fa-brands fa-gratipay"></i></button>
 					</Link>
 					<Link to="/signup">
 						<button type="button" className="btn btn-outline-light ms-1"><i className="fa-solid fa-circle-user"></i></button>
-					</Link> */}
+
+					</Link>
+
 				</div>
 			</div>
 		</nav>
