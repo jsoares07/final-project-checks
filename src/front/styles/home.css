@@ -46,12 +46,6 @@
 .navbar {
   background-color: #343a40;
 }
-.jumbotron {
-  margin-top: 20px;
-  background-image: url("./../img/booksmall.jpg");
-  background-size: cover;
-  background-color: #dee2e6;
-}
 
 .map-container {
   width: 100%;

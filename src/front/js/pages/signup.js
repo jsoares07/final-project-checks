@@ -6,12 +6,14 @@ import { Context } from "../store/appContext";
 
 import Navbar from "./../component/navbar.js";
 import Footer from "./../component/footer";
+import { useJsApiLoader } from "@react-google-maps/api";
+import { applyStyles } from "@popperjs/core";
 
 export const Signup = () => {
   const { store, actions } = useContext(Context);
 
   const URLbase =
-    "https://3001-heylga-finalproject-343yz6xrup8.ws-eu46.gitpod.io";
+    "https://3001-heylga-finalproject-ykjz531x6hh.ws-eu47.gitpod.io";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -19,6 +21,8 @@ export const Signup = () => {
   const [firstName, setFirstName] = useState();
   const [userName, setUserName] = useState();
   const [city, setCity] = useState();
+  const [picture, setPicture] = useState();
+
 
   const onSubmitClicked = () => {
     console.log("estoy haciendo click en submit");
@@ -46,11 +50,13 @@ export const Signup = () => {
     }
   };
 
+ 
+
+
   const onFetchSignUp = (email, password, firstName, userName, city) => {
     // fetch
     const post = {
       method: "POST",
-      mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -60,17 +66,17 @@ export const Signup = () => {
         firstName: firstName,
         userName: userName,
         city: city,
+        picture: picture,
       }),
     };
 
     console.log("info login", post);
 
     fetch(
-      // "https://3001-heylga-finalproject-etg7w4vxjqc.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654284274346/api/hello"
-      "https://3001-heylga-finalproject-343yz6xrup8.ws-eu46.gitpod.io/?vscodeBrowserReqId=1654590198503/api/signup",
+      `${URLbase}/api/signup`,
       post
     )
-      // fetch(`${URLbase}/api/signup`, signup)
+
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -105,6 +111,12 @@ export const Signup = () => {
     console.log(e.target.value);
     setCity(e.target.value);
   };
+
+  const onTypePicture = (e) => {
+    console.log(e.target.value);
+    setPicture(e.target.value);
+  };
+
 
   return (
     <div className="">
@@ -216,13 +228,16 @@ export const Signup = () => {
 
             <div className="col-md-6">
               <div className="wrapper">
-                <input type="file" className="my_file mt-1"></input>
+                <input type="file" className="my_file mt-1"
+                onChange={onTypePicture}>
+                </input>
               </div>
 
               <div className="col text-center">
                 <button
                   type="submit"
                   onClick={onSubmitClicked}
+
                   className="btn btn-primary text-center"
                 >
                   Submit

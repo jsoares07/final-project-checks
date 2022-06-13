@@ -3,8 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-
-
 import { Login } from "./pages/login.js";
 import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
@@ -13,6 +11,7 @@ import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
 import { Profile } from "./pages/profile.js";
+import { Security } from "./pages/security";
 import { Offerbook } from "./pages/Offerbook";
 import { Other_users_profile } from "./pages/other-users-profile"
 
@@ -23,50 +22,69 @@ const Layout = () => {
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
   const basename = process.env.BASENAME || "";
 
+
   return (
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Switch>
-            <Route exact path="/">
+    
+            <Route exact path="/" element={Home}>
               <Home />
             </Route>
-            <Route exact path="/login">
+
+            <Route exact path="/login" element={Login}>
               <Login />
             </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/profile">
+
+            <Route exact path="/login/:id">
               <Profile />
             </Route>
-            <Route exact path="/edit-profile">
+
+            <Route exact path="/signup" element={Signup}>
+              <Signup />
+            </Route>
+
+            <Route exact path="/profile" element={Profile}>
+            <Profile/>
+            </Route>
+
+            <Route exact path="/edit-profile" element={EditProfile}>
               <EditProfile />
             </Route>
-						<Route exact path="/forgetpassword">
+
+						<Route exact path="/forgetpassword" element={Forgetpassword}>
 							<Forgetpassword />
 						</Route>
-						<Route exact path="/emailtoreset">
+
+						<Route exact path="/emailtoreset" element={Emailtoreset}>
 							<Emailtoreset />
 						</Route>
 
 						<Route exact path="/offerbook">
 							<Offerbook />
 						</Route>
+
 						<Route exact path="/other-users-profile">
 							<Other_users_profile />
 						</Route>
-						<Route>
-							<h1>Not found!</h1>
+
 						<Route exact path="/resetpassword">
 							<Resetpassword />
 						</Route>
+
+            <Route exact path="/security" element={Security}>
+              <Security />
+            </Route>
+
             <Route>
               <h1>Not found!</h1>
             </Route>
+
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
+
     </div>
   );
 };

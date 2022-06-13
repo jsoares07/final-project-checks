@@ -8,7 +8,6 @@ from flask_jwt_extended import create_access_token
 # from models import User, Book
 
 
-
 api = Blueprint('api', __name__)
 
 # Create a route to authenticate your users and return JWTs. The
@@ -47,6 +46,72 @@ def signup():
         password = password,
     )
 
+    answer = user.create()
+
+    response_body = {
+         "message": answer,
+         "user": user.serialize()
+     }
+
+    return jsonify(response_body), 200
+    
+@api.route('/login', methods=['POST'])
+def loginn():
+
+    request_body = request.get_json(force=True)
+
+
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+
+    access_token = create_access_token(identity=email)
+    print('hola me estan llamando', request_body, access_token)
+
+    user = User(
+        email = email,
+        password = password,
+    )
+
+
+    response_body = {
+         "message": "User logged in",
+         "access_token": access_token,
+         "user": user.serialize()
+     }
+
+    return jsonify(response_body), 200
+    
+
+
+@api.route('/login_malo', methods=['POST'])
+def login_user(email, password):
+
+    # email = request.json.get("email", None)
+    # password = request.json.get("password", None)
+
+    # print('email', email, 'password', password)
+
+    # if email != "test" or password != "test":
+    #     return {"error": "Wrong email or password"}, 400
+
+    # # access_token = create_access_token(identity=email)
+    # # response = {"access_token":access_token}
+    # return response.jsonify({"msg": "user logged in"}), 200
+
+    request_body = request.get_json(force=True)
+
+
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+
+    access_token = create_access_token(identity=email)
+    print('hola me estan llamando', request_body, access_token)
+
+    user = User(
+        email = email,
+        password = password,
+    )
+
     user.create()
 
     response_body = {
@@ -57,24 +122,6 @@ def signup():
 
     return jsonify(response_body), 200
     
-
-
-@api.route('/login', methods=['POST'])
-def login_user(email, password):
-
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-
-    print('email', email, 'password', password)
-
-    if email != "test" or password != "test":
-        return {"error": "Wrong email or password"}, 400
-
-    # access_token = create_access_token(identity=email)
-    # response = {"access_token":access_token}
-    return response.jsonify({"msg": "user logged in"}), 200
-
-
 
 # @api.route('/signup', methods=['GET','POST'])
 # def register_user(email, password):

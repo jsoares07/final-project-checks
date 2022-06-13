@@ -1,15 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-import Navbar from "../component/navbar";
+import { Link, useParams } from "react-router-dom";
+import propTypes from "prop-types";
+import { Redirect } from "react-router-dom";
+
+
+import Navbarlogin from "../component/navbar-login";
 import Footer from "../component/footer.js";
 import "../../styles/index.css";
 
+
 export const Profile = () => {
   const { store, actions } = useContext(Context);
+  const {user_name}=useParams()
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
+
     <div className="">
-      <Navbar />
+
+      {/* {store.setLoggedIn ? (<p>Welcome to your Profile, <button onClick={() => actions.logout} /> </p>) : ( 
+        <Redirect to={"/"} />
+      )} */}
+      
+     {/* Navbar */}
+
+     <Navbarlogin />
+
+
       <div className="container rounded bg-white mt-5 mb-5">
         <div className="row">
           {/* Profile photo starts */}
@@ -104,4 +122,14 @@ export const Profile = () => {
       <Footer />
     </div>
   );
+
+    User.propTypes = {
+      id: propTypes.string,
+      email: propTypes.string,
+      first_name: propTypes.string,
+      user_name: propTypes.string,
+      last_name: propTypes.string,
+    }
+
+
 };
