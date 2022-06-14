@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { Link } from "react-router-dom";
-import Navbarlogin from '../component/navbar-login';
+import Navbarlogin from '../component/navbar-login'
 import { Context } from "../store/appContext";
 import Rating from '../component/rating';
+import Footer from '../component/footer'
 export const Reviewuser = () => {
   const { store, actions } = useContext(Context);
   return (
@@ -17,6 +18,7 @@ export const Reviewuser = () => {
             <Rating />
           </div>
         </div>
+        <Footer />
     </div>
   )
 }
