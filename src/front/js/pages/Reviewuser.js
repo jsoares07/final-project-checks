@@ -9,7 +9,7 @@ export const Reviewuser = () => {
   return (
     <div>
         <Navbarlogin />
-        <div className="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div className="container">
           <div className="card p-4">
             <div>
               <h4>Rating and Review</h4>
