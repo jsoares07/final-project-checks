@@ -11,12 +11,11 @@ export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
-	const [userName, setUserName] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
 
-
 	const URLbase =
-		"https://3001-heylga-finalproject-nn1iaqlzqt1.ws-eu47.gitpod.io";
+		"https://3001-heylga-finalproject-9u4z6uzqj4b.ws-eu47.gitpod.io";
+
 
 	const onTypeEmail = (e) => {
 		console.log(e.target.value);
@@ -28,12 +27,8 @@ export const Login = () => {
 		setPassword(e.target.value);
 	};
 
-	const OnTypeUserName = (e) => {
-		console.log(e.target.value);
-		setUserName(e.target.value);
-	  };
-
 	const onSubmitClicked = () => {
+		// onFetchLogIn("TEST3", "TEST3", "TEST3", "TEST3", "TEST3");
 
 		if (email && password) {
 			// hacemos el fetch
@@ -68,19 +63,6 @@ export const Login = () => {
 			<div className="row">
 
 				<div className="col-md-12 center mx-auto">
-
-				<label for="username" className="form-label">
-                  User Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="User Name"
-                  aria-label="User Name"
-                  id="username"
-                  value={userName}
-                  onChange={OnTypeUserName}
-                />
 
 					<label for="exampleInputEmail1" className="form-label">
 						Email address
@@ -160,44 +142,9 @@ export const Login = () => {
 	</div>
 
 	const notLoggedInRender = <div>
-		{'You are succesfully logged in' + '  ' + store.user?.email}
+		{'se ha loggeado el usuario ' + store.user?.email}
 		{logOutRender}
 	</div>
-
-
-	const loggedInWindow = 
-	<div>
-		 <div className="container mt-5 mb-5">
-        <div className="row">
-          <h1>Dashboard</h1>
-          <div className="col-md-12 border-right border border-dark">
-            <div className="p-3 py-5">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h4 className="text-right">Congradulations, you are succesfully logged in!</h4>
-              </div>
-              <div className="row mt-2">
-                <div className="col-md-12">
-                  <p>
-				  You are in the dashboard area. Now you able to adjust your profile, add your books and swap whichever book you would like to.
-					Enjoy it!
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-5 mb-5 text-center">
-
-              <Link to="/profile">
-                <button className="btn btn-primary justify-content-center">
-                  My Profile
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-	</div>
-
 
 
 	const loginLogicRender = store.isLoggedIn ? notLoggedInRender : loggedInRender;
@@ -209,9 +156,16 @@ export const Login = () => {
 
 		<div className="">
 
+			{/* {store.setLoggedIn ? <Redirect to={"/Profile"} /> : <p>You are not logged in  
+		<button onClick={() => actions.login} /> </p>} */}
+
 			<Navbar />
 
 			{loginLogicRender}
+
+			{/* <Link to="/">
+			<button className="btn btn-primary justify-content-center m-5">Back home</button>
+		</Link> */}
 
 			<Footer />
 		</div>
