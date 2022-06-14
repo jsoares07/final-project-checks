@@ -16,6 +16,7 @@ export const Login = () => {
 	const URLbase =
 		"https://3001-heylga-finalproject-9u4z6uzqj4b.ws-eu47.gitpod.io";
 
+
 	const onTypeEmail = (e) => {
 		console.log(e.target.value);
 		setEmail(e.target.value);

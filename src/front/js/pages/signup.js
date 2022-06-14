@@ -6,14 +6,14 @@ import { Context } from "../store/appContext";
 
 import Navbar from "./../component/navbar.js";
 import Footer from "./../component/footer";
-import { useJsApiLoader } from "@react-google-maps/api";
-import { applyStyles } from "@popperjs/core";
+
 
 export const Signup = () => {
   const { store, actions } = useContext(Context);
 
   const URLbase =
     "https://3001-heylga-finalproject-9u4z6uzqj4b.ws-eu47.gitpod.io";
+
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
