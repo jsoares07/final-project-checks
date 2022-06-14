@@ -1,11 +1,10 @@
 import React from "react";
 import "../../styles/jumbotron.css";
-import background from "../../img/jumbotron.jpg";
 
 const Jumbotron = () => {
 	return (
 		<div className="container center">
-		<div className="jumbotron jumbotron-fluid p-5 "  style={{backgroundImage: `url(${background})`}}>
+		<div className="jumbotron jumbotron-fluid p-5 ">
 			<h1 className="display-1 justify-content-center">BookCrossing</h1>
 			<p className="lead fs-4">
 				
@@ -17,10 +16,14 @@ const Jumbotron = () => {
 </div>
 			</p>
 			<div className="my-5">
+				{/* <a className="btn btn-primary btn-lg" href="#" role="button">
+					Call to action!
+				</a> */}
+
 			</div>
 		</div>
 		</div>
-
+		
 	);
 };
 
