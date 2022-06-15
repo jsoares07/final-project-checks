@@ -41,12 +41,6 @@ function Rating() {
             )
           })}
         </div>
-        <div>
-          <textarea placeholder='Describe your swap experience with User'></textarea>
-        </div>
-        <div>
-          <button className='ratingBtn'>Submit review</button>
-        </div>
     </div>
   )
 }

@@ -9,13 +9,19 @@ export const Reviewuser = () => {
   return (
     <div>
         <Navbarlogin />
-        <div className="container">
-          <div className="card p-4">
-            <div>
-              <h4>Rating and Review</h4>
-              <p>How was your exchange with User?</p>
+        <div className='container'>
+          <div className="card text-center">
+            <div className="card p-4">
+              <div>
+                <h1>Rating and Review</h1>
+                <p>How was your exchange with User?</p>
+              </div>
+              <Rating />
+              <textarea placeholder="Write a review about your book exchange" style={{height: "100px"}}></textarea>
+              <div>
+                <button type="button" className="btn btn-success" style={{width: "100px"}}>Success</button>
+              </div>
             </div>
-            <Rating />
           </div>
         </div>
         <Footer />
