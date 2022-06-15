@@ -9,6 +9,15 @@ import Navbarlogin from "../component/navbar-login";
 export const EditProfile = () => {
   const { store, actions } = useContext(Context);
 
+  const [email, setEmail] = useState();
+  const [mobile, setMobile] = useState();
+  const [repeatPassword, setRepeatPassword] = useState();
+  const [firstName, setFirstName] = useState();
+  const [userName, setUserName] = useState();
+  const [city, setCity] = useState();
+  const [picture, setPicture] = useState();
+
+
   return (
     <div className="">
             
