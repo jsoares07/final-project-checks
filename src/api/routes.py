@@ -46,6 +46,7 @@ def signup():
     user = User(
         email = email,
         password = password,
+        # id = id,
     )
 
     answer = user.create()
@@ -125,6 +126,65 @@ def login_user(email, password):
     return jsonify(response_body), 200
     
 
+
+ 
+
+# @api.route('/edit-profile', methods=['PUT', 'GET', 'POST'])
+# def editprofile():
+
+#     request_body = request.get_json(force=True)
+
+#     form = UseForm()
+#     id = current_user.id
+#     name_to_update = User.query.get_or_404
+
+#     if request.method == 'PUT':
+
+#     # name_to_update.email = request.form['email']
+#     # name_to_update.password = request.form['password']
+#     # name_to_update.first_name = request.form['first_name']
+#     # name_to_update.user_name = request.form['user_name']
+#     # name_to_update.mobile = request.form['mobile']
+#     # name_to_update.birthday = request.form['birthday']
+#     # name_to_update.address = request.form['address']
+#     # name_to_update.postcode = request.form['postcode']
+#     # name_to_update.state = request.form['state']
+#     # name_to_update.city = request.form['city']
+#     # name_to_update.country = request.form['country']
+#     # name_to_update.profile_pic = request.files['profile_pic']
+
+#     access_token = create_access_token(identity=email)
+#     print('hola me estan llamando', request_body, access_token)
+
+#     user = User(
+#         email = email,
+#         password = password,
+#         first_name = first_name,
+#         user_name = user_name,
+#         mobile = mobile,
+#         birthday = birthday,
+#         address = address,
+#         postcode = postcode,
+#         state = state,
+#         city = city,
+#         country = country,
+#         profile_pic = profile_pic,
+#     )
+
+#     answer = user.update()
+
+#     response_body = {
+#          "message": answer,
+#          "user": user.serialize()
+#      }
+
+#     return jsonify(response_body), 200
+    
+
+
+
+
+
 # @api.route('/signup', methods=['GET','POST'])
 # def register_user(email, password):
 
@@ -145,6 +205,20 @@ def login_user(email, password):
 #     our_user.save_user()
     
 #     return jsonify(our_user.serialize())
+
+
+
+# @app.route('/user/<int:id>', methods = ['GET'])
+# def get_user(id):
+   
+#     return jsonify(user), 200
+
+# def get_user(id):
+#     user = user.get_user(uid)
+#     if user is None:
+#         return jsonify({"msg":"This user doesnt exist"})
+#     return jsonify(character),200
+
 
 
 

@@ -15,7 +15,17 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     # first_name = db.Column(db.String(120), unique=False, nullable=False)
     # user_name = db.Column(db.String(120), unique=False, nullable=False)
-    # last_name = db.Column(db.String(120), unique=False, nullable=False)
+    # mobile = db.Column(db.Integer)
+    # birthday = db.Column(db.DateTime)
+    # address = db.Column(db.String(120))
+    # postcode = db.Column(db.Integer)
+    # state = db.Column(db.String(120))
+    # city = db.Column(db.String(120))
+    # country = db.Column(db.String(120))
+    # profile_pic = db.Column(db.String(120), nullable=True)
+
+    # User = db.relationship('Book', )
+    # User = db.relationship('Favourites', )
     
     def __repr__(self):
         return f'<User {self.email}>'
@@ -26,7 +36,15 @@ class User(db.Model):
             "email": self.email,
             # "first_name": self.first_name,
             # "user_name": self.user_name,
-            # "last_name": self.last_name,
+            # "mobile": self.mobile,
+            # "birthday": self.birthday,
+            # "mobile": self.mobile,
+            # "birthday": self.birthday,
+            # "address": self.address,
+            # "postcode": self.postcode,
+            # "state": self.state,
+            # "city": self.city,
+            # "country": self.country,   
             # do not serialize the password, its a security breach
         }
 
@@ -41,8 +59,31 @@ class User(db.Model):
         db.session.add(self)
         db.session.commit()
         return 'success, el usuario ha sido creado'
+
      
-   
+# class Favourites(db.Model):
+#     __tablename__ = 'favourites'
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.String(120), nullable=False)
+#     favouritetype = db.Column(db.String(120), nullable=False)
+#     favourite_book = db.Column(db.String(120), db.ForeignKey(Parent.id))
+#     favourite_id = db.Column(db.String(120), nullable=False)
+
+#     def __repr__(self):
+#         return '<Favourites %r>' % self.name
+
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "user_id": self.user_id,
+#             "favouritetype": self.favouritetype,
+#             "favourite_id": self.favourite_id,
+#             "favourite_book": self.favourite_book,
+#         }
+
+
+
 class Book(db.Model):
     # __tablename__ = 'books'
 
