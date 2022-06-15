@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap";
+
+//LIBRERIA BOOTSTRAP FOR REACT
+
+
 
 function Navbarlogin() {
+    const { store, actions } = useContext(Context);
+    const [dropdown, setDropdown] = useState(false);
+    const [dropdownProfile, setDropdownProfile] = useState(false);
+    
+    const openCloseDropdown = () => {
+		setDropdown(!dropdown);
+	};
+
+    const profileOpenDropdown = () => {
+		setDropdownProfile(!dropdownProfile);
+	};
+
   return (
 <div>
         <nav className="navbar navbar-expand-md">
@@ -19,65 +37,84 @@ function Navbarlogin() {
                     
                     <div class="dropdown">
 
+
+                    <Dropdown isOpen={dropdown} toggle={openCloseDropdown}>
+
+
+
+                    <Link to="/allbooks">
+            <button type="button" className="btn btn-outline-light me-1">
+              See all books
+            </button>
+          </Link>
+
+
                     <Link to="/">
-                    
                     <button type="button" className="btn btn-outline-light me-1"><i class="fa-solid fa-plus"></i></button>
                     </Link>
                     <Link to="/">
 						<button type="button" className="btn btn-outline-light me-1"> <i class="fa-solid fa-bell"></i></button>
 					</Link>
                     <Link to="/">
-						<button type="button" className="btn btn-outline-light me-1"><i class="fa-solid fa-heart"></i></button>
-					</Link>
+                    </Link>
+
+                
+				<DropdownToggle caret className="dropdownButton">
+                <i class="fa-solid fa-heart"></i>{" "}
+						{store.favorite.length}
+				</DropdownToggle>
+				<DropdownMenu right>
+					{store.favorite.length > 0 ? (
+						store.favorite.map((favorite, index) => {
+							return (
+								<DropdownItem key={index}>
+									<div className="favAndTrash">
+										{favorite}
+										<i
+											id="delete"
+											className="far fa-trash-alt pointer trash"
+											onClick={() => {
+												actions.deleteFavorite({ index });
+											}}
+										/>
+									</div>
+								</DropdownItem>
+							);
+						})
+					) : (
+						<DropdownItem>
+							<p>Emty</p>
+						</DropdownItem>
+					)}
+				</DropdownMenu>
+                
+			</Dropdown>
 
 
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-user"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <li><button class="dropdown-item" type="button">Profile</button></li>
-                                        <li><button class="dropdown-item" type="button">Configuration</button></li>
-                                        <li><button class="dropdown-item" type="button">Something else here</button>
-                                        <li>
-                                            <hr class="dropdown-divider" />
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Log Out</a></li>
-                                        </li>
-                                    </ul>
+
+            <Dropdown isOpen={dropdownProfile} toggle={profileOpenDropdown}>
+    <DropdownToggle caret>
+    <i class="fa-solid fa-user"></i>
+    </DropdownToggle>
+    <DropdownMenu
+    >
+      <DropdownItem>
+      Profile
+      </DropdownItem>
+      <DropdownItem>
+      Configuration
+      </DropdownItem>
+      <DropdownItem divider />
+      <DropdownItem>
+       Log Out
+      </DropdownItem>
+
+    </DropdownMenu>
+    </Dropdown>
+
+            
                                 </div>
 
-
-        {/* <div class="btn-group">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Small button
-            </button>
-                    <ul class="dropdown-menu">
-                        ...
-                    </ul>
-        </div>
-
-        <div class="btn-group">
-            <button class="btn btn-secondary btn-sm" type="button">
-                Small split button
-            </button>
-            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-                    <ul class="dropdown-menu">
-                        ...
-                    </ul>
-        </div> */}
-
-
-
-					 <Link to="/login">
-
-						<button type="button" className="btn btn-outline-light me-1"><i className="fa-brands fa-gratipay"></i></button>
-					</Link>
-					<Link to="/signup">
-						<button type="button" className="btn btn-outline-light ms-1"><i className="fa-solid fa-circle-user"></i></button>
-					</Link> */}
 				</div>
 			</div>
 		</nav>

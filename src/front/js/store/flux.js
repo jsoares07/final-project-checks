@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: [],
 			isLoggedIn: false,
 			accessToken: null,
-
+			favorite: [], 
 		},
 		actions: {
 
@@ -51,12 +51,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			loadData: () => {
-				fetch(`${URLbase}/api/signup`)
-					.then(response => response.json())
-					.then(data => setStore({ character: data.results }))
-					.catch(error => console.error(error));
-			},
+			// loadData: () => {
+			// 	fetch(`${URLbase}/api/signup`)
+			// 		.then(response => response.json())
+			// 		.then(data => setStore({ user: data.results }))
+			// 		.catch(error => console.error(error));
+			// },
 
 
 
@@ -68,6 +68,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
+
+			addFavorite: item => {
+				const store = getStore();
+				const validate = store.favorite.includes(item);
+				if (store.favorite == [] || !validate) {
+					setStore({ favorite: [...store.favorite, item] });
+				}
+			},
+
+			deleteFavorite: id => {
+				const store = getStore();
+				const updatedList = [...store.favorite];
+				updatedList.splice(id, 1);
+				setStore({ favorite: [...updatedList] });
+			},
 
 			changeColor: (index, color) => {
 				//get the store

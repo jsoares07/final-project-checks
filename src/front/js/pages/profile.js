@@ -10,10 +10,20 @@ import Footer from "../component/footer.js";
 import "../../styles/index.css";
 
 
-export const Profile = () => {
+export const Profile = (props) => {
+
+  const { id, email, first_name, user_name, last_name } = props;
+
   const { store, actions } = useContext(Context);
-  const {user_name}=useParams()
+  // const {user_name}=useParams()
   const [loggedIn, setLoggedIn] = useState(false);
+
+  // useEffect(() => {
+	// 	actions.loadData("user");
+	// }, []);
+
+
+  console.log("User", store.user);
 
   return (
 
@@ -40,12 +50,14 @@ export const Profile = () => {
               />
             </div>
             <div className="mt-5 text-center">
+            <Link to="/edit-profile">
               <button
                 className="btn btn-primary edit-profile-button"
                 type="button"
               >
                 Edit Profile
               </button>
+            </Link>
             </div>
           </div>
           {/* Profile photo ends */}
@@ -57,11 +69,21 @@ export const Profile = () => {
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
-                  <label className="labels">Full Name</label>
-                  <p>Full Name</p>
+                  <label className="labels">First Name</label>
+                  <p>First Name</p>
+                  <p>{first_name}</p>
                 </div>
+                </div>
+
+                <div className="row mt-2">
+                <div className="col-md-6">
+                  <label className="labels">User Name</label>
+                 <p>User Name</p> 
+                  {/* <p>{props.user_name}</p> */}
+                </div>
+
               </div>
-              <div className="row mt-3">
+              <div className="row mt-2">
                 <div className="col-md-12">
                   <label className="labels">Email</label>
                   <p>Email</p>

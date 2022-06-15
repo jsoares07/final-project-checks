@@ -14,7 +14,7 @@ export const Login = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	const URLbase =
-		"https://3001-heylga-finalproject-9u4z6uzqj4b.ws-eu47.gitpod.io";
+		"https://3001-heylga-finalproject-yp34m4zfoxe.ws-eu47.gitpod.io";
 
 
 	const onTypeEmail = (e) => {
@@ -49,6 +49,14 @@ export const Login = () => {
 				onClick={() => actions.logout()}>
 				Log Out
 			</button>
+
+			<Link to="/profile">
+				<button type="submit"
+				className="btn btn-primary float-end mt-5 me-5">
+				Mi Profile
+				</button>
+			</Link>
+
 		</div>
 	</div>
 
