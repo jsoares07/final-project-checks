@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: [],
 			isLoggedIn: false,
 			accessToken: null,
-			favorite: [], 
+			favorite: [],
 		},
 		actions: {
 
@@ -38,6 +38,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 							accessToken: result?.access_token,
 							isLoggedIn: true,
 						})
+
+						localStorage.setItem("Token", getStore().accessToken)
+						localStorage.setItem("User", getStore().user.email)
+
+						console.log("info del user", getStore().user)
 					})
 					.catch((error) => console.log("error", error));
 			},
@@ -49,7 +54,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					isLoggedIn: false,
 					accessToken: null,
 				})
+
+				localStorage.removeItem("Token")
+				localStorage.removeItem("User")
+
 			},
+
+			checklogin: () => {
+
+				if (localStorage.getItem("Token") && localStorage.getItem("User"))
+					setStore({
+						user: localStorage.getItem("User"),
+						isLoggedIn: true,
+					})
+
+			},
+
 
 			// loadData: () => {
 			// 	fetch(`${URLbase}/api/signup`)

@@ -14,7 +14,7 @@ export const Login = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	const URLbase =
-		"https://3001-heylga-finalproject-yp34m4zfoxe.ws-eu47.gitpod.io";
+		"https://3001-heylga-finalproject-3zvf3w6aqg4.ws-eu47.gitpod.io";
 
 
 	const onTypeEmail = (e) => {
@@ -150,7 +150,9 @@ export const Login = () => {
 	</div>
 
 	const notLoggedInRender = <div>
-		{'se ha loggeado el usuario ' + store.user?.email}
+
+		{'se ha loggeado el usuario ' + (localStorage.getItem("User") ? localStorage.getItem("User") : store.user.email)}
+		{/* {'se ha loggeado el usuario ' + (store.user ? store.user.email : localStorage.getItem("User")) } */}
 		{logOutRender}
 	</div>
 
