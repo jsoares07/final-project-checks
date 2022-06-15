@@ -17,7 +17,9 @@ export const Reviewuser = () => {
                 <p>How was your exchange with User?</p>
               </div>
               <Rating />
-              <textarea placeholder="Write a review about your book exchange" style={{height: "100px"}}></textarea>
+              <div className='col align-self-center'>
+              <textarea placeholder="Write a review about your book exchange" style={{height: "100px", width: "400px"}}></textarea>
+              </div>
               <div>
                 <button type="button" className="btn btn-success" style={{width: "100px"}}>Success</button>
               </div>
