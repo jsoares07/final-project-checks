@@ -10,7 +10,7 @@ from sqlalchemy import create_engine
 db = SQLAlchemy()
 
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
@@ -27,20 +27,27 @@ class User(db.Model):
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), unique=True, nullable=False)
-    author = db.Column(db.String(120), unique=True, nullable=False)
-
-    def generateId(self):
-        return randint(0, 99999999)
-
-
-    def serialize(self):
-        return {
-            "title": self.title,
-            "author": self.author,
-        }
-    
+    title = db.Column(db.String(120), unique=False, nullable=False)
+    author = db.Column(db.String(120), unique=False, nullable=False)
+    editor = db.Column(db.String(120), unique=False, nullable=False)
+    genre = db.Column(db.String(120), unique=False, nullable=False)
+    language = db.Column(db.String(120), unique=False, nullable=False)
+    description = db.Column(db.String(1200), unique=False, nullable=False)
+    image = db.Column(db.String(100000000), unique=False, nullable=False)  
+ 
     def addBook(self):
         db.session.add(self)
         db.session.commit()
         return "The book has been added"
+
+    def listOfBooks(self):
+         return {
+            "id": self.id,
+            "title": self.title,
+            "author": self.author,
+            "editor": self.editor,
+            "genre": self.genre,
+            "language": self.language,
+            "description": self.description,
+            "image": self.image,
+        }

@@ -15,14 +15,14 @@ export const Offerbook = () => {
   const [description, setDescription] = useState();
 
   const URLbase =
-    "https://3001-heylga-finalproject-q16xycwi6oq.ws-eu47.gitpod.io";
+    "https://3001-heylga-finalproject-xcx2pcp4thq.ws-eu47.gitpod.io";
 
   const onSubmit = () => {
     console.log("submit working");
 
-    if (title && author) {
+    if (title && author && editor && genre && language && description) {
       // hacemos el fetch
-      FetchOfferBook(title, author);
+      FetchOfferBook(title, author, editor, genre, language, description);
       alert("Your book has been added");
     } else {
       //te faltan datos
@@ -30,7 +30,14 @@ export const Offerbook = () => {
     }
   };
 
-  const FetchOfferBook = (title, author) => {
+  const FetchOfferBook = (
+    title,
+    author,
+    editor,
+    genre,
+    language,
+    description
+  ) => {
     // fetch
     const post = {
       method: "POST",
@@ -40,6 +47,10 @@ export const Offerbook = () => {
       body: JSON.stringify({
         title: title,
         author: author,
+        editor: editor,
+        genre: genre,
+        language: language,
+        description: description,
       }),
     };
 
@@ -79,6 +90,30 @@ export const Offerbook = () => {
   const onTypeDescription = (e) => {
     console.log(e.target.value);
     setDescription(e.target.value);
+  };
+
+  const [baseImage, setBaseImage] = useState("");
+
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setBaseImage(base64);
+    console.log(base64);
+  };
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
   };
 
   return (
@@ -185,6 +220,9 @@ export const Offerbook = () => {
                   type="file"
                   id="formFileMultiple"
                   multiple
+                  onChange={(e) => {
+                    uploadImage(e);
+                  }}
                 />
               </div>
             </div>
@@ -195,6 +233,8 @@ export const Offerbook = () => {
             >
               Submit
             </button>
+            <br></br>
+            <img src={baseImage} height="200px" />
           </form>
         </div>
       </div>

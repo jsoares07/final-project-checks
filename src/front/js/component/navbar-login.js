@@ -1,27 +1,36 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
 
 function Navbarlogin() {
   return (
-<div>
-		<nav className="navbar navbar">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">LOGO</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/login">
-						<button type="button" className="btn btn-outline-light me-1"><i className="fa-brands fa-gratipay"></i></button>
-					</Link>
-					<Link to="/signup">
-						<button type="button" className="btn btn-outline-light ms-1"><i className="fa-solid fa-circle-user"></i></button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-</div>
-  )
+    <div>
+      <nav className="navbar navbar">
+        <div className="container">
+          <Link to="/">
+            <span className="navbar-brand mb-0 h1">LOGO</span>
+          </Link>
+          <div className="ml-auto">
+            <Link to="/allbooks">
+              <button type="button" className="btn btn-outline-light me-1">
+                See all books
+              </button>
+            </Link>
+            <Link to="/login">
+              <button type="button" className="btn btn-outline-light me-1">
+                <i className="fa-brands fa-gratipay"></i>
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button type="button" className="btn btn-outline-light ms-1">
+                <i className="fa-solid fa-circle-user"></i>
+              </button>
+            </Link>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
 }
 
-export default Navbarlogin
+export default Navbarlogin;

@@ -25,6 +25,11 @@ def offerbook():
 
     title = request.json.get('title')
     author = request.json.get('author')
+    editor = request.json.get('editor')
+    genre = request.json.get('genre')
+    language = request.json.get('language')
+    description = request.json.get('description')
+    image = request.json.get('image')
 
     # access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body)
@@ -32,6 +37,11 @@ def offerbook():
     book = Book(
         title = title,
         author = author,
+        editor= editor,
+        genre= genre,
+        language= language,
+        description= description,
+        image= image,
     )
 
     answer = book.addBook()
@@ -40,5 +50,18 @@ def offerbook():
          "message": answer,
          "book": book.serialize()
      }
+
+    return jsonify(response_body), 200
+
+@api.route("/books", methods=["GET"])
+def getBooks():
+    queryBooks = Book.query.all()
+    queryBooks = list(map(lambda x: x.listOfBooks(), queryBooks))
+    print(queryBooks)
+
+    response_body = {
+        "results": queryBooks
+    }
+
 
     return jsonify(response_body), 200
