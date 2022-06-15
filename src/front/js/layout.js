@@ -13,6 +13,7 @@ import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
 import { Profile } from "./pages/profile.js";
 import { Security } from "./pages/security";
+import { Offerbook } from "./pages/Offerbook";
 
 //create your first component
 const Layout = () => {
@@ -45,6 +46,9 @@ const Layout = () => {
             </Route>
 						<Route exact path="/forgetpassword" component={Forgetpassword}>
 							<Forgetpassword />
+						</Route>
+            <Route exact path="/offerbook" component={Offerbook}>
+							<Offerbook />
 						</Route>
 						<Route exact path="/emailtoreset" component={Emailtoreset}>
 							<Emailtoreset />

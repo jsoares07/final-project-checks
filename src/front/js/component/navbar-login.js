@@ -12,7 +12,7 @@ function Navbarlogin() {
     const { store, actions } = useContext(Context);
     const [dropdown, setDropdown] = useState(false);
     const [dropdownProfile, setDropdownProfile] = useState(false);
-    
+
     const openCloseDropdown = () => {
 		setDropdown(!dropdown);
 	};
@@ -49,7 +49,7 @@ function Navbarlogin() {
           </Link>
 
 
-                    <Link to="/">
+                    <Link to="/Offerbook">
                     <button type="button" className="btn btn-outline-light me-1"><i class="fa-solid fa-plus"></i></button>
                     </Link>
                     <Link to="/">
@@ -99,13 +99,17 @@ function Navbarlogin() {
     <DropdownMenu
     >
       <DropdownItem>
+          <Link to="/">
       Profile
+      </Link>
       </DropdownItem>
       <DropdownItem>
+          <Link to="/edit-profile">
       Configuration
+      </Link>
       </DropdownItem>
       <DropdownItem divider />
-      <DropdownItem>
+      <DropdownItem onClick={() => actions.logout()}>
        Log Out
       </DropdownItem>
 
