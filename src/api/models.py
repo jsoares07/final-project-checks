@@ -29,11 +29,11 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), unique=False, nullable=False)
     author = db.Column(db.String(120), unique=False, nullable=False)
-    editor = db.Column(db.String(120), unique=False, nullable=False)
+    publisher = db.Column(db.String(120), unique=False, nullable=False)
     genre = db.Column(db.String(120), unique=False, nullable=False)
     language = db.Column(db.String(120), unique=False, nullable=False)
     description = db.Column(db.String(1200), unique=False, nullable=False)
-    image = db.Column(db.String(100000000), unique=False, nullable=False)  
+    # book_picture = db.Column(db.String(10000000), unique=False, nullable=False)  
  
     def addBook(self):
         db.session.add(self)
@@ -45,9 +45,9 @@ class Book(db.Model):
             "id": self.id,
             "title": self.title,
             "author": self.author,
-            "editor": self.editor,
+            "publisher": self.publisher,
             "genre": self.genre,
             "language": self.language,
             "description": self.description,
-            "image": self.image,
+            # "book_picture": self.book_picture,
         }

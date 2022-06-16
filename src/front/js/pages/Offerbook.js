@@ -9,20 +9,20 @@ export const Offerbook = () => {
   const { store, actions } = useContext(Context);
   const [title, setTitle] = useState();
   const [author, setAuthor] = useState();
-  const [editor, setEditor] = useState();
+  const [publisher, setPublisher] = useState();
   const [genre, setGenre] = useState();
   const [language, setLanguage] = useState();
   const [description, setDescription] = useState();
 
   const URLbase =
-    "https://3001-heylga-finalproject-xcx2pcp4thq.ws-eu47.gitpod.io";
+    "https://3001-heylga-finalproject-dnbcfet0j6u.ws-eu47.gitpod.io";
 
   const onSubmit = () => {
     console.log("submit working");
 
-    if (title && author && editor && genre && language && description) {
+    if (title && author && publisher && genre && language && description) {
       // hacemos el fetch
-      FetchOfferBook(title, author, editor, genre, language, description);
+      FetchOfferBook(title, author, publisher, genre, language, description);
       alert("Your book has been added");
     } else {
       //te faltan datos
@@ -33,7 +33,7 @@ export const Offerbook = () => {
   const FetchOfferBook = (
     title,
     author,
-    editor,
+    publisher,
     genre,
     language,
     description
@@ -47,7 +47,7 @@ export const Offerbook = () => {
       body: JSON.stringify({
         title: title,
         author: author,
-        editor: editor,
+        publisher: publisher,
         genre: genre,
         language: language,
         description: description,
@@ -72,9 +72,9 @@ export const Offerbook = () => {
     setAuthor(e.target.value);
   };
 
-  const onTypeEditor = (e) => {
+  const onTypePublisher = (e) => {
     console.log(e.target.value);
-    setEditor(e.target.value);
+    setPublisher(e.target.value);
   };
 
   const onTypeGenre = (e) => {
@@ -153,17 +153,17 @@ export const Offerbook = () => {
               </div>
             </div>
             <div className="row mb-3">
-              <label for="editor" className="col-sm-2 col-form-label">
-                Editor
+              <label for="publisher" className="col-sm-2 col-form-label">
+                Publisher
               </label>
               <div className="col-sm-10">
                 <input
-                  type="editor"
+                  type="publisher"
                   className="form-control"
-                  id="editor"
-                  placeholder="Editor"
-                  value={editor}
-                  onChange={onTypeEditor}
+                  id="publisher"
+                  placeholder="Publisher"
+                  value={publisher}
+                  onChange={onTypePublisher}
                 />
               </div>
             </div>

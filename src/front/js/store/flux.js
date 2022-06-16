@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       fetchBooks: () => {
         fetch(
-          "https://3001-heylga-finalproject-xcx2pcp4thq.ws-eu47.gitpod.io/api/books",
+          "https://3001-heylga-finalproject-dnbcfet0j6u.ws-eu47.gitpod.io/api/books",
           {
             method: "GET",
             headers: {
