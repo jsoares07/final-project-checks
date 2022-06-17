@@ -11,7 +11,6 @@ export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
-	const [userName, setUserName] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	const URLbase =
@@ -28,11 +27,6 @@ export const Login = () => {
 		setPassword(e.target.value);
 	};
 
-
-	const onTypeUserName = (e) => {
-		console.log(e.target.value);
-		setUserName(e.target.value);
-	};
 
 	const onSubmitClicked = () => {
 
@@ -91,20 +85,6 @@ export const Login = () => {
 						value={email}
 						onChange={onTypeEmail}
 					/>
-
-					<label for="exampleInputPassword1" className="form-label">
-						User Name
-					</label>
-					<input
-						type="username"
-						className="form-control"
-						placeholder="Username"
-						id="exampleInputPassword1"
-						value={userName}
-						onChange={onTypeUserName}
-					/>
-
-
 
 					<label for="exampleInputPassword1" className="form-label">
 						Password
