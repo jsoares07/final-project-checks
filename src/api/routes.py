@@ -59,7 +59,7 @@ def signup():
     return jsonify(response_body), 200
     
 @api.route('/login', methods=['POST'])
-def loginn():
+def login():
 
     request_body = request.get_json(force=True)
 
@@ -73,6 +73,7 @@ def loginn():
     user = User(
         email = email,
         password = password,
+        # user_name = user_name,
     )
 
 
@@ -106,6 +107,7 @@ def login_user(email, password):
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
+    # user_name = request.json.get('username', None)
 
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
@@ -113,6 +115,7 @@ def login_user(email, password):
     user = User(
         email = email,
         password = password,
+        # user_name = user_name,
     )
 
     user.create()

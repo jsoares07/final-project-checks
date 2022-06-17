@@ -12,15 +12,14 @@ import "../../styles/index.css";
 
 export const Profile = (props) => {
 
-  const { id, email, first_name, user_name, last_name } = props;
+  
+  // console.log(useParams(1))
+  const {id} = useParams()
+  console.log(id)
+
 
   const { store, actions } = useContext(Context);
-  // const {user_name}=useParams()
   const [loggedIn, setLoggedIn] = useState(false);
-
-  // useEffect(() => {
-	// 	actions.loadData("user");
-	// }, []);
 
 
   console.log("User", store.user);
@@ -28,12 +27,6 @@ export const Profile = (props) => {
   return (
 
     <div className="">
-
-      {/* {store.setLoggedIn ? (<p>Welcome to your Profile, <button onClick={() => actions.logout} /> </p>) : ( 
-        <Redirect to={"/"} />
-      )} */}
-      
-     {/* Navbar */}
 
      <Navbarlogin />
 
@@ -144,14 +137,4 @@ export const Profile = (props) => {
       <Footer />
     </div>
   );
-
-    User.propTypes = {
-      id: propTypes.string,
-      email: propTypes.string,
-      first_name: propTypes.string,
-      user_name: propTypes.string,
-      last_name: propTypes.string,
-    }
-
-
 };

@@ -11,10 +11,11 @@ export const Login = () => {
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [userName, setUserName] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	const URLbase =
-		"https://3001-heylga-finalproject-3zvf3w6aqg4.ws-eu47.gitpod.io";
+		"https://3001-heylga-finalproject-15uppl87a3w.ws-eu47.gitpod.io";
 
 
 	const onTypeEmail = (e) => {
@@ -27,8 +28,14 @@ export const Login = () => {
 		setPassword(e.target.value);
 	};
 
+
+	const onTypeUserName = (e) => {
+		console.log(e.target.value);
+		setUserName(e.target.value);
+	};
+
 	const onSubmitClicked = () => {
-		// onFetchLogIn("TEST3", "TEST3", "TEST3", "TEST3", "TEST3");
+
 
 		if (email && password) {
 			// hacemos el fetch
@@ -86,6 +93,20 @@ export const Login = () => {
 					/>
 
 					<label for="exampleInputPassword1" className="form-label">
+						User Name
+					</label>
+					<input
+						type="username"
+						className="form-control"
+						placeholder="Username"
+						id="exampleInputPassword1"
+						value={userName}
+						onChange={onTypeUserName}
+					/>
+
+
+
+					<label for="exampleInputPassword1" className="form-label">
 						Password
 					</label>
 					<input
@@ -97,8 +118,7 @@ export const Login = () => {
 						onChange={onTypePassword}
 					/>
 
-				</div>
-
+</div>
 
 			</div>
 

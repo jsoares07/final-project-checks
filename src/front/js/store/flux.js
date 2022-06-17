@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-			login: (email, password) => {
+			login: (email, password, Username) => {
 				// fetch
 				const post = {
 					method: "POST",
@@ -20,6 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						email: email,
 						password: password,
+						// Username: Username,
+						// // id: id,
 					}),
 				};
 
@@ -41,6 +43,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						localStorage.setItem("Token", getStore().accessToken)
 						localStorage.setItem("User", getStore().user.email)
+						// localStorage.setItem("Username", getStore().user.Username)
+
 
 						console.log("info del user", getStore().user)
 					})

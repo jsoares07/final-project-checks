@@ -29,11 +29,11 @@ const Layout = () => {
             <Route exact path="/" component={Home}>
               <Home />
             </Route>
-            <Route exact path="/login" component={Login}>
-              <Login />
-            </Route>
             <Route exact path="/login/:id">
               <Profile />
+            </Route>
+            <Route exact path="/login" component={Login}>
+              <Login />
             </Route>
             <Route exact path="/signup" component={Signup}>
               <Signup />
