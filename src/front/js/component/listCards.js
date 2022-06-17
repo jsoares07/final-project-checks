@@ -6,13 +6,16 @@ import { Crime } from "./../../img/crime.jpg";
 import { littleprince } from "./../../img/littleprince.jpg";
 import { we } from "./../../img/we.jpg";
 import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 
 const listCards = () => {
   const { store, actions } = useContext(Context);
+
   const listOfCards = store.books.map((cardItem, index) => {
     return (
       <Card
         key={index}
+        id={cardItem.id}
         title={cardItem.title}
         author={cardItem.author}
         imageUrl={cardItem.imageUrl}

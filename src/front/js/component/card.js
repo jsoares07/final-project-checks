@@ -2,11 +2,11 @@ import React, { Component, useContext } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import propTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Card = (props) => {
   const { store, actions } = useContext(Context);
-  const { title, author, imageUrl, description, buttonLabel } = props;
+  const { id, title, author, imageUrl, description, buttonLabel } = props;
 
   return (
     <div className="card my-4 gap-1" style={{ width: "18rem" }}>
@@ -21,8 +21,12 @@ const Card = (props) => {
         </p>
       </div>
       <div className="bg-light py-3 text-center">
-        <Link to="/bookinfo">
-          <button type="button" className="btn btn-secondary my-3">
+        <Link to={`/book/${id}`}>
+          <button
+            type="button"
+            className="btn btn-secondary my-3"
+            onClick={() => actions.fetchBook(id)}
+          >
             Find Out More!
           </button>
         </Link>
@@ -32,6 +36,7 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
+  id: PropTypes.string,
   imageUrl: PropTypes.string,
   title: PropTypes.string,
   author: propTypes.string,

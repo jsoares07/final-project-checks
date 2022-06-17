@@ -14,6 +14,7 @@ const ShowAll = () => {
       <div className="col" key={index}>
         <Card
           key={index}
+          id={cardItem.id}
           title={cardItem.title}
           author={cardItem.author}
           imageUrl={cardItem.imageUrl}

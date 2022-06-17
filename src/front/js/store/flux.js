@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       message: null,
       books: [],
+      book: [],
       demo: [
         {
           title: "FIRST",
@@ -19,17 +20,39 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
       // Use getActions to call a function within a fuction
       fetchBooks: () => {
-        fetch(
-          "https://3001-heylga-finalproject-dnbcfet0j6u.ws-eu47.gitpod.io/api/books",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        fetch(process.env.BACKEND_URL + "/api/books", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
           .then((promiseResponse) => promiseResponse.json())
           .then((data) => setStore({ books: data.results }));
+      },
+
+      fetchBook: (id) => {
+        console.log("fechtBook");
+        const store = getStore();
+        fetch(process.env.BACKEND_URL + "/api/book/" + id, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ book: result.results });
+            console.log("BOOK =====", store.book);
+          })
+          .catch((error) => console.log("error", error));
+        // .then((promiseResponse) => {
+        //   promiseResponse.json();
+        //   console.log("resp =", promiseResponse);
+        // })
+        // .then((data) => setStore({ book: data.results }))
+        // .catch((error) =>
+        //   console.log("Error loading message from backend", error)
+        // );
       },
       exampleFunction: () => {
         getActions().changeColor(0, "green");

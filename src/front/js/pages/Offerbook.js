@@ -14,8 +14,7 @@ export const Offerbook = () => {
   const [language, setLanguage] = useState();
   const [description, setDescription] = useState();
 
-  const URLbase =
-    "https://3001-heylga-finalproject-dnbcfet0j6u.ws-eu47.gitpod.io";
+  const URLbase = process.env.BACKEND_URL;
 
   const onSubmit = () => {
     console.log("submit working");

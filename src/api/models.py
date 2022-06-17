@@ -51,3 +51,4 @@ class Book(db.Model):
             "description": self.description,
             # "book_picture": self.book_picture,
         }
+    

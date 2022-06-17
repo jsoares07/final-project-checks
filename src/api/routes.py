@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Book
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
@@ -52,7 +53,7 @@ def offerbook():
 
     return jsonify(response_body), 200
 
-
+# We query all books
 @api.route("/books", methods=["GET"])
 def getBooks():
     queryBooks = Book.query.all()
@@ -64,4 +65,25 @@ def getBooks():
     }
 
 
+    return jsonify(response_body), 200
+
+# We query one book
+@api.route('/book/<int:id>', methods=['GET'])
+def get_book(id = None):
+    query_book = Book.query.filter_by(id=id).first()
+    if not query_book:
+        return jsonify({"message": "No book found!"})
+
+    query_a_book = query_book.listOfBooks()
+
+
+    print("####################")
+    print(query_a_book)
+    print("####################")
+
+    response_body = {
+        "results": query_a_book
+    }
+
+        
     return jsonify(response_body), 200

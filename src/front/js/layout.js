@@ -8,6 +8,7 @@ import { Signup } from "./component/signup.js";
 import injectContext from "./store/appContext";
 import { Offerbook } from "./pages/Offerbook";
 import { AllBooks } from "./pages/allbooks.js";
+import { BookDescription } from "./pages/book-description";
 
 //create your first component
 const Layout = () => {
@@ -34,6 +35,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/allbooks">
               <AllBooks />
+            </Route>
+            <Route exact path="/book/:id">
+              <BookDescription />
             </Route>
             <Route>
               <h1>Not found!</h1>
