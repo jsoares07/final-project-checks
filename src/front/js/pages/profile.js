@@ -14,12 +14,13 @@ export const Profile = (props) => {
   const { store, actions } = useContext(Context);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const { first_name, user_name, email} = props;
+  const { id, first_name, user_name, email} = props;
   
-  // console.log(useParams(1))
-  const {id} = useParams()
-  console.log(id)
+  useEffect(() => {
+    actions.getUserInformation
+  }, [])
 
+  console.log("User", store.getUserInformation)
 
   console.log("User", store.user);
 
@@ -78,7 +79,7 @@ export const Profile = (props) => {
               <div className="row mt-2">
                 <div className="col-md-12">
                   <label className="labels">Email</label>
-                  <p>{email}</p>
+                  <p>{props.email}</p>
                 </div>
                 <div className="col-md-12">
                   <label className="labels">Mobile Number</label>
@@ -141,5 +142,6 @@ Profile.propTypes = {
   first_name: propTypes.string,
   user_name: propTypes.string,
   email: propTypes.string,
+  id: propTypes.string,
 }
 };

@@ -27,6 +27,7 @@ class User(db.Model):
     # User = db.relationship('Book', )
     # User = db.relationship('Favourites', )
     
+
     def __repr__(self):
         return f'<User {self.email}>'
 
@@ -52,13 +53,13 @@ class User(db.Model):
         # este usuario existe?
         # si? retorna, error, el usuario ya existe
 
-
         # return 'error, el usuario ya existe'
         
         # no? crealo
         db.session.add(self)
         db.session.commit()
         return 'success, el usuario ha sido creado'
+
 
      
 # class Favourites(db.Model):
@@ -81,7 +82,6 @@ class User(db.Model):
 #             "favourite_id": self.favourite_id,
 #             "favourite_book": self.favourite_book,
 #         }
-
 
 
 class Book(db.Model):

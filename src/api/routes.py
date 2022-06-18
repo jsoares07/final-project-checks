@@ -39,6 +39,7 @@ def signup():
          "user": user.serialize()
      }
 
+
     return jsonify(response_body), 200
     
 @api.route('/login', methods=['POST'])
@@ -64,8 +65,25 @@ def login():
         return {"error":"user and password not valid"}, 400
 
 
+# We query one user
+@api.route('/login/<int:id>', methods=['POST'])
+def get_user(id = None):
+    query_user = User.query.filter_by(id=id).first()
+    if not query_user:
+        return jsonify({"message": "No user found!"})
+
+    query_a_user = query_user.serialize()
 
 
+    print("####################")
+    print(query_a_user)
+    print("####################")
+
+    response_body = {
+        "results": query_a_user
+    }
+
+    return jsonify(response_body), 200
 
 
 

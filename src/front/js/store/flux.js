@@ -73,9 +73,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getUserInformation: (id) => {
 				console.log("getUserInformation");
 				const store = getStore();
+
 				fetch(
-					process.env.BACKEND_URL + "/api/login" + id, {
-						method: "GET",
+					process.env.BACKEND_URL + "/api/login/" + id, {
+						method: "POST",
 						headers: {
 							"Content-Type": "application/json",
 						},
@@ -86,6 +87,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log ("USER ==== ", store.user)
 					})
 					.catch((error) => console.log("error", error));
+
+					if (localStorage.getItem("Token") && localStorage.getItem("User"))
+					setStore({
+						user: localStorage.getItem("User"),
+						isLoggedIn: true,
+					})
 			},
 
 
