@@ -75,7 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				fetch(
 					process.env.BACKEND_URL + "/api/login" + id, {
-						method: "POST",
+						method: "GET",
 						headers: {
 							"Content-Type": "application/json",
 						},

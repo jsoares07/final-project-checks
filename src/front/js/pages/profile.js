@@ -14,7 +14,7 @@ export const Profile = (props) => {
   const { store, actions } = useContext(Context);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const { first_name, user_name} = props;
+  const { first_name, user_name, email} = props;
   
   // console.log(useParams(1))
   const {id} = useParams()
@@ -78,7 +78,7 @@ export const Profile = (props) => {
               <div className="row mt-2">
                 <div className="col-md-12">
                   <label className="labels">Email</label>
-                  <p>Email</p>
+                  <p>{email}</p>
                 </div>
                 <div className="col-md-12">
                   <label className="labels">Mobile Number</label>
@@ -140,6 +140,6 @@ export const Profile = (props) => {
 Profile.propTypes = {
   first_name: propTypes.string,
   user_name: propTypes.string,
-
+  email: propTypes.string,
 }
 };
