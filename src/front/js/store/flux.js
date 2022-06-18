@@ -20,15 +20,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						email: email,
 						password: password,
-						// Username: Username,
-						// // id: id,
 					}),
 				};
 
 				console.log("info login desde las actions", post);
 
 				fetch(
-					`${URLbase}/api/login`,
+					process.env.BACKEND_URL + "/api/login",
 					post
 				)
 
@@ -43,8 +41,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						localStorage.setItem("Token", getStore().accessToken)
 						localStorage.setItem("User", getStore().user.email)
-						// localStorage.setItem("Username", getStore().user.Username)
-
 
 						console.log("info del user", getStore().user)
 					})
@@ -73,6 +69,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 
 			},
+
+			getUserInformation: (id) => {
+				console.log("getUserInformation");
+				const store = getStore();
+				fetch(
+					process.env.BACKEND_URL + "/api/login" + id, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+					})
+					.then((response) => response.json())
+					.then((result) => {
+						setStore({ user: result.results });
+						console.log ("USER ==== ", store.user)
+					})
+					.catch((error) => console.log("error", error));
+			},
+
 
 
 			// loadData: () => {

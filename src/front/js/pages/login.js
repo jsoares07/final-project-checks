@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
 
 import { Context } from "../store/appContext";
 import Navbar from "./../component/navbar";
@@ -16,7 +17,7 @@ export const Login = () => {
 	const [password, setPassword] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
 
-
+	const {id} = useParams()
 
 	const onTypeEmail = (e) => {
 		console.log(e.target.value);
@@ -52,10 +53,11 @@ export const Login = () => {
 				Log Out
 			</button>
 
-			<Link to="/profile">
+			<Link to={`/login/${id}`}>
 				<button type="submit"
-				className="btn btn-primary float-end mt-5 me-5">
-				Mi Profile
+				className="btn btn-primary float-end mt-5 me-5"
+				onClick={() => actions.getUserInformation(id)}>
+				My Profile
 				</button>
 			</Link>
 
@@ -167,9 +169,6 @@ export const Login = () => {
 
 		<div className="">
 
-			{/* {store.setLoggedIn ? <Redirect to={"/Profile"} /> : <p>You are not logged in  
-		<button onClick={() => actions.login} /> </p>} */}
-
 			<Navbar />
 
 			{loginLogicRender}
@@ -182,4 +181,5 @@ export const Login = () => {
 		</div>
 
 	);
+
 };

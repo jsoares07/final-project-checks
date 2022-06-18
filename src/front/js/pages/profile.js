@@ -11,15 +11,14 @@ import "../../styles/index.css";
 
 
 export const Profile = (props) => {
+  const { store, actions } = useContext(Context);
+  const [loggedIn, setLoggedIn] = useState(false);
 
+  const { first_name, user_name} = props;
   
   // console.log(useParams(1))
   const {id} = useParams()
   console.log(id)
-
-
-  const { store, actions } = useContext(Context);
-  const [loggedIn, setLoggedIn] = useState(false);
 
 
   console.log("User", store.user);
@@ -64,7 +63,7 @@ export const Profile = (props) => {
                 <div className="col-md-6">
                   <label className="labels">First Name</label>
                   <p>First Name</p>
-                  <p>{first_name}</p>
+                  <p></p>
                 </div>
                 </div>
 
@@ -137,4 +136,10 @@ export const Profile = (props) => {
       <Footer />
     </div>
   );
+
+Profile.propTypes = {
+  first_name: propTypes.string,
+  user_name: propTypes.string,
+
+}
 };
