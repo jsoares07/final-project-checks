@@ -8,13 +8,14 @@ import Navbar from "./../component/navbar";
 import Footer from "./../component/footer";
 
 export const Login = () => {
+
+	const URLbase = process.env.BACKEND_URL;
+
 	const { store, actions } = useContext(Context);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const [loggedIn, setLoggedIn] = useState(false);
 
-	const URLbase =
-		"https://3001-heylga-finalproject-15uppl87a3w.ws-eu47.gitpod.io";
 
 
 	const onTypeEmail = (e) => {
