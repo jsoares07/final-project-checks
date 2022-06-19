@@ -13,9 +13,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    # user_name = db.Column(db.String(120), unique=True, nullable=False)
-    # first_name = db.Column(db.String(120), unique=False, nullable=False)
-    # country = db.Column(db.String(120))
+    user_name = db.Column(db.String(120), unique=True, nullable=False)
+    first_name = db.Column(db.String(120), unique=False, nullable=False)
+    country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
     # birthday = db.Column(db.DateTime)
     # address = db.Column(db.String(120))
@@ -35,9 +35,9 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # "user_name": self.user_name,
-            # "first_name": self.first_name,
-            # "country": self.country,
+            "user_name": self.user_name,
+            "first_name": self.first_name,
+            "country": self.country,
             # "mobile": self.mobile,
             # "birthday": self.birthday,
             # "mobile": self.mobile,

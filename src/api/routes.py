@@ -22,6 +22,9 @@ def signup():
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
+    user_name = request.json.get('user_name', None)
+    first_name = request.json.get('first_name', None)
+    country = request.json.get('country', None)
 
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
@@ -29,7 +32,9 @@ def signup():
     user = User(
         email = email,
         password = password,
-        # id = id,
+        user_name = user_name,
+        first_name = first_name,
+        country = country,
     )
 
     answer = user.create()
