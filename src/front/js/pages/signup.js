@@ -11,7 +11,9 @@ import Footer from "./../component/footer";
 export const Signup = () => {
   const { store, actions } = useContext(Context);
 
-  const URLbase = process.env.BACKEND_URL;
+  // const URLbase = process.env.BACKEND_URL;
+
+  const URLbase = "https://3001-heylga-finalproject-gwaoxnrdgj4.ws-eu47.gitpod.io";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -51,7 +53,7 @@ export const Signup = () => {
  
 
 
-  const onFetchSignUp = (email, password, firstName, userName, city) => {
+  const onFetchSignUp = (email, password, first_name, user_name, city) => {
     // fetch
     const post = {
       method: "POST",
@@ -61,10 +63,10 @@ export const Signup = () => {
       body: JSON.stringify({
         email: email,
         password: password,
-        firstName: firstName,
-        userName: userName,
+        first_name: first_name,
+        user_name: user_name,
         city: city,
-        picture: picture,
+        // picture: picture,
       }),
     };
 

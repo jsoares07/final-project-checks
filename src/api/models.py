@@ -15,13 +15,13 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     user_name = db.Column(db.String(120), unique=True, nullable=False)
     first_name = db.Column(db.String(120), unique=False, nullable=False)
-    country = db.Column(db.String(120))
+    city = db.Column(db.String(120))
+    # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
     # birthday = db.Column(db.DateTime)
     # address = db.Column(db.String(120))
     # postcode = db.Column(db.Integer)
     # state = db.Column(db.String(120))
-    # city = db.Column(db.String(120))
     # profile_pic = db.Column(db.String(120), nullable=True)
 
     # User = db.relationship('Book', )
@@ -37,7 +37,7 @@ class User(db.Model):
             "email": self.email,
             "user_name": self.user_name,
             "first_name": self.first_name,
-            "country": self.country,
+            "city": self.city,
             # "mobile": self.mobile,
             # "birthday": self.birthday,
             # "mobile": self.mobile,
