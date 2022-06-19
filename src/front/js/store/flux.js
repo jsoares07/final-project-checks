@@ -95,7 +95,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 			},
 
+		
+			// obtainUserInformation: async () => {
+			// 	const response = await fetch(getStore().process.env.BACKEND_URL + "/profile", {
+			// 	  headers: {
+			// 		"Content-Type": "application/json",
+			// 		Accept: "application/json",
+			// 		Authorization: `${localStorage.getItem("token")}`,
+			// 	  },
+			// 	});
+			// 	const data = await response.json();
+			// 	setStore({ profile: data.results });
+			//   },
+			
 
+			editUserInformation: (id) => {
+
+				const store = getStore();
+
+				fetch(
+					process.env.BACKEND_URL + "/api/edit-profile/" + id, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							Accept: "application/json",
+							Authorization: `${localStorage.getItem("token")}`,
+						},
+						body: JSON.stringify(id),
+					})
+					if (response.ok) {
+						alert("The info has been saved");
+					  } else {
+						alert("The info has NOT been saved");
+					  }
+			},
 
 			// loadData: () => {
 			// 	fetch(`${URLbase}/api/signup`)

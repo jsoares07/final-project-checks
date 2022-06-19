@@ -38,14 +38,12 @@ class User(db.Model):
             "user_name": self.user_name,
             "first_name": self.first_name,
             "city": self.city,
-            # "mobile": self.mobile,
-            # "birthday": self.birthday,
-            # "mobile": self.mobile,
-            # "birthday": self.birthday,
-            # "address": self.address,
-            # "postcode": self.postcode,
-            # "state": self.state,
-            # "city": self.city,   
+            "country": self.country,
+            "mobile": self.mobile,
+            "birthday": self.birthday,
+            "address": self.address,
+            "postcode": self.postcode,
+            "state": self.state,
             # do not serialize the password, its a security breach
         }
 

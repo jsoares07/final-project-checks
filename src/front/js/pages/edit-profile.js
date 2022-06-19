@@ -8,6 +8,7 @@ import Navbarlogin from "../component/navbar-login";
 
 export const EditProfile = () => {
   const { store, actions } = useContext(Context);
+  const [info, setInfo] = useState({});
 
   const [email, setEmail] = useState();
   const [mobile, setMobile] = useState();
@@ -41,6 +42,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="First Name"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.first_name]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 </div>
@@ -53,6 +60,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="User Name"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.user_name]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
 
@@ -66,6 +79,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="Email"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.email]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div className="col-md-8">
@@ -75,6 +94,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="Email"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.mobile]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div className="col-md-8">
@@ -84,6 +109,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="Birthday"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.birthday]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div className="col-md-8">
@@ -93,6 +124,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="Address Line"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.address]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div className="col-md-8">
@@ -102,6 +139,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="Postcode"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.postcode]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div className="col-md-8">
@@ -111,6 +154,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="State"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.state]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div className="col-md-8">
@@ -120,6 +169,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="City"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.city]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div className="col-md-8">
@@ -129,6 +184,12 @@ export const EditProfile = () => {
                     className="form-control"
                     placeholder="Country"
                     value=""
+                    onChange={(event) => {
+                      setInfo({
+                        ...info,
+                        [event.target.country]: event.target.value,
+                      });
+                    }}
                   />
                 </div>
               </div>
