@@ -19,7 +19,6 @@ def signup():
 
     request_body = request.get_json(force=True)
 
-
     email = request.json.get('email', None)
     password = request.json.get('password', None)
     user_name = request.json.get('user_name', None)
@@ -92,5 +91,17 @@ def get_user(id = None):
 
 
 
+@api.route('/edit-profile/<int:id>', methods=['PUT'])
+@jwt_required()
+def edit_user():
+
+    id = get_jwt_identity()
+    userId = User.query.get(id)
 
 
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+    user_name = request.json.get('user_name', None)
+    first_name = request.json.get('first_name', None)
+    city = request.json.get('city', None)
+    

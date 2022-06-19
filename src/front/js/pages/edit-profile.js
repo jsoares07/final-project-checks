@@ -32,17 +32,32 @@ export const EditProfile = () => {
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h4 className="text-right">Edit Profile Info</h4>
               </div>
-              <div className="row mt-2">
+
+              <div className="row mt-3">
                 <div className="col-md-8">
-                  <label className="labels">Full Name</label>
+                  <label className="labels">First Name</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Full name"
+                    placeholder="First Name"
                     value=""
                   />
                 </div>
+                </div>
+
+                <div className="row mt-3">
+                <div className="col-md-8">
+                  <label className="labels">User Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="User Name"
+                    value=""
+                  />
+                </div>
+
               </div>
+
               <div className="row mt-3">
                 <div className="col-md-8">
                   <label className="labels">Email</label>
@@ -139,14 +154,14 @@ export const EditProfile = () => {
             </div>
             <div className="mt-5 text-center">
               <button
-                className="btn btn-primary edit-profile-button"
+                className="btn btn-primary edit-profile-button "
                 type="submit"
               >
                 Save Changes
               </button>
               <br />
               <Link to="/profile">
-                <button className="btn btn-primary justify-content-center">
+                <button className="btn btn-primary justify-content-center mt-3">
                   Cancel
                 </button>
               </Link>

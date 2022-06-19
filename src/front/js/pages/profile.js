@@ -14,15 +14,14 @@ export const Profile = (props) => {
   const { store, actions } = useContext(Context);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const { id, first_name, user_name, email} = props;
+  const { id, first_name, user_name, email, city} = props;
   
   useEffect(() => {
     actions.getUserInformation
   }, [])
 
-  console.log("User", store.getUserInformation)
-
-  console.log("User", store.user);
+  console.log("User information from flux getUserInformation", store.getUserInformation)
+  console.log("User from user store flux", store.user);
 
   return (
 
@@ -63,7 +62,7 @@ export const Profile = (props) => {
               <div className="row mt-2">
                 <div className="col-md-6">
                   <label className="labels">First Name</label>
-                  <p>First Name</p>
+                  <p>{first_name}</p>
                   <p></p>
                 </div>
                 </div>
@@ -72,14 +71,14 @@ export const Profile = (props) => {
                 <div className="col-md-6">
                   <label className="labels">User Name</label>
                  <p>User Name</p> 
-                  {/* <p>{props.user_name}</p> */}
+                  <p>{user_name}</p>
                 </div>
 
               </div>
               <div className="row mt-2">
                 <div className="col-md-12">
                   <label className="labels">Email</label>
-                  <p>{props.email}</p>
+                  <p>{email}</p>
                 </div>
                 <div className="col-md-12">
                   <label className="labels">Mobile Number</label>
@@ -103,7 +102,7 @@ export const Profile = (props) => {
                 </div>
                 <div className="col-md-12">
                   <label className="labels">City</label>
-                  <p>City</p>
+                  <p>{city}</p>
                 </div>
                 <div className="col-md-12">
                   <label className="labels">Country</label>

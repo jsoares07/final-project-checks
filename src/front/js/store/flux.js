@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-			login: (email, password, Username) => {
+			login: (email, password) => {
 				// fetch
 				const post = {
 					method: "POST",
@@ -76,7 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(
 					process.env.BACKEND_URL + "/api/login/" + id, {
-						method: "POST",
+						method: "GET",
 						headers: {
 							"Content-Type": "application/json",
 						},

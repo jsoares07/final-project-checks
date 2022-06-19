@@ -41,6 +41,9 @@ const Layout = () => {
             <Route exact path="/profile" component={Profile}>
               <Profile />
             </Route>
+            <Route exact path="/edit-profile/:id">
+              <EditProfile />
+            </Route>
             <Route exact path="/edit-profile" component={EditProfile}>
               <EditProfile />
             </Route>
