@@ -91,51 +91,51 @@ def get_user(id = None):
 
 
 
-@api.route('/edit-profile/<int:id>', methods=['PUT'])
-def edit_user():
+# @api.route('/edit-profile/<int:id>', methods=['PUT'])
+# def edit_user():
 
-    id = get_jwt_identity()
-    userId = User.query.get(id)
-
-
-    email = request.json.get('email', None)
-    password = request.json.get('password', None)
-    user_name = request.json.get('user_name', None)
-    first_name = request.json.get('first_name', None)
-    city = request.json.get('city', None)
-    country = request.json.get('country', None)
-    mobile = request.json.get('mobile', None)
-    birthday = request.json.get('birthday', None)
-    address = request.json.get('address', None)
-    postcode = request.json.get('postcode', None)
-    state = request.json.get('state', None)
+#     id = get_jwt_identity()
+#     userId = User.query.get(id)
 
 
-    if found_user and found_user.password == password:
-        token = create_access_token(identity=email)
+#     email = request.json.get('email', None)
+#     password = request.json.get('password', None)
+#     user_name = request.json.get('user_name', None)
+#     first_name = request.json.get('first_name', None)
+#     city = request.json.get('city', None)
+#     country = request.json.get('country', None)
+#     mobile = request.json.get('mobile', None)
+#     birthday = request.json.get('birthday', None)
+#     address = request.json.get('address', None)
+#     postcode = request.json.get('postcode', None)
+#     state = request.json.get('state', None)
 
-    if  (email or password or user_name or first_name or city or country or mobile or birthday or address or postcode or state ):
-            if email != None:
-                userId.email = email
-            if password != None:  
-                userId.password = password
-            if user_name != None:
-                userId.user_name = user_name
-            if first_name != None:
-                userId.first_name = first_name
-            if country !=None:
-                userId.country = country
-            if mobile != None:
-                userId.mobile = mobile
-            if birthday != None:
-                userId.birthday = birthday
-            if address != None:
-                userId.address = address
-            if postcode != None:
-                userId.postcode = postcode   
-            if state != None:
-                userId.state = state  
 
-            db.session.commit()
+#     if found_user and found_user.password == password:
+#         token = create_access_token(identity=email)
+
+#     if  (email or password or user_name or first_name or city or country or mobile or birthday or address or postcode or state ):
+#             if email != None:
+#                 userId.email = email
+#             if password != None:  
+#                 userId.password = password
+#             if user_name != None:
+#                 userId.user_name = user_name
+#             if first_name != None:
+#                 userId.first_name = first_name
+#             if country !=None:
+#                 userId.country = country
+#             if mobile != None:
+#                 userId.mobile = mobile
+#             if birthday != None:
+#                 userId.birthday = birthday
+#             if address != None:
+#                 userId.address = address
+#             if postcode != None:
+#                 userId.postcode = postcode   
+#             if state != None:
+#                 userId.state = state  
+
+#             db.session.commit()
             
-            return jsonify({'results': userId.serialize()}),200
+#             return jsonify({'results': userId.serialize()}),200
