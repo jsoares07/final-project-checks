@@ -7,6 +7,9 @@ import { Home } from "./pages/home";
 import { Login } from "./pages/login.js";
 import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
+import { Offerbook } from "./pages/Offerbook";
+import { Other_users_profile } from "./pages/other-users-profile"
+import { Reviewuser } from "./pages/Reviewuser"
 import { EditProfile } from "./pages/edit-profile.js";
 import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
@@ -48,6 +51,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/emailtoreset" component={Emailtoreset}>
 							<Emailtoreset />
+						</Route>
+						<Route exact path="/reviewuser">
+							<Reviewuser />
+						</Route>
+						<Route>
+							<h1>Not found!</h1>
 						</Route>
 						<Route exact path="/resetpassword" component={Resetpassword}>
 							<Resetpassword />
