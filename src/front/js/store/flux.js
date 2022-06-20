@@ -3,6 +3,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			URLbase: process.env.BACKEND_URL,
 			user: JSON.parse(localStorage.getItem("user")) || {},
 			isLoggedIn: JSON.parse(localStorage.getItem("user")) || false,
 			token: localStorage.getItem("token") || null,
@@ -26,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("info login desde las actions", post);
 
 				fetch(
-					"https://3001-heylga-finalproject-xnnelv9b89a.ws-eu47.gitpod.io" + "/api/login",
+					process.env.BACKEND_URL + "/api/login/",
 					post
 				)
 

@@ -12,9 +12,7 @@ import Footer from "./../component/footer";
 export const Signup = () => {
   const { store, actions } = useContext(Context);
 
-  // const URLbase = process.env.BACKEND_URL;
-
-  const URLbase = "https://3001-heylga-finalproject-xnnelv9b89a.ws-eu47.gitpod.io";
+  const URLbase = process.env.BACKEND_URL;
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -50,8 +48,6 @@ export const Signup = () => {
       alert("information is missing");
     }
   };
-
- 
 
 
   const onFetchSignUp = (email, password, first_name, user_name, city) => {
