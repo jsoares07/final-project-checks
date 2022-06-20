@@ -56,7 +56,8 @@ export const Login = () => {
 			<Link to={`/login/${id}`}>
 				<button type="submit"
 				className="btn btn-primary float-end mt-5 me-5"
-				onClick={() => actions.getUserInformation(id)}>
+				// onClick={() => actions.getUserInformation(id)}
+				>
 				My Profile
 				</button>
 			</Link>

@@ -3,7 +3,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: [],
+			user: {},
 			isLoggedIn: false,
 			accessToken: null,
 			favorite: [],
@@ -70,30 +70,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			getUserInformation: (id) => {
-				console.log("getUserInformation");
-				const store = getStore();
+			// getUserInformation: (id) => {
+			// 	console.log("getUserInformation");
+			// 	const store = getStore();
 
-				fetch(
-					process.env.BACKEND_URL + "/api/login/" + id, {
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-						},
-					})
-					.then((response) => response.json())
-					.then((result) => {
-						setStore({ user: result.results });
-						console.log ("USER ==== ", store.user)
-					})
-					.catch((error) => console.log("error", error));
+			// 	fetch(
+			// 		process.env.BACKEND_URL + "/api/login/" + id, {
+			// 			method: "GET",
+			// 			headers: {
+			// 				"Content-Type": "application/json",
+			// 			},
+			// 		})
+			// 		.then((response) => response.json())
+			// 		.then((result) => {
+			// 			setStore({ user: result.results });
+			// 			console.log ("USER ==== ", store.user)
+			// 		})
+			// 		.catch((error) => console.log("error", error));
 
-					if (localStorage.getItem("Token") && localStorage.getItem("User"))
-					setStore({
-						user: localStorage.getItem("User"),
-						isLoggedIn: true,
-					})
-			},
+			// 		if (localStorage.getItem("Token") && localStorage.getItem("User"))
+			// 		setStore({
+			// 			user: localStorage.getItem("User"),
+			// 			isLoggedIn: true,
+			// 		})
+			// },
 
 		
 			// obtainUserInformation: async () => {
