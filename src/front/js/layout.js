@@ -11,9 +11,10 @@ import { EditProfile } from "./pages/edit-profile.js";
 import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
-import { Profile } from "./pages/profile.js";
+import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
 import { Offerbook } from "./pages/Offerbook";
+import { ProfileShort } from "./pages/profile-short";
 
 //create your first component
 const Layout = () => {
@@ -29,8 +30,8 @@ const Layout = () => {
             <Route exact path="/" component={Home}>
               <Home />
             </Route>
-            <Route exact path="/login/:id">
-            <Profile />
+            <Route exact path="/user/:id">
+              <ProfileShort />
             </Route>
             <Route exact path="/login" component={Login}>
               <Login />
@@ -38,8 +39,8 @@ const Layout = () => {
             <Route exact path="/signup" component={Signup}>
               <Signup />
             </Route>
-            <Route exact path="/profile" component={Profile}>
-              <Profile />
+            <Route exact path="/my-profile" component={MyProfile}>
+              <MyProfile />
             </Route>
             <Route exact path="/edit-profile/:id">
               <EditProfile />
@@ -47,18 +48,18 @@ const Layout = () => {
             <Route exact path="/edit-profile" component={EditProfile}>
               <EditProfile />
             </Route>
-						<Route exact path="/forgetpassword" component={Forgetpassword}>
-							<Forgetpassword />
-						</Route>
+            <Route exact path="/forgetpassword" component={Forgetpassword}>
+              <Forgetpassword />
+            </Route>
             <Route exact path="/offerbook" component={Offerbook}>
-							<Offerbook />
-						</Route>
-						<Route exact path="/emailtoreset" component={Emailtoreset}>
-							<Emailtoreset />
-						</Route>
-						<Route exact path="/resetpassword" component={Resetpassword}>
-							<Resetpassword />
-						</Route>
+              <Offerbook />
+            </Route>
+            <Route exact path="/emailtoreset" component={Emailtoreset}>
+              <Emailtoreset />
+            </Route>
+            <Route exact path="/resetpassword" component={Resetpassword}>
+              <Resetpassword />
+            </Route>
             <Route exact path="/security" component={Security}>
               <Security />
             </Route>

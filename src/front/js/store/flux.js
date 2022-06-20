@@ -3,9 +3,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			user: {},
-			isLoggedIn: false,
-			accessToken: null,
+			user: JSON.parse(localStorage.getItem("user")) || {},
+			isLoggedIn: JSON.parse(localStorage.getItem("user")) || false,
+			token: localStorage.getItem("token") || null,
 			favorite: [],
 		},
 		actions: {
@@ -26,27 +26,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("info login desde las actions", post);
 
 				fetch(
-					"https://3001-heylga-finalproject-9gxoai12vvq.ws-eu47.gitpod.io" + "/api/login",
+					"https://3001-heylga-finalproject-xnnelv9b89a.ws-eu47.gitpod.io" + "/api/login",
 					post
 				)
 
 					.then((response) => response.json())
 					.then((result) => {
-						console.log('result from actions', result)
+						console.log('>>>> result from actions', result)
 						setStore({
 							user: result?.user,
-							accessToken: result?.access_token,
+							token: result?.token,
 							isLoggedIn: true,
 						})
 
-						localStorage.setItem("Token", getStore().accessToken)
-						localStorage.setItem("User", getStore().user.email)
-						localStorage.setItem("user_name", getStore().user.user_name)
-						localStorage.setItem("first_name", getStore().user.first_name)
-						localStorage.setItem("user_name", getStore().user.user_name)
-						localStorage.setItem("city", getStore().user.city)
 
-						console.log("info del user", getStore().user)
+						localStorage.setItem("user", JSON.stringify(result.user))
+						localStorage.setItem("token", result.token)
+
+						console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
 					})
 					.catch((error) => console.log("error", error));
 			},
@@ -56,25 +53,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					user: null,
 					isLoggedIn: false,
-					accessToken: null,
+					token: null,
 				})
 
-				localStorage.removeItem("Token")
-				localStorage.removeItem("User")
+				localStorage.removeItem("token")
+				localStorage.removeItem("user")
 				localStorage.removeItem("user_name")
 				localStorage.removeItem("first_name")
 				localStorage.removeItem("user_name")
 				localStorage.removeItem("city")
-
-			},
-
-			checklogin: () => {
-
-				if (localStorage.getItem("Token") && localStorage.getItem("User"))
-					setStore({
-						user: localStorage.getItem("User"),
-						isLoggedIn: true,
-					})
 
 			},
 
@@ -103,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 		})
 			// },
 
-		
+
 			// obtainUserInformation: async () => {
 			// 	const response = await fetch(getStore().process.env.BACKEND_URL + "/profile", {
 			// 	  headers: {
@@ -115,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	const data = await response.json();
 			// 	setStore({ profile: data.results });
 			//   },
-			
+
 
 			// editUserInformation: (id) => {
 

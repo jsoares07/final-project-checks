@@ -10,12 +10,16 @@ import Footer from "../component/footer.js";
 import "../../styles/index.css";
 
 
-export const Profile = (props) => {
+export const ProfileShort = (props) => {
   const { store, actions } = useContext(Context);
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const params = useParams();
+
+  console.log('params', params)
+
   // const { id, first_name, user_name, email, city} = props;
-  
+
   // useEffect(() => {
   //   actions.getUserInformation
   // }, [])
@@ -26,8 +30,6 @@ export const Profile = (props) => {
   return (
 
     <div className="">
-
-     <Navbarlogin />
 
 
       <div className="container rounded bg-white mt-5 mb-5">
@@ -42,14 +44,14 @@ export const Profile = (props) => {
               />
             </div>
             <div className="mt-5 text-center">
-            <Link to="/edit-profile">
-              <button
-                className="btn btn-primary edit-profile-button"
-                type="button"
-              >
-                Edit Profile
-              </button>
-            </Link>
+              <Link to="/edit-profile">
+                <button
+                  className="btn btn-primary edit-profile-button"
+                  type="button"
+                >
+                  Edit Profile
+                </button>
+              </Link>
             </div>
           </div>
           {/* Profile photo ends */}
@@ -61,51 +63,15 @@ export const Profile = (props) => {
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
-                  <label className="labels">First Name</label>
+                  <label className="labels"><bold><strong>First Name</strong></bold></label>
                   <p>{store.user.first_name}</p>
                 </div>
-                </div>
-
-                <div className="row mt-2">
-                <div className="col-md-6">
-                  <label className="labels">User Name</label>
-                 <p>User Name</p> 
-                  <p>{store.user.user_name}</p>
-                </div>
-
               </div>
+
               <div className="row mt-2">
-                <div className="col-md-12">
-                  <label className="labels">Email</label>
-                  <p>{store.user.email}</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Mobile Number</label>
-                  <p>Mobile Number</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Birthday</label>
-                  <p>Day / Month / Year</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Address Line</label>
-                  <p>Address Line</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Postcode</label>
-                  <p>Postcode</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">State</label>
-                  <p>State</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">City</label>
-                  <p>{store.user.city}</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Country</label>
-                  <p>Country</p>
+                <div className="col-md-6">
+                  <label className="labels"><strong>User Name</strong></label>
+                  <p>{store.user.user_name}</p>
                 </div>
               </div>
             </div>
@@ -119,12 +85,12 @@ export const Profile = (props) => {
               </div>
               <br />
               <div className="col-md-12">
-                <label className="labels">My Books</label>
+                <label className="labels"><strong>My Books</strong></label>
                 <p>Book #1</p>
               </div>
               <hr />
               <div className="col-md-12">
-                <label className="labels">My books Swapped</label>
+                <label className="labels"><strong>My Swapped Books</strong></label>
                 <p>Book #1</p>
               </div>
             </div>
@@ -132,14 +98,15 @@ export const Profile = (props) => {
           {/* Book History Ends */}
         </div>
       </div>
+
       <Footer />
     </div>
   );
 
-// Profile.propTypes = {
-//   first_name: propTypes.string,
-//   user_name: propTypes.string,
-//   email: propTypes.string,
-//   id: propTypes.string,
-// }
+  // Profile.propTypes = {
+  //   first_name: propTypes.string,
+  //   user_name: propTypes.string,
+  //   email: propTypes.string,
+  //   id: propTypes.string,
+  // }
 };
