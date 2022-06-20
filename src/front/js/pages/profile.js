@@ -20,7 +20,7 @@ export const Profile = (props) => {
   //   actions.getUserInformation
   // }, [])
 
-  console.log("User information from flux getUserInformation", store.getUserInformation)
+  // console.log("User information from flux getUserInformation", store.getUserInformation)
   console.log("User from user store flux", store.user);
 
   return (

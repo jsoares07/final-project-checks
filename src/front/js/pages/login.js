@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Navbar from "./../component/navbar";
 import Footer from "./../component/footer";
+import Navbarlogin from "../component/navbar-login";
 
 export const Login = () => {
 
@@ -55,7 +56,7 @@ export const Login = () => {
 
 			<Link to={`/login/${id}`}>
 				<button type="submit"
-				className="btn btn-primary float-end mt-5 me-5"
+				className="btn btn-primary float-end m-5 "
 				// onClick={() => actions.getUserInformation(id)}
 				>
 				My Profile
@@ -65,7 +66,11 @@ export const Login = () => {
 		</div>
 	</div>
 
-	const loggedInRender = <div className="container mt-5 mb-5 ">
+	const loggedInRender = 
+	<>
+	<Navbar />
+	
+	<div className="container mt-5 mb-5 ">
 
 		<h1 className="col-md-6 center mx-auto">Log In</h1>
 
@@ -153,11 +158,122 @@ export const Login = () => {
 		</div>
 	</div>
 
+	</>
+
 	const notLoggedInRender = <div>
 
-		{'se ha loggeado el usuario ' + (localStorage.getItem("User") ? localStorage.getItem("User") : store.user.email)}
-		{/* {'se ha loggeado el usuario ' + (store.user ? store.user.email : localStorage.getItem("User")) } */}
+<Navbarlogin />
+
+<div className="container center mt-5 mb-5 ps-5">
+        <h6>{'Congradulations, you´ve been logged in as ' + (localStorage.getItem("User") ? localStorage.getItem("User") : store.user.email)}</h6>
+</div>
+
+		<div className="container rounded bg-white mt-5 mb-5">
+        <div className="row">
+          {/* Profile photo starts */}
+          <div className="col-md-3 border-right">
+            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+              <img
+                className="rounded-circle mt-5"
+                width="150px"
+                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              />
+            </div>
+            <div className="mt-5 text-center">
+            <Link to="/edit-profile">
+              <button
+                className="btn btn-primary edit-profile-button"
+                type="button"
+              >
+                Edit Profile
+              </button>
+            </Link>
+            </div>
+          </div>
+          {/* Profile photo ends */}
+          {/* Profile Info starts */}
+          <div className="col-md-5 border-right border border-dark">
+            <div className="p-3 py-5">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h4 className="text-right">Profile Info</h4>
+              </div>
+              <div className="row mt-2">
+                <div className="col-md-6">
+                  <label className="labels"><bold><strong>First Name</strong></bold></label>
+                  <p>{store.user.first_name}</p>
+                </div>
+                </div>
+
+                <div className="row mt-2">
+                <div className="col-md-6">
+                  <label className="labels"><strong>User Name</strong></label>
+                  <p>{store.user.user_name}</p>
+                </div>
+
+              </div>
+              <div className="row mt-2">
+                <div className="col-md-12">
+                  <label className="labels"><strong>Email</strong></label>
+                  <p>{store.user.email}</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels"><strong>Mobile Phone</strong></label>
+                  <p>Mobile Number</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels"><strong>Birthday</strong></label>
+                  <p>Day / Month / Year</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels"><strong>Address Line</strong></label>
+                  <p>Address Line</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels"><strong>Postcode</strong></label>
+                  <p>Postcode</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels"><strong>State</strong></label>
+                  <p>State</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels"><strong>City</strong></label>
+                  <p>{store.user.city}</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels"><strong>Country</strong></label>
+                  <p>Country</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Profile Info ends */}
+          {/* Book History starts */}
+          <div className="col-md-4 border border-dark">
+            <div className="p-3 py-5">
+              <div className="d-flex justify-content-between align-items-center book-history ">
+                <h4 className="text-right ">My book History</h4>
+              </div>
+              <br />
+              <div className="col-md-12">
+                <label className="labels"><strong>My Books</strong></label>
+                <p>Book #1</p>
+              </div>
+              <hr />
+              <div className="col-md-12">
+                <label className="labels"><strong>My Swapped Books</strong></label>
+                <p>Book #1</p>
+              </div>
+            </div>
+          </div>
+          {/* Book History Ends */}
+        </div>
+      </div>
+
+
 		{logOutRender}
+
+		
 	</div>
 
 
@@ -170,13 +286,8 @@ export const Login = () => {
 
 		<div className="">
 
-			<Navbar />
 
 			{loginLogicRender}
-
-			{/* <Link to="/">
-			<button className="btn btn-primary justify-content-center m-5">Back home</button>
-		</Link> */}
 
 			<Footer />
 		</div>

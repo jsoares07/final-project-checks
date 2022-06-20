@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import ImageUploading from 'react-images-uploading';
 import { Link } from "react-router-dom";
 import "../../styles/signup.css";
 
@@ -13,7 +14,7 @@ export const Signup = () => {
 
   // const URLbase = process.env.BACKEND_URL;
 
-  const URLbase = "https://3001-heylga-finalproject-utnh6jj9ldo.ws-eu47.gitpod.io";
+  const URLbase = "https://3001-heylga-finalproject-9gxoai12vvq.ws-eu47.gitpod.io";
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -114,7 +115,7 @@ export const Signup = () => {
 
   const onTypePicture = (e) => {
     console.log(e.target.value);
-    setPicture(e.target.value);
+    setPicture(e.target.files[0]);
   };
 
 

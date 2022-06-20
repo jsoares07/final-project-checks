@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("info login desde las actions", post);
 
 				fetch(
-					process.env.BACKEND_URL + "/api/login",
+					"https://3001-heylga-finalproject-9gxoai12vvq.ws-eu47.gitpod.io" + "/api/login",
 					post
 				)
 
@@ -41,6 +41,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						localStorage.setItem("Token", getStore().accessToken)
 						localStorage.setItem("User", getStore().user.email)
+						localStorage.setItem("user_name", getStore().user.user_name)
+						localStorage.setItem("first_name", getStore().user.first_name)
+						localStorage.setItem("user_name", getStore().user.user_name)
+						localStorage.setItem("city", getStore().user.city)
 
 						console.log("info del user", getStore().user)
 					})
@@ -57,6 +61,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				localStorage.removeItem("Token")
 				localStorage.removeItem("User")
+				localStorage.removeItem("user_name")
+				localStorage.removeItem("first_name")
+				localStorage.removeItem("user_name")
+				localStorage.removeItem("city")
 
 			},
 

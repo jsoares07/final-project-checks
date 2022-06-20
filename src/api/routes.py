@@ -7,17 +7,18 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 # from models import User, Book
 
-# from werkzeug.security import generate_password_hash, check_password_hash
-
+from werkzeug.security import generate_password_hash
+# check_password_hash
 
 api = Blueprint('api', __name__)
-
 
 
 @api.route('/signup', methods=['POST'])
 def signup():
 
     request_body = request.get_json(force=True)
+
+    # hashed_password = generate_password_hash(data['password'], method='dfgdhjkg54654dsfd788gfhgf')
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
@@ -42,7 +43,6 @@ def signup():
          "message": answer,
          "user": user.serialize()
      }
-
 
     return jsonify(response_body), 200
     
@@ -88,8 +88,6 @@ def get_user(id = None):
     }
 
     return jsonify(response_body), 200
-
-
 
 # @api.route('/edit-profile/<int:id>', methods=['PUT'])
 # def edit_user():
