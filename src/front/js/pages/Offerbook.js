@@ -13,6 +13,7 @@ export const Offerbook = () => {
   const [genre, setGenre] = useState();
   const [language, setLanguage] = useState();
   const [description, setDescription] = useState();
+  // const [book_picture, setBookPicture] = useState();
 
   const URLbase = process.env.BACKEND_URL;
 
@@ -89,6 +90,10 @@ export const Offerbook = () => {
   const onTypeDescription = (e) => {
     console.log(e.target.value);
     setDescription(e.target.value);
+  };
+  const onPicture = (e) => {
+    console.log(e.target.value);
+    setBookPicture(e.target.value);
   };
 
   const [baseImage, setBaseImage] = useState("");

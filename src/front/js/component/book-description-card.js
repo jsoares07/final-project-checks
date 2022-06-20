@@ -14,7 +14,7 @@ const BookCard = (props) => {
     publisher,
     genre,
     language,
-    imageUrl,
+    book_picture,
     description,
   } = props;
 
@@ -80,7 +80,7 @@ const BookCard = (props) => {
 BookCard.propTypes = {
   user: PropTypes.string,
   id: PropTypes.string,
-  imageUrl: PropTypes.string,
+  book_picture: PropTypes.string,
   title: PropTypes.string,
   author: propTypes.string,
   publisher: propTypes.string,

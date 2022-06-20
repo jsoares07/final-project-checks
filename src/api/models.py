@@ -33,7 +33,7 @@ class Book(db.Model):
     genre = db.Column(db.String(120), unique=False, nullable=False)
     language = db.Column(db.String(120), unique=False, nullable=False)
     description = db.Column(db.String(1200), unique=False, nullable=False)
-    # book_picture = db.Column(db.String(10000000), unique=False, nullable=False)  
+    # book_picture = db.Column(db.Text, unique=False, nullable=False)  
  
     def addBook(self):
         db.session.add(self)
