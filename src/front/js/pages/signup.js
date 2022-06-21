@@ -11,9 +11,9 @@ import Footer from "./../component/footer";
 export const Signup = () => {
   const { store, actions } = useContext(Context);
 
-  const URLbase = process.env.BACKEND_URL;
+  // const URLbase = process.env.BACKEND_URL;
 
-  // const URLbase = "https://3001-heylga-finalproject-wy6lkyxgzdu.ws-eu47.gitpod.io"
+  const URLbase = "https://3001-heylga-finalproject-wy6lkyxgzdu.ws-eu47.gitpod.io"
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();

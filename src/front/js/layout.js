@@ -40,10 +40,13 @@ const Layout = () => {
             <Route exact path="/signup" component={Signup}>
               <Signup />
             </Route>
+            <Route exact path="/my-profile/:id" component={MyProfile}>
+              <MyProfile />
+            </Route>
             <Route exact path="/my-profile" component={MyProfile}>
               <MyProfile />
             </Route>
-            <Route exact path="/edit-profile/:id">
+            <Route exact path="/edit-profile/:id" component={EditProfile}>
               <EditProfile />
             </Route>
             <Route exact path="/edit-profile" component={EditProfile}>
