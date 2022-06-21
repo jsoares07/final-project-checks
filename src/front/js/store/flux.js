@@ -66,30 +66,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			// getUserInformation: (id) => {
-			// 	console.log("getUserInformation");
-			// 	const store = getStore();
+		// editUserInformation: () => {
 
-			// 	fetch(
-			// 		process.env.BACKEND_URL + "/api/login/" + id, {
-			// 			method: "GET",
-			// 			headers: {
-			// 				"Content-Type": "application/json",
-			// 			},
-			// 		})
-			// 		.then((response) => response.json())
-			// 		.then((result) => {
-			// 			setStore({ user: result.results });
-			// 			console.log ("USER ==== ", store.user)
-			// 		})
-			// 		.catch((error) => console.log("error", error));
+		// 		const store = getStore();
 
-			// 		if (localStorage.getItem("Token") && localStorage.getItem("User"))
-			// 		setStore({
-			// 			user: localStorage.getItem("User"),
-			// 			isLoggedIn: true,
-			// 		})
-			// },
+		// 		fetch(
+		// 			process.env.BACKEND_URL + "/api/edit-profile/" + user, {
+		// 				method: "PUT",
+		// 				headers: {
+		// 					"Content-Type": "application/json",
+		// 					 Accept: "application/json",
+		// 				},
+		// 				body: JSON.stringify(),
+		// 			})
+		// 			if (response.ok) {
+		// 				alert("The info has been saved");
+		// 			  } else {
+		// 				alert("The info has NOT been saved");
+		// 			  }
+		// 	},
+
 
 
 			// obtainUserInformation: async () => {
@@ -105,26 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//   },
 
 
-			// editUserInformation: (id) => {
-
-			// 	const store = getStore();
-
-			// 	fetch(
-			// 		process.env.BACKEND_URL + "/api/edit-profile/" + id, {
-			// 			method: "PUT",
-			// 			headers: {
-			// 				"Content-Type": "application/json",
-			// 				Accept: "application/json",
-			// 				Authorization: `${localStorage.getItem("token")}`,
-			// 			},
-			// 			body: JSON.stringify(id),
-			// 		})
-			// 		if (response.ok) {
-			// 			alert("The info has been saved");
-			// 		  } else {
-			// 			alert("The info has NOT been saved");
-			// 		  }
-			// },
+	
 
 			// loadData: () => {
 			// 	fetch(`${URLbase}/api/signup`)

@@ -30,7 +30,7 @@ class User(db.Model):
     
 
     def __repr__(self):
-        return f'<User {self.email}>'
+        return f'<User {self.id} {self.email}>'
 
     def serialize(self):
         return {
@@ -57,13 +57,16 @@ class User(db.Model):
         # no? crealo
         db.session.add(self)
         db.session.commit()
-        return 'success, el usuario ha sido creado'
+        return 'success, the user has been created'
 
+    def update(self):
 
+        db.session.commit(self)
+        return 'success, the infromation has been updated'
      
 # class Favourites(db.Model):
 #     __tablename__ = 'favourites'
-
+ 
 #     id = db.Column(db.Integer, primary_key=True)
 #     user_id = db.Column(db.String(120), nullable=False)
 #     favouritetype = db.Column(db.String(120), nullable=False)

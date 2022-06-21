@@ -10,13 +10,61 @@ export const EditProfile = () => {
   const { store, actions } = useContext(Context);
   const [info, setInfo] = useState({});
 
+
+  const URLbase = process.env.BACKEND_URL;
+
   const [email, setEmail] = useState();
-  const [mobile, setMobile] = useState();
-  const [repeatPassword, setRepeatPassword] = useState();
-  const [firstName, setFirstName] = useState();
-  const [userName, setUserName] = useState();
+  const [first_name, setFirstName] = useState();
+  const [user_name, setUserName] = useState();
   const [city, setCity] = useState();
   const [picture, setPicture] = useState();
+
+
+  const onSubmitClicked = () => {
+    console.log("estoy haciendo click en submit");
+
+    if (email && user_name && first_name && city) {
+        onFetchUpdate(email, user_name, first_name, city);
+    } 
+  };
+
+
+  const onFetchUpdate = (email, user_name, first_name, city) => {
+    // fetch
+    const put = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        first_name: first_name,
+        user_name: user_name,
+        city: city,
+      }),
+    };
+
+    console.log("updating info", put);
+
+    fetch(
+      `${URLbase}/api/edit-profile`,
+      put
+    )
+
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  // const saveInfo = (e) => {
+  //     setInfo(e.target.value);
+  //     console.log(e.target.value)
+  // }
+
+  const onTypeEmail = (e) => {
+    console.log(e.target.value);
+    setEmail(e.target.value);
+  };
 
 
   return (
@@ -40,8 +88,7 @@ export const EditProfile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder={store.user.first_name}
-                    value=""
+                    value={store.user.first_name}
                   />
                 </div>
                 </div>
@@ -53,7 +100,6 @@ export const EditProfile = () => {
                     type="text"
                     className="form-control"
                     placeholder={store.user.user_name}
-                    value=""
                   />
                 </div>
 
@@ -66,6 +112,7 @@ export const EditProfile = () => {
                     type="text"
                     className="form-control"
                     placeholder={store.user.email}
+                    onChange={onTypeEmail}
                   />
                 </div>
                 <div className="col-md-8">
@@ -74,7 +121,6 @@ export const EditProfile = () => {
                     type="text"
                     className="form-control"
                     placeholder="Mobile"
-                    value=""
                   />
                 </div>
                 <div className="col-md-8">
@@ -87,7 +133,6 @@ export const EditProfile = () => {
                     type="text"
                     className="form-control"
                     placeholder="Address Line"
-              
                   />
                 </div>
                 <div className="col-md-8">
@@ -112,7 +157,6 @@ export const EditProfile = () => {
                     type="text"
                     className="form-control"
                     placeholder={store.user.city}
-                    value=""
                   />
                 </div>
                 <div className="col-md-8">
@@ -148,12 +192,18 @@ export const EditProfile = () => {
               <button
                 className="btn btn-primary edit-profile-button "
                 type="submit"
+                // onClick={(event) => {
+                //   event.preventDefault();
+                //   actions.editUserInformation();
+                // }}
+                onClick={onSubmitClicked}
               >
                 Save Changes
               </button>
               <br />
-              <Link to="/profile">
-                <button className="btn btn-primary justify-content-center mt-3">
+              <Link to="/my-profile">
+                <button className="btn btn-primary justify-content-center mt-3"
+                >
                   Cancel
                 </button>
               </Link>
