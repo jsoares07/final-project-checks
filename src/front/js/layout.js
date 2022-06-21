@@ -14,8 +14,11 @@ import { Emailtoreset } from "./component/emailtoreset.js";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
 import { Offerbook } from "./pages/Offerbook";
+import { AllBooks } from "./pages/allbooks.js";
+import { BookDescription } from "./pages/book-description";
 import { ProfileShort } from "./pages/profile-short";
 import { Profilepic } from "./component/profilepic";
+
 
 //create your first component
 const Layout = () => {
@@ -28,6 +31,24 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Switch>
+
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/offerbook">
+              <Offerbook />
+            </Route>
+            <Route exact path="/allbooks">
+              <AllBooks />
+            </Route>
+            <Route exact path="/book/:id">
+              <BookDescription />
             <Route exact path="/" component={Home}>
               <Home />
             </Route>

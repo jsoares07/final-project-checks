@@ -126,4 +126,5 @@ function Navbarlogin() {
   )
 } 
 
-export default Navbarlogin
+
+export default Navbarlogin;

@@ -8,7 +8,9 @@ export const Navbar = () => {
     <nav className="navbar navbar">
       <div className="container">
         <Link to="/">
+
           <span className="navbar-brand mb-0 h1" style={{BackgroungImage: `url(${logo})`}}>{logo}</span>
+
         </Link>
         <div className="ml-auto">
           <Link to="/allbooks">
