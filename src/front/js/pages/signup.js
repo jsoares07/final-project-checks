@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import ImageUploading from 'react-images-uploading';
 import { Link } from "react-router-dom";
 import "../../styles/signup.css";
 
