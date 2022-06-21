@@ -24,12 +24,14 @@ def signup():
     first_name = request.json.get('first_name', None)
     city = request.json.get('city', None)
 
+    hashed_password = generate_password_hash(password)
+
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
 
     user = User(
         email = email,
-        password = password,
+        password = hashed_password,
         user_name = user_name,
         first_name = first_name,
         city = city,
@@ -97,27 +99,3 @@ def editprofile(id):
             return jsonify({'results': user.serialize()}),200
 
 
-    # request_body = request.get_json(force=True)
-
-    # email = request.json.get('email', None)
-    # password = request.json.get('password', None)
-    # first_name = request.json.get('first_name', None)
-    # user_name = request.json.get('user_name', None)
-    # city = request.json.get('city', None)
-
-
-    # user = User(
-    #     email = email,
-    #     first_name = first_name,
-    #     user_name = user_name,
-    #     city = city,
-    # )
-
-    # answer = user.update()
-
-    # response_body = {
-    #      "message": answer,
-    #      "user": user.serialize()
-    #     }
-
-    # return jsonify(response_body), 200

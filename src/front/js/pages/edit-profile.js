@@ -15,47 +15,49 @@ export const EditProfile = () => {
   const URLbase = process.env.BACKEND_URL;
 
   const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [first_name, setFirstName] = useState();
   const [user_name, setUserName] = useState();
   const [city, setCity] = useState();
   const [picture, setPicture] = useState();
 
 
-  const onSubmitClicked = () => {
-    console.log("estoy haciendo click en submit");
+  // const onSubmitClicked = () => {
+  //   console.log("estoy haciendo click en submit");
 
-    if (email && user_name && first_name && city) {
-        onFetchUpdate(email, user_name, first_name, city);
-    } 
-  };
+  //   if (email && password && user_name && first_name && city) {
+  //       onFetchUpdate(email, password, user_name, first_name, city);
+  //   } 
+  // };
 
 
-  const onFetchUpdate = (email, user_name, first_name, city) => {
-    // fetch
-    const put = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        first_name: first_name,
-        user_name: user_name,
-        city: city,
-      }),
-    };
+  // const onFetchUpdate = (email, password, user_name, first_name, city) => {
+  //   // fetch
+  //   const put = {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: email,
+  //       password: password,
+  //       first_name: first_name,
+  //       user_name: user_name,
+  //       city: city,
+  //     }),
+  //   };
 
-    console.log("updating info", put);
+  //   console.log("updating info", put);
 
-    fetch(
-      `${URLbase}/api/edit-profile`,
-      put
-    )
+  //   fetch(
+  //     `${URLbase}/api/edit-profile/` + id,
+  //     put
+  //   )
 
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  };
+  //     .then((response) => response.text())
+  //     .then((result) => console.log(result))
+  //     .catch((error) => console.log("error", error));
+  // };
 
   // const saveInfo = (e) => {
   //     setInfo(e.target.value);
@@ -89,7 +91,7 @@ export const EditProfile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    value={store.user.first_name}
+                    placeholder={store.user.first_name}
                   />
                 </div>
                 </div>
@@ -194,11 +196,11 @@ export const EditProfile = () => {
               <button
                 className="btn btn-primary edit-profile-button "
                 type="submit"
-                // onClick={(event) => {
-                //   event.preventDefault();
-                //   actions.editUserInformation();
-                // }}
-                onClick={onSubmitClicked}
+                onClick={(event) => {
+                  event.preventDefault();
+                  actions.editUserInformation();
+                }}
+                // onClick={onSubmitClicked}
               >
                 Save Changes
               </button>
