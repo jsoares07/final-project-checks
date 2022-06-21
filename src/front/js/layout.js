@@ -49,6 +49,7 @@ const Layout = () => {
             </Route>
             <Route exact path="/book/:id">
               <BookDescription />
+            </Route>
             <Route exact path="/" component={Home}>
               <Home />
             </Route>

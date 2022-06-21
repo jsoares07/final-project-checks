@@ -48,6 +48,18 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
+    def create(self):
+        # este usuario existe?
+        # si? retorna, error, el usuario ya existe
+
+        # return 'error, el usuario ya existe'
+        
+        # no? crealo
+        db.session.add(self)
+        db.session.commit()
+        return 'success, the user has been created'
+
+
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), unique=False, nullable=False)
@@ -76,19 +88,7 @@ class Book(db.Model):
         }
     
 
-    def create(self):
-        # este usuario existe?
-        # si? retorna, error, el usuario ya existe
 
-        # return 'error, el usuario ya existe'
-        
-        # no? crealo
-        db.session.add(self)
-        db.session.commit()
-        return 'success, the user has been created'
-
-
-     
 # class Favourites(db.Model):
 #     __tablename__ = 'favourites'
  
@@ -109,39 +109,4 @@ class Book(db.Model):
 #             "favourite_id": self.favourite_id,
 #             "favourite_book": self.favourite_book,
 #         }
-
-
-class Book(db.Model):
-    # __tablename__ = 'books'
-
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), unique=True, nullable=False)
-    author = db.Column(db.String(80), unique=False, nullable=False)
-    
-#     editor = db.Column(db.String(120), unique=False, nullable=False)
-#     genre = db.Column(db.String(120), unique=False, nullable=False)
-#     language = db.Column(db.String(120), unique=False, nullable=False)
-#     description = db.Column(db.String(120), unique=False, nullable=False)  
-#     book_picture = db.Column(db.Text())
-
-#     # books = relationship('users')    
-
-#     def __repr__(self):
-#         return f'<Book {self.email}>'
-
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "title": self.title,
-#             "author": self.author,
-#             "editor": self.editor,
-#             "genre": self.genre,          
-#             "language": self.language,
-#             "description": self.description,
-#             "book_picture": self.book_picture,
-#             # do not serialize the password, its a security breach
-#         }
-
-
-# # render_er(db.Model, 'diagram.png')
 
