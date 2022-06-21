@@ -15,6 +15,7 @@ import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
 import { Offerbook } from "./pages/Offerbook";
 import { ProfileShort } from "./pages/profile-short";
+import { Profilepic } from "./component/profilepic";
 
 //create your first component
 const Layout = () => {
@@ -62,6 +63,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/security" component={Security}>
               <Security />
+            </Route>
+            <Route exact path="/profilepic" component={Profilepic}>
+              <Profilepic />
             </Route>
             <Route>
               <h1>Not found!</h1>

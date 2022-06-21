@@ -16,13 +16,14 @@ class User(db.Model):
     user_name = db.Column(db.String(120), unique=True, nullable=False)
     first_name = db.Column(db.String(120), unique=False, nullable=False)
     city = db.Column(db.String(120))
+    # profile_pic = db.Column(db.String(120), nullable=True)
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
     # birthday = db.Column(db.DateTime)
     # address = db.Column(db.String(120))
     # postcode = db.Column(db.Integer)
     # state = db.Column(db.String(120))
-    # profile_pic = db.Column(db.String(120), nullable=True)
+
 
     # User = db.relationship('Book', )
     # User = db.relationship('Favourites', )
