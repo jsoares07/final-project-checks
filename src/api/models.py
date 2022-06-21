@@ -12,26 +12,24 @@ db = SQLAlchemy()
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(120), unique=True)
-    hashed_password = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(80), unique=False, nullable=False)
     user_name = db.Column(db.String(120), unique=True, nullable=False)
     first_name = db.Column(db.String(120), unique=False, nullable=False)
     city = db.Column(db.String(120))
-    # profile_pic = db.Column(db.String(120), nullable=True)
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
     # birthday = db.Column(db.DateTime)
     # address = db.Column(db.String(120))
     # postcode = db.Column(db.Integer)
     # state = db.Column(db.String(120))
-
+    # profile_pic = db.Column(db.String(120), nullable=True)
 
     # User = db.relationship('Book', )
     # User = db.relationship('Favourites', )
     
 
     def __repr__(self):
-        return f'<User {self.id} {self.email}>'
+        return f'<User {self.email}>'
 
     def serialize(self):
         return {
@@ -60,10 +58,7 @@ class User(db.Model):
         db.session.commit()
         return 'success, the user has been created'
 
-    def update(self):
 
-        db.session.commit(self)
-        return 'success, the infromation has been updated'
      
 # class Favourites(db.Model):
 #     __tablename__ = 'favourites'

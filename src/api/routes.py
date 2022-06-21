@@ -6,7 +6,9 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 # from models import User, Book
-from werkzeug.security import generate_password_hash, check_password_hash
+
+from werkzeug.security import generate_password_hash
+
 
 api = Blueprint('api', __name__)
 
@@ -18,18 +20,16 @@ def signup():
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-    hashed_password = request.json.get('hashed_password', None)
     user_name = request.json.get('user_name', None)
     first_name = request.json.get('first_name', None)
     city = request.json.get('city', None)
 
-    hashed_password = generate_password_hash(hashed_password)
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
 
     user = User(
         email = email,
-        password = hashed_password,
+        password = password,
         user_name = user_name,
         first_name = first_name,
         city = city,
@@ -49,14 +49,15 @@ def login():
 
     request_body = request.get_json(force=True)
 
+
     email = request.json.get('email', None)
     password = request.json.get('password', None)
 
     found_user = User.query.filter_by(email=email).first()
 
+
     if found_user and found_user.password == password:
         token = create_access_token(identity=email)
-
         return {
             "message": "User logged in",
             "token": token,
@@ -65,8 +66,10 @@ def login():
     else:
         return {"error":"user and password not valid"}, 400
 
-@api.route('/edit-profile/', methods=['PUT'])
-def editprofile():
+
+
+@api.route('/edit-profile/<int:id>', methods=['PUT'])
+def editprofile(id):
 
     user = User.query.filter_by(id=id)
 
