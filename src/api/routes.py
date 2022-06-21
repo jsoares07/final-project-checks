@@ -7,7 +7,6 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 # from models import User, Book
 from werkzeug.security import generate_password_hash
-# check_password_hash
 
 api = Blueprint('api', __name__)
 
@@ -23,12 +22,14 @@ def signup():
     first_name = request.json.get('first_name', None)
     city = request.json.get('city', None)
 
+    hashed_password = generate_password_hash(password)
+
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
 
     user = User(
         email = email,
-        password = password,
+        password = hashed_password,
         user_name = user_name,
         first_name = first_name,
         city = city,
@@ -65,11 +66,12 @@ def login():
         return {"error":"user and password not valid"}, 400
 
 @api.route('/edit-profile', methods=['PUT'])
-def editprofile():
+def editprofile(id):
 
     request_body = request.get_json(force=True)
 
     email = request.json.get('email', None)
+    password = request.json.get('password', None)
     first_name = request.json.get('first_name', None)
     user_name = request.json.get('user_name', None)
     city = request.json.get('city', None)

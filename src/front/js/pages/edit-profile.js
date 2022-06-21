@@ -5,6 +5,7 @@ import Footer from "../component/footer.js";
 import { Link } from "react-router-dom";
 import "../../styles/index.css";
 import Navbarlogin from "../component/navbar-login";
+import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 export const EditProfile = () => {
   const { store, actions } = useContext(Context);
@@ -169,6 +170,7 @@ export const EditProfile = () => {
                 </div>
               </div>
 
+
               <Link to="/security">
               <button type="button" class="btn btn-outline-secondary my-3">Change Password</button>
               </Link>
@@ -210,6 +212,7 @@ export const EditProfile = () => {
             </div>
           </div>
           {/* Profile photo ends */}
+          
         </div>
       </div>
       <Footer />
