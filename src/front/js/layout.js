@@ -16,7 +16,6 @@ import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
-import { Offerbook } from "./pages/Offerbook";
 import { ProfileShort } from "./pages/profile-short";
 
 //create your first component
