@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask_sqlalchemy import SQLAlchemy
+
 import os
 import sys
 from sqlalchemy import  Table, Column, ForeignKey, Integer, String, Date
@@ -7,6 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from flask_admin.contrib.sqla import ModelView
+
 
 db = SQLAlchemy()
 
@@ -16,12 +17,14 @@ db = SQLAlchemy()
 # )
 
 class User(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120))
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
     # city = db.Column(db.String(120))
     ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
+
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
     # birthday = db.Column(db.DateTime)
@@ -42,7 +45,11 @@ class User(db.Model):
             "id": self.id,
             "email": self.email,
             "name": self.name,
-            # "city": self.city,
+            "city": self.city,
+
+            # "user_name": self.user_name,
+            # "first_name": self.first_name,
+
             # "country": self.country,
             # "mobile": self.mobile,
             # "birthday": self.birthday,
@@ -61,6 +68,7 @@ class User(db.Model):
         # no? crealo
         db.session.add(self)
         db.session.commit()
+
         return 'success, el usuario ha sido creado'
 
     def listOfUsers(self):
@@ -68,6 +76,7 @@ class User(db.Model):
             "id": self.id,
             "name": self.name,
         }
+
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -99,8 +108,33 @@ class Book(db.Model):
             # "book_picture": self.book_picture,
         }
     
+
 class UsersBooks(db.Model):
     __tablename__="users_books"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     book_id = db.Column(db.Integer(), db.ForeignKey('book.id'))
+
+
+
+# class Favourites(db.Model):
+#     __tablename__ = 'favourites'
+ 
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.String(120), nullable=False)
+#     favouritetype = db.Column(db.String(120), nullable=False)
+#     favourite_book = db.Column(db.String(120), db.ForeignKey(Parent.id))
+#     favourite_id = db.Column(db.String(120), nullable=False)
+
+#     def __repr__(self):
+#         return '<Favourites %r>' % self.name
+
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "user_id": self.user_id,
+#             "favouritetype": self.favouritetype,
+#             "favourite_id": self.favourite_id,
+#             "favourite_book": self.favourite_book,
+#         }
+

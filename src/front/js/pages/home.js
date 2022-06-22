@@ -14,11 +14,11 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container center">
+		<div className="">
 			<Navbar />
 			<Jumbotron />
 			<ListCards />
-			<Map />
+			{/* <Map /> */}
 			<Footer />
 		</div>
 	);

@@ -1,0 +1,11 @@
+.jumbotron {
+    background-image: url("../img/jumbotronlength.jpg");
+    background-size: cover;
+    margin-top: 20px;
+    height: 500px;
+    width: auto;
+    color: white;
+  }
+.input-group {
+  padding-right: 700px;
+}
