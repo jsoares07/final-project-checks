@@ -3,12 +3,25 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { Login } from "./component/login.js";
-import { Signup } from "./component/signup.js";
+
+import { Login } from "./pages/login.js";
+import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
 import { Offerbook } from "./pages/Offerbook";
+
 import { AllBooks } from "./pages/allbooks.js";
 import { BookDescription } from "./pages/book-description";
+
+import { Other_users_profile } from "./pages/other-users-profile"
+import { Reviewuser } from "./pages/Reviewuser"
+import { EditProfile } from "./pages/edit-profile.js";
+import { Resetpassword } from "./pages/resetpassword.js"
+import { Forgetpassword } from "./pages/forgetpassword.js";
+import { Emailtoreset } from "./component/emailtoreset.js";
+import { MyProfile } from "./pages/my-profile.js";
+import { Security } from "./pages/security";
+import { ProfileShort } from "./pages/profile-short";
+
 
 //create your first component
 const Layout = () => {
@@ -21,23 +34,60 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/" component={Home}>
               <Home />
             </Route>
-            <Route exact path="/login">
+            <Route exact path="/user/:id">
+              <ProfileShort />
+            </Route>
+            <Route exact path="/login" component={Login}>
               <Login />
             </Route>
-            <Route exact path="/signup">
+            <Route exact path="/signup" component={Signup}>
               <Signup />
             </Route>
-            <Route exact path="/offerbook">
-              <Offerbook />
+            <Route exact path="/my-profile" component={MyProfile}>
+              <MyProfile />
             </Route>
+            <Route exact path="/edit-profile/:id">
+              <EditProfile />
+            </Route>
+            <Route exact path="/edit-profile" component={EditProfile}>
+              <EditProfile />
+            </Route>
+
             <Route exact path="/allbooks">
               <AllBooks />
             </Route>
+
             <Route exact path="/book/:id">
               <BookDescription />
+            </Route>
+
+            <Route exact path="/forgetpassword" component={Forgetpassword}>
+              <Forgetpassword />
+            </Route>
+            <Route exact path="/offerbook" component={Offerbook}>
+              <Offerbook />
+            </Route>
+            <Route exact path="/emailtoreset" component={Emailtoreset}>
+              <Emailtoreset />
+            </Route>
+            <Route exact path="/resetpassword" component={Resetpassword}>
+              <Resetpassword />
+            </Route>
+
+						<Route exact path="/reviewuser">
+							<Reviewuser />
+						</Route>
+
+						<Route>
+							<h1>Not found!</h1>
+						</Route>
+
+            <Route exact path="/security" component={Security}>
+              <Security />
+
             </Route>
             <Route>
               <h1>Not found!</h1>

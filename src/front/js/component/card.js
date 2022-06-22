@@ -1,3 +1,4 @@
+
 import React, { Component, useContext } from "react";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
@@ -11,6 +12,15 @@ const Card = (props) => {
   return (
     <div className="card my-4 gap-1" style={{ width: "18rem" }}>
       <img src={imageUrl} />
+        	<button
+                    id="heart"
+                    className="btn"
+                    onClick={() => {
+                        actions.addFavorite(props.name);
+                    }}
+                >
+                <a href="#" className="btn btn-primary heartbutton">❤️</a>
+                </button> 
       <div className="card-body mt-2 mb-4" style={{ height: "10rem" }}>
         <h4 className="card-title text-center fw-bolder">{title}</h4>
         <h5 className="card-title text-center fw-bolder">{author}</h5>
