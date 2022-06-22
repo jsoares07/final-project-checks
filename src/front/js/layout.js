@@ -8,12 +8,6 @@ import { Login } from "./pages/login.js";
 import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
 import { Offerbook } from "./pages/Offerbook";
-
-import { AllBooks } from "./pages/allbooks.js";
-import { BookDescription } from "./pages/book-description";
-
-import { Other_users_profile } from "./pages/other-users-profile"
-import { Reviewuser } from "./pages/Reviewuser"
 import { EditProfile } from "./pages/edit-profile.js";
 import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
@@ -21,16 +15,13 @@ import { Emailtoreset } from "./component/emailtoreset.js";
 import { Emailresetsecurity } from "./component/emailresetsecurity";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
-
-import { Offerbook } from "./pages/Offerbook";
 import { AllBooks } from "./pages/allbooks.js";
 import { BookDescription } from "./pages/book-description";
-
 import { ProfileShort } from "./pages/profile-short";
 import { Swapmessage } from "./pages/swapmessage.js";
 import { Swapconfirmation } from "./pages/swapconfirmation.js";
 import { Profilepic } from "./component/profilepic";
-import { Reviewuser } from "./pages/reviewuser";
+import { Reviewuser } from "./pages/Reviewuser";
 
 
 
@@ -121,10 +112,6 @@ const Layout = () => {
             <Route exact path="/resetpassword" component={Resetpassword}>
               <Resetpassword />
             </Route>
-
-						<Route exact path="/reviewuser">
-							<Reviewuser />
-						</Route>
 
 						<Route>
 							<h1>Not found!</h1>

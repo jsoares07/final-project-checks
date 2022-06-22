@@ -25,22 +25,16 @@ user_book = db.Table("user_book",
 
 
 class User(db.Model):
-
-
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120))
-
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
     city = db.Column(db.String(120), unique=False)
     # ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
-    
     # owner_book = db.relationship("Book", backref="Owner", lazy=True)
     # favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
-
     owner_book = db.relationship("Book", backref="Owner", lazy=True)
     users_books = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
-
 
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
@@ -67,10 +61,8 @@ class User(db.Model):
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book)),
             # "users_books": list(map(lambda book: book.serialize(), self.users_books))
-
             # "user_name": self.user_name,
             # "first_name": self.first_name,
-
             # "country": self.country,
             # "mobile": self.mobile,
             # "birthday": self.birthday,
@@ -80,32 +72,17 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
       
-        def create(self):
+    def create(self):
         # este usuario existe?
         # si? retorna, error, el usuario ya existe
 
         # return 'error, el usuario ya existe'
         
         # no? crealo
-            db.session.add(self)
-            db.session.commit()
-            return 'success, el usuario ha sido creado'
-
-class Book(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), unique=False, nullable=False)
-    author = db.Column(db.String(120), unique=False, nullable=False)
-    publisher = db.Column(db.String(120), unique=False, nullable=False)
-    genre = db.Column(db.String(120), unique=False, nullable=False)
-    language = db.Column(db.String(120), unique=False, nullable=False)
-    description = db.Column(db.String(1200), unique=False, nullable=False)
-    # book_picture = db.Column(db.Text, unique=False, nullable=False)  
- 
-    def addBook(self):
         db.session.add(self)
         db.session.commit()
-
         return 'success, el usuario ha sido creado'
+
 
 
 class Book(db.Model):
