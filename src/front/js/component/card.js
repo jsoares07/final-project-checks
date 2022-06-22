@@ -1,18 +1,24 @@
 
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useState } from "react";
+
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import propTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 
+import "../../styles/card.css";
+
+
 const Card = (props) => {
   const { store, actions } = useContext(Context);
   const { id, title, author, imageUrl, description, buttonLabel } = props;
 
+  const [favourite, setFavourite]= useState ({});
+
   return (
     <div className="card my-4 gap-1" style={{ width: "18rem" }}>
-      <img src={imageUrl} />
-        	<button
+			<img src={imageUrl} />
+			<button
                     id="heart"
                     className="btn"
                     onClick={() => {

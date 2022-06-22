@@ -18,9 +18,20 @@ import { EditProfile } from "./pages/edit-profile.js";
 import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
+import { Emailresetsecurity } from "./component/emailresetsecurity";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
+
+import { Offerbook } from "./pages/Offerbook";
+import { AllBooks } from "./pages/allbooks.js";
+import { BookDescription } from "./pages/book-description";
+
 import { ProfileShort } from "./pages/profile-short";
+import { Swapmessage } from "./pages/swapmessage.js";
+import { Swapconfirmation } from "./pages/swapconfirmation.js";
+import { Profilepic } from "./component/profilepic";
+import { Reviewuser } from "./pages/reviewuser";
+
 
 
 //create your first component
@@ -34,11 +45,39 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Switch>
+
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/offerbook">
+              <Offerbook />
+            </Route>
+            <Route exact path="/allbooks">
+              <AllBooks />
+            </Route>
+            <Route exact path="/book/:id">
+              <BookDescription />
+            </Route>
             <Route exact path="/" component={Home}>
               <Home />
             </Route>
+            <Route exact path="/reviewuser">
+              <Reviewuser />
+            </Route>
             <Route exact path="/user/:id">
               <ProfileShort />
+            </Route>
+            <Route exact path="/swapconfirmation">
+              <Swapconfirmation />
+            </Route>
+            <Route exact path="/swapmessage">
+              <Swapmessage />
             </Route>
             <Route exact path="/login" component={Login}>
               <Login />
@@ -46,10 +85,13 @@ const Layout = () => {
             <Route exact path="/signup" component={Signup}>
               <Signup />
             </Route>
+            <Route exact path="/my-profile/:id" component={MyProfile}>
+              <MyProfile />
+            </Route>
             <Route exact path="/my-profile" component={MyProfile}>
               <MyProfile />
             </Route>
-            <Route exact path="/edit-profile/:id">
+            <Route exact path="/edit-profile/:id" component={EditProfile}>
               <EditProfile />
             </Route>
             <Route exact path="/edit-profile" component={EditProfile}>
@@ -70,6 +112,9 @@ const Layout = () => {
             <Route exact path="/offerbook" component={Offerbook}>
               <Offerbook />
             </Route>
+            <Route exact path="/emailtoreset" component={Emailresetsecurity}>
+              <Emailresetsecurity />
+            </Route>
             <Route exact path="/emailtoreset" component={Emailtoreset}>
               <Emailtoreset />
             </Route>
@@ -88,6 +133,9 @@ const Layout = () => {
             <Route exact path="/security" component={Security}>
               <Security />
 
+            </Route>
+            <Route exact path="/profilepic" component={Profilepic}>
+              <Profilepic />
             </Route>
             <Route>
               <h1>Not found!</h1>

@@ -12,7 +12,9 @@ const BookLogicCard = () => {
 
   return (
     <BookCard
-      id={store.book.id}
+
+      id={store.book.book_id}
+
       // book_picture={store.book_picture}
       title={store.book.title}
       author={store.book.author}

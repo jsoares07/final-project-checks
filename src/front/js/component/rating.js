@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaStar } from "react-icons/fa";
-import "./rating.css"
+import "../../styles/rating.css"
+
 
 const starColor = {
   green: "#00FF00",
