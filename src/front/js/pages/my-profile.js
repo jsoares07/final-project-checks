@@ -64,18 +64,12 @@ export const MyProfile = (props) => {
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
-                  <label className="labels"><bold><strong>First Name</strong></bold></label>
-                  <p>{store.user.first_name}</p>
+                  <label className="labels"><bold><strong>Name</strong></bold></label>
+                  <p>{store.user.name}</p>
                 </div>
               </div>
 
-              <div className="row mt-2">
-                <div className="col-md-6">
-                  <label className="labels"><strong>User Name</strong></label>
-                  <p>{store.user.user_name}</p>
-                </div>
-
-              </div>
+            
               <div className="row mt-2">
                 <div className="col-md-12">
                   <label className="labels"><strong>Email</strong></label>

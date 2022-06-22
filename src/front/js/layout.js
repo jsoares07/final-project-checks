@@ -11,6 +11,7 @@ import { EditProfile } from "./pages/edit-profile.js";
 import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
 import { Emailtoreset } from "./component/emailtoreset.js";
+import { Emailresetsecurity } from "./component/emailresetsecurity";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
 import { Offerbook } from "./pages/Offerbook";
@@ -91,6 +92,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/offerbook" component={Offerbook}>
               <Offerbook />
+            </Route>
+            <Route exact path="/emailtoreset" component={Emailresetsecurity}>
+              <Emailresetsecurity />
             </Route>
             <Route exact path="/emailtoreset" component={Emailtoreset}>
               <Emailtoreset />

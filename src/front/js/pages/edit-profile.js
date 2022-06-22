@@ -16,8 +16,7 @@ export const EditProfile = () => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [first_name, setFirstName] = useState();
-  const [user_name, setUserName] = useState();
+  const [name, setName] = useState();
   const [city, setCity] = useState();
   const [picture, setPicture] = useState();
 
@@ -87,26 +86,15 @@ export const EditProfile = () => {
 
               <div className="row mt-3">
                 <div className="col-md-8">
-                  <label className="labels">First Name</label>
+                  <label className="labels">Name</label>
                   <input
                     type="text"
                     className="form-control"
-                    placeholder={store.user.first_name}
+                    placeholder={store.user.name}
                   />
                 </div>
                 </div>
 
-                <div className="row mt-3">
-                <div className="col-md-8">
-                  <label className="labels">User Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder={store.user.user_name}
-                  />
-                </div>
-
-              </div>
 
               <div className="row mt-3">
                 <div className="col-md-8">
