@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Book
+from api.models import db, User, Book, UsersBooks
 from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -169,7 +169,7 @@ def offerbook():
 @api.route("/users", methods=["GET"])
 def getUsers():
     queryUsers = User.query.all()
-    queryUsers = list(map(lambda x: x.listOfUsers(), queryUsers))
+    queryUsers = list(map(lambda x: x.serialize(), queryUsers))
     print(queryUsers)
 
     response_body = {
@@ -182,24 +182,58 @@ def getUsers():
 @api.route("/books", methods=["GET"])
 def getBooks():
     queryBooks = Book.query.all()
-    queryBooks = list(map(lambda x: x.listOfBooks(), queryBooks))
+    queryBooks = list(map(lambda x: x.serializeABook(), queryBooks))
     print(queryBooks)
 
     response_body = {
         "results": queryBooks
     }
 
+    return jsonify(response_body), 200
+
+@api.route("/booksbyuser", methods=["GET"])
+def getUserBooks():
+    queryUserbooks = UsersBooks.query.all()
+    userbooks = list(map(lambda x: x.serialize(), queryUserbooks))
+    print(userbooks)
+
+    response_body = {
+        "results": userbooks
+    }
 
     return jsonify(response_body), 200
+
+
+# @api.route('/booksbyuser', methods=['GET'])
+# def login():
+
+#     request_body = request.get_json(force=True)
+
+
+#     id = request.json.get('id', None)
+
+#     booksByUser = UsersBooks.query.filter_by(user_id=id)
+
+
+#     if booksByUser:
+#             #for para recorrer booksByUser,
+#             # por cada book id, 
+#             #book = Book.query.filter_by(id=book_id).first() 
+#             listOfBooks = []
+#             return {
+#                 "listOfBooks": listOfBooks
+#                 }, 200
+#     else:
+#             return {"error":"user and password not valid"}, 400
 
 # We query one book
 @api.route('/book/<int:book_id>', methods=['GET'])
 def get_book(book_id = None):
-    query_book = Book.query.filter_by(id=book_id).first()
-    if not query_book:
+    book = Book.query.filter_by(id=book_id).first()
+    if not book:
         return jsonify({"message": "No book found!"})
 
-    query_a_book = query_book.listOfBooks()
+    query_a_book = book.serializeABook()
 
 
     print("####################")

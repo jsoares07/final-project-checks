@@ -53,7 +53,7 @@ export const Login = () => {
           <button
             type="submit"
             className="btn btn-primary float-end m-5 "
-            // onClick={() => actions.getUserInformation(id)}
+          // onClick={() => actions.getUserInformation(id)}
           >
             My Profile
           </button>

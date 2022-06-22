@@ -3,13 +3,15 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       URLbase: process.env.BACKEND_URL,
-			user: JSON.parse(localStorage.getItem("user")) || {},
-			isLoggedIn: JSON.parse(localStorage.getItem("user")) || false,
-			token: localStorage.getItem("token") || null,
+      user: JSON.parse(localStorage.getItem("user")) || {},
+      isLoggedIn: JSON.parse(localStorage.getItem("user")) || false,
+      token: localStorage.getItem("token") || null,
       message: null,
+      usersbooks: [],
+      users: [],
       books: [],
       book: [],
-			favorite: [],
+      favorite: [],
       demo: [
         {
           title: "FIRST",
@@ -24,103 +26,123 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
     },
     actions: {
-      
-       // USERS
-      
-      	login: (email, password) => {
-				// fetch
-				const post = {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						email: email,
-						password: password,
-					}),
-				};
 
-				console.log("info login desde las actions", post);
+      // USERS
 
-				fetch(
-					process.env.BACKEND_URL + "/api/login/",
-					post
-				)
+      login: (email, password) => {
+        // fetch
+        const post = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        };
 
-					.then((response) => response.json())
-					.then((result) => {
-						console.log('>>>> result from actions', result)
-						setStore({
-							user: result?.user,
-							token: result?.token,
-							isLoggedIn: true,
-						})
+        console.log("info login desde las actions", post);
+
+        fetch(
+          process.env.BACKEND_URL + "https://3001-heylga-finalproject-xnnelv9b89a.ws-eu47.gitpod.io/api/login/",
+          post
+        )
+
+          .then((response) => response.json())
+          .then((result) => {
+            console.log('>>>> result from actions', result)
+            setStore({
+              user: result?.user,
+              token: result?.token,
+              isLoggedIn: true,
+            })
 
 
-						localStorage.setItem("user", JSON.stringify(result.user))
-						localStorage.setItem("token", result.token)
+            localStorage.setItem("user", JSON.stringify(result.user))
+            localStorage.setItem("token", result.token)
 
-						console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
-					})
-					.catch((error) => console.log("error", error));
-			},
+            console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
+          })
+          .catch((error) => console.log("error", error));
+      },
 
-			logout: () => {
+      logout: () => {
 
-				setStore({
-					user: null,
-					isLoggedIn: false,
-					token: null,
-				})
+        setStore({
+          user: null,
+          isLoggedIn: false,
+          token: null,
+        })
 
-				localStorage.removeItem("token")
+        localStorage.removeItem("token")
         localStorage.removeItem("email")
-				localStorage.removeItem("user")
-				localStorage.removeItem("name")
-				localStorage.removeItem("city")
+        localStorage.removeItem("user")
+        localStorage.removeItem("name")
+        localStorage.removeItem("city")
 
-			},
+      },
 
-		editUserInformation: () => {
+      editUserInformation: () => {
 
-				const store = getStore();
+        const store = getStore();
 
-				fetch(
-					process.env.BACKEND_URL + "/api/edit-profile/" , {
-						method: "PUT",
-						headers: {
-							"Content-Type": "application/json",
-							 Accept: "application/json",
-						},
-						body: JSON.stringify(),
-					})
-					if (response.ok) {
-						alert("The info has been saved");
-					  } else {
-						alert("The info has NOT been saved");
-					  }
-			},
+        fetch(
+          process.env.BACKEND_URL + "/api/edit-profile/", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(),
+        })
+        if (response.ok) {
+          alert("The info has been saved");
+        } else {
+          alert("The info has NOT been saved");
+        }
+      },
 
 
-      
-			addFavorite: item => {
-				const store = getStore();
-				const validate = store.favorite.includes(item);
-				if (store.favorite == [] || !validate) {
-					setStore({ favorite: [...store.favorite, item] });
-				}
-			},
 
-			deleteFavorite: id => {
-				const store = getStore();
-				const updatedList = [...store.favorite];
-				updatedList.splice(id, 1);
-				setStore({ favorite: [...updatedList] });
-			},
-      
+      addFavorite: item => {
+        const store = getStore();
+        const validate = store.favorite.includes(item);
+        if (store.favorite == [] || !validate) {
+          setStore({ favorite: [...store.favorite, item] });
+        }
+      },
+
+      deleteFavorite: id => {
+        const store = getStore();
+        const updatedList = [...store.favorite];
+        updatedList.splice(id, 1);
+        setStore({ favorite: [...updatedList] });
+      },
+
       // BOOKS
+      fetchUsersBooks: () => {
+        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/booksbyuser", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((promiseResponse) => promiseResponse.json())
+          .then((data) => setStore({ usersbooks: data.results }));
+      },
+      fetchUsers: () => {
+        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/users", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((promiseResponse) => promiseResponse.json())
+          .then((data) => setStore({ users: data.results }));
+      },
       fetchBooks: () => {
-        fetch(process.env.BACKEND_URL + "/api/books", {
+        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/books", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

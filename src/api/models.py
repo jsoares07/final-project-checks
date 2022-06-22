@@ -61,8 +61,8 @@ class User(db.Model):
             "city": self.city,
             # "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
-            "owner_book": list(map(lambda book: book.serialize(), self.owner_book)),
-            "users_books": list(map(lambda book: book.serialize(), self.users_books))
+            # "owner_book": list(map(lambda book: book.serialize(), self.owner_book)),
+            # "users_books": list(map(lambda book: book.serialize(), self.users_books))
 
             # "user_name": self.user_name,
             # "first_name": self.first_name,
@@ -88,11 +88,6 @@ class User(db.Model):
 
         return 'success, el usuario ha sido creado'
 
-    def listOfUsers(self):
-         return {
-            "id": self.id,
-            "name": self.name,
-        }
 
 
 
@@ -115,7 +110,7 @@ class Book(db.Model):
         db.session.commit()
         return "The book has been added"
 
-    def listOfBooks(self):
+    def serializeABook(self):
          return {
             "id": self.id,
             "title": self.title,
@@ -133,6 +128,15 @@ class UsersBooks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     book_id = db.Column(db.Integer(), db.ForeignKey('book.id'))
+
+    def serialize(self):
+         return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "book_id": self.book_id,
+        }
+
+
  
 # class UsersBooks(db.Model):
 #     __tablename__="users_books"
