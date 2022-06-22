@@ -11,10 +11,16 @@ from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy()
 
-# user_book = db.Table("user_book",
-#     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-#     db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
-# )
+ # user_book = db.Table("user_book",
+ #  db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+ #   db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
+ # )
+
+favourites = db.Table("user_book",
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+    db.Column('book_id', db.Integer, db.ForeignKey('book.id'), primary_key=True)
+)
+
 
 class User(db.Model):
 
@@ -23,7 +29,12 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
     city = db.Column(db.String(120), unique=False)
-    ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
+    # ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
+    
+    Book_Owner = db.relationship("Book", backref="Owner", lazy=True)
+    favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
+
+
 
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
@@ -46,6 +57,9 @@ class User(db.Model):
             "email": self.email,
             "name": self.name,
             "city": self.city,
+            "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
+            "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
+
 
             # "user_name": self.user_name,
             # "first_name": self.first_name,
@@ -87,6 +101,7 @@ class Book(db.Model):
     language = db.Column(db.String(120), unique=False, nullable=False)
     description = db.Column(db.String(1200), unique=False, nullable=False)
     # book_picture = db.Column(db.Text, unique=False, nullable=False)
+    owner_user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     
     def __repr__(self):
         return f'<Book {self.id}>'
@@ -123,7 +138,7 @@ class UsersBooks(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     user_id = db.Column(db.String(120), nullable=False)
 #     favouritetype = db.Column(db.String(120), nullable=False)
-#     favourite_book = db.Column(db.String(120), db.ForeignKey(Parent.id))
+#     favourite_book = db.Column(db.String(120), db.ForeignKey(User.id))
 #     favourite_id = db.Column(db.String(120), nullable=False)
 
 #     def __repr__(self):
