@@ -11,15 +11,15 @@ from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy()
 
- # user_book = db.Table("user_book",
- #  db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
- #   db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
- # )
+user_book = db.Table("user_book",
+  db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+  db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
+ )
 
-favourites = db.Table("user_book",
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('book_id', db.Integer, db.ForeignKey('book.id'), primary_key=True)
-)
+#favourites = db.Table("users_book",
+   # db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+   # db.Column('book_id', db.Integer, db.ForeignKey('book.id'), primary_key=True)
+#)
 
 
 class User(db.Model):
@@ -31,8 +31,11 @@ class User(db.Model):
     city = db.Column(db.String(120), unique=False)
     # ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
     
-    Book_Owner = db.relationship("Book", backref="Owner", lazy=True)
-    favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
+    # owner_book = db.relationship("Book", backref="Owner", lazy=True)
+    # favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
+
+    owner_book = db.relationship("Book", backref="Owner", lazy=True)
+    users_books = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
 
 
 
@@ -57,9 +60,10 @@ class User(db.Model):
             "email": self.email,
             "name": self.name,
             "city": self.city,
-            "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
-            "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
-
+            # "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
+            # "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
+            "owner_book": list(map(lambda book: book.serialize(), self.owner_book)),
+            "users_books": list(map(lambda book: book.serialize(), self.users_books))
 
             # "user_name": self.user_name,
             # "first_name": self.first_name,
@@ -90,6 +94,7 @@ class User(db.Model):
             "id": self.id,
             "name": self.name,
         }
+
 
 
 class Book(db.Model):
@@ -129,8 +134,14 @@ class UsersBooks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     book_id = db.Column(db.Integer(), db.ForeignKey('book.id'))
-
-
+ 
+# class UsersBooks(db.Model):
+#     __tablename__="users_books"
+#     id = db.Column(db.Integer, primary_key=True)
+#     user_id = db.Column(db.String(120), nullable=False)
+#     user_id = db.Column(db.Integer(), db.ForeignKey('book.id'))
+#     book_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+ 
 
 # class Favourites(db.Model):
 #     __tablename__ = 'favourites'
