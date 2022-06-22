@@ -20,6 +20,7 @@ export const Login = () => {
 
 	const { id } = useParams()
 
+
 	const onTypeEmail = (e) => {
 		console.log(e.target.value);
 		setEmail(e.target.value);
