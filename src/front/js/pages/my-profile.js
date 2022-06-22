@@ -118,6 +118,15 @@ export const MyProfile = (props) => {
                 <label className="labels"><strong>My Books</strong></label>
                 <p>Book #1</p>
               </div>
+
+              <Link to={`/offerbook`}>
+                  <button
+                    type="submit"
+                    className="btn btn-primary m-5 "
+                   >
+                   Add Book
+                   </button>
+              </Link>
               <hr />
               <div className="col-md-12">
                 <label className="labels"><strong>My Swapped Books</strong></label>
