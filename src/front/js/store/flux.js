@@ -30,10 +30,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ books: data.results }));
       },
 
-      fetchBook: (id) => {
+      fetchBook: (book_id) => {
         console.log("fechtBook");
         const store = getStore();
-        fetch(process.env.BACKEND_URL + "/api/book/" + id, {
+        fetch(process.env.BACKEND_URL + "/api/book/" + book_id, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
