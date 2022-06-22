@@ -21,23 +21,31 @@ def signup():
 
     request_body = request.get_json(force=True)
 
+    # hashed_password = generate_password_hash(data['password'], method='dfgdhjkg54654dsfd788gfhgf')
+
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-    user_name = request.json.get('user_name', None)
-    first_name = request.json.get('first_name', None)
+    name = request.json.get('name', None)
     city = request.json.get('city', None)
 
-    hashed_password = generate_password_hash(password)
+
+    # user_name = request.json.get('user_name', None)
+    # first_name = request.json.get('first_name', None)
+    city = request.json.get('city', None)
+
+    # hashed_password = generate_password_hash(password)
 
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
 
     user = User(
         email = email,
-        password = hashed_password,
-        user_name = user_name,
-        first_name = first_name,
+        password = password,
+        name = name,
         city = city,
+        # password = hashed_password,
+        # user_name = user_name,
+        # first_name = first_name,
     )
 
     answer = user.create()
@@ -48,6 +56,53 @@ def signup():
      }
 
     return jsonify(response_body), 200
+    
+    
+@api.route('/login', methods=['POST'])
+def login():
+
+    request_body = request.get_json(force=True)
+
+
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+
+    found_user = User.query.filter_by(email=email).first()
+
+
+    if found_user and found_user.password == password:
+        token = create_access_token(identity=email)
+        return {
+            "message": "User logged in",
+            "token": token,
+            "user": found_user.serialize()
+            }, 200
+    else:
+        return {"error":"user and password not valid"}, 400
+
+
+      
+# We query one user
+@api.route('/login/<int:id>', methods=['POST'])
+def get_user(id = None):
+    query_user = User.query.filter_by(id=id).first()
+    if not query_user:
+        return jsonify({"message": "No user found!"})
+
+    query_a_user = query_user.serialize()
+
+
+    print("####################")
+    print(query_a_user)
+    print("####################")
+
+    response_body = {
+        "results": query_a_user
+    }
+
+
+    return jsonify(response_body), 200
+    
     
 @api.route('/login', methods=['POST'])
 def login():
@@ -137,6 +192,18 @@ def offerbook():
 
     return jsonify(response_body), 200
 
+@api.route("/users", methods=["GET"])
+def getUsers():
+    queryUsers = User.query.all()
+    queryUsers = list(map(lambda x: x.listOfUsers(), queryUsers))
+    print(queryUsers)
+
+    response_body = {
+        "results": queryUsers
+    }
+
+    return jsonify(response_body), 200
+
 # We query all books
 @api.route("/books", methods=["GET"])
 def getBooks():
@@ -152,9 +219,9 @@ def getBooks():
     return jsonify(response_body), 200
 
 # We query one book
-@api.route('/book/<int:id>', methods=['GET'])
-def get_book(id = None):
-    query_book = Book.query.filter_by(id=id).first()
+@api.route('/book/<int:book_id>', methods=['GET'])
+def get_book(book_id = None):
+    query_book = Book.query.filter_by(id=book_id).first()
     if not query_book:
         return jsonify({"message": "No book found!"})
 
@@ -172,3 +239,27 @@ def get_book(id = None):
         
     return jsonify(response_body), 200
 
+
+# We query one book
+# @api.route('<int:user_id>/book/<int:book_id>', methods=['GET'])
+# def get_book(book_id = None, user_id = None):
+#     query_book = Book.query.filter_by(id=book_id).first()
+#     query_book = User.query.filter_by(id=user_id).first()
+#     if not query_book:
+#         return jsonify({"message": "No book found!"})
+
+#     query_a_book = query_book.listOfBooks()
+
+
+#     print("####################")
+#     print(query_a_book)
+#     print("####################")
+
+#     response_body = {
+#         "results": query_a_book
+#     }
+
+        
+#     return jsonify(response_body), 200
+
+ 
