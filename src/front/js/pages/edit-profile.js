@@ -173,12 +173,12 @@ export const EditProfile = () => {
               </div>
 
 
-              <Link to="/security">
+              {/* <Link to="/security">
               <button type="button" class="btn btn-outline-secondary my-3">Change Password</button>
-              </Link>
+              </Link> */}
               <p>
                 Looking to manage account security settings? You can find them
-                in the <a href="#">Password and authentication</a> page.
+                in the <a href="#"><Link to="/security">Password and authentication</Link></a> page.
               </p>
             </div>
           </div>

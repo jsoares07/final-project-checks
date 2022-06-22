@@ -17,7 +17,10 @@ import { Offerbook } from "./pages/Offerbook";
 import { AllBooks } from "./pages/allbooks.js";
 import { BookDescription } from "./pages/book-description";
 import { ProfileShort } from "./pages/profile-short";
+import { Swapmessage } from "./pages/swapmessage.js";
+import { Swapconfirmation } from "./pages/swapconfirmation.js";
 import { Profilepic } from "./component/profilepic";
+import { Reviewuser } from "./pages/reviewuser";
 
 
 //create your first component
@@ -53,8 +56,17 @@ const Layout = () => {
             <Route exact path="/" component={Home}>
               <Home />
             </Route>
+            <Route exact path="/reviewuser">
+              <Reviewuser />
+            </Route>
             <Route exact path="/user/:id">
               <ProfileShort />
+            </Route>
+            <Route exact path="/swapconfirmation">
+              <Swapconfirmation />
+            </Route>
+            <Route exact path="/swapmessage">
+              <Swapmessage />
             </Route>
             <Route exact path="/login" component={Login}>
               <Login />

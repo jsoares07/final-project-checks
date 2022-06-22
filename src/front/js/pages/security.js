@@ -28,7 +28,7 @@ export const Security = () => {
                   </p>
                   <div className="col-md-8">
                     <h5>Current password</h5>
-                    <input type="text" className="form-control" value="" />
+                    <input type="text" className="form-control" />
                   </div>
                   <p>
                     Your password must be at least 8 characters and should
@@ -38,22 +38,25 @@ export const Security = () => {
                   </p>
                   <div className="col-md-8">
                     <h5>New password</h5>
-                    <input type="text" className="form-control" value="" />
+                    <input type="text" className="form-control" />
                   </div>
                   <div className="col-md-8">
                     <h5>Repeat password</h5>
-                    <input type="text" className="form-control" value="" />
+                    <input type="text" className="form-control"  />
                   </div>
                 </div>
               </div>
             </div>
             <div className="mt-5 mb-5 text-center">
+
+            <Link to="/emailtoreset">
               <button
                 className="btn btn-primary edit-profile-button"
                 type="submit"
               >
                 Changes Password
               </button>
+              </Link>
 
               <Link to="/edit-profile">
                 <button className="btn btn-primary justify-content-center">
