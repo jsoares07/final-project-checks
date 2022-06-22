@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import ImageUploading from 'react-images-uploading';
 import { Link } from "react-router-dom";
 import "../../styles/signup.css";
 
@@ -11,8 +12,8 @@ import Footer from "./../component/footer";
 export const Signup = () => {
   const { store, actions } = useContext(Context);
 
-  const URLbase =
-    "https://3001-heylga-finalproject-joe32lf4ytl.ws-eu47.gitpod.io";
+
+  const URLbase = process.env.BACKEND_URL;
 
 
   const [email, setEmail] = useState();
@@ -50,10 +51,8 @@ export const Signup = () => {
     }
   };
 
- 
 
-
-  const onFetchSignUp = (email, password, firstName, userName, city) => {
+  const onFetchSignUp = (email, password, first_name, user_name, city) => {
     // fetch
     const post = {
       method: "POST",
@@ -63,10 +62,10 @@ export const Signup = () => {
       body: JSON.stringify({
         email: email,
         password: password,
-        firstName: firstName,
-        userName: userName,
+        first_name: first_name,
+        user_name: user_name,
         city: city,
-        picture: picture,
+        // picture: picture,
       }),
     };
 
@@ -114,7 +113,7 @@ export const Signup = () => {
 
   const onTypePicture = (e) => {
     console.log(e.target.value);
-    setPicture(e.target.value);
+    setPicture(e.target.files[0]);
   };
 
 

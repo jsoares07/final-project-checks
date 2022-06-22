@@ -7,38 +7,24 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 # from models import User, Book
 
-
-
+from werkzeug.security import generate_password_hash
+# check_password_hash
 
 api = Blueprint('api', __name__)
 
-# Create a route to authenticate your users and return JWTs. The
-# create_access_token() function is used to actually generate the JWT.
-
-# @api.route("/token", methods=["POST"])
-# def create_token():
-#     email = request.json.get("email", None)
-#     password = request.json.get("password", None)
-#     if email != "test" or password != "test":
-#         return jsonify({"msg": "Bad email or password"}), 401
-
-#     access_token = create_access_token(identity=email)
-#     return jsonify(access_token=access_token) 
-
-
-@api.route('/hello', methods=['GET'])
-def hello():
-    print('hello world')
-    return 'valid response'
 
 @api.route('/signup', methods=['POST'])
 def signup():
 
     request_body = request.get_json(force=True)
 
+    # hashed_password = generate_password_hash(data['password'], method='dfgdhjkg54654dsfd788gfhgf')
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
+    user_name = request.json.get('user_name', None)
+    first_name = request.json.get('first_name', None)
+    city = request.json.get('city', None)
 
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
@@ -46,6 +32,9 @@ def signup():
     user = User(
         email = email,
         password = password,
+        user_name = user_name,
+        first_name = first_name,
+        city = city,
     )
 
     answer = user.create()
@@ -58,7 +47,7 @@ def signup():
     return jsonify(response_body), 200
     
 @api.route('/login', methods=['POST'])
-def loginn():
+def login():
 
     request_body = request.get_json(force=True)
 
@@ -66,105 +55,85 @@ def loginn():
     email = request.json.get('email', None)
     password = request.json.get('password', None)
 
-    access_token = create_access_token(identity=email)
-    print('hola me estan llamando', request_body, access_token)
-
-    user = User(
-        email = email,
-        password = password,
-    )
+    found_user = User.query.filter_by(email=email).first()
 
 
-    response_body = {
-         "message": "User logged in",
-         "access_token": access_token,
-         "user": user.serialize()
-     }
-
-    return jsonify(response_body), 200
-    
-
-
-@api.route('/login_malo', methods=['POST'])
-def login_user(email, password):
-
-    # email = request.json.get("email", None)
-    # password = request.json.get("password", None)
-
-    # print('email', email, 'password', password)
-
-    # if email != "test" or password != "test":
-    #     return {"error": "Wrong email or password"}, 400
-
-    # # access_token = create_access_token(identity=email)
-    # # response = {"access_token":access_token}
-    # return response.jsonify({"msg": "user logged in"}), 200
-
-    request_body = request.get_json(force=True)
+    if found_user and found_user.password == password:
+        token = create_access_token(identity=email)
+        return {
+            "message": "User logged in",
+            "token": token,
+            "user": found_user.serialize()
+            }, 200
+    else:
+        return {"error":"user and password not valid"}, 400
 
 
-    email = request.json.get('email', None)
-    password = request.json.get('password', None)
+# We query one user
+@api.route('/login/<int:id>', methods=['POST'])
+def get_user(id = None):
+    query_user = User.query.filter_by(id=id).first()
+    if not query_user:
+        return jsonify({"message": "No user found!"})
 
-    access_token = create_access_token(identity=email)
-    print('hola me estan llamando', request_body, access_token)
+    query_a_user = query_user.serialize()
 
-    user = User(
-        email = email,
-        password = password,
-    )
 
-    user.create()
+    print("####################")
+    print(query_a_user)
+    print("####################")
 
     response_body = {
-         "message": "User created",
-         "access_token": access_token,
-         "user": user.serialize()
-     }
+        "results": query_a_user
+    }
 
     return jsonify(response_body), 200
-    
 
-# @api.route('/signup', methods=['GET','POST'])
-# def register_user(email, password):
+# @api.route('/edit-profile/<int:id>', methods=['PUT'])
+# def edit_user():
 
-#     email = request.json.get("email", None)
-#     password = request.json.get("password", None)
-
-#     #Now we need to create a list of information which should be passed to the DataBase
-#     #We dont need to mention ID here, because its set up automatically
-#     our_user = User (
-
-#         email = email,
-#         password = password,
-#         is_active = False,
-
-#     )
-
-#     #save the user (from models.py)
-#     our_user.save_user()
-    
-#     return jsonify(our_user.serialize())
+#     id = get_jwt_identity()
+#     userId = User.query.get(id)
 
 
-
-# @api.route('/book', methods=['POST'])
-# def register_book():
-
-#     response_body = {
-#         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-#     }
-
-#     return jsonify(response_body), 200
-
-#     #save the user (from models.py)
-#     our_user.save_book()
-    
-#     return jsonify(our_book.serialize())
+#     email = request.json.get('email', None)
+#     password = request.json.get('password', None)
+#     user_name = request.json.get('user_name', None)
+#     first_name = request.json.get('first_name', None)
+#     city = request.json.get('city', None)
+#     country = request.json.get('country', None)
+#     mobile = request.json.get('mobile', None)
+#     birthday = request.json.get('birthday', None)
+#     address = request.json.get('address', None)
+#     postcode = request.json.get('postcode', None)
+#     state = request.json.get('state', None)
 
 
+#     if found_user and found_user.password == password:
+#         token = create_access_token(identity=email)
 
+#     if  (email or password or user_name or first_name or city or country or mobile or birthday or address or postcode or state ):
+#             if email != None:
+#                 userId.email = email
+#             if password != None:  
+#                 userId.password = password
+#             if user_name != None:
+#                 userId.user_name = user_name
+#             if first_name != None:
+#                 userId.first_name = first_name
+#             if country !=None:
+#                 userId.country = country
+#             if mobile != None:
+#                 userId.mobile = mobile
+#             if birthday != None:
+#                 userId.birthday = birthday
+#             if address != None:
+#                 userId.address = address
+#             if postcode != None:
+#                 userId.postcode = postcode   
+#             if state != None:
+#                 userId.state = state  
 
-
-
-
+#             db.session.commit()
+            
+#             return jsonify({'results': userId.serialize()}),200
