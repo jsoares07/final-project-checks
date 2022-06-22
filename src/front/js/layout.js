@@ -8,6 +8,10 @@ import { Login } from "./pages/login.js";
 import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
 import { Offerbook } from "./pages/Offerbook";
+
+import { AllBooks } from "./pages/allbooks.js";
+import { BookDescription } from "./pages/book-description";
+
 import { Other_users_profile } from "./pages/other-users-profile"
 import { Reviewuser } from "./pages/Reviewuser"
 import { EditProfile } from "./pages/edit-profile.js";
@@ -17,6 +21,7 @@ import { Emailtoreset } from "./component/emailtoreset.js";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
 import { ProfileShort } from "./pages/profile-short";
+
 
 //create your first component
 const Layout = () => {
@@ -51,6 +56,14 @@ const Layout = () => {
               <EditProfile />
             </Route>
 
+            <Route exact path="/allbooks">
+              <AllBooks />
+            </Route>
+
+            <Route exact path="/book/:id">
+              <BookDescription />
+            </Route>
+
             <Route exact path="/forgetpassword" component={Forgetpassword}>
               <Forgetpassword />
             </Route>
@@ -74,6 +87,7 @@ const Layout = () => {
 
             <Route exact path="/security" component={Security}>
               <Security />
+
             </Route>
             <Route>
               <h1>Not found!</h1>
