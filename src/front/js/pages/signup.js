@@ -18,10 +18,9 @@ export const Signup = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [repeatPassword, setRepeatPassword] = useState();
-  const [firstName, setFirstName] = useState();
-  const [userName, setUserName] = useState();
+  const [name, setName] = useState();
   const [city, setCity] = useState();
-  const [picture, setPicture] = useState();
+  // const [picture, setPicture] = useState();
 
 
   const onSubmitClicked = () => {
@@ -35,11 +34,11 @@ export const Signup = () => {
     // city no vacio
     // password === repeatpassword
 
-    if (email && password && repeatPassword && firstName && userName && city) {
+    if (email && password && name && city) {
     // if (email && password && repeatPassword) {
-      if (password === repeatPassword) {
+      if (password) {
         // hacemos el fetch
-        onFetchSignUp(email, password, firstName, userName, city);
+        onFetchSignUp(email, password, name, city);
       } else {
         // las pass tienen que coincidir
         alert("the passwords have to be iqual");
@@ -51,7 +50,7 @@ export const Signup = () => {
   };
 
 
-  const onFetchSignUp = (email, password, first_name, user_name, city) => {
+  const onFetchSignUp = (email, password, name, city) => {
     // fetch
     const post = {
       method: "POST",
@@ -61,8 +60,7 @@ export const Signup = () => {
       body: JSON.stringify({
         email: email,
         password: password,
-        first_name: first_name,
-        user_name: user_name,
+        name: name,
         city: city,
         // picture: picture,
       }),
@@ -94,14 +92,9 @@ export const Signup = () => {
     setRepeatPassword(e.target.value);
   };
 
-  const OnTypeFirstName = (e) => {
+  const OnTypeName = (e) => {
     console.log(e.target.value);
-    setFirstName(e.target.value);
-  };
-
-  const OnTypeUserName = (e) => {
-    console.log(e.target.value);
-    setUserName(e.target.value);
+    setName(e.target.value);
   };
 
   const onTypeCity = (e) => {
@@ -109,10 +102,10 @@ export const Signup = () => {
     setCity(e.target.value);
   };
 
-  const onTypePicture = (e) => {
-    console.log(e.target.value);
-    setPicture(e.target.files[0]);
-  };
+  // const onTypePicture = (e) => {
+  //   console.log(e.target.value);
+  //   setPicture(e.target.files[0]);
+  // };
 
 
   return (
@@ -124,7 +117,7 @@ export const Signup = () => {
 
         <div className="col-md-12 border-right border border-dark p-5">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 pt-5">
               <div className="Form" action="/signup" method="post">
                 <label for="exampleInputEmail1" className="form-label">
                   Email address
@@ -151,49 +144,19 @@ export const Signup = () => {
                   onChange={onTypePassword}
                 />
 
-                <label for="exampleInputPassword1" className="form-label">
-                  Repeat Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Repeat Password"
-                  id="exampleInputPassword1"
-                  value={repeatPassword}
-                  onChange={onTypeRepeatPassword}
-                />
-
                 <label for="firstname" className="form-label">
-                  First Name
+                  Your Name
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="First name"
-                  aria-label="First name"
-                  id="firstname"
-                  value={firstName}
-                  onChange={OnTypeFirstName}
+                  placeholder="Name"
+                  aria-label="Name"
+                  id="name"
+                  value={name}
+                  onChange={OnTypeName}
                 />
 
-                {/* <label for="lastname" className="form-label">Last Name</label>
-                            <input type="text" className="form-control" placeholder="Last name" aria-label="Last name" id="lastname" /> */}
-
-                <label for="username" className="form-label">
-                  User Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="User Name"
-                  aria-label="User Name"
-                  id="username"
-                  value={userName}
-                  onChange={OnTypeUserName}
-                />
-
-                {/* <label for="inputAddress2" className="form-label">Address 2</label>
-                            <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" /> */}
 
                 <label for="inputCity" className="form-label">
                   City
@@ -207,26 +170,14 @@ export const Signup = () => {
                   onChange={onTypeCity}
                 ></input>
 
-                {/* <label for="inputState" className="form-label">State</label>
-                            <select id="inputState" className="form-select">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                            </select> */}
-
-                {/* <label for="inputZip" className="form-label">Zip</label>
-                            <input type="text" className="form-control" id="inputZip" /> */}
-
-                {/* <form action="/action_page.php">
-                            <label for="birthday">Date Of Birth</label>
-                            <br></br>
-                            </form>  */}
               </div>
             </div>
 
             <div className="col-md-6">
               <div className="wrapper">
                 <input type="file" className="my_file mt-1"
-                onChange={onTypePicture}>
+                // onChange={onTypePicture}
+                >
                 </input>
               </div>
 

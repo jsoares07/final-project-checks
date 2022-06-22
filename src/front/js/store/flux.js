@@ -74,10 +74,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 
 				localStorage.removeItem("token")
+        localStorage.removeItem("email")
 				localStorage.removeItem("user")
-				localStorage.removeItem("user_name")
-				localStorage.removeItem("first_name")
-				localStorage.removeItem("user_name")
+				localStorage.removeItem("name")
 				localStorage.removeItem("city")
 
 			},

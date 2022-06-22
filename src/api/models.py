@@ -22,7 +22,7 @@ class User(db.Model):
     email = db.Column(db.String(120))
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
-    # city = db.Column(db.String(120))
+    city = db.Column(db.String(120), unique=False)
     ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
 
     # country = db.Column(db.String(120))

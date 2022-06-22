@@ -27,11 +27,9 @@ def signup():
     password = request.json.get('password', None)
     name = request.json.get('name', None)
     city = request.json.get('city', None)
-
-
     # user_name = request.json.get('user_name', None)
     # first_name = request.json.get('first_name', None)
-    city = request.json.get('city', None)
+
 
     # hashed_password = generate_password_hash(password)
 
@@ -104,30 +102,6 @@ def get_user(id = None):
     return jsonify(response_body), 200
     
     
-@api.route('/login', methods=['POST'])
-def login():
-
-    request_body = request.get_json(force=True)
-
-
-    email = request.json.get('email', None)
-    password = request.json.get('password', None)
-
-    found_user = User.query.filter_by(email=email).first()
-
-
-    if found_user and found_user.password == password:
-        token = create_access_token(identity=email)
-        return {
-            "message": "User logged in",
-            "token": token,
-            "user": found_user.serialize()
-            }, 200
-    else:
-        return {"error":"user and password not valid"}, 400
-
-
-
 @api.route('/edit-profile/<int:id>', methods=['PUT'])
 def editprofile(id):
 
