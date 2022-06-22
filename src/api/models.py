@@ -6,7 +6,9 @@ from sqlalchemy import  Table, Column, ForeignKey, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+
 from flask_admin.contrib.sqla import ModelView
+
 
 
 db = SQLAlchemy()
@@ -24,8 +26,10 @@ user_book = db.Table("user_book",
 
 class User(db.Model):
 
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120))
+
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
     city = db.Column(db.String(120), unique=False)
@@ -75,20 +79,33 @@ class User(db.Model):
             # "state": self.state,
             # do not serialize the password, its a security breach
         }
-
-    def create(self):
+      
+        def create(self):
         # este usuario existe?
         # si? retorna, error, el usuario ya existe
 
         # return 'error, el usuario ya existe'
         
         # no? crealo
+            db.session.add(self)
+            db.session.commit()
+            return 'success, el usuario ha sido creado'
+
+class Book(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), unique=False, nullable=False)
+    author = db.Column(db.String(120), unique=False, nullable=False)
+    publisher = db.Column(db.String(120), unique=False, nullable=False)
+    genre = db.Column(db.String(120), unique=False, nullable=False)
+    language = db.Column(db.String(120), unique=False, nullable=False)
+    description = db.Column(db.String(1200), unique=False, nullable=False)
+    # book_picture = db.Column(db.Text, unique=False, nullable=False)  
+ 
+    def addBook(self):
         db.session.add(self)
         db.session.commit()
 
         return 'success, el usuario ha sido creado'
-
-
 
 
 class Book(db.Model):
@@ -111,6 +128,7 @@ class Book(db.Model):
         return "The book has been added"
 
     def serializeABook(self):
+
          return {
             "id": self.id,
             "title": self.title,
@@ -122,6 +140,7 @@ class Book(db.Model):
             # "book_picture": self.book_picture,
         }
     
+
 
 class UsersBooks(db.Model):
     __tablename__="users_books"
@@ -145,6 +164,7 @@ class UsersBooks(db.Model):
 #     user_id = db.Column(db.Integer(), db.ForeignKey('book.id'))
 #     book_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
  
+
 
 # class Favourites(db.Model):
 #     __tablename__ = 'favourites'

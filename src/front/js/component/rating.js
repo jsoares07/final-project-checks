@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import "../../styles/rating.css"
 
+
 const starColor = {
   green: "#00FF00",
   grey: "#A9A9A9"

@@ -6,8 +6,6 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap
 
 //LIBRERIA BOOTSTRAP FOR REACT
 
-
-
 function Navbarlogin() {
     const { store, actions } = useContext(Context);
     const [dropdown, setDropdown] = useState(false);

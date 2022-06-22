@@ -2,7 +2,9 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
+
 from api.models import db, User, Book, UsersBooks
+
 from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -11,6 +13,7 @@ from flask_jwt_extended import create_access_token
 # from models import User, Book
 
 from werkzeug.security import generate_password_hash
+
 
 
 api = Blueprint('api', __name__)
@@ -113,6 +116,7 @@ def editprofile(id):
     first_name = request.json.get('first_name', None)
     city = request.json.get('city', None)
 
+
     if (email or password or user_name or first_name or city):
             if email != None:
                 user.email = email
@@ -166,6 +170,7 @@ def offerbook():
 
     return jsonify(response_body), 200
 
+
 @api.route("/users", methods=["GET"])
 def getUsers():
     queryUsers = User.query.all()
@@ -178,11 +183,14 @@ def getUsers():
 
     return jsonify(response_body), 200
 
+
 # We query all books
 @api.route("/books", methods=["GET"])
 def getBooks():
     queryBooks = Book.query.all()
+
     queryBooks = list(map(lambda x: x.serializeABook(), queryBooks))
+
     print(queryBooks)
 
     response_body = {
@@ -236,6 +244,7 @@ def get_book(book_id = None):
     query_a_book = book.serializeABook()
 
 
+
     print("####################")
     print(query_a_book)
     print("####################")
@@ -246,7 +255,6 @@ def get_book(book_id = None):
 
         
     return jsonify(response_body), 200
-
 
 # We query one book
 # @api.route('<int:user_id>/book/<int:book_id>', methods=['GET'])
@@ -270,4 +278,4 @@ def get_book(book_id = None):
         
 #     return jsonify(response_body), 200
 
- 
+

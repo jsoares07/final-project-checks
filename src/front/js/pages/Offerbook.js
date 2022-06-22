@@ -122,6 +122,7 @@ export const Offerbook = () => {
 
   return (
     <div>
+
       <Navbarlogin />
       <div className=" container card">
         <div className="card-body">

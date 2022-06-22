@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       URLbase: process.env.BACKEND_URL,
+
       user: JSON.parse(localStorage.getItem("user")) || {},
       isLoggedIn: JSON.parse(localStorage.getItem("user")) || false,
       token: localStorage.getItem("token") || null,
@@ -12,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       books: [],
       book: [],
       favorite: [],
+
       demo: [
         {
           title: "FIRST",
@@ -26,6 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
     },
     actions: {
+
 
       // USERS
 
@@ -152,10 +155,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ books: data.results }));
       },
 
+
       fetchBook: (book_id) => {
         console.log("fechtBook");
         const store = getStore();
         fetch(process.env.BACKEND_URL + "/api/book/" + book_id, {
+
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -179,6 +184,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
+
+
 
 
 
