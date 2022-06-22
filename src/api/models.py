@@ -48,16 +48,16 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
       
-          def create(self):
+        def create(self):
         # este usuario existe?
         # si? retorna, error, el usuario ya existe
 
         # return 'error, el usuario ya existe'
         
         # no? crealo
-        db.session.add(self)
-        db.session.commit()
-        return 'success, el usuario ha sido creado'
+            db.session.add(self)
+            db.session.commit()
+            return 'success, el usuario ha sido creado'
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
