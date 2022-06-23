@@ -9,7 +9,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 export const EditProfile = () => {
   const { store, actions } = useContext(Context);
-  const [info, setInfo] = useState({});
+  const [userobject, setUserObject] = useState({});
 
 
   const URLbase = process.env.BACKEND_URL;
@@ -30,31 +30,25 @@ export const EditProfile = () => {
   // };
 
 
-  // const onFetchUpdate = (email, password, user_name, first_name, city) => {
-  //   // fetch
+  // const onFetchUpdate = (user) => {
+  //   fetch
   //   const put = {
   //     method: "PUT",
   //     headers: {
   //       "Content-Type": "application/json",
   //     },
-  //     body: JSON.stringify({
-  //       email: email,
-  //       password: password,
-  //       first_name: first_name,
-  //       user_name: user_name,
-  //       city: city,
-  //     }),
+  //     body: JSON.stringify(user),
   //   };
 
   //   console.log("updating info", put);
 
   //   fetch(
-  //     `${URLbase}/api/edit-profile/` + id,
+  //     `${URLbase}/api/edit-profile/` + user.id,
   //     put
   //   )
 
-  //     .then((response) => response.text())
-  //     .then((result) => console.log(result))
+  //     .then((response) => response.json())
+  //     .then((data) => setUserObject(data))
   //     .catch((error) => console.log("error", error));
   // };
 
@@ -188,7 +182,7 @@ export const EditProfile = () => {
                   event.preventDefault();
                   actions.editUserInformation();
                 }}
-                // onClick={onSubmitClicked}
+                //  onClick={onSubmitClicked}
               >
                 Save Changes
               </button>

@@ -86,29 +86,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       },
 
-      editUserInformation: async (id) => {
+      // editUserInformation: async (user) => {
+      //   const id = user.id
+      //   const response = await fetch(  
+      //   process.env.BACKEND_URL + "/api/edit-profile/" + `${user.id}` ,
+      //   {
+      //     method: "PUT",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //        Accept: "application/json",
+      //     },
+      //       body: JSON.stringify(user),
+      //   })
+
+      //   if (response) {
+      //     alert("The info has been saved");
+      //   } else {
+      //     alert("The info has NOT been saved");
+      //   }
+      // },
+
+      editUserInformation: async (user) => {
         // fetch
-        const response = await fetch(  
-        process.env.BACKEND_URL + "/api/edit-profile/" + id,
+        const response  = await fetch (
+          process.env.BACKEND_URL + "/api/edit-profile/" + user.id,
         {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json",
-             Accept: "application/json",
+            "Content-Type": "application/json"
           },
-            body: JSON.stringify("user"),
+          body: JSON.stringify(user)
         })
+        .then((response) => response.json())
+        .catch((error) => console.log("error", error));
 
         if (response) {
           alert("The info has been saved");
         } else {
           alert("The info has NOT been saved");
         }
+        console.log("updating info", response);
       },
-
-
-
-    
 
       addFavorite: item => {
         const store = getStore();
