@@ -46,10 +46,9 @@ class User(db.Model):
 
     # User = db.relationship('Book', )
     # User = db.relationship('Favourites', )
-    
 
-    def __repr__(self):
-        return f'<User {self.id}>'
+    # def __repr__(self):
+    #     return f'<User {self.id}>'
 
     def serialize(self):
         return {

@@ -108,7 +108,8 @@ def get_user(id = None):
 @api.route('/edit-profile/<int:id>', methods=['PUT'])
 def editprofile(id):
 
-    user = User.query.filter_by(id=id)
+    # user = User.query.filter_by(id=id)
+    user = User.query.filter_by(id=id).first()
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)

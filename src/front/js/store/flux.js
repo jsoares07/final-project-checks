@@ -86,20 +86,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       },
 
-      editUserInformation: () => {
-
-        const store = getStore();
-
-        fetch(
-          process.env.BACKEND_URL + "/api/edit-profile/", {
+      editUserInformation: async (id) => {
+        // fetch
+        const response = await fetch(  
+        process.env.BACKEND_URL + "/api/edit-profile/" + id,
+        {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
+             Accept: "application/json",
           },
-          body: JSON.stringify(),
+            body: JSON.stringify("user"),
         })
-        if (response.ok) {
+
+        if (response) {
           alert("The info has been saved");
         } else {
           alert("The info has NOT been saved");
@@ -107,6 +107,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
 
+
+    
 
       addFavorite: item => {
         const store = getStore();
