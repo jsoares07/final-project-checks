@@ -48,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("info login desde las actions", post);
 
         fetch(
-          process.env.BACKEND_URL + "https://3001-heylga-finalproject-xnnelv9b89a.ws-eu47.gitpod.io/api/login/",
+          process.env.BACKEND_URL + "/api/login/",
           post
         )
 
@@ -125,7 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // BOOKS
       fetchUsersBooks: () => {
-        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/booksbyuser", {
+        fetch(process.env.BACKEND_URL + "/api/booksbyuser", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -135,7 +135,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ usersbooks: data.results }));
       },
       fetchUsers: () => {
-        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/users", {
+        fetch(process.env.BACKEND_URL + "/api/users", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -145,7 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ users: data.results }));
       },
       fetchBooks: () => {
-        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/books", {
+        fetch(process.env.BACKEND_URL + "/api/books", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
