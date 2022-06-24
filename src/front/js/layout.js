@@ -22,6 +22,7 @@ import { Swapmessage } from "./pages/swapmessage.js";
 import { Swapconfirmation } from "./pages/swapconfirmation.js";
 import { Profilepic } from "./component/profilepic";
 import { Reviewuser } from "./pages/Reviewuser";
+import { Formswap } from "./pages/formswap";
 
 
 
@@ -64,6 +65,9 @@ const Layout = () => {
             <Route exact path="/user/:id">
               <ProfileShort />
             </Route>
+            <Route exact path="/formswap">
+              <Formswap />
+            </Route>
             <Route exact path="/swapconfirmation">
               <Swapconfirmation />
             </Route>
@@ -76,13 +80,13 @@ const Layout = () => {
             <Route exact path="/signup" component={Signup}>
               <Signup />
             </Route>
-            <Route exact path="/my-profile/:id" component={MyProfile}>
+            <Route exact path="/my-profile/:id">
               <MyProfile />
             </Route>
             <Route exact path="/my-profile" component={MyProfile}>
               <MyProfile />
             </Route>
-            <Route exact path="/edit-profile/:id" component={EditProfile}>
+            <Route exact path="/edit-profile/:id" >
               <EditProfile />
             </Route>
             <Route exact path="/edit-profile" component={EditProfile}>

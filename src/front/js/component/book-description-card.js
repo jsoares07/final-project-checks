@@ -65,7 +65,7 @@ const BookCard = (props) => {
                 <p>{description}</p>
               </div>
             </div>
-            <Link to="#">
+            <Link to="/formswap">
               <button type="button" className="btn btn-secondary my-3">
                 Connect/swap
               </button>

@@ -106,39 +106,62 @@ const getState = ({ getStore, getActions, setStore }) => {
       //   }
       // },
 
-      editUserInformation: async (user) => {
+      editUserInformation: (user_id) => {
         // fetch
         //  const {id}=user
-
-        const response  = await fetch (
-          process.env.BACKEND_URL + "/api/edit-profile/",
-        {
+        console.log("fechtEdit-profile");
+        const store = getStore();
+        fetch(process.env.BACKEND_URL + "/api/edit-profile/" + user_id, {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(user)
+          body: JSON.stringify(user_id)
         })
-        .then((response) => response.json(
-          console.log('>>>> result from actions', response),
-        setStore({
-          user: response.user,
-        }),
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ user: result.results });
+            console.log("USER =====", store.user);
+          })
+          .catch((error) => console.log("error", error));
 
-        localStorage.setItem("user", JSON.stringify(response.user)),
+          // if (response) {
+          //             alert("The info has been saved");
+          //           } else {
+          //             alert("The info has NOT been saved");
+          //           }
+            
+        // .then((promiseResponse) => {
 
-))
-        .catch((error) => console.log("error", error));
+//         const response  = await fetch (
+//           process.env.BACKEND_URL +  + user_id,
+//         {
+//           method: "PUT",
+//           headers: {
+//             "Content-Type": "application/json"
+//           },
+//           body: JSON.stringify(user_id)
+//         })
+//         .then((response) => response.json(
+//           console.log('>>>> result from actions', response),
+//         setStore({
+//           user: response.user,
+//         }),
+
+//         localStorage.setItem("user", JSON.stringify(response.user)),
+
+// ))
+//         .catch((error) => console.log("error", error));
 
 
 
-        console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
+//         console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
 
-        if (response) {
-          alert("The info has been saved");
-        } else {
-          alert("The info has NOT been saved");
-        }
+//         if (response) {
+//           alert("The info has been saved");
+//         } else {
+//           alert("The info has NOT been saved");
+//         }
 
       },
 
