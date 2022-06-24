@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import Navbar from "../component/navbar";
 import Footer from "../component/footer.js";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
 import Navbarlogin from "../component/navbar-login";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
@@ -11,6 +11,9 @@ export const EditProfile = () => {
   const { store, actions } = useContext(Context);
   const [userobject, setUserObject] = useState({});
 
+  const params = useParams();
+
+  console.log('params', params)
 
   const URLbase = process.env.BACKEND_URL;
 
@@ -84,7 +87,7 @@ export const EditProfile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder={store.user.name}
+                     placeholder={store.user.name}
                   />
                 </div>
                 </div>
@@ -202,4 +205,12 @@ export const EditProfile = () => {
       <Footer />
     </div>
   );
+
+//  Profile.propTypes = {
+//     name: propTypes.string,
+//     city: propTypes.string,
+//     email: propTypes.string,
+//     id: propTypes.string,
+//   }
+
 };

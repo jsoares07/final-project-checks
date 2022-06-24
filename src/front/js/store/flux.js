@@ -108,8 +108,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       editUserInformation: async (user) => {
         // fetch
+        //  const {id}=user
+
         const response  = await fetch (
-          process.env.BACKEND_URL + "/api/edit-profile/" + user.id,
+          process.env.BACKEND_URL + "/api/edit-profile/",
         {
           method: "PUT",
           headers: {
@@ -117,15 +119,27 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
           body: JSON.stringify(user)
         })
-        .then((response) => response.json())
+        .then((response) => response.json(
+          console.log('>>>> result from actions', response),
+        setStore({
+          user: response.user,
+        }),
+
+        localStorage.setItem("user", JSON.stringify(response.user)),
+
+))
         .catch((error) => console.log("error", error));
+
+
+
+        console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
 
         if (response) {
           alert("The info has been saved");
         } else {
           alert("The info has NOT been saved");
         }
-        console.log("updating info", response);
+
       },
 
       addFavorite: item => {
