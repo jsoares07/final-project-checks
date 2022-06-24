@@ -105,11 +105,11 @@ def get_user(id = None):
     return jsonify(response_body), 200
     
     
-@api.route('/edit-profile/<int:id>', methods=['PUT'])
-def editprofile(id):
+@api.route('/edit-profile/<int:user_id>', methods=['GET', 'PUT'])
+def editprofile(user_id = None):
 
     # user = User.query.filter_by(id=id)
-    user = User.query.filter_by(id=id).first()
+    user = User.query.filter_by(id=user_id).first()
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
@@ -119,21 +119,21 @@ def editprofile(id):
 
 
     if (email or password or user_name or first_name or city):
-            if email != None:
-                user.email = email
-            if password != None:
-                user.password = password
-            if  user_name  != None:  
-                user.user_name = user_name 
-            if first_name != None:
-                user.first_name = first_name
-            if city != None:
-                user.city = city
-            
-            db.session.commit()
-            return 'success, the infromation has been updated'
-            
-            return jsonify({'results': user.serialize()}),200
+        if email != None:
+            user.email = email
+        if password != None:
+            user.password = password
+        if  user_name  != None:  
+            user.user_name = user_name 
+        if first_name != None:
+            user.first_name = first_name
+        if city != None:
+            user.city = city
+        
+        db.session.commit()
+        # return 'success, the infromation has been updated'
+        
+        return jsonify({'results': user.serialize()}),200
 
 
 @api.route('/offerbook', methods=['POST'])

@@ -30,8 +30,8 @@ export const Formswap = () => {
               <div className="row mt-3">
                 <div className="col-md-8">
                   <div className="mb-3">
-                    <label>Subject</label>
-                    <input type="text" name="subject" className="form-control mt-3" />
+                    <label>Your Email</label>
+                    <input type="text" name="email" className="form-control mt-3" />
                   </div>
 
                 </div>
@@ -55,7 +55,7 @@ export const Formswap = () => {
                 </div>
               </div>
 
-              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-wy4721z3r5y.ws-eu47.gitpod.io/swapmessage" />
+              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-or1y5spwzh0.ws-eu47.gitpod.io/swapmessage" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_subject" value=" I want to swap a book with you!" />
               <input type="hidden" name="_template" value="box" />

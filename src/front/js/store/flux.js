@@ -107,62 +107,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       // },
 
       editUserInformation: (user_id) => {
-        // fetch
-        //  const {id}=user
-        console.log("fechtEdit-profile");
-        const store = getStore();
-        fetch(process.env.BACKEND_URL + "/api/edit-profile/" + user_id, {
-          method: "PUT",
+        const put = {
+          method: 'PUT',
           headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(user_id)
-        })
-          .then((response) => response.json())
-          .then((result) => {
-            setStore({ user: result.results });
-            console.log("USER =====", store.user);
-          })
-          .catch((error) => console.log("error", error));
-
-          // if (response) {
-          //             alert("The info has been saved");
-          //           } else {
-          //             alert("The info has NOT been saved");
-          //           }
-            
-        // .then((promiseResponse) => {
-
-//         const response  = await fetch (
-//           process.env.BACKEND_URL +  + user_id,
-//         {
-//           method: "PUT",
-//           headers: {
-//             "Content-Type": "application/json"
-//           },
-//           body: JSON.stringify(user_id)
-//         })
-//         .then((response) => response.json(
-//           console.log('>>>> result from actions', response),
-//         setStore({
-//           user: response.user,
-//         }),
-
-//         localStorage.setItem("user", JSON.stringify(response.user)),
-
-// ))
-//         .catch((error) => console.log("error", error));
-
-
-
-//         console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
-
-//         if (response) {
-//           alert("The info has been saved");
-//         } else {
-//           alert("The info has NOT been saved");
-//         }
-
+          "Content-Type": "application/json",
+          "Authorization": "Bearer isfujsoidjgdflkjgdfklg"
+        },
+        body: JSON.stringify(user_id),
+      };
+    
+      console.log("info login desde las actions", put);
+        
+        fetch(process.env.BACKEND_URL + "/api/edit-profile/" + user_id, put)
+          .then(response => response.text())
+          .then(result =>  console.log('>>>> result from actions', result))
+          .catch(error => console.log('error', error));
       },
 
       addFavorite: item => {
@@ -241,10 +200,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       exampleFunction: () => {
         getActions().changeColor(0, "green");
       },
-
-
-
-
 
       getMessage: () => {
         // fetching data from the backend
