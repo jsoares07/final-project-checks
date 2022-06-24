@@ -24,7 +24,7 @@ const BookCard = (props) => {
         <div className="col-md-7">
           <div className="mt-2">
             <p>
-              <Link to="#">{user}</Link> is offering:
+              <Link to="#">{user}</Link> is offering: 
             </p>
           </div>
           <div className="d-flex flex-column align-items-center text-center p-1 pb-5">
