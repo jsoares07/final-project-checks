@@ -111,7 +111,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: 'PUT',
           headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer isfujsoidjgdflkjgdfklg"
         },
         body: JSON.stringify(user_id),
       };
