@@ -2,16 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-
 from api.models import db, User, Book, UsersBooks
-
 from api.utils import generate_sitemap, APIException
-
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-
 from flask_jwt_extended import create_access_token
 # from models import User, Book
-
 from werkzeug.security import generate_password_hash
 
 
@@ -149,6 +144,7 @@ def offerbook():
     language = request.json.get('language')
     description = request.json.get('description')
     # book_picture = request.json.get('book_picture')
+    owner_user_id = request.json.get('owner_user_id')
 
     print('hola me estan llamando', request_body)
 
@@ -159,6 +155,7 @@ def offerbook():
         genre= genre,
         language= language,
         description= description,
+        owner_user_id = owner_user_id
         # book_picture= book_picture,
     )
 

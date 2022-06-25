@@ -13,10 +13,10 @@ from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy()
 
-user_book = db.Table("user_book",
-  db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-  db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
- )
+# user_book = db.Table("user_book",
+#   db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+#   db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
+#  )
 
 #favourites = db.Table("users_book",
    # db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
@@ -113,6 +113,7 @@ class Book(db.Model):
             "genre": self.genre,
             "language": self.language,
             "description": self.description,
+            "owner_user_id": self.owner_user_id,
             # "book_picture": self.book_picture,
         }
     
