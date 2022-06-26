@@ -48,7 +48,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("info login desde las actions", post);
 
         fetch(
-          process.env.BACKEND_URL + "/api/login/",
+          // process.env.BACKEND_URL + "/api/login/",
+          "https://3001-heylga-finalproject-ewjs4ebzs8i.ws-eu47.gitpod.io" + "/api/login/",
           post
         )
 
@@ -149,6 +150,29 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((promiseResponse) => promiseResponse.json())
           .then((data) => setStore({ usersbooks: data.results }));
       },
+
+      // FetchOfferBook: (book_id) => {
+      //   fetch(process.env.BACKEND_URL + "api/offerbook" + book_id, post, {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       title: title,
+      //       author: author,
+      //       publisher: publisher,
+      //       genre: helloo,
+      //       language: helloo,
+      //       description: description,
+      //       owner_id: owner_id,
+      //     }),
+      //   })
+
+      //     .then((response) => response.text())
+      //     .then((result) => console.log(result))
+      //     .catch((error) => console.log("error", error));
+      // },
+
       fetchUsers: () => {
         fetch(process.env.BACKEND_URL + "/api/users", {
           method: "GET",
@@ -159,6 +183,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((promiseResponse) => promiseResponse.json())
           .then((data) => setStore({ users: data.results }));
       },
+      
       fetchBooks: () => {
         fetch(process.env.BACKEND_URL + "/api/books", {
           method: "GET",

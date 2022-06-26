@@ -143,8 +143,8 @@ def offerbook():
     genre = request.json.get('genre')
     language = request.json.get('language')
     description = request.json.get('description')
+    owner_id = request.json.get('owner_id')
     # book_picture = request.json.get('book_picture')
-    owner_user_id = request.json.get('owner_user_id')
 
     print('hola me estan llamando', request_body)
 
@@ -155,15 +155,25 @@ def offerbook():
         genre= genre,
         language= language,
         description= description,
-        owner_user_id = owner_user_id
+        owner_id = owner_id
         # book_picture= book_picture,
     )
 
-    answer = book.addBook()
+    answer = Book.addBook(book)
+    
+    new_book = Book.query.filter(Book.title == title).first()
+    book_serealize = new_book.serialize()
+    new_book_id = book_serealize['id']
 
+    new_relation =UsersBooks(
+        user_id = owner_id,
+        book_id = new_book_id
+    )
+    db.session.add(new_relation)
+    db.session.commit()
     response_body = {
          "message": answer,
-         "book": book.serialize()
+        #  "book": Book.serializeABook()
      }
 
     return jsonify(response_body), 200

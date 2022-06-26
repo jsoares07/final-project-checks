@@ -16,14 +16,16 @@ export const Offerbook = () => {
   const [owner_user_id, setowner_user_id] = useState();
   // const [book_picture, setBookPicture] = useState();
 
-  const URLbase = process.env.BACKEND_URL;
+  // const URLbase = process.env.BACKEND_URL;
+
+  const URLbase = "https://3001-heylga-finalproject-ewjs4ebzs8i.ws-eu47.gitpod.io"
 
   const onSubmit = () => {
     console.log("submit working");
 
-    if (title && author && publisher && genre && language && description && owner_user_id) {
+    if (title && author && publisher && genre && language && description ) {
       // hacemos el fetch
-      FetchOfferBook(title, author, publisher, genre, language, description, owner_user_id);
+      FetchOfferBook(title, author, publisher, genre, language, description);
       alert("Your book has been added");
     } else {
       //te faltan datos
@@ -38,7 +40,6 @@ export const Offerbook = () => {
     genre,
     language,
     description,
-    owner_user_id
   ) => {
     // fetch
     const post = {
@@ -53,7 +54,6 @@ export const Offerbook = () => {
         genre: genre,
         language: language,
         description: description,
-        owner_user_id: owner_user_id,
       }),
     };
 
@@ -95,10 +95,6 @@ export const Offerbook = () => {
     setDescription(e.target.value);
   };
 
-  const onTypeOwner_user_id = (e) => {
-    console.log(e.target.value);
-    setowner_user_id(e.target.value);
-  };
   const onPicture = (e) => {
     console.log(e.target.value);
     setBookPicture(e.target.value);
@@ -223,19 +219,7 @@ export const Offerbook = () => {
                 onChange={onTypeDescription}
               />
             </div>
-            <div className="mb-3">
-              <label for="descriptn" className="form-label">
-                Description
-              </label>
-              <input
-                type="description"
-                className="form-control"
-                id="description"
-                placeholder="Decribe briefly the synopsis of the book"
-                value={owner_user_id}
-                onChange={onTypeOwner_user_id}
-              />
-            </div>
+    
             <div className="container d-flex">
               <div className="mb-3">
                 <label for="formFileMultiple" className="form-label">
