@@ -85,3 +85,13 @@
   padding-left: 30px;
   padding-bottom: 0;
 }
+.btn {
+  background-color:#AA9971;
+  font-family: 'Libre Baskerville', serif;
+}
+.btn:hover {
+  font-family: 'Libre Baskerville', serif;
+}
+h6 {
+  font-family: 'Libre Baskerville', serif;
+}

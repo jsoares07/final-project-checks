@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import logomain from "../../img/logomain.png"
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap";
 
 //LIBRERIA BOOTSTRAP FOR REACT
@@ -23,9 +24,13 @@ function Navbarlogin() {
 <div>
         <nav className="navbar navbar-expand-md">
 			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">LOGO</span>
-				</Link>
+      <Link to="/">
+       <img
+          className="logoNav"
+          src={logomain}
+          alt="Responsive image"
+        />
+        </Link>
 				<div className="ml-auto">
 
 

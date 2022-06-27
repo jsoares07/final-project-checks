@@ -37,7 +37,7 @@ class User(db.Model):
     # users_books = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
 
     # owner_book = db.relationship("Book", backref="Owner", lazy=True)
-    owner_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('the books of the user', lazy=True))
+    favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
 
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
@@ -59,7 +59,7 @@ class User(db.Model):
             "email": self.email,
             "name": self.name,
             "city": self.city,
-            "books": list(map(lambda book: book.serialize(), self.owner_book)),
+            "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
 
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book)),

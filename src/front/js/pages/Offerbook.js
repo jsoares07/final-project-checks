@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Redirect } from "react-router-dom";
 
 import Footer from "./../component/footer";
 import Navbarlogin from "../component/navbar-login";
@@ -18,7 +19,7 @@ export const Offerbook = () => {
 
   // const URLbase = process.env.BACKEND_URL;
 
-  const URLbase = "https://3001-heylga-finalproject-ewjs4ebzs8i.ws-eu47.gitpod.io"
+  const URLbase = "https://3001-heylga-finalproject-qupxbh4c7mj.ws-eu47.gitpod.io"
 
   const onSubmit = () => {
     console.log("submit working");
@@ -27,6 +28,7 @@ export const Offerbook = () => {
       // hacemos el fetch
       FetchOfferBook(title, author, publisher, genre, language, description);
       alert("Your book has been added");
+      // <Redirect to="/my-profile" />
     } else {
       //te faltan datos
       alert("Information is missing");
@@ -128,7 +130,7 @@ export const Offerbook = () => {
     <div>
 
       <Navbarlogin />
-      <div className=" container card">
+      <div className=" container card center mt-5 mb-5">
         <div className="card-body">
           <form>
             <div className="row mb-3">
@@ -237,6 +239,7 @@ export const Offerbook = () => {
               </div>
 
             </div>
+            <div className="col text-center">
             <button
               type="submit"
               className="btn btn-primary float-end mt-5 me-5"
@@ -244,6 +247,7 @@ export const Offerbook = () => {
             >
               Submit
             </button>
+            </div>
             <br></br>
             <img src={baseImage} height="200px" />
           </form>

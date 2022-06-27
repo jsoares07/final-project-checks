@@ -49,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         fetch(
           // process.env.BACKEND_URL + "/api/login/",
-          "https://3001-heylga-finalproject-ewjs4ebzs8i.ws-eu47.gitpod.io" + "/api/login/",
+          "https://3001-heylga-finalproject-qupxbh4c7mj.ws-eu47.gitpod.io" + "/api/login/",
           post
         )
 
