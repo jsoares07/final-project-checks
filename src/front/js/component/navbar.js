@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
-import logomain from "../../img/logomain.png"
+import swopbook from "../../img/swopbook.png"
 import "../../styles/home.css";
 
 export const Navbar = () => {
@@ -13,7 +13,7 @@ export const Navbar = () => {
       <Link to="/">
        <img
           className="logoNav"
-          src={logomain}
+          src={swopbook}
           alt="Responsive image"
         />
         </Link>

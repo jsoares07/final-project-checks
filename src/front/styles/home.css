@@ -63,9 +63,9 @@
   color: #F0F0ED;
   font-family: 'Libre Baskerville', serif;
 }
-.logo {
-  background-image: url("../img/logomain.png");
-}
+/* .logo {
+  background-image: url("../img/swopbook.png");
+} */
 .red:hover  {
   color:#9C8B7C
 }
@@ -78,6 +78,12 @@
   border-color:#90ceb5;
   color:#F3F9E4
 
+}
+.logoNav {
+  height: 50px;
+  width:auto;
+  padding-left: 30px;
+  padding-bottom: 0;
 }
 .logoNav {
   height: 50px;

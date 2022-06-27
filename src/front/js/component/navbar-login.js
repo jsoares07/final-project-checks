@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import logomain from "../../img/logomain.png"
+import swopbook from "../../img/swopbook.png"
 import "../../styles/home.css";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from "reactstrap";
 
@@ -28,7 +28,7 @@ function Navbarlogin() {
           <Link to="/">
             <img
               className="logoNav"
-              src={logomain}
+              src={swopbook}
               alt="Responsive image"
             />
           </Link>
