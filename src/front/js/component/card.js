@@ -7,6 +7,7 @@ import propTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 
 import "../../styles/card.css";
+import "../../styles/home.css";
 
 
 const Card = (props) => {

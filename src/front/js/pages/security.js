@@ -4,6 +4,8 @@ import Navbar from "../component/navbar";
 import Footer from "../component/footer.js";
 import { Link } from "react-router-dom";
 import "../../styles/index.css";
+import "../../styles/home.css";
+
 
 export const Security = () => {
   const { store, actions } = useContext(Context);

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Navbarlogin from "../component/navbar-login";
 import Footer from "../component/footer.js";
 import "../../styles/index.css";
+import "../../styles/home.css";
 import e from "cors";
 
 export const Formswap = () => {
@@ -21,11 +22,11 @@ export const Formswap = () => {
 
         <h3 className="col-md-6 center mx-auto">I want to swap this book</h3>
         <div className="col-md-6 border-right border border-dark p-5 center mx-auto">
-          <div className="row mt-5">
+          <div className="row mt-1">
 
 
 
-            <form action="https://formsubmit.co/5c9ae7eaeea71f3f2d11a1bde0fd6b67" method="POST">
+            <form action="https://formsubmit.co/5c9ae7eaeea71f3f2d11a1bde0fd6b67 " method="POST">
 
               <div className="row mt-3">
                 <div className="col-md-8">
@@ -55,7 +56,7 @@ export const Formswap = () => {
                 </div>
               </div>
 
-              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-or1y5spwzh0.ws-eu47.gitpod.io/swapmessage" />
+              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-qupxbh4c7mj.ws-eu47.gitpod.io/swapmessage" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_subject" value=" I want to swap a book with you!" />
               <input type="hidden" name="_template" value="box" />

@@ -21,7 +21,7 @@ import { ProfileShort } from "./pages/profile-short";
 import { Swapmessage } from "./pages/swapmessage.js";
 import { Swapconfirmation } from "./pages/swapconfirmation.js";
 import { Profilepic } from "./component/profilepic";
-import { Reviewuser } from "./pages/Reviewuser";
+import { Reviewuser } from "./pages/reviewuser";
 import { Formswap } from "./pages/formswap";
 
 

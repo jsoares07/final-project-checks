@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import Popup from "../component/Popup";
+import "../../styles/home.css";
 
 
 

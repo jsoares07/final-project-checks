@@ -4,6 +4,7 @@ import Navbar from "../component/navbar";
 import Footer from "../component/footer.js";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
+import "../../styles/home.css";
 import Navbarlogin from "../component/navbar-login";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 

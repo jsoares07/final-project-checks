@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Redirect } from "react-router-dom";
+import "../../styles/home.css";
 
 import Footer from "./../component/footer";
 import Navbarlogin from "../component/navbar-login";

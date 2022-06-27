@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import propTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 
+import "../../styles/home.css";
+
 const BookCard = (props) => {
   const { store, actions } = useContext(Context);
   const {

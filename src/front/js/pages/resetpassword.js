@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import "../../styles/home.css";
+
 
 import { Context } from "../store/appContext";
 import Navbar from "./../component/navbar";

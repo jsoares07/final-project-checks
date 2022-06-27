@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import BookCard from "./book-description-card";
 import { Context } from "../store/appContext";
 
+import "../../styles/home.css";
+
 const BookLogicCard = () => {
   const { store, actions } = useContext(Context);
 

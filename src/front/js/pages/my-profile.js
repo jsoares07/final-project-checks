@@ -4,6 +4,7 @@ import Booklist from "../component/booklist.js";
 import { Link, useParams } from "react-router-dom";
 import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
+import "../../styles/home.css";
 
 
 import Navbarlogin from "../component/navbar-login";

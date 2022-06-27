@@ -4,6 +4,7 @@ import Navbar from "../component/navbar";
 import ShowAll from "../component/showall.js";
 import Footer from "../component/footer.js";
 import "../../styles/index.css";
+import "../../styles/home.css";
 
 export const AllBooks = () => {
   return (
