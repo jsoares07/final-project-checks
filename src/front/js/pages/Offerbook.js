@@ -20,7 +20,7 @@ export const Offerbook = () => {
 
   // const URLbase = process.env.BACKEND_URL;
 
-  const URLbase = "https://3001-heylga-finalproject-qupxbh4c7mj.ws-eu47.gitpod.io"
+  const URLbase = "https://3001-heylga-finalproject-4yvbaba06bd.ws-eu47.gitpod.io"
 
   const onSubmit = () => {
     console.log("submit working");
