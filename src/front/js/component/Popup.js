@@ -27,7 +27,7 @@ function Popup() {
                     <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" className="btn btn-success" >
 
-                        <Link to="/Swapmessage">
+                        <Link to="/formswap">
                         Swap Book 
                         </Link>
                         </button>

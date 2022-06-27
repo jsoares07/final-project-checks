@@ -2,13 +2,27 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import Navbar from "../component/navbar";
 import Footer from "../component/footer.js";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
 import "../../styles/home.css";
 
 
 export const Security = () => {
   const { store, actions } = useContext(Context);
+
+  const params = useParams();
+
+  console.log('params', params)
+
+  const URLbase = process.env.BACKEND_URL;
+
+  const [password, setPassword] = useState();
+
+  const onTypePassword = (e) => {
+    console.log(e.target.value);
+    setPassword(e.target.value);
+  };
+
 
   return (
     <div className="">
@@ -30,7 +44,7 @@ export const Security = () => {
                   </p>
                   <div className="col-md-8">
                     <h5>Current password</h5>
-                    <input type="text" className="form-control" />
+                    <input type="password" className="form-control" />
                   </div>
                   <p>
                     Your password must be at least 8 characters and should
@@ -40,21 +54,25 @@ export const Security = () => {
                   </p>
                   <div className="col-md-8">
                     <h5>New password</h5>
-                    <input type="text" className="form-control" />
+                    <input type="password"  className="form-control" />
                   </div>
                   <div className="col-md-8">
                     <h5>Repeat password</h5>
-                    <input type="text" className="form-control"  />
+                    <input type="password"  className="form-control"  />
                   </div>
                 </div>
               </div>
             </div>
             <div className="mt-5 mb-5 text-center">
 
-            <Link to="/emailtoresetsecurity">
+            <Link to="/passwordchanged">
               <button
                 className="btn btn-primary edit-profile-button"
                 type="submit"
+                onClick={(event) => {
+                  event.preventDefault();
+                  actions.changePassword();
+                }}
               >
                 Change Password
               </button>

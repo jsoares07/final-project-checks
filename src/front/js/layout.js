@@ -23,6 +23,7 @@ import { Profilepic } from "./component/profilepic";
 import { Reviewuser } from "./pages/reviewuser";
 import { Formswap } from "./pages/formswap";
 
+import { PasswordChanged } from "./pages/passwordchanged";
 
 
 //create your first component
@@ -100,6 +101,11 @@ const Layout = () => {
               <BookDescription />
             </Route>
 
+            <Route exact path="/passwordchanged" component={PasswordChanged}>
+              <PasswordChanged />
+            </Route>
+            
+            
             <Route exact path="/forgetpassword" component={Forgetpassword}>
               <Forgetpassword />
             </Route>

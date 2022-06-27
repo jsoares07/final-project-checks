@@ -48,7 +48,9 @@ export const Emailresetsecurity = () => {
               <div className="row">
 
                 <div class="col">
+                  <Link to="/passwordchanged">
                   <button type="submit" className="btn btn-primary float-end mt-2 me-2">Change Password</button>
+                  </Link>
                 </div>
 
           

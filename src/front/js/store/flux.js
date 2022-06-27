@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       books: [],
       book: [],
       favorite: [],
-
+      rating: [],
       demo: [
         {
           title: "FIRST",
@@ -44,9 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: password,
           }),
         };
-
         console.log("info login desde las actions", post);
-
         fetch(
           // process.env.BACKEND_URL + "/api/login/",
           "https://3001-heylga-finalproject-qupxbh4c7mj.ws-eu47.gitpod.io" + "/api/login/",
@@ -68,8 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
           })
-          .catch((error) => console.log("error", error),
-          alert("the password or email are wrong"));
+          .catch((error) => alert("the password or email are wrong"));
       },
 
       logout: () => {
@@ -123,6 +120,32 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then(response => response.text())
           .then(result =>  console.log('>>>> result from actions', result))
           .catch(error => console.log('error', error));
+      },
+
+ 
+      changePassword: (user_id) => {
+        const put = {
+          method: 'PUT',
+          headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user_id),
+      };
+    
+      console.log("info login desde las actions", put);
+        
+        fetch(process.env.BACKEND_URL + "/api/security", put)
+          .then(response => response.text())
+          .then(result =>  console.log('>>>> result from actions', result))
+          .catch(error => console.log('error', error));
+      },
+
+      addReview: (rating) => {
+        const store = getStore();
+        // const validate = store.rating.includes(item);
+        // if (store.rating == [] || !validate) {
+        //   setStore({ rating: [...store.rating, item] });
+        // }
       },
 
       addFavorite: item => {
@@ -196,6 +219,24 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ books: data.results }));
       },
 
+
+      fetchUser: (user_id) => {
+        console.log("fechtBook");
+        const store = getStore();
+        fetch(process.env.BACKEND_URL + "/api/book/" + user_id, {
+
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ user: result.results });
+            console.log("User =====", store.user);
+          })
+          .catch((error) => console.log("error", error));
+      },
 
       fetchBook: (book_id) => {
         console.log("fechtBook");

@@ -7,7 +7,7 @@ const Jumbotron = () => {
 	return (
 		<div className="container center">
 		<div className="jumbotron jumbotron-fluid p-5" style={{backgroundImage: `url(${background})`}}>
-			<h1 className="display-1 justify-content-center"style={{color: "white"}}>Crossbook</h1>
+			<h1 className="display-1 justify-content-center"style={{color: "white"}}>SwopBook</h1>
 			<p className="lead fs-4">
 				
 <div className="input-group rounded center">
