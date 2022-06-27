@@ -9,9 +9,8 @@ import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
 import { Offerbook } from "./pages/Offerbook";
 import { EditProfile } from "./pages/edit-profile.js";
-import { Resetpassword } from "./pages/resetpassword.js"
+// import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
-import { Emailtoreset } from "./component/emailtoreset.js";
 import { Emailresetsecurity } from "./component/emailresetsecurity";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
@@ -107,24 +106,15 @@ const Layout = () => {
             <Route exact path="/offerbook" component={Offerbook}>
               <Offerbook />
             </Route>
-            <Route exact path="/emailtoreset" component={Emailresetsecurity}>
-              <Emailresetsecurity />
-            </Route>
-            <Route exact path="/emailtoreset" component={Emailtoreset}>
-              <Emailtoreset />
-            </Route>
-            <Route exact path="/resetpassword" component={Resetpassword}>
-              <Resetpassword />
-            </Route>
-
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-
+            
             <Route exact path="/security" component={Security}>
               <Security />
-
             </Route>
+            <Route exact path="/emailtoresetsecurity" component={Emailresetsecurity}>
+              <Emailresetsecurity />
+            </Route>
+  
+
             <Route exact path="/profilepic" component={Profilepic}>
               <Profilepic />
             </Route>

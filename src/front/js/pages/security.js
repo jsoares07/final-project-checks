@@ -51,12 +51,12 @@ export const Security = () => {
             </div>
             <div className="mt-5 mb-5 text-center">
 
-            <Link to="/emailtoreset">
+            <Link to="/emailtoresetsecurity">
               <button
                 className="btn btn-primary edit-profile-button"
                 type="submit"
               >
-                Changes Password
+                Change Password
               </button>
               </Link>
 

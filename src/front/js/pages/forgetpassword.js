@@ -33,7 +33,7 @@ export const Forgetpassword = () => {
   
               <div className="mt-5 mb-5 text-left">
 
-                  <Link to="/emailtoreset">
+                  <Link to="/emailtoresetsecurity">
                     <button className="btn btn-primary justify-content-center">
                         Send Email
                     </button>

@@ -68,7 +68,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
           })
-          .catch((error) => console.log("error", error));
+          .catch((error) => console.log("error", error),
+          alert("the password or email are wrong"));
       },
 
       logout: () => {

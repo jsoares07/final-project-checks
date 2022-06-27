@@ -56,7 +56,7 @@ export const Resetpassword = () => {
 								   <button type="submit" className="btn btn-primary float-end mt-5 me-5">Submit</button>
 							</div>
 
-                            <Link to="/emailtoreset">
+                            <Link to="/emailtoresetsecurity">
                     <button className="btn btn-primary justify-content-center">
                         Send Email
                     </button>
