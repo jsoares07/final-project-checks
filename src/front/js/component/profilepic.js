@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/profilepic.css";
-
+import "../../styles/home.css";
 
 export const Profilepic = () => {
 

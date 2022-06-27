@@ -6,6 +6,8 @@ import { Crime } from "./../../img/crime.jpg";
 import { littleprince } from "./../../img/littleprince.jpg";
 import { we } from "./../../img/we.jpg";
 import { Context } from "../store/appContext";
+import "../../styles/home.css";
+
 
 const ShowAll = () => {
   const { store, actions } = useContext(Context);

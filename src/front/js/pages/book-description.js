@@ -4,6 +4,7 @@ import Navbar from "../component/navbar";
 import BookLogicCard from "../component/book-description-logic";
 import Footer from "../component/footer.js";
 import "../../styles/index.css";
+import "../../styles/home.css";
 
 export const BookDescription = () => {
   const { store, actions } = useContext(Context);

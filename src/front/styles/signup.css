@@ -9,6 +9,7 @@
     background-color: rgb(195, 195, 195);
     margin: 50px auto;
     overflow: hidden;
+    border-color: #7d6757;
 }
 .my_file {
     position: absolute;
@@ -17,6 +18,7 @@
     color: transparent;
     width: 100%;
     box-sizing: border-box;
+
     padding: 15px 120px;
     cursor: pointer;
     transition: 0.5s;
@@ -29,15 +31,12 @@
 }
 .my_file::before
 {
-    content: '\f030';
-    font-family: fontAwesome;
     font-size: 50px;
     color: #fff;
     display: inline-block;
 }
 .my_file::after {
     content: 'Update';
-    font-family: 'arial';
     font-weight: bold;
     color: #fff;
     display: block;
@@ -47,4 +46,22 @@
 }
 .my_file:hover{
     opacity: 1;
+}
+.btnsign {
+    background-color:#AA9971;
+    font-family: 'Libre Baskerville', serif;
+}
+.text {
+    font-family: 'Libre Baskerville', serif;
+}
+h1 {
+    color: #9e8b7c;
+    font-family: 'Libre Baskerville', serif;
+}
+label {
+    color: #9e8b7c;
+    font-family: 'Libre Baskerville', serif;
+}
+::placeholder {
+    font-family: 'Libre Baskerville', serif;
 }

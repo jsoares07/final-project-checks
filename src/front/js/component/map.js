@@ -2,6 +2,7 @@ import React from "react";
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 // import { GoogleMapAPIKEY } from "../../../../secrets.js";
+import "../../styles/home.css";
 
 export default function MapTest() {
   const { isLoaded } = useLoadScript({

@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import BookCard from "./book-description-card";
-import { Catcher } from "./../../img/catcher.jpg";
-import { Crime } from "./../../img/crime.jpg";
-import { littleprince } from "./../../img/littleprince.jpg";
-import { we } from "./../../img/we.jpg";
 import { Context } from "../store/appContext";
+
+import "../../styles/home.css";
 
 const BookLogicCard = () => {
   const { store, actions } = useContext(Context);

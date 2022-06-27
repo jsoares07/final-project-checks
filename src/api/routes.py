@@ -2,16 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-
 from api.models import db, User, Book, UsersBooks
-
 from api.utils import generate_sitemap, APIException
-
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-
 from flask_jwt_extended import create_access_token
 # from models import User, Book
-
 from werkzeug.security import generate_password_hash
 
 
@@ -105,10 +100,11 @@ def get_user(id = None):
     return jsonify(response_body), 200
     
     
-@api.route('/edit-profile/<int:id>', methods=['PUT'])
-def editprofile(id):
+@api.route('/edit-profile/<int:user_id>', methods=['GET', 'PUT'])
+def editprofile(user_id = None):
 
-    user = User.query.filter_by(id=id)
+    # user = User.query.filter_by(id=id)
+    user = User.query.filter_by(id=user_id).first()
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
@@ -118,21 +114,21 @@ def editprofile(id):
 
 
     if (email or password or user_name or first_name or city):
-            if email != None:
-                user.email = email
-            if password != None:
-                user.password = password
-            if  user_name  != None:  
-                user.user_name = user_name 
-            if first_name != None:
-                user.first_name = first_name
-            if city != None:
-                user.city = city
-            
-            db.session.commit()
-            return 'success, the infromation has been updated'
-            
-            return jsonify({'results': user.serialize()}),200
+        if email != None:
+            user.email = email
+        if password != None:
+            user.password = password
+        if  user_name  != None:  
+            user.user_name = user_name 
+        if first_name != None:
+            user.first_name = first_name
+        if city != None:
+            user.city = city
+        
+        db.session.commit()
+        # return 'success, the infromation has been updated'
+        
+        return jsonify({'results': user.serialize()}),200
 
 
 @api.route('/offerbook', methods=['POST'])
@@ -147,6 +143,7 @@ def offerbook():
     genre = request.json.get('genre')
     language = request.json.get('language')
     description = request.json.get('description')
+    owner_id = request.json.get('owner_id')
     # book_picture = request.json.get('book_picture')
 
     print('hola me estan llamando', request_body)
@@ -158,14 +155,25 @@ def offerbook():
         genre= genre,
         language= language,
         description= description,
+        owner_id = owner_id
         # book_picture= book_picture,
     )
 
-    answer = book.addBook()
+    answer = Book.addBook(book)
+    
+    new_book = Book.query.filter(Book.title == title).first()
+    book_serealize = new_book.serialize()
+    new_book_id = book_serealize['id']
 
+    new_relation =UsersBooks(
+        user_id = owner_id,
+        book_id = new_book_id
+    )
+    db.session.add(new_relation)
+    db.session.commit()
     response_body = {
          "message": answer,
-         "book": book.serialize()
+        #  "book": Book.serializeABook()
      }
 
     return jsonify(response_body), 200

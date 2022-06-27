@@ -9,6 +9,7 @@
     background-color: rgb(195, 195, 195);
     margin: 50px auto;
     overflow: hidden;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file {
     position: absolute;
@@ -22,10 +23,12 @@
     transition: 0.5s;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
+    font-family: 'Libre Baskerville', serif;
 
 }
 .my_file::-webkit-file-upload-button {
     visibility: hidden;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file::before
 {
@@ -34,6 +37,7 @@
     font-size: 50px;
     color: #fff;
     display: inline-block;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file::after {
     content: 'Update';
@@ -44,7 +48,9 @@
     top: 70px;
     font-size: 14px;
     position:absolute;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file:hover{
     opacity: 1;
+    font-family: 'Libre Baskerville', serif;
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import Booklist from "../component/booklist.js";
 import { Link, useParams } from "react-router-dom";
 import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
+import "../../styles/home.css";
 
 
 import Navbarlogin from "../component/navbar-login";
@@ -31,7 +33,7 @@ export const MyProfile = (props) => {
 
     <div className="">
 
-    <Navbarlogin />
+      <Navbarlogin />
 
       <div className="container rounded bg-white mt-5 mb-5">
         <div className="row">
@@ -69,7 +71,7 @@ export const MyProfile = (props) => {
                 </div>
               </div>
 
-            
+
               <div className="row mt-2">
                 <div className="col-md-12">
                   <label className="labels"><strong>Email</strong></label>
@@ -117,20 +119,21 @@ export const MyProfile = (props) => {
               <div className="col-md-12">
                 <label className="labels"><strong>My Books</strong></label>
                 <p>Book #1</p>
+                <Booklist/>
               </div>
 
               <Link to={`/offerbook`}>
-                  <button
-                    type="submit"
-                    className="btn btn-primary m-5 "
-                   >
-                   Add Book
-                   </button>
+                <button
+                  type="submit"
+                  className="btn btn-primary m-5 "
+                >
+                  Add Book
+                </button>
               </Link>
               <hr />
               <div className="col-md-12">
                 <label className="labels"><strong>My Swapped Books</strong></label>
-                <p>Book #1</p>
+                <Booklist/>
               </div>
             </div>
           </div>

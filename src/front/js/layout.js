@@ -9,9 +9,8 @@ import { Signup } from "./pages/signup.js";
 import injectContext from "./store/appContext";
 import { Offerbook } from "./pages/Offerbook";
 import { EditProfile } from "./pages/edit-profile.js";
-import { Resetpassword } from "./pages/resetpassword.js"
+// import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
-import { Emailtoreset } from "./component/emailtoreset.js";
 import { Emailresetsecurity } from "./component/emailresetsecurity";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
@@ -21,8 +20,10 @@ import { ProfileShort } from "./pages/profile-short";
 import { Swapmessage } from "./pages/swapmessage.js";
 import { Swapconfirmation } from "./pages/swapconfirmation.js";
 import { Profilepic } from "./component/profilepic";
-import { Reviewuser } from "./pages/Reviewuser";
+import { Reviewuser } from "./pages/reviewuser";
+import { Formswap } from "./pages/formswap";
 
+import { PasswordChanged } from "./pages/passwordchanged";
 
 
 //create your first component
@@ -64,6 +65,9 @@ const Layout = () => {
             <Route exact path="/user/:id">
               <ProfileShort />
             </Route>
+            <Route exact path="/formswap">
+              <Formswap />
+            </Route>
             <Route exact path="/swapconfirmation">
               <Swapconfirmation />
             </Route>
@@ -76,13 +80,13 @@ const Layout = () => {
             <Route exact path="/signup" component={Signup}>
               <Signup />
             </Route>
-            <Route exact path="/my-profile/:id" component={MyProfile}>
+            <Route exact path="/my-profile/:id">
               <MyProfile />
             </Route>
             <Route exact path="/my-profile" component={MyProfile}>
               <MyProfile />
             </Route>
-            <Route exact path="/edit-profile/:id" component={EditProfile}>
+            <Route exact path="/edit-profile/:id" >
               <EditProfile />
             </Route>
             <Route exact path="/edit-profile" component={EditProfile}>
@@ -97,30 +101,26 @@ const Layout = () => {
               <BookDescription />
             </Route>
 
+            <Route exact path="/passwordchanged" component={PasswordChanged}>
+              <PasswordChanged />
+            </Route>
+            
+            
             <Route exact path="/forgetpassword" component={Forgetpassword}>
               <Forgetpassword />
             </Route>
             <Route exact path="/offerbook" component={Offerbook}>
               <Offerbook />
             </Route>
-            <Route exact path="/emailtoreset" component={Emailresetsecurity}>
-              <Emailresetsecurity />
-            </Route>
-            <Route exact path="/emailtoreset" component={Emailtoreset}>
-              <Emailtoreset />
-            </Route>
-            <Route exact path="/resetpassword" component={Resetpassword}>
-              <Resetpassword />
-            </Route>
-
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-
+            
             <Route exact path="/security" component={Security}>
               <Security />
-
             </Route>
+            <Route exact path="/emailtoresetsecurity" component={Emailresetsecurity}>
+              <Emailresetsecurity />
+            </Route>
+  
+
             <Route exact path="/profilepic" component={Profilepic}>
               <Profilepic />
             </Route>

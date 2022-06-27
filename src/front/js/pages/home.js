@@ -7,6 +7,8 @@ import Jumbotron from "./../component/jumbotron.js";
 import ListCards from "./../component/listCards.js";
 import Map from "./../component/map.js";
 import Footer from "./../component/footer.js";
+import "../../styles/home.css";
+
 
 
 

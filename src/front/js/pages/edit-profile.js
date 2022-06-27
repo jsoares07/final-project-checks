@@ -2,15 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import Navbar from "../component/navbar";
 import Footer from "../component/footer.js";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
+import "../../styles/home.css";
 import Navbarlogin from "../component/navbar-login";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 export const EditProfile = () => {
   const { store, actions } = useContext(Context);
-  const [info, setInfo] = useState({});
+  const [userobject, setUserObject] = useState({});
 
+  const params = useParams();
+
+  console.log('params', params)
 
   const URLbase = process.env.BACKEND_URL;
 
@@ -30,31 +34,25 @@ export const EditProfile = () => {
   // };
 
 
-  // const onFetchUpdate = (email, password, user_name, first_name, city) => {
-  //   // fetch
+  // const onFetchUpdate = (user) => {
+  //   fetch
   //   const put = {
   //     method: "PUT",
   //     headers: {
   //       "Content-Type": "application/json",
   //     },
-  //     body: JSON.stringify({
-  //       email: email,
-  //       password: password,
-  //       first_name: first_name,
-  //       user_name: user_name,
-  //       city: city,
-  //     }),
+  //     body: JSON.stringify(user),
   //   };
 
   //   console.log("updating info", put);
 
   //   fetch(
-  //     `${URLbase}/api/edit-profile/` + id,
+  //     `${URLbase}/api/edit-profile/` + user.id,
   //     put
   //   )
 
-  //     .then((response) => response.text())
-  //     .then((result) => console.log(result))
+  //     .then((response) => response.json())
+  //     .then((data) => setUserObject(data))
   //     .catch((error) => console.log("error", error));
   // };
 
@@ -90,7 +88,7 @@ export const EditProfile = () => {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder={store.user.name}
+                     placeholder={store.user.name}
                   />
                 </div>
                 </div>
@@ -188,7 +186,7 @@ export const EditProfile = () => {
                   event.preventDefault();
                   actions.editUserInformation();
                 }}
-                // onClick={onSubmitClicked}
+                //  onClick={onSubmitClicked}
               >
                 Save Changes
               </button>
@@ -208,4 +206,12 @@ export const EditProfile = () => {
       <Footer />
     </div>
   );
+
+//  Profile.propTypes = {
+//     name: propTypes.string,
+//     city: propTypes.string,
+//     email: propTypes.string,
+//     id: propTypes.string,
+//   }
+
 };

@@ -13,15 +13,15 @@ from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy()
 
-user_book = db.Table("user_book",
-  db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-  db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
- )
+# user_book = db.Table("user_book",
+#   db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+#   db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
+#  )
 
-#favourites = db.Table("users_book",
-   # db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-   # db.Column('book_id', db.Integer, db.ForeignKey('book.id'), primary_key=True)
-#)
+# favourites = db.Table("users_book",
+#    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
+#    db.Column('book_id', db.Integer, db.ForeignKey('book.id'), primary_key=True)
+# )
 
 
 class User(db.Model):
@@ -32,9 +32,12 @@ class User(db.Model):
     city = db.Column(db.String(120), unique=False)
     # ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
     # owner_book = db.relationship("Book", backref="Owner", lazy=True)
-    # favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
-    owner_book = db.relationship("Book", backref="Owner", lazy=True)
-    users_books = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
+    
+    # owner_book = db.relationship("Book", backref="Owner", lazy=True)
+    # users_books = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
+
+    # owner_book = db.relationship("Book", backref="Owner", lazy=True)
+    favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
 
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
@@ -46,10 +49,9 @@ class User(db.Model):
 
     # User = db.relationship('Book', )
     # User = db.relationship('Favourites', )
-    
 
-    def __repr__(self):
-        return f'<User {self.id}>'
+    # def __repr__(self):
+    #     return f'<User {self.id}>'
 
     def serialize(self):
         return {
@@ -57,8 +59,9 @@ class User(db.Model):
             "email": self.email,
             "name": self.name,
             "city": self.city,
-            # "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
+            "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
+
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book)),
             # "users_books": list(map(lambda book: book.serialize(), self.users_books))
             # "user_name": self.user_name,
@@ -94,17 +97,17 @@ class Book(db.Model):
     language = db.Column(db.String(120), unique=False, nullable=False)
     description = db.Column(db.String(1200), unique=False, nullable=False)
     # book_picture = db.Column(db.Text, unique=False, nullable=False)
-    owner_user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    owner_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=True)
     
     def __repr__(self):
         return f'<Book {self.id}>'
  
-    def addBook(self):
-        db.session.add(self)
+    def addBook(new_book):
+        db.session.add(new_book)
         db.session.commit()
         return "The book has been added"
 
-    def serializeABook(self):
+    def serialize(self):
 
          return {
             "id": self.id,
@@ -114,6 +117,7 @@ class Book(db.Model):
             "genre": self.genre,
             "language": self.language,
             "description": self.description,
+            "owner_id": self.owner_id,
             # "book_picture": self.book_picture,
         }
     

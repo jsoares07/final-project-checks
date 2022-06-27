@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../../styles/home.css";
+
 
 class ScrollToTop extends React.Component {
 	componentDidUpdate(prevProps) {

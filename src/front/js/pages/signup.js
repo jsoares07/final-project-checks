@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/signup.css";
+import "../../styles/home.css";
+
+import { Redirect } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
@@ -12,9 +15,9 @@ export const Signup = () => {
   const { store, actions } = useContext(Context);
 
 
-  const URLbase = process.env.BACKEND_URL;
+  // const URLbase = process.env.BACKEND_URL;
 
-  // const URLbase = "https://3001-heylga-finalproject-wy6lkyxgzdu.ws-eu47.gitpod.io"
+  const URLbase = "https://3001-heylga-finalproject-qupxbh4c7mj.ws-eu47.gitpod.io"
 
 
   const [email, setEmail] = useState();
@@ -41,6 +44,7 @@ export const Signup = () => {
       if (password) {
         // hacemos el fetch
         onFetchSignUp(email, password, name, city);
+        alert("You have been succesfully registered");
       } else {
         // las pass tienen que coincidir
         alert("the passwords have to be iqual");
@@ -188,7 +192,7 @@ export const Signup = () => {
                   type="submit"
                   onClick={onSubmitClicked}
 
-                  className="btn btn-primary text-center"
+                  className="btn btnsign btn-outline-light-me me-1 btn-primary text-center"
                 >
                   Submit
                 </button>
