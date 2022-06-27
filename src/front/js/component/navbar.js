@@ -1,17 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
-import logo from "../../img/logobook.png"
+import logomain from "../../img/logomain.png"
 
 export const Navbar = () => {
   return (
     <nav className="navbar navbar">
+       
       <div className="container">
-        <Link to="/">
 
-          <span className="navbar-brand mb-0 h1" style={{BackgroungImage: `url(${logo})`}}>{logo}</span>
-
+      <Link to="/">
+       <img
+          className="logoNav"
+          src={logomain}
+          alt="Responsive image"
+        />
         </Link>
+
         <div className="ml-auto">
           <Link to="/allbooks">
             <button type="button" className="btn btn-outline-light me-1">
