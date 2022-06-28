@@ -33,7 +33,7 @@ const injectContext = (PassedComponent) => {
       state.actions.fetchUsersBooks();
       state.actions.fetchUsers();
       console.log('la info', state.store)
-      state.actions.getMessage(); // <---- calling this function from the flux.js actions
+      // state.actions.getMessage(); // <---- calling this function from the flux.js actions
     }, []);
 
 
