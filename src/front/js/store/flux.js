@@ -148,11 +148,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         // }
       },
 
-      addFavorite: item => {
+      addFavorite: title => {
         const store = getStore();
-        const validate = store.favorite.includes(item);
+        const validate = store.favorite.includes(title);
         if (store.favorite == [] || !validate) {
-          setStore({ favorite: [...store.favorite, item] });
+          setStore({ favorite: [...store.favorite, title] });
         }
       },
 

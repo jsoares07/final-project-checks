@@ -76,7 +76,8 @@ function Navbarlogin() {
                       return (
                         <DropdownItem key={index}>
                           <div className="favAndTrash">
-                            {store.favorites.name}
+                            {store.favorite.name}
+             
                             <i
                               id="delete"
                               className="far fa-trash-alt pointer trash"
