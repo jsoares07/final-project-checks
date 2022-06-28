@@ -8,6 +8,7 @@ import ListCards from "./../component/listCards.js";
 import Map from "./../component/map.js";
 import Footer from "./../component/footer.js";
 import "../../styles/home.css";
+import Navbarlogin from "../component/navbar-login";
 
 
 
@@ -15,13 +16,32 @@ import "../../styles/home.css";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
-	return (
-		<div className="">
+
+	const loggedInRender = (
+		<>
+			<Navbarlogin />
+			<Jumbotron />
+			<ListCards />
+			{/* <Map /> */}
+			<Footer />
+		</>
+	);
+
+	const notLoggedInRender = (
+		<>
 			<Navbar />
 			<Jumbotron />
 			<ListCards />
 			{/* <Map /> */}
 			<Footer />
+		</>
+	);
+
+	return (
+		<div className="">
+			{store.isLoggedIn
+				? loggedInRender
+				: notLoggedInRender}
 		</div>
 	);
 };
