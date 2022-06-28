@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./card.js";
-import {Catcher} from "./../../img/catcher.jpg"
-import {Crime} from "./../../img/crime.jpg"
-import {littleprince} from "./../../img/littleprince.jpg"
-import {we} from "./../../img/we.jpg"
+import { Catcher } from "./../../img/catcher.jpg"
+import { Crime } from "./../../img/crime.jpg"
+import { littleprince } from "./../../img/littleprince.jpg"
+import { we } from "./../../img/we.jpg"
 
 const listCards = () => {
 	const list = [
@@ -54,17 +54,17 @@ const listCards = () => {
 	});
 	return (
 		<div className="conteiner center">
-		<h1 className="text-center pt-5">Recent BookExchange</h1>
-		<br></br>
-		<div
-			className="d-flex gap-2 m-1"
-			style={{
-				justifyContent: "center",
-			}}>
+			<h1 className="text-center pt-5">Recent BookExchange</h1>
+			<br></br>
+			<div
+				className="d-flex gap-2 m-1"
+				style={{
+					justifyContent: "center",
+				}}>
 
-			{" "}
-			{listOfCards}{" "}
-		</div>
+				{" "}
+				{listOfCards}{" "}
+			</div>
 		</div>
 	);
 };

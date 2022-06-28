@@ -7,6 +7,8 @@ import Jumbotron from "./../component/jumbotron.js";
 import ListCards from "./../component/listCards.js";
 import Map from "./../component/map.js";
 import Footer from "./../component/footer.js";
+import Prueba from "../component/map-test";
+import MapTest from "../component/map-prueba";
 
 
 
@@ -19,6 +21,8 @@ export const Home = () => {
 			<Jumbotron />
 			<ListCards />
 			<Map />
+			{/* <MapTest /> */}
+			{/* <Prueba /> */}
 			<Footer />
 		</div>
 	);

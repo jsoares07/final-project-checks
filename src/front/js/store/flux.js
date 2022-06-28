@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: [],
 			isLoggedIn: false,
 			accessToken: null,
-
+			userPosition: null,
 		},
 		actions: {
 
@@ -58,7 +58,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.error(error));
 			},
 
-
+			getUserPosition: () => {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition((position) => {
+						console.log({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+						setStore({
+							userPosition: { latitude: position.coords.latitude, longitude: position.coords.longitude }
+						})
+					})
+				} else {
+					alert("Geolocation is not supported by this browser.");
+				}
+			},
 
 			getMessage: () => {
 				// fetching data from the backend
@@ -67,6 +78,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
+
+
 
 
 			changeColor: (index, color) => {
