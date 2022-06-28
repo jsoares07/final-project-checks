@@ -226,7 +226,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       fetchUser: (user_id) => {
         console.log("fechtBook");
         const store = getStore();
-        fetch("https://3001-heylga-finalproject-t5ih5shkn0y.ws-eu47.gitpod.io" + "/api/book/" + user_id, {
+        fetch("https://3001-heylga-finalproject-t5ih5shkn0y.ws-eu47.gitpod.io" + "/api/user/" + user_id, {
 
           method: "GET",
           headers: {
