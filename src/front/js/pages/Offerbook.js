@@ -15,7 +15,7 @@ export const Offerbook = () => {
   const [description, setDescription] = useState();
   // const [book_picture, setBookPicture] = useState();
 
-  const URLbase = process.env.BACKEND_URL;
+  const URLbase = "https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io";
 
   const onSubmit = () => {
     console.log("submit working");

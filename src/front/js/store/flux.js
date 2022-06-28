@@ -125,7 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // BOOKS
       fetchUsersBooks: () => {
-        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/booksbyuser", {
+        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/api/booksbyuser", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -135,7 +135,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ usersbooks: data.results }));
       },
       fetchUsers: () => {
-        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/users", {
+        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/api/users", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -145,7 +145,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ users: data.results }));
       },
       fetchBooks: () => {
-        fetch("https://3001-heylga-finalproject-q05dsyvlg5h.ws-eu47.gitpod.io/api/books", {
+        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/api/books", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -159,7 +159,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       fetchBook: (book_id) => {
         console.log("fechtBook");
         const store = getStore();
-        fetch(process.env.BACKEND_URL + "/api/book/" + book_id, {
+        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io" + "/api/book/" + book_id, {
 
           method: "GET",
           headers: {

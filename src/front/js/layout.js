@@ -13,7 +13,6 @@ import { AllBooks } from "./pages/allbooks.js";
 import { BookDescription } from "./pages/book-description";
 
 import { Other_users_profile } from "./pages/other-users-profile"
-import { Reviewuser } from "./pages/Reviewuser"
 import { EditProfile } from "./pages/edit-profile.js";
 import { Resetpassword } from "./pages/resetpassword.js"
 import { Forgetpassword } from "./pages/forgetpassword.js";
@@ -22,9 +21,6 @@ import { Emailresetsecurity } from "./component/emailresetsecurity";
 import { MyProfile } from "./pages/my-profile.js";
 import { Security } from "./pages/security";
 
-import { Offerbook } from "./pages/Offerbook";
-import { AllBooks } from "./pages/allbooks.js";
-import { BookDescription } from "./pages/book-description";
 
 import { ProfileShort } from "./pages/profile-short";
 import { Swapmessage } from "./pages/swapmessage.js";
@@ -122,13 +118,13 @@ const Layout = () => {
               <Resetpassword />
             </Route>
 
-						<Route exact path="/reviewuser">
-							<Reviewuser />
-						</Route>
+            <Route exact path="/reviewuser">
+              <Reviewuser />
+            </Route>
 
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
+            <Route>
+              <h1>Not found!</h1>
+            </Route>
 
             <Route exact path="/security" component={Security}>
               <Security />
