@@ -15,20 +15,16 @@ import "../../styles/index.css";
 
 export const ProfileShort = (props) => {
   const { store, actions } = useContext(Context);
-  const { id, name, city } = props;
 
   const params = useParams();
 
   console.log('params', params)
 
- 
+  const { id } = useParams();
 
   return (
     <div>
       <Navbarlogin />
-
-
-
       <div className="container center m-5" style={{ top: "10px" }} >
         <h3>Personal info</h3>
         <div className="card-body">
@@ -77,9 +73,10 @@ export const ProfileShort = (props) => {
 
   );
 
-  Profile.propTypes = {
-    name: propTypes.string,
-    city: propTypes.string,
-    id: propTypes.string,
-  }
+  // Profile.propTypes = {
+  //   first_name: propTypes.string,
+  //   user_name: propTypes.string,
+  //   email: propTypes.string,
+  //   id: propTypes.string,
+  // }
 };

@@ -1,27 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
-
 import os
 import sys
 from sqlalchemy import  Table, Column, ForeignKey, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-
 from flask_admin.contrib.sqla import ModelView
 
 
-
 db = SQLAlchemy()
-
-# user_book = db.Table("user_book",
-#   db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-#   db.Column('book_id', db.Integer, db.ForeignKey('book.id'))
-#  )
-
-# favourites = db.Table("users_book",
-#    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-#    db.Column('book_id', db.Integer, db.ForeignKey('book.id'), primary_key=True)
-# )
 
 
 class User(db.Model):
@@ -30,15 +17,11 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(120), unique=True, nullable=False)
     city = db.Column(db.String(120), unique=False)
-    # ownership = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
-    # owner_book = db.relationship("Book", backref="Owner", lazy=True)
+
+    books_of_the_user = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
+
+    # bookfav = db.relationship('Book', secondary=likes, lazy='subquery', backref=db.backref('this user likes these books', lazy=True))
     
-    # owner_book = db.relationship("Book", backref="Owner", lazy=True)
-    # users_books = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('books_owners', lazy=True))
-
-    # owner_book = db.relationship("Book", backref="Owner", lazy=True)
-    favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
-
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
     # birthday = db.Column(db.DateTime)
@@ -47,19 +30,14 @@ class User(db.Model):
     # state = db.Column(db.String(120))
     # profile_pic = db.Column(db.String(120), nullable=True)
 
-    # User = db.relationship('Book', )
-    # User = db.relationship('Favourites', )
-
-    # def __repr__(self):
-    #     return f'<User {self.id}>'
-
     def serialize(self):
         return {
             "id": self.id,
             "email": self.email,
             "name": self.name,
             "city": self.city,
-            "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
+            "books": list(map(lambda book: book.serialize(), self.books_of_the_user)),
+            # 'likes': [favorite.serialize() for favorite in self.bookfav]
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book))
 
             # "owner_book": list(map(lambda book: book.serialize(), self.owner_book)),
@@ -76,16 +54,12 @@ class User(db.Model):
         }
       
     def create(self):
-        # este usuario existe?
-        # si? retorna, error, el usuario ya existe
-
-        # return 'error, el usuario ya existe'
-        
-        # no? crealo
+        # does this user exist?
+        # if so, return error "this user already registered"
+        # otherwise, create this user:
         db.session.add(self)
         db.session.commit()
-        return 'success, el usuario ha sido creado'
-
+        return 'success, the user has been registered'
 
 
 class Book(db.Model):
@@ -98,6 +72,7 @@ class Book(db.Model):
     description = db.Column(db.String(1200), unique=False, nullable=False)
     # book_picture = db.Column(db.Text, unique=False, nullable=False)
     owner_id = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable=True)
+
     
     def __repr__(self):
         return f'<Book {self.id}>'
@@ -122,7 +97,6 @@ class Book(db.Model):
         }
     
 
-
 class UsersBooks(db.Model):
     __tablename__="users_books"
     id = db.Column(db.Integer, primary_key=True)
@@ -135,36 +109,4 @@ class UsersBooks(db.Model):
             "user_id": self.user_id,
             "book_id": self.book_id,
         }
-
-
- 
-# class UsersBooks(db.Model):
-#     __tablename__="users_books"
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.String(120), nullable=False)
-#     user_id = db.Column(db.Integer(), db.ForeignKey('book.id'))
-#     book_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
- 
-
-
-# class Favourites(db.Model):
-#     __tablename__ = 'favourites'
- 
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.String(120), nullable=False)
-#     favouritetype = db.Column(db.String(120), nullable=False)
-#     favourite_book = db.Column(db.String(120), db.ForeignKey(User.id))
-#     favourite_id = db.Column(db.String(120), nullable=False)
-
-#     def __repr__(self):
-#         return '<Favourites %r>' % self.name
-
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "user_id": self.user_id,
-#             "favouritetype": self.favouritetype,
-#             "favourite_id": self.favourite_id,
-#             "favourite_book": self.favourite_book,
-#         }
 
