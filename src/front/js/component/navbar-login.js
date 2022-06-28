@@ -23,7 +23,7 @@ function Navbarlogin() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-md">
+      <nav className="navbar navbar-expand-md ">
         <div className="container">
           <Link to="/">
             <img
@@ -32,104 +32,45 @@ function Navbarlogin() {
               alt="Responsive image"
             />
           </Link>
+
           <div className="ml-auto">
+
+            <Link to="/allbooks">
+              <button type="button" className="btn btn-outline-light me-1 float-end">
+                See all books
+              </button>
+            </Link>
 
 
             {/* DROPDOWN */}
 
+            <Dropdown isOpen={dropdownProfile} toggle={profileOpenDropdown} className="float-end">
+              <DropdownToggle caret>
+                <i class="fa-solid fa-user"></i>
+              </DropdownToggle>
+              <DropdownMenu
+              >
+                <DropdownItem>
+                  <Link to="/my-profile">
+                    Profile
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/edit-profile/:id">
+                    Configuration
+                  </Link>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem onClick={() => actions.logout()}>
+                  Log Out
+                </DropdownItem>
 
+              </DropdownMenu>
+            </Dropdown>
 
-            <div class="dropdown">
-
-
-              <Dropdown isOpen={dropdown} toggle={openCloseDropdown}>
-
-
-
-                <Link to="/allbooks">
-                  <button type="button" className="btn btn-outline-light me-1">
-                    See all books
-                  </button>
-                </Link>
-
-
-                <Link to="/Offerbook">
-                  <button type="button" className="btn btn-outline-light me-1"><i class="fa-solid fa-plus"></i></button>
-                </Link>
-                <Link to="/">
-                  <button type="button" className="btn btn-outline-light me-1"> <i class="fa-solid fa-bell"></i></button>
-                </Link>
-                <Link to="/">
-                </Link>
-
-
-
-
-
-                <DropdownToggle caret className="dropdownButton">
-                  <i class="fa-solid fa-heart"></i>{" "}
-                  {store.favorite.length}
-                </DropdownToggle>
-                <DropdownMenu right>
-                  {store.favorite.length > 0 ? (
-                    store.favorite.map((favorite, index) => {
-                      return (
-                        <DropdownItem key={index}>
-                          <div className="favAndTrash">
-                            {store.favorite.name}
-             
-                            <i
-                              id="delete"
-                              className="far fa-trash-alt pointer trash"
-                              onClick={() => {
-                                actions.deleteFavorite({ index });
-                              }}
-                            />
-                          </div>
-                        </DropdownItem>
-                      );
-                    })
-                  ) : (
-                    <DropdownItem>
-                      <p>Emty</p>
-                    </DropdownItem>
-                  )}
-
-
-                </DropdownMenu>
-
-
-                <Dropdown isOpen={dropdownProfile} toggle={profileOpenDropdown}>
-                  <DropdownToggle caret>
-                    <i class="fa-solid fa-user"></i>
-                  </DropdownToggle>
-                  <DropdownMenu
-                  >
-                    <DropdownItem>
-                      <Link to="/my-profile">
-                        Profile
-                      </Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link to="/edit-profile/:id">
-                        Configuration
-                      </Link>
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem onClick={() => actions.logout()}>
-                      Log Out
-                    </DropdownItem>
-
-                  </DropdownMenu>
-                </Dropdown>
-
-
-              </Dropdown>
-
-
-
-
-            </div>
+            <Link to="/Offerbook">
+              <button type="button" className="btn btn-outline-light me-1 float-end"><i class="fa-solid fa-plus"></i></button>
+            </Link>
 
           </div>
         </div>

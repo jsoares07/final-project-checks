@@ -122,24 +122,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
 
-
-      // ADD FAVOURITES
-
-      addFavorite: title => {
-        const store = getStore();
-        const validate = store.favorite.includes(title);
-        if (store.favorite == [] || !validate) {
-          setStore({ favorite: [...store.favorite, title] });
-        }
-      },
-
-      deleteFavorite: id => {
-        const store = getStore();
-        const updatedList = [...store.favorite];
-        updatedList.splice(id, 1);
-        setStore({ favorite: [...updatedList] });
-      },
-
       // BOOKS
 
       fetchUsersBooks: () => {
