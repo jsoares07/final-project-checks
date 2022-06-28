@@ -107,7 +107,7 @@ class Book(db.Model):
         db.session.commit()
         return "The book has been added"
 
-    def serialize(self):
+    def serializeABook(self):
 
          return {
             "id": self.id,

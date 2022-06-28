@@ -173,7 +173,7 @@ def offerbook():
     db.session.commit()
     response_body = {
          "message": answer,
-        #  "book": Book.serializeABook()
+         "book": Book.serializeABook()
      }
 
     return jsonify(response_body), 200
