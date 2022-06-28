@@ -78,26 +78,26 @@ def login():
 
 
       
-# We query one user
-@api.route('/login/<int:id>', methods=['POST'])
-def get_user(id = None):
-    query_user = User.query.filter_by(id=id).first()
-    if not query_user:
-        return jsonify({"message": "No user found!"})
+# # We query one user
+# @api.route('/login/<int:id>', methods=['POST'])
+# def get_user(id = None):
+#     query_user = User.query.filter_by(id=id).first()
+#     if not query_user:
+#         return jsonify({"message": "No user found!"})
 
-    query_a_user = query_user.serialize()
-
-
-    print("####################")
-    print(query_a_user)
-    print("####################")
-
-    response_body = {
-        "results": query_a_user
-    }
+#     query_a_user = query_user.serialize()
 
 
-    return jsonify(response_body), 200
+#     print("####################")
+#     print(query_a_user)
+#     print("####################")
+
+#     response_body = {
+#         "results": query_a_user
+#     }
+
+
+#     return jsonify(response_body), 200
     
     
 @api.route('/edit-profile/<int:user_id>', methods=['GET', 'PUT'])
@@ -176,6 +176,29 @@ def offerbook():
         #  "book": Book.serializeABook()
      }
 
+    return jsonify(response_body), 200
+
+
+# We query one user
+@api.route('/user/<int:user_id>', methods=['GET'])
+def get_user(user_id = None):
+    user = User.query.filter_by(id=user_id).first()
+    if not user:
+        return jsonify({"message": "No user found!"})
+
+    query_a_user = user.serialize()
+
+
+
+    print("####################")
+    print(query_a_user)
+    print("####################")
+
+    response_body = {
+        "results": query_a_user
+    }
+
+        
     return jsonify(response_body), 200
 
 
