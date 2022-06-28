@@ -10,6 +10,7 @@ from sqlalchemy import create_engine
 from flask_admin.contrib.sqla import ModelView
 
 
+
 db = SQLAlchemy()
 
 # user_book = db.Table("user_book",

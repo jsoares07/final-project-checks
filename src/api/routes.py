@@ -215,35 +215,12 @@ def getUsers():
     return jsonify(response_body), 200
 
 
-# We query one book
-@api.route('/book/<int:book_id>', methods=['GET'])
-def get_book(book_id = None):
-    book = Book.query.filter_by(id=book_id).first()
-    if not book:
-        return jsonify({"message": "No book found!"})
-
-    query_a_book = book.serialize()
-
-
-
-    print("####################")
-    print(query_a_book)
-    print("####################")
-
-    response_body = {
-        "results": query_a_book
-    }
-
-        
-    return jsonify(response_body), 200
-
-
 # We query all books
 @api.route("/books", methods=["GET"])
 def getBooks():
     queryBooks = Book.query.all()
 
-    queryBooks = list(map(lambda x: x.serialize(), queryBooks))
+    queryBooks = list(map(lambda x: x.serializeABook(), queryBooks))
 
     print(queryBooks)
 
@@ -288,7 +265,27 @@ def getUserBooks():
 #     else:
 #             return {"error":"user and password not valid"}, 400
 
+# We query one book
+@api.route('/book/<int:book_id>', methods=['GET'])
+def get_book(book_id = None):
+    book = Book.query.filter_by(id=book_id).first()
+    if not book:
+        return jsonify({"message": "No book found!"})
 
+    query_a_book = book.serializeABook()
+
+
+
+    print("####################")
+    print(query_a_book)
+    print("####################")
+
+    response_body = {
+        "results": query_a_book
+    }
+
+        
+    return jsonify(response_body), 200
 
 # We query one book
 # @api.route('<int:user_id>/book/<int:book_id>', methods=['GET'])
