@@ -1,26 +1,26 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Component } from "react";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 import propTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+
 import Popup from "../component/Popup";
 import "../../styles/home.css";
 
 
+import "../../styles/card.css";
+import "../../styles/home.css";
+import "../../styles/index.css";
+
 
 import Navbarlogin from "../component/navbar-login";
 import Footer from "../component/footer.js";
-import "../../styles/index.css";
+
 
 
 export const ProfileShort = (props) => {
   const { store, actions } = useContext(Context);
+  const { id, title, author, imageUrl, description, buttonLabel } = props;
 
-  const params = useParams();
-
-  console.log('params', params)
-
-  const { id } = useParams();
 
   return (
     <div>
@@ -41,7 +41,7 @@ export const ProfileShort = (props) => {
           <hr />
 
           <ul>
-            <li>Random book 1</li>
+            <li>{store.book.title}</li>
             <li>Random book 2</li>
             <li>Random book 3</li>
           </ul>

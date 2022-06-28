@@ -14,17 +14,16 @@ const Card = (props) => {
   const { store, actions } = useContext(Context);
   const { id, title, author, imageUrl, description, buttonLabel } = props;
 
-  const [favourite, setFavourite]= useState ({});
 
   return (
     <div className="card my-4 gap-1" style={{ width: "18rem" }}>
-			  {/* <img
+      {/* <img
               className="text-center mt-2"
               width="150px"
               height="100px"
               src="https://picsum.photos/id/237/200/300"
             /> */}
-			
+
       <div className="card-body mt-2 mb-4" style={{ height: "10rem" }}>
         <h4 className="card-title text-center fw-bolder">{title}</h4>
         <h5 className="card-title text-center fw-bolder">{author}</h5>
@@ -34,19 +33,10 @@ const Card = (props) => {
             : description}
         </p>
       </div>
-      <button
-                    id="heart"
-                    className="heartbutton"
-                    onClick={() => {
-                        actions.addFavorite(props.name);
-                    }}
-                >
-                <a href="#" className="heartbutton btn-primary heartbutton" 
-                >❤️</a>
-                </button> 
-                
+
+
       <div className="bg-light py-3 text-center">
-        
+
         <Link to={`/book/${id}`}>
           <button
             type="button"

@@ -11,26 +11,26 @@ export const BookDescription = () => {
   const { store, actions } = useContext(Context);
 
   const loggedInRender = (
-		<>
-			<Navbarlogin />
+    <>
+      <Navbarlogin />
       <BookLogicCard />
       <Footer />
-		</>
-	);
-  
-	const notLoggedInRender = (
-		<>
-			<Navbar />
+    </>
+  );
+
+  const notLoggedInRender = (
+    <>
+      <Navbar />
       <BookLogicCard />
       <Footer />
-		</>
-	);
+    </>
+  );
 
   return (
     <div className="">
-     {store.isLoggedIn
-				? loggedInRender
-				: notLoggedInRender}
+      {store.isLoggedIn
+        ? loggedInRender
+        : notLoggedInRender}
     </div>
   );
 };
