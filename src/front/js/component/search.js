@@ -25,7 +25,7 @@ export default function Search() {
         console.log("search ", searchTerm);
     };
 
-    const link = "https://3000-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/allbooks"
+    const link = "https://3001-heylga-finalproject-59atkmezlzj.ws-eu47.gitpod.io/allbooks"
 
     return (
         <div className="Search">

@@ -7,6 +7,8 @@ import "../../styles/home.css";
 import Footer from "./../component/footer";
 import Navbarlogin from "../component/navbar-login";
 
+import { URLbase } from "../../../../secrets.js";
+
 export const Offerbook = () => {
   const { store, actions } = useContext(Context);
   const [title, setTitle] = useState();
@@ -18,9 +20,9 @@ export const Offerbook = () => {
   const [owner_user_id, setowner_user_id] = useState();
   // const [book_picture, setBookPicture] = useState();
 
-  // const URLbase = process.env.BACKEND_URL;
 
-  const URLbase = "https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io"
+
+  // const URLbase = "https://3001-heylga-finalproject-59atkmezlzj.ws-eu47.gitpod.io"
 
 
   const onSubmit = () => {
