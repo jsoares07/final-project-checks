@@ -26,7 +26,7 @@ export const Home = () => {
 			<Navbarlogin />
 			<Jumbotron />
 			<ListCards />
-			{/* <Map /> */}
+			<Map /> 
 			<Footer />
 		</>
 	);

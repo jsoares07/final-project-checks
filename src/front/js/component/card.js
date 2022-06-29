@@ -17,12 +17,12 @@ const Card = (props) => {
 
   return (
     <div className="card my-4 gap-1" style={{ width: "18rem" }}>
-      {/* <img
-              className="text-center mt-2"
-              width="150px"
-              height="100px"
-              src="https://picsum.photos/id/237/200/300"
-            /> */}
+      <img
+              className="container align-item-center center pt-1"
+              width="250px"
+              height="160px"
+              src="https://picsum.photos/200/300"
+            /> 
 
       <div className="card-body mt-2 mb-4" style={{ height: "10rem" }}>
         <h4 className="card-title text-center fw-bolder">{title}</h4>

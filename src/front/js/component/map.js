@@ -80,7 +80,7 @@ function Map() {
       <h1 className="text-center pt-5">Books Nearby</h1>
       <br></br>
       <div id="map"></div>
-      <div className="container center m-5">
+      <div className="container center p-5">
         <div class="row">
           <GoogleMap
             zoom={13}
@@ -104,7 +104,7 @@ function Map() {
             }
             {/* <Marker position={{ lat: 44.015, lng: -80.005 }} />
             <Marker position={{ lat: 44.016, lng: -80.006 }} /> */}
-            <Circle center={center} radius={10000} />
+            <Circle center={center} radius={7000} />
           </GoogleMap>
         </div>
       </div>

@@ -8,6 +8,8 @@ import { we } from "./../../img/we.jpg";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+import "../../styles/home.css";
+
 
 export default function Search() {
     const { store, actions } = useContext(Context);
@@ -29,13 +31,20 @@ export default function Search() {
 
     return (
         <div className="Search">
-            <h1>Search</h1>
+            {/* <h1>Search</h1> */}
 
-            <div className="search-container">
-                <div className="search-inner">
-                    <input type="text" value={value} onChange={onChange} />
-                    <button onClick={() => onSearch(value)}> Search </button>
+            <div className="input-group center">
+                <div className="search-inner rounded">
+                    <input type="text" value={value} onChange={onChange} className="form-control rounded" />
+                    {/* <button onClick={() => onSearch(value)}> Search </button> */}
+
+                    <span className="input-group-text border-0" 
+                    onClick={() => onSearch(value)}
+                    id="search-addon">
+                        <i className="fas fa-search"></i>
+                    </span>
                 </div>
+
                 <div className="dropdown">
                     {data
                         .filter((item) => {
