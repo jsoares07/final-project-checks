@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import Navbar from "../component/navbar";
+import Navbarlogin from "../component/navbar-login";
 import BookLogicCard from "../component/book-description-logic";
 import Footer from "../component/footer.js";
 import "../../styles/index.css";
@@ -9,13 +10,27 @@ import "../../styles/home.css";
 export const BookDescription = () => {
   const { store, actions } = useContext(Context);
 
-  return (
-    <div className="">
+  const loggedInRender = (
+    <>
+      <Navbarlogin />
+      <BookLogicCard />
+      <Footer />
+    </>
+  );
+
+  const notLoggedInRender = (
+    <>
       <Navbar />
       <BookLogicCard />
-      <button onClick={() => console.log(store.book)}>BOOK</button>
-
       <Footer />
+    </>
+  );
+
+  return (
+    <div className="">
+      {store.isLoggedIn
+        ? loggedInRender
+        : notLoggedInRender}
     </div>
   );
 };

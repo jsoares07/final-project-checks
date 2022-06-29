@@ -12,7 +12,6 @@ const BookLogicCard = () => {
     <BookCard
 
       id={store.book.book_id}
-
       // book_picture={store.book_picture}
       title={store.book.title}
       author={store.book.author}
@@ -22,25 +21,6 @@ const BookLogicCard = () => {
       description={store.book.description}
     />
   );
-
-  // const bookInfo = () => {
-  //   store.book.map((cardItem, index) => {
-  //     return (
-  //       <BookCard
-  //         key={index}
-  //         id={cardItem.id}
-  //         title={cardItem.title}
-  //         author={cardItem.author}
-  //         publisher={cardItem.publisher}
-  //         genre={cardItem.publisher}
-  //         language={cardItem.language}
-  //         book_picture={cardItem.book_picture}
-  //         description={cardItem.description}
-  //       />
-  //     );
-  //   });
-  // };
-  // return <div className="conteiner center">{bookInfo}</div>;
 };
 
 export default BookLogicCard;

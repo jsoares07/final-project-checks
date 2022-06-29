@@ -9,10 +9,7 @@ from flask_jwt_extended import create_access_token
 # from models import User, Book
 from werkzeug.security import generate_password_hash
 
-
-
 api = Blueprint('api', __name__)
-
 
 @api.route('/signup', methods=['POST'])
 def signup():
@@ -20,6 +17,7 @@ def signup():
     request_body = request.get_json(force=True)
 
     # hashed_password = generate_password_hash(data['password'], method='dfgdhjkg54654dsfd788gfhgf')
+    # hashed_password = generate_password_hash(password)
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
@@ -28,8 +26,6 @@ def signup():
     # user_name = request.json.get('user_name', None)
     # first_name = request.json.get('first_name', None)
 
-
-    # hashed_password = generate_password_hash(password)
 
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
@@ -78,28 +74,6 @@ def login():
 
 
       
-# We query one user
-@api.route('/login/<int:id>', methods=['POST'])
-def get_user(id = None):
-    query_user = User.query.filter_by(id=id).first()
-    if not query_user:
-        return jsonify({"message": "No user found!"})
-
-    query_a_user = query_user.serialize()
-
-
-    print("####################")
-    print(query_a_user)
-    print("####################")
-
-    response_body = {
-        "results": query_a_user
-    }
-
-
-    return jsonify(response_body), 200
-    
-    
 @api.route('/edit-profile/<int:user_id>', methods=['GET', 'PUT'])
 def editprofile(user_id = None):
 
@@ -179,6 +153,30 @@ def offerbook():
     return jsonify(response_body), 200
 
 
+
+# We query one user
+@api.route('/user/<int:user_id>', methods=['GET'])
+def get_user(user_id = None):
+    user = User.query.filter_by(id=user_id).first()
+    if not user:
+        return jsonify({"message": "No user found!"})
+
+    query_a_user = user.serialize()
+
+
+
+    print("####################")
+    print(query_a_user)
+    print("####################")
+
+    response_body = {
+        "results": query_a_user
+    }
+
+        
+    return jsonify(response_body), 200
+
+# We query all users
 @api.route("/users", methods=["GET"])
 def getUsers():
     queryUsers = User.query.all()
@@ -192,55 +190,6 @@ def getUsers():
     return jsonify(response_body), 200
 
 
-# We query all books
-@api.route("/books", methods=["GET"])
-def getBooks():
-    queryBooks = Book.query.all()
-
-    queryBooks = list(map(lambda x: x.serializeABook(), queryBooks))
-
-    print(queryBooks)
-
-    response_body = {
-        "results": queryBooks
-    }
-
-    return jsonify(response_body), 200
-
-@api.route("/booksbyuser", methods=["GET"])
-def getUserBooks():
-    queryUserbooks = UsersBooks.query.all()
-    userbooks = list(map(lambda x: x.serialize(), queryUserbooks))
-    print(userbooks)
-
-    response_body = {
-        "results": userbooks
-    }
-
-    return jsonify(response_body), 200
-
-
-# @api.route('/booksbyuser', methods=['GET'])
-# def login():
-
-#     request_body = request.get_json(force=True)
-
-
-#     id = request.json.get('id', None)
-
-#     booksByUser = UsersBooks.query.filter_by(user_id=id)
-
-
-#     if booksByUser:
-#             #for para recorrer booksByUser,
-#             # por cada book id, 
-#             #book = Book.query.filter_by(id=book_id).first() 
-#             listOfBooks = []
-#             return {
-#                 "listOfBooks": listOfBooks
-#                 }, 200
-#     else:
-#             return {"error":"user and password not valid"}, 400
 
 # We query one book
 @api.route('/book/<int:book_id>', methods=['GET'])
@@ -249,8 +198,7 @@ def get_book(book_id = None):
     if not book:
         return jsonify({"message": "No book found!"})
 
-    query_a_book = book.serializeABook()
-
+    query_a_book = book.serialize()
 
 
     print("####################")
@@ -264,26 +212,34 @@ def get_book(book_id = None):
         
     return jsonify(response_body), 200
 
-# We query one book
-# @api.route('<int:user_id>/book/<int:book_id>', methods=['GET'])
-# def get_book(book_id = None, user_id = None):
-#     query_book = Book.query.filter_by(id=book_id).first()
-#     query_book = User.query.filter_by(id=user_id).first()
-#     if not query_book:
-#         return jsonify({"message": "No book found!"})
 
-#     query_a_book = query_book.listOfBooks()
+# We query all books
+@api.route("/books", methods=["GET"])
+def getBooks():
+    queryBooks = Book.query.all()
+
+    queryBooks = list(map(lambda x: x.serialize(), queryBooks))
+
+    print(queryBooks)
+
+    response_body = {
+        "results": queryBooks
+    }
+
+    return jsonify(response_body), 200
 
 
-#     print("####################")
-#     print(query_a_book)
-#     print("####################")
+@api.route("/booksbyuser", methods=["GET"])
+def getUserBooks():
+    queryUserbooks = UsersBooks.query.all()
+    userbooks = list(map(lambda x: x.serialize(), queryUserbooks))
+    print(userbooks)
 
-#     response_body = {
-#         "results": query_a_book
-#     }
+    response_body = {
+        "results": userbooks
+    }
 
-        
-#     return jsonify(response_body), 200
+    return jsonify(response_body), 200
+
 
 
