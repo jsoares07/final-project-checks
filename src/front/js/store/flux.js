@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       users: [],
       books: [],
       book: [],
+      userPosition: null,
     },
 
 
@@ -207,16 +208,25 @@ const getState = ({ getStore, getActions, setStore }) => {
           // .catch(error => console.log('error', error));
       },
 
+     // MAP
+
+       getUserPosition: () => {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition((position) => {
+						console.log({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+						setStore({
+							userPosition: { latitude: position.coords.latitude, longitude: position.coords.longitude }
+						})
+					})
+				} else {
+					alert("Geolocation is not supported by this browser.");
+				}
+			},
   
-      addReview: (rating) => {
-        const store = getStore();
-      },
-
-
-
 
     },
   };
+
 };
 
 export default getState;

@@ -21,6 +21,7 @@ const injectContext = (PassedComponent) => {
       })
     );
 
+
     useEffect(() => {
       /**
        * EDIT THIS!
@@ -32,9 +33,11 @@ const injectContext = (PassedComponent) => {
       state.actions.fetchBooks();
       state.actions.fetchUsersBooks();
       state.actions.fetchUsers();
+  			state.actions.getUserPosition();
       console.log('la info', state.store)
       // state.actions.getMessage(); // <---- calling this function from the flux.js actions
     }, []);
+
 
 
 

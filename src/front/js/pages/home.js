@@ -7,6 +7,10 @@ import Jumbotron from "./../component/jumbotron.js";
 import ListCards from "./../component/listCards.js";
 import Map from "./../component/map.js";
 import Footer from "./../component/footer.js";
+
+import Prueba from "../component/map-test";
+import MapTest from "../component/map-prueba";
+
 import "../../styles/home.css";
 import Navbarlogin from "../component/navbar-login";
 
@@ -32,7 +36,12 @@ export const Home = () => {
 			<Navbar />
 			<Jumbotron />
 			<ListCards />
+
+			<Map />
+			{/* <MapTest /> */}
+			{/* <Prueba /> */}
 			{/* <Map /> */}
+
 			<Footer />
 		</>
 	);

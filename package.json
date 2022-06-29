@@ -73,6 +73,16 @@
 		]
 	},
 	"dependencies": {
+
+		"@googlemaps/react-wrapper": "^1.1.35",
+		"@popperjs/core": "^2.11.5",
+		"@react-google-maps/api": "^2.12.0",
+		"@types/googlemaps": "^3.43.3",
+		"cors": "^2.8.5",
+		"prop-types": "^15.6.1",
+		"react": "^16.8.4",
+		"react-dom": "^16.8.4",
+		"react-google-maps": "*",
 		"@emailjs/browser": "^3.6.2",
 		"@popperjs/core": "^2.11.5",
 		"@react-google-maps/api": "^2.12.0",
