@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+
 import { GoogleMapAPIKEY } from "../../../../secrets.js";
 import { Circle } from '@react-google-maps/api';
 import { Rectangle } from '@react-google-maps/api';
 import { InfoWindow } from '@react-google-maps/api';
 import Card from "./card.js";
 import { Context } from "../store/appContext.js";
+
+import "../../styles/home.css";
+
 
 export default function MapTest() {
 

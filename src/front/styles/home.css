@@ -1,15 +1,19 @@
 .bg-gray {
-  background-color: #e9ecef;
+  background-color: #f8f6d0;
+  font-family: 'Libre Baskerville', serif;
 }
 .py-6 {
   padding-top: 6rem;
   padding-bottom: 6rem;
+  font-family: 'Libre Baskerville', serif;
 }
 .text-heading {
-  color: #343a40;
+  color: #9C8B7C;
+  font-family: 'Libre Baskerville', serif;
 }
 .text-para {
-  color: #6c757d;
+  color: #c9b674;
+  font-family: 'Libre Baskerville', serif;
 }
 .list-unstyled {
   padding-left: 0;
@@ -20,6 +24,7 @@
 }
 .list-unstyled li a:hover {
   text-decoration: underline;
+  color:#9C8B7C
 }
 .bg-transparent {
   background-color: rgba(0, 0, 0, 0) !important;
@@ -35,19 +40,64 @@
   padding-bottom: 4rem;
 }
 .bg-dark-gray {
-  background-color: #343a40;
+  background-color: #7D6757;
 }
 .text-gray-300 {
-  color: #dee2e6;
+  color: #f8f6d0;
+  font-family: 'Libre Baskerville', serif;
 }
 .contacts {
   padding-top: 1rem;
 }
 .navbar {
-  background-color: #343a40;
+  background-color: #7D6757;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .map-container {
   width: 100%;
   height: 100vh;
+  font-family: 'Libre Baskerville', serif;
+}
+.expand {
+  color: #F0F0ED;
+  font-family: 'Libre Baskerville', serif;
+}
+/* .logo {
+  background-image: url("../img/swopbook.png");
+} */
+.red:hover  {
+  color:#9C8B7C
+}
+.btn {
+  color: #F3F9E4;
+  border-color: #F3F9E4;
+}
+.btn:hover {
+  background-color:#90ceb5;
+  border-color:#90ceb5;
+  color:#F3F9E4
+
+}
+.logoNav {
+  height: 50px;
+  width:auto;
+  padding-left: 30px;
+  padding-bottom: 0;
+}
+.logoNav {
+  height: 50px;
+  width:auto;
+  padding-left: 30px;
+  padding-bottom: 0;
+}
+.btn {
+  background-color:#AA9971;
+  font-family: 'Libre Baskerville', serif;
+}
+.btn:hover {
+  font-family: 'Libre Baskerville', serif;
+}
+h6 {
+  font-family: 'Libre Baskerville', serif;
 }

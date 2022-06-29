@@ -9,7 +9,7 @@
     background-color: rgb(195, 195, 195);
     margin: 50px auto;
     overflow: hidden;
-    border-color: #7d6757;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file {
     position: absolute;
@@ -18,50 +18,39 @@
     color: transparent;
     width: 100%;
     box-sizing: border-box;
-
     padding: 15px 120px;
     cursor: pointer;
     transition: 0.5s;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
+    font-family: 'Libre Baskerville', serif;
 
 }
 .my_file::-webkit-file-upload-button {
     visibility: hidden;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file::before
 {
+    content: '\f030';
+    font-family: fontAwesome;
     font-size: 50px;
     color: #fff;
     display: inline-block;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file::after {
     content: 'Update';
+    font-family: 'arial';
     font-weight: bold;
     color: #fff;
     display: block;
     top: 70px;
     font-size: 14px;
     position:absolute;
+    font-family: 'Libre Baskerville', serif;
 }
 .my_file:hover{
     opacity: 1;
-}
-.btnsign {
-    background-color:#AA9971;
-    font-family: 'Libre Baskerville', serif;
-}
-.text {
-    font-family: 'Libre Baskerville', serif;
-}
-h1 {
-    color: #9e8b7c;
-    font-family: 'Libre Baskerville', serif;
-}
-label {
-    color: #9e8b7c;
-    font-family: 'Libre Baskerville', serif;
-}
-::placeholder {
     font-family: 'Libre Baskerville', serif;
 }
