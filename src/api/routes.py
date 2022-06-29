@@ -201,7 +201,6 @@ def get_book(book_id = None):
     query_a_book = book.serialize()
 
 
-
     print("####################")
     print(query_a_book)
     print("####################")

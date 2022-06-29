@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {  useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 
 import Navbarlogin from "../component/navbar-login";
@@ -9,8 +10,10 @@ import "../../styles/index.css";
 import "../../styles/home.css";
 import e from "cors";
 
-export const Formswap = () => {
+export const Formswap = (props) => {
   const { store, actions } = useContext(Context);
+  const { id } = props;
+
 
   const URLbase = process.env.BACKEND_URL;
 
@@ -56,7 +59,7 @@ export const Formswap = () => {
                 </div>
               </div>
 
-              <input type="hidden" name="_next" value="https://3001-heylga-finalproject-t5ih5shkn0y.ws-eu47.gitpod.io/swapmessage" />
+              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io/swapmessage" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_subject" value=" I want to swap a book with you!" />
               <input type="hidden" name="_template" value="box" />
@@ -72,10 +75,11 @@ export const Formswap = () => {
 
           <div className="col-md-6 center mx-auto">
 
-            <h6>You already did?
+            <h6>You want to see more books of {store.user.name}?
 
-              <Link to="/swapconfirmation">
-                <a>Please rate your experience</a>
+              <Link to={`/user/${id}`}>
+                <a
+                 onClick={() => actions.fetchUser(id)}>Check his profile</a>
               </Link>
             </h6>
 
@@ -92,4 +96,8 @@ export const Formswap = () => {
       <Footer />
     </div>
   );
+
+  Formswap.propTypes = {
+    id: PropTypes.string,
+  };
 };

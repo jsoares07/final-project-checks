@@ -25,7 +25,12 @@ export const ProfileShort = (props) => {
   return (
     <div>
       <Navbarlogin />
-      <div className="container center m-5" style={{ top: "10px" }} >
+
+      <div className="container mt-5 mb-5" style={{ top: "10px" }} >
+
+      <div className="col-md-6 border-right border border-dark p-5 center mx-auto">
+          <div className="row">
+            <div className="col-md-12 center mx-auto">
         <h3>Personal info</h3>
         <div className="card-body">
           <img
@@ -35,34 +40,42 @@ export const ProfileShort = (props) => {
           />
           <p>Name: {store.user.name} </p>
           <p>City: {store.user.city} </p>
-          <p>Rating: </p>
+          {/* <p>Rating: </p> */}
 
 
           <hr />
 
           <ul>
+          <Link to="/formswap">
             <li>{store.book.title}</li>
-            <li>Random book 2</li>
-            <li>Random book 3</li>
+          </Link>
+          <Link to="/formswap">
+            <li>{store.book.title}</li>
+          </Link>
+          <Link to="/formswap">
+            <li>{store.book.title}</li>
+          </Link>
           </ul>
+          
           {/* <Link to="/my-profile"> */}
-          <button className="btn btn-primary justify-content-center mt-3"
+          {/* <button className="btn btn-primary justify-content-center mt-3"
           >
             <Popup />
-          </button>
-
-
+          </button> */}
+{/* 
           <hr></hr>
           <ul>
             <li>Random book 1</li>
             <li>Random book 2</li>
             <li>Random book 3</li>
           </ul>
-          {/* <Link to="/"> */}
           <button className="btn btn-primary justify-content-center mt-3"
           >
             see all
-          </button>
+          </button> */}
+      </div>
+      </div>
+      </div>
         </div>
 
       </div>
