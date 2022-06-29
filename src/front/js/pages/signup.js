@@ -17,7 +17,7 @@ export const Signup = () => {
 
   // const URLbase = process.env.BACKEND_URL;
 
-  const URLbase = "https://3001-heylga-finalproject-bp583guewdt.ws-eu47.gitpod.io"
+  const URLbase = "https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io"
 
 
   const [email, setEmail] = useState();

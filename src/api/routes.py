@@ -6,7 +6,10 @@ from api.models import db, User, Book, UsersBooks
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_jwt_extended import create_access_token
+# from models import User, Book
 from werkzeug.security import generate_password_hash
+
+
 
 api = Blueprint('api', __name__)
 
@@ -15,12 +18,17 @@ api = Blueprint('api', __name__)
 def signup():
 
     request_body = request.get_json(force=True)
+
     # hashed_password = generate_password_hash(data['password'], method='dfgdhjkg54654dsfd788gfhgf')
     # hashed_password = generate_password_hash(password)
+
     email = request.json.get('email', None)
     password = request.json.get('password', None)
     name = request.json.get('name', None)
     city = request.json.get('city', None)
+    # user_name = request.json.get('user_name', None)
+    # first_name = request.json.get('first_name', None)
+
 
     access_token = create_access_token(identity=email)
     print('hola me estan llamando', request_body, access_token)
@@ -31,6 +39,8 @@ def signup():
         name = name,
         city = city,
         # password = hashed_password,
+        # user_name = user_name,
+        # first_name = first_name,
     )
 
     answer = user.create()
@@ -42,7 +52,6 @@ def signup():
 
     return jsonify(response_body), 200
     
-
     
 @api.route('/login', methods=['POST'])
 def login():
@@ -67,10 +76,11 @@ def login():
         return {"error":"user and password not valid"}, 400
 
 
-    
+      
 @api.route('/edit-profile/<int:user_id>', methods=['GET', 'PUT'])
 def editprofile(user_id = None):
 
+    # user = User.query.filter_by(id=id)
     user = User.query.filter_by(id=user_id).first()
 
     email = request.json.get('email', None)
@@ -140,10 +150,11 @@ def offerbook():
     db.session.commit()
     response_body = {
          "message": answer,
-         "book": Book.serializeABook()
+        #  "book": Book.serializeABook()
      }
 
     return jsonify(response_body), 200
+
 
 
 # We query one user
@@ -168,9 +179,7 @@ def get_user(user_id = None):
         
     return jsonify(response_body), 200
 
-
 # We query all users
-
 @api.route("/users", methods=["GET"])
 def getUsers():
     queryUsers = User.query.all()
@@ -208,7 +217,6 @@ def get_book(book_id = None):
     return jsonify(response_body), 200
 
 
-
 # We query all books
 @api.route("/books", methods=["GET"])
 def getBooks():
@@ -223,6 +231,7 @@ def getBooks():
     }
 
     return jsonify(response_body), 200
+
 
 @api.route("/booksbyuser", methods=["GET"])
 def getUserBooks():
