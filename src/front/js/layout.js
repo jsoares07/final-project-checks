@@ -9,6 +9,7 @@ import { Signup } from "./pages/signup.js";
 import { Login } from "./pages/login.js";
 
 import { MyProfile } from "./pages/my-profile.js";
+
 import { EditProfile } from "./pages/edit-profile.js";
 
 import { Forgetpassword } from "./pages/forgetpassword.js";
@@ -19,6 +20,7 @@ import { PasswordChanged } from "./pages/passwordchanged";
 import { Offerbook } from "./pages/Offerbook";
 import { BookDescription } from "./pages/book-description";
 import { AllBooks } from "./pages/allbooks.js";
+
 
 import { ProfileShort } from "./pages/profile-short";
 
@@ -93,7 +95,7 @@ const Layout = () => {
 
             <Route exact path="/user/:id">
               <ProfileShort />
-            </Route>
+              </Route>
 
 
             <Route exact path="/swapmessage">
@@ -109,9 +111,7 @@ const Layout = () => {
             <Route exact path="/profilepic" component={Profilepic}>
               <Profilepic />
             </Route>
-            <Route exact path="/reviewuser">
-              <Reviewuser />
-            </Route>
+
 
             <Route>
               <h1>Not found!</h1>

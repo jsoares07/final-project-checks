@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import Card from "./card.js";
+import Search from "./search.js";
 import { Catcher } from "./../../img/catcher.jpg";
 import { Crime } from "./../../img/crime.jpg";
 import { littleprince } from "./../../img/littleprince.jpg";
@@ -32,6 +33,7 @@ const ShowAll = () => {
       <h1 className="text-center pt-5">All Books</h1>
       <br />
       <div className="container">
+        <Search />
         <div className="row row-cols-auto">{listOfCards}</div>
       </div>
     </div>

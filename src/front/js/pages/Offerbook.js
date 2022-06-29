@@ -22,6 +22,7 @@ export const Offerbook = () => {
 
   const URLbase = "https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io"
 
+
   const onSubmit = () => {
     console.log("submit working");
 
