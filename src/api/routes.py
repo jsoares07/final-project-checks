@@ -222,7 +222,7 @@ def get_book(book_id = None):
 def getBooks():
     queryBooks = Book.query.all()
 
-    queryBooks = list(map(lambda x: x.serializeABook(), queryBooks))
+    queryBooks = list(map(lambda x: x.serialize(), queryBooks))
 
     print(queryBooks)
 

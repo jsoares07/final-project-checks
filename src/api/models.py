@@ -22,7 +22,7 @@ class User(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     city = db.Column(db.String(120), unique=False)
 
-    favourite_book = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
+    his_books = db.relationship('Book', secondary="users_books", lazy='subquery', backref=db.backref('selected book by a user', lazy=True))
 
     # country = db.Column(db.String(120))
     # mobile = db.Column(db.Integer)
@@ -40,7 +40,7 @@ class User(db.Model):
             "email": self.email,
             "name": self.name,
             "city": self.city,
-            "favourites": list(map(lambda book: book.serialize(), self.favourite_book)),
+            "books": list(map(lambda book: book.serialize(), self.his_books)),
         
             # "country": self.country,
             # "mobile": self.mobile,
