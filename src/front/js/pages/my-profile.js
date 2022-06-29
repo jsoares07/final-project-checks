@@ -128,18 +128,18 @@ export const MyProfile = (props) => {
               </div>
               <br />
               <div className="col-md-12">
-                <label className="labels"><strong>My Books</strong></label>
+                {/* <label className="labels"><strong>My Books</strong></label>
                 <input type="text" className="d-flex justify-content-center list-group-item " 
                 onChange={addBook} 
                 value={book} />
                 
-                <button type="submit" onClick={submitBook}></button>
+                <button type="submit" onClick={submitBook}></button> */}
          
-                {/* <ul>
+                <ul>
                   <li>{store.book.title}</li>
                   <li>{store.book.title}</li>
-                  <li>Random book 3</li>
-                </ul> */}
+                  <li>{store.book.title}</li> 
+                </ul> 
                 {/* <Booklist
                   id={store.book.book_id}
                   title={store.book.title}
@@ -155,15 +155,16 @@ export const MyProfile = (props) => {
                 </button>
               </Link>
               <hr />
-              <div className="col-md-12">
+
+              {/* <div className="col-md-12">
                 <label className="labels"><strong>My Swapped Books</strong></label>
-                {/* <Booklist /> */}
                 <ul>
                   <li>{store.book.title}</li>
                   <li>{store.book.title}</li>
                   <li>Random book 3</li>
                 </ul>
-              </div>
+              </div> */}
+
             </div>
           </div>
           {/* Book History Ends */}

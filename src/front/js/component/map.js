@@ -31,7 +31,7 @@ function Map() {
       id: 1,
       title: "Jose",
       buttonLabel: "Find Out More!",
-      position: { lat: 53.3229436, lng: -6.2772334 }
+      position: { lat: 42.110053, lng: -8.836440 }
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ function Map() {
       description:
         "We is set in the twenty-sixth century AD in the OneState: a totalitarian society completely based on rationality and mathematics.",
       buttonLabel: "Find Out More!",
-      position: { lat: 53.3279736, lng: -6.2772734 }
+      position: { lat: 42.119510, lng: -8.851057 }
     },
 
   ];
