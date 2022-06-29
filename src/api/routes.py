@@ -9,10 +9,7 @@ from flask_jwt_extended import create_access_token
 # from models import User, Book
 from werkzeug.security import generate_password_hash
 
-
-
 api = Blueprint('api', __name__)
-
 
 @api.route('/signup', methods=['POST'])
 def signup():
@@ -201,7 +198,7 @@ def get_book(book_id = None):
     if not book:
         return jsonify({"message": "No book found!"})
 
-    query_a_book = book.serializeABook()
+    query_a_book = book.serialize()
 
 
 
