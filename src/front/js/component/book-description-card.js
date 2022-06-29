@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import propTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 
+import "../../styles/home.css";
+
 const BookCard = (props) => {
   const { store, actions } = useContext(Context);
   const {
@@ -24,7 +26,7 @@ const BookCard = (props) => {
         <div className="col-md-7">
           <div className="mt-2">
             <p>
-              <Link to="#">{user}</Link> is offering:
+              <Link to={`/user/${id}`}>{store.user.name}</Link> is offering: 
             </p>
           </div>
           <div className="d-flex flex-column align-items-center text-center p-1 pb-5">
@@ -65,7 +67,7 @@ const BookCard = (props) => {
                 <p>{description}</p>
               </div>
             </div>
-            <Link to="#">
+            <Link to="/formswap">
               <button type="button" className="btn btn-secondary my-3">
                 Connect/swap
               </button>

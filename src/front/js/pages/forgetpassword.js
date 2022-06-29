@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Navbar from "./../component/navbar";
 import Footer from "./../component/footer";
+import "../../styles/home.css";
 
 export const Forgetpassword = () => {
 	const { store, actions } = useContext(Context);
@@ -32,7 +33,7 @@ export const Forgetpassword = () => {
   
               <div className="mt-5 mb-5 text-left">
 
-                  <Link to="/emailtoreset">
+                  <Link to="/emailtoresetsecurity">
                     <button className="btn btn-primary justify-content-center">
                         Send Email
                     </button>

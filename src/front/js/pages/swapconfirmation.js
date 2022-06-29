@@ -2,6 +2,8 @@ import React from 'react'
 import Navbarlogin from "../component/navbar-login";
 import Footer from "../component/footer.js";
 import { Link } from 'react-router-dom';
+import "../../styles/home.css";
+
 
 export const Swapconfirmation = () =>  {
   return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "../../styles/home.css";
 
 function Popup() {
   return (
@@ -26,7 +27,7 @@ function Popup() {
                     <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                     <button type="button" className="btn btn-success" >
 
-                        <Link to="/Swapmessage">
+                        <Link to="/formswap">
                         Swap Book 
                         </Link>
                         </button>

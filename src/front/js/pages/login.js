@@ -5,6 +5,8 @@ import { Context } from "../store/appContext";
 import Navbar from "./../component/navbar";
 import Footer from "./../component/footer";
 import Navbarlogin from "../component/navbar-login";
+import "../../styles/home.css";
+
 
 export const Login = () => {
 

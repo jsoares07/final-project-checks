@@ -1,36 +1,29 @@
 const getState = ({ getStore, getActions, setStore }) => {
 
   return {
+
+          //STORE (to store information)
+
     store: {
-      URLbase: process.env.BACKEND_URL,
+      // URLbase: process.env.BACKEND_URL,
 
       user: JSON.parse(localStorage.getItem("user")) || {},
       isLoggedIn: JSON.parse(localStorage.getItem("user")) || false,
       token: localStorage.getItem("token") || null,
-      message: null,
       usersbooks: [],
       users: [],
       books: [],
       book: [],
-      favorite: [],
-
-      demo: [
-        {
-          title: "FIRST",
-          background: "white",
-          initial: "white",
-        },
-        {
-          title: "SECOND",
-          background: "white",
-          initial: "white",
-        },
-      ],
+      userPosition: null,
     },
+
+
+            //ACTIONS (are called via appContext)
+
     actions: {
 
 
-      // USERS
+      // REGISTRATION (INSIDE /SIGNUP) AND LOGIN USER
 
       login: (email, password) => {
         // fetch
@@ -44,11 +37,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: password,
           }),
         };
-
         console.log("info login desde las actions", post);
-
         fetch(
-          process.env.BACKEND_URL + "https://3001-heylga-finalproject-xnnelv9b89a.ws-eu47.gitpod.io/api/login/",
+          // process.env.BACKEND_URL + "/api/login/",
+          "https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/login/",
           post
         )
 
@@ -67,8 +59,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             console.log("info del user desde local storage---->>>>", JSON.parse(localStorage.getItem("user")))
           })
-          .catch((error) => console.log("error", error));
+          .catch((error) => alert("the password or email are wrong"));
       },
+
+
 
       logout: () => {
 
@@ -86,46 +80,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       },
 
-      editUserInformation: () => {
 
-        const store = getStore();
+      // EDIT INFORMATION
 
-        fetch(
-          process.env.BACKEND_URL + "/api/edit-profile/", {
-          method: "PUT",
+
+      editUserInformation: (user_id) => {
+        const put = {
+          method: 'PUT',
           headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(),
-        })
-        if (response.ok) {
-          alert("The info has been saved");
-        } else {
-          alert("The info has NOT been saved");
-        }
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user_id),
+      };
+    
+      console.log("info login desde las actions", put);
+        
+        fetch(process.env.BACKEND_URL + "/api/edit-profile/" + user_id, put)
+          .then(response => response.text())
+          .then(result =>  console.log('>>>> result from actions', result))
+          .catch(error => console.log('error', error));
       },
 
 
 
-      addFavorite: item => {
-        const store = getStore();
-        const validate = store.favorite.includes(item);
-        if (store.favorite == [] || !validate) {
-          setStore({ favorite: [...store.favorite, item] });
-        }
+      changePassword: (user_id) => {
+        const put = {
+          method: 'PUT',
+          headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user_id),
+      };
+    
+      console.log("info login desde las actions", put);
+        
+        fetch(process.env.BACKEND_URL + "/api/security", put)
+          .then(response => response.text())
+          .then(result =>  console.log('>>>> result from actions', result))
+          .catch(error => console.log('error', error));
       },
 
-      deleteFavorite: id => {
-        const store = getStore();
-        const updatedList = [...store.favorite];
-        updatedList.splice(id, 1);
-        setStore({ favorite: [...updatedList] });
-      },
 
       // BOOKS
+
       fetchUsersBooks: () => {
-        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/api/booksbyuser", {
+
+        fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io"+ "/api/booksbyuser", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -134,33 +134,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((promiseResponse) => promiseResponse.json())
           .then((data) => setStore({ usersbooks: data.results }));
       },
-      fetchUsers: () => {
-        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/api/users", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((promiseResponse) => promiseResponse.json())
-          .then((data) => setStore({ users: data.results }));
-      },
-      fetchBooks: () => {
-        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/api/books", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((promiseResponse) => promiseResponse.json())
-          .then((data) => setStore({ books: data.results }));
-      },
+
+      
+      // FETCH BOOK & BOOKS (GET METHOD)
 
 
       fetchBook: (book_id) => {
         console.log("fechtBook");
         const store = getStore();
-        fetch("https://3001-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io" + "/api/book/" + book_id, {
-
+        fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/book/" + book_id, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -172,48 +154,77 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log("BOOK =====", store.book);
           })
           .catch((error) => console.log("error", error));
-        // .then((promiseResponse) => {
-        //   promiseResponse.json();
-        //   console.log("resp =", promiseResponse);
-        // })
-        // .then((data) => setStore({ book: data.results }))
-        // .catch((error) =>
-        //   console.log("Error loading message from backend", error)
-        // );
       },
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
+      
+      fetchBooks: () => {
+        // fetch(process.env.BACKEND_URL + "/api/books", {
+          fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/books", 
+          {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((promiseResponse) => promiseResponse.json())
+          .then((data) => setStore({ books: data.results }));
       },
 
 
+            // FETCH USER & USERS (GET METHOD)
 
-
-
-      getMessage: () => {
-        // fetching data from the backend
-        fetch(process.env.BACKEND_URL + "/api/hello")
-          .then((resp) => resp.json())
-          .then((data) => setStore({ message: data.message }))
-          .catch((error) =>
-            console.log("Error loading message from backend", error)
-          );
+      fetchUsers: () => {
+        // fetch(process.env.BACKEND_URL + "/api/users", {
+          fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/users", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((promiseResponse) => promiseResponse.json())
+          .then((data) => setStore({ users: data.results }));
       },
-      changeColor: (index, color) => {
-        //get the store
+
+    
+      fetchUser: (user_id) => {
+  
         const store = getStore();
-
-        //we have to loop the entire demo array to look for the respective index
-        //and change its color
-        const demo = store.demo.map((elm, i) => {
-          if (i === index) elm.background = color;
-          return elm;
-        });
-
-        //reset the global store
-        setStore({ demo: demo });
+        fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/user/" + user_id, 
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ user: result.results });
+            console.log("USER =====", store.user);
+          })
+          .catch((error) => console.log("error", error));
+          // .then(response => response.json())
+          // .then(result => console.log(result))
+          // .catch(error => console.log('error', error));
       },
+
+     // MAP
+
+       getUserPosition: () => {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition((position) => {
+						console.log({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+						setStore({
+							userPosition: { latitude: position.coords.latitude, longitude: position.coords.longitude }
+						})
+					})
+				} else {
+					alert("Geolocation is not supported by this browser.");
+				}
+			},
+  
+
     },
   };
+
 };
 
 export default getState;

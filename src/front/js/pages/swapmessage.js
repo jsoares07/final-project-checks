@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {  useContext } from "react";
+import { Context } from "../store/appContext";
 import Navbarlogin from "../component/navbar-login";
 import Footer from "../component/footer.js";
 import { Link } from 'react-router-dom';
+import "../../styles/home.css";
+
+
 
 export const Swapmessage = () =>  {
+  const { store, actions } = useContext(Context);
   return (
     <div>
          <Navbarlogin />
@@ -35,7 +40,7 @@ export const Swapmessage = () =>  {
       <div className="row mt-5">
 
       <p>
-      We sent email to this person. He/She will have 24 hours to answer your offer
+      We sent email to {store.user.name}. You will get feedback within the next 24 hours
               </p>
       </div>
 
@@ -54,10 +59,10 @@ export const Swapmessage = () =>  {
 
       <div className="col-md-6 center mx-auto">
 
-          <h6>You already did?
+          <h6>You want to swap more books?
 
-          <Link to="/swapconfirmation">
-          <a>Please rate your experience</a>
+          <Link to="/allbooks">
+          <a>Check all books</a>
           </Link> 
           </h6>
 

@@ -5,7 +5,9 @@
     height: 500px;
     width: auto;
     color: white;
+    font-family: 'Libre Baskerville', serif;
   }
 .input-group {
   padding-right: 700px;
+  font-family: 'Libre Baskerville', serif;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import "../../styles/rating.css"
+import "../../styles/home.css";
 
 
 const starColor = {
@@ -28,7 +29,7 @@ function Rating() {
 
   return(
     <div>
-        <div className='stars'>
+        <div className='stars p-3'>
           {stars.map ((_,index) =>{
             return (
               <FaStar 
@@ -37,7 +38,7 @@ function Rating() {
               onClick={()=>handleClick(index + 1)}
               onMouseOver = {() => handleMouseHover(index + 1)}
               onMouseLeave={handleMouseLeave}
-              color={(hoverValue || currentValue) > index ? starColor.green : starColor.grey}
+              color={(hoverValue || currentValue) > index ? starColor.hex : starColor.grey}
               />
             )
           })}

@@ -7,6 +7,7 @@ import { littleprince } from "./../../img/littleprince.jpg";
 import { we } from "./../../img/we.jpg";
 import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
+import "../../styles/home.css";
 
 const listCards = () => {
   const { store, actions } = useContext(Context);

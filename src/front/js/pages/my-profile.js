@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import Booklist from "../component/booklist.js";
 import { Link, useParams } from "react-router-dom";
 import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
+import "../../styles/home.css";
 
 
 import Navbarlogin from "../component/navbar-login";
@@ -13,25 +15,36 @@ import "../../styles/index.css";
 export const MyProfile = (props) => {
   const { store, actions } = useContext(Context);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [book, setBook] = useState("");
+  const [bookList, setbookList] = useState("");
+
+
+  const addBook = (e) => {
+    setBook(e.target.value);
+    console.log(e.target.value);
+  }
+
+	const submitBook = (e) => {
+		e.preventDefault();
+		setbookList([...bookList, { label: setBook, id: Math.random() * 1000 }]);
+		setBook("");
+	};
+
+	function removeItem(item) {
+		const newBook = bookList.filter((key) => key !== item);
+		setbookList(newBook);
+		console.log(newBook);
+	}
 
   const params = useParams();
-
   console.log('params', params)
-
-  // const { id, first_name, user_name, email, city} = props;
-
-  // useEffect(() => {
-  //   actions.getUserInformation
-  // }, [])
-
-  // console.log("User information from flux getUserInformation", store.getUserInformation)
   console.log("User from user store flux", store.user);
 
   return (
 
     <div className="">
 
-    <Navbarlogin />
+      <Navbarlogin />
 
       <div className="container rounded bg-white mt-5 mb-5">
         <div className="row">
@@ -69,7 +82,7 @@ export const MyProfile = (props) => {
                 </div>
               </div>
 
-            
+
               <div className="row mt-2">
                 <div className="col-md-12">
                   <label className="labels"><strong>Email</strong></label>
@@ -116,21 +129,40 @@ export const MyProfile = (props) => {
               <br />
               <div className="col-md-12">
                 <label className="labels"><strong>My Books</strong></label>
-                <p>Book #1</p>
+                <input type="text" className="d-flex justify-content-center list-group-item " 
+                onChange={addBook} 
+                value={book} />
+                
+                <button type="submit" onClick={submitBook}></button>
+         
+                {/* <ul>
+                  <li>{store.book.title}</li>
+                  <li>{store.book.title}</li>
+                  <li>Random book 3</li>
+                </ul> */}
+                {/* <Booklist
+                  id={store.book.book_id}
+                  title={store.book.title}
+                /> */}
               </div>
 
               <Link to={`/offerbook`}>
-                  <button
-                    type="submit"
-                    className="btn btn-primary m-5 "
-                   >
-                   Add Book
-                   </button>
+                <button
+                  type="submit"
+                  className="btn btn-primary m-5 "
+                >
+                  Add Book
+                </button>
               </Link>
               <hr />
               <div className="col-md-12">
                 <label className="labels"><strong>My Swapped Books</strong></label>
-                <p>Book #1</p>
+                {/* <Booklist /> */}
+                <ul>
+                  <li>{store.book.title}</li>
+                  <li>{store.book.title}</li>
+                  <li>Random book 3</li>
+                </ul>
               </div>
             </div>
           </div>

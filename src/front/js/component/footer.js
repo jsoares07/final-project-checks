@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../../styles/home.css";
+import "../../styles/home.css";
 
 export const Footer = () => (
 	<footer className="footer mt-auto text-center">
@@ -84,13 +85,13 @@ export const Footer = () => (
 																<br></br>
 								<ul className="list-inline">
 									<li className="list-inline-item">
-										<a className="text-para" href="#" title="facebook"> <i className="fa-brands fa-facebook"></i></a>
+										<a className=" red text-para" href="#" title="facebook"> <i className="fa-brands fa-facebook"></i></a>
 									</li>
 									<li className="list-inline-item">
-										<a className="text-para" href="#" title="Instagram"> <i className="fa-brands fa-instagram"></i> </a>
+										<a className="red text-para" href="#" title="Instagram"> <i className="fa-brands fa-instagram"></i> </a>
 									</li>
 									<li className="list-inline-item">
-										<a className="text-para" href="#" title="Twitter"> <i className="fa-brands fa-twitter"></i> </a>
+										<a className="red text-para" href="#" title="Twitter"> <i className="fa-brands fa-twitter"></i> </a>
 									</li>
 								</ul>
 						</div>
@@ -108,7 +109,7 @@ export const Footer = () => (
                     <div className="container expand">
                         <div className="row align-items-center">
                             <div className="col-md-6 text-center text-md-start">
-                                <p className=" expand text-center text-white">&copy; 2022, Book Exchange, All rights reserved</p>
+                                <p className=" expand text-center ">&copy; 2022, Book Exchange, All rights reserved</p>
                             </div>
                         </div>
 
