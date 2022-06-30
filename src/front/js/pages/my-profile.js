@@ -124,7 +124,7 @@ export const MyProfile = (props) => {
           <div className="col-md-4 border border-dark">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center book-history ">
-                <h4 className="text-right ">My book History</h4>
+                <h4 className="text-right ">My books</h4>
               </div>
               <br />
               <div className="col-md-12">
@@ -136,9 +136,15 @@ export const MyProfile = (props) => {
                 <button type="submit" onClick={submitBook}></button> */}
          
                 <ul>
-                  <li>{store.book.title}</li>
-                  <li>{store.book.title}</li>
-                  <li>{store.book.title}</li> 
+                  <li>
+                    {/* {store.book.title} */}
+                  </li>
+                  <li>
+                    {/* {store.book.title} */}
+                    </li>
+                  <li>
+                    {/* {store.book.title} */}
+                  </li> 
                 </ul> 
                 {/* <Booklist
                   id={store.book.book_id}
