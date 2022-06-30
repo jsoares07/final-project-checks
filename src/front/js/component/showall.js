@@ -12,7 +12,12 @@ import "../../styles/home.css";
 
 const ShowAll = () => {
   const { store, actions } = useContext(Context);
-  const listOfCards = store.books.map((cardItem, index) => {
+
+  console.log(`booksInSeach`, store.booksInSeach, 'books', store.books)
+
+  const books = store.booksInSeach.length > 0 ? store.booksInSeach : store.books;
+
+  const listOfCards = books.map((cardItem, index) => {
     return (
       <div className="col" key={index}>
         <Card
@@ -27,6 +32,7 @@ const ShowAll = () => {
       </div>
     );
   });
+
   // return <div className="conteiner center">{listOfCards}</div>;
   return (
     <div>
