@@ -10,7 +10,7 @@ import "../../styles/home.css";
 
 export const Login = () => {
 
-  const URLbase = process.env.BACKEND_URL;
+  const URLbase = process.env.URLbase;
 
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState();

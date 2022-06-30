@@ -1,4 +1,4 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
@@ -15,7 +15,7 @@ export const Formswap = (props) => {
   const { id } = props;
 
 
-  const URLbase = process.env.BACKEND_URL;
+  const URLbase = process.env.URLbase;
 
   return (
     <div>
@@ -46,7 +46,7 @@ export const Formswap = (props) => {
                 <div className="col-md-8">
                   <div className="mb-3">
                     <label>Message</label>
-                    <textarea name="message" className="form-control" required/>
+                    <textarea name="message" className="form-control" required />
                   </div>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export const Formswap = (props) => {
 
               <Link to={`/user/${id}`}>
                 <a
-                 onClick={() => actions.fetchUser(id)}>Check his profile</a>
+                  onClick={() => actions.fetchUser(id)}>Check his profile</a>
               </Link>
             </h6>
 

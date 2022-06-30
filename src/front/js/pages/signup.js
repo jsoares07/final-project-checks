@@ -17,7 +17,7 @@ export const Signup = () => {
 
   // const URLbase = process.env.BACKEND_URL;
 
-  const URLbase = "https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io"
+  const URLbase = process.env.URLbase
 
 
   const [email, setEmail] = useState();
@@ -40,7 +40,7 @@ export const Signup = () => {
     // password === repeatpassword
 
     if (email && password && name && city) {
-    // if (email && password && repeatPassword) {
+      // if (email && password && repeatPassword) {
       if (password) {
         // hacemos el fetch
         onFetchSignUp(email, password, name, city);

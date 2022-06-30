@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
   return {
 
-          //STORE (to store information)
+    //STORE (to store information)
 
     store: {
       // URLbase: process.env.BACKEND_URL,
@@ -13,15 +13,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       usersbooks: [],
       users: [],
       books: [],
+      booksInSeach: [],
       book: [],
-      userPosition: null,
+      userPosition: { latitude: 51.892689, longitude: -8.466676 },
     },
 
 
-            //ACTIONS (are called via appContext)
+    //ACTIONS (are called via appContext)
 
     actions: {
 
+      setSearchingBooks: (books) => {
+        const store = getStore();
+        setStore({ booksInSeach: books })
+        console.log("BOOK =====", store.books);
+      },
 
       // REGISTRATION (INSIDE /SIGNUP) AND LOGIN USER
 
@@ -40,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("info login desde las actions", post);
         fetch(
           // process.env.BACKEND_URL + "/api/login/",
-          "https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/login/",
+          "https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/login/",
           post
         )
 
@@ -88,16 +94,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         const put = {
           method: 'PUT',
           headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user_id),
-      };
-    
-      console.log("info login desde las actions", put);
-        
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user_id),
+        };
+
+        console.log("info login desde las actions", put);
+
         fetch(process.env.BACKEND_URL + "/api/edit-profile/" + user_id, put)
           .then(response => response.text())
-          .then(result =>  console.log('>>>> result from actions', result))
+          .then(result => console.log('>>>> result from actions', result))
           .catch(error => console.log('error', error));
       },
 
@@ -107,16 +113,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         const put = {
           method: 'PUT',
           headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user_id),
-      };
-    
-      console.log("info login desde las actions", put);
-        
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user_id),
+        };
+
+        console.log("info login desde las actions", put);
+
         fetch(process.env.BACKEND_URL + "/api/security", put)
           .then(response => response.text())
-          .then(result =>  console.log('>>>> result from actions', result))
+          .then(result => console.log('>>>> result from actions', result))
           .catch(error => console.log('error', error));
       },
 
@@ -125,7 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       fetchUsersBooks: () => {
 
-        fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io"+ "/api/booksbyuser", {
+        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/booksbyuser", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -135,14 +141,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ usersbooks: data.results }));
       },
 
-      
+
       // FETCH BOOK & BOOKS (GET METHOD)
 
 
       fetchBook: (book_id) => {
         console.log("fechtBook");
         const store = getStore();
-        fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/book/" + book_id, {
+        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/book/" + book_id, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -155,26 +161,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((error) => console.log("error", error));
       },
-      
+
       fetchBooks: () => {
         // fetch(process.env.BACKEND_URL + "/api/books", {
-          fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/books", 
+        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/books",
           {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
           .then((promiseResponse) => promiseResponse.json())
           .then((data) => setStore({ books: data.results }));
       },
 
 
-            // FETCH USER & USERS (GET METHOD)
+      // FETCH USER & USERS (GET METHOD)
 
       fetchUsers: () => {
         // fetch(process.env.BACKEND_URL + "/api/users", {
-          fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/users", {
+        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/users", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -184,43 +190,40 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ users: data.results }));
       },
 
-    
+
       fetchUser: (user_id) => {
-  
+
         const store = getStore();
-        fetch("https://3001-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io" + "/api/user/" + user_id, 
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/user/" + user_id,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
           .then((response) => response.json())
           .then((result) => {
             setStore({ user: result.results });
             console.log("USER =====", store.user);
           })
           .catch((error) => console.log("error", error));
-          // .then(response => response.json())
-          // .then(result => console.log(result))
-          // .catch(error => console.log('error', error));
+        // .then(response => response.json())
+        // .then(result => console.log(result))
+        // .catch(error => console.log('error', error));
       },
 
-     // MAP
+      // MAP
 
-       getUserPosition: () => {
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition((position) => {
-						console.log({ latitude: position.coords.latitude, longitude: position.coords.longitude })
-						setStore({
-							userPosition: { latitude: position.coords.latitude, longitude: position.coords.longitude }
-						})
-					})
-				} else {
-					alert("Geolocation is not supported by this browser.");
-				}
-			},
-  
+      getUserPosition: async () => {
+
+        await navigator.geolocation.getCurrentPosition((position) => {
+          console.log({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+          setStore({
+            userPosition: { latitude: position.coords.latitude, longitude: position.coords.longitude }
+          })
+        }, alert('remember to allow your position'))
+      },
+
 
     },
   };

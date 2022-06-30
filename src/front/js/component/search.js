@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
-import Card from "./card.js";
+import PropTypes, { func } from "prop-types";
 import { Catcher } from "./../../img/catcher.jpg";
 import { Crime } from "./../../img/crime.jpg";
 import { littleprince } from "./../../img/littleprince.jpg";
 import { we } from "./../../img/we.jpg";
 import { Link } from "react-router-dom";
+import ShowAll from "./showall";
 import { Context } from "../store/appContext";
+
+
 
 
 export default function Search() {
@@ -15,6 +17,8 @@ export default function Search() {
 
     const data = store.books;
 
+    console.log('miremos', data)
+
     const onChange = (event) => {
         setValue(event.target.value);
     };
@@ -22,45 +26,49 @@ export default function Search() {
     const onSearch = (searchTerm) => {
         setValue(searchTerm);
         // our api to fetch the search result
-        console.log("search ", searchTerm);
     };
 
-    const link = "https://3000-heylga-finalproject-stz0r1itwuo.ws-eu47.gitpod.io/allbooks"
+    const searching = () => {
+        const filteredBooks = data
+            .filter((book) => {
+                const searchTerm = value.toLowerCase();
+                const bookTitle = book.title.toLowerCase();
+
+
+                return (
+                    searchTerm &&
+                    bookTitle.includes(searchTerm) &&
+                    bookTitle !== searchTerm
+                );
+            })
+
+        //debounce
+        if (filteredBooks.length > 0 && value.length < 1 && filteredBooks.length > 0 === store.booksInSeach.length > 0) actions.setSearchingBooks(filteredBooks)
+        return filteredBooks;
+    }
+
 
     return (
         <div className="Search">
             <h1>Search</h1>
-
             <div className="search-container">
                 <div className="search-inner">
                     <input type="text" value={value} onChange={onChange} />
                     <button onClick={() => onSearch(value)}> Search </button>
                 </div>
                 <div className="dropdown">
-                    {data
-                        .filter((item) => {
-                            const searchTerm = value.toLowerCase();
-                            const bookTitle = item.title.toLowerCase();
-                            const bookAuthor = item.author.toLowerCase();
-
-                            return (
-                                searchTerm &&
-                                bookTitle.startsWith(searchTerm) &&
-                                bookTitle !== searchTerm
-                            );
-                        })
-                        .slice(0, 10)
-                        .map((item) => (
-                            <a
-                                onClick={() => onSearch(item.title, item.author)}
-                                className="dropdown-row"
-                                key={item.title}
-                                href={link}
-                                target="_blank"
-                            >
-                                {item.title}
-                            </a>
-                        ))}
+                    {
+                        searching().slice(0, 10)
+                            .map((book) => (
+                                <a
+                                    onClick={() => onSearch(book.title, book.author)}
+                                    className="dropdown-row"
+                                    key={book.title}
+                                    href={`/book/${book.id}`}
+                                >
+                                    {book.title}
+                                </a>
+                            ))}
                 </div>
             </div>
         </div>
