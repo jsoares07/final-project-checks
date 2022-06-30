@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import ShowAll from "./showall";
 import { Context } from "../store/appContext";
 
+import "../../styles/home.css";
+
 
 
 
@@ -56,6 +58,7 @@ export default function Search() {
                     <input type="text" value={value} onChange={onChange} />
                     <button onClick={() => onSearch(value)}> Search </button>
                 </div>
+
                 <div className="dropdown">
                     {
                         searching().slice(0, 10)

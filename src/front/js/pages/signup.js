@@ -10,10 +10,11 @@ import { Context } from "../store/appContext";
 import Navbar from "./../component/navbar.js";
 import Footer from "./../component/footer";
 
+import { URLbase } from "../../../../secrets.js";
+
 
 export const Signup = () => {
   const { store, actions } = useContext(Context);
-
 
   // const URLbase = process.env.BACKEND_URL;
 

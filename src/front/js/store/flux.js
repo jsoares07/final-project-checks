@@ -1,3 +1,4 @@
+import { URLbase } from "../../../../secrets.js";
 const getState = ({ getStore, getActions, setStore }) => {
 
   return {
@@ -5,7 +6,6 @@ const getState = ({ getStore, getActions, setStore }) => {
     //STORE (to store information)
 
     store: {
-      // URLbase: process.env.BACKEND_URL,
 
       user: JSON.parse(localStorage.getItem("user")) || {},
       isLoggedIn: JSON.parse(localStorage.getItem("user")) || false,
@@ -45,8 +45,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         console.log("info login desde las actions", post);
         fetch(
-          // process.env.BACKEND_URL + "/api/login/",
-          "https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/login/",
+
+          URLbase + "/api/login/",
           post
         )
 
@@ -94,6 +94,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const put = {
           method: 'PUT',
           headers: {
+
             "Content-Type": "application/json",
           },
           body: JSON.stringify(user_id),
@@ -102,6 +103,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("info login desde las actions", put);
 
         fetch(process.env.BACKEND_URL + "/api/edit-profile/" + user_id, put)
+
           .then(response => response.text())
           .then(result => console.log('>>>> result from actions', result))
           .catch(error => console.log('error', error));
@@ -113,6 +115,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const put = {
           method: 'PUT',
           headers: {
+
             "Content-Type": "application/json",
           },
           body: JSON.stringify(user_id),
@@ -121,6 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("info login desde las actions", put);
 
         fetch(process.env.BACKEND_URL + "/api/security", put)
+
           .then(response => response.text())
           .then(result => console.log('>>>> result from actions', result))
           .catch(error => console.log('error', error));
@@ -131,7 +135,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       fetchUsersBooks: () => {
 
-        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/booksbyuser", {
+
+        fetch(URLbase + "/api/booksbyuser", {
+
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -148,7 +154,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       fetchBook: (book_id) => {
         console.log("fechtBook");
         const store = getStore();
-        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/book/" + book_id, {
+
+        fetch(URLbase + "/api/book/" + book_id, {
+
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -163,8 +171,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       fetchBooks: () => {
-        // fetch(process.env.BACKEND_URL + "/api/books", {
-        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/books",
+
+          fetch(URLbase + "/api/books", 
+
           {
             method: "GET",
             headers: {
@@ -179,8 +188,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       // FETCH USER & USERS (GET METHOD)
 
       fetchUsers: () => {
+
         // fetch(process.env.BACKEND_URL + "/api/users", {
         fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/users", {
+
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -194,13 +205,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       fetchUser: (user_id) => {
 
         const store = getStore();
-        fetch("https://3001-heylga-finalproject-jfqhrkega30.ws-eu47.gitpod.io" + "/api/user/" + user_id,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
+
+        fetch(URLbase + "/api/user/" + user_id, 
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
           .then((response) => response.json())
           .then((result) => {
             setStore({ user: result.results });

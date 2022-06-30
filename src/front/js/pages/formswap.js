@@ -10,12 +10,14 @@ import "../../styles/index.css";
 import "../../styles/home.css";
 import e from "cors";
 
+import { URLbase } from "../../../../secrets.js";
+
 export const Formswap = (props) => {
   const { store, actions } = useContext(Context);
   const { id } = props;
 
-
   const URLbase = process.env.URLbase;
+
 
   return (
     <div>
@@ -59,7 +61,7 @@ export const Formswap = (props) => {
                 </div>
               </div>
 
-              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-ydp698eiguk.ws-eu47.gitpod.io/swapmessage" />
+              <input type="hidden" name="_next" value="https://3001-heylga-finalproject-59atkmezlzj.ws-eu47.gitpod.io/swapmessage" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_subject" value=" I want to swap a book with you!" />
               <input type="hidden" name="_template" value="box" />
