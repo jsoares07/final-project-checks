@@ -58,7 +58,8 @@ export const Offerbook = () => {
         genre: genre,
         language: language,
         description: description,
-        owner_id: store.user.id
+        owner_name: store.user.name,
+        // owner_name: store.user.name
       }),
     };
 

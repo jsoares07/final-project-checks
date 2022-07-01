@@ -30,6 +30,7 @@ export default function Search() {
         // our api to fetch the search result
     };
 
+
     const searching = () => {
         const filteredBooks = data
             .filter((book) => {

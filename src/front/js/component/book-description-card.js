@@ -20,13 +20,17 @@ const BookCard = (props) => {
     description,
   } = props;
 
+
   return (
     <div className="container rounded bg-white mt-5 mb-5">
       <div className="row border-right border border-dark">
         <div className="col-md-7">
           <div className="mt-2">
             <p>
-              <Link to={`/user/${id}`}>{store.user.name}</Link> is offering: 
+              <Link style={{textDecoration: 'none', color: 'black', fontfamily: 'Libre Baskerville', }} to={`/user/${id}`}>
+                {/* {store.book.owner_id} */}
+                Olga Golovina
+                </Link> is offering: 
             </p>
           </div>
           <div className="d-flex flex-column align-items-center text-center p-1 pb-5">

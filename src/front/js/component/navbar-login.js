@@ -51,15 +51,15 @@ function Navbarlogin() {
               <DropdownMenu
               >
                 <DropdownItem>
-                  <Link to="/my-profile">
+                  <Link style={{textDecoration: 'none', color: 'black', fontfamily: 'Libre Baskerville', }} to="/my-profile">
                     Profile
                   </Link>
                 </DropdownItem>
-                <DropdownItem>
+                {/* <DropdownItem>
                   <Link to="/edit-profile/:id">
                     Configuration
                   </Link>
-                </DropdownItem>
+                </DropdownItem> */}
                 <DropdownItem divider />
                 <DropdownItem onClick={() => actions.logout()}>
                   Log Out
@@ -68,8 +68,8 @@ function Navbarlogin() {
               </DropdownMenu>
             </Dropdown>
 
-            <Link to="/Offerbook">
-              <button type="button" className="btn btn-outline-light me-1 float-end"><i class="fa-solid fa-plus"></i></button>
+            <Link style={{textDecoration: 'none'}} to="/Offerbook">
+              <button type="button" className="btn btn-outline-light float-end"><i class="fa-solid fa-plus"></i></button>
             </Link>
 
           </div>

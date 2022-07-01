@@ -124,22 +124,28 @@ export const MyProfile = (props) => {
           <div className="col-md-4 border border-dark">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center book-history ">
-                <h4 className="text-right ">My book History</h4>
+                <h4 className="text-right ">My books</h4>
               </div>
               <br />
               <div className="col-md-12">
-                <label className="labels"><strong>My Books</strong></label>
+                {/* <label className="labels"><strong>My Books</strong></label>
                 <input type="text" className="d-flex justify-content-center list-group-item " 
                 onChange={addBook} 
                 value={book} />
                 
-                <button type="submit" onClick={submitBook}></button>
+                <button type="submit" onClick={submitBook}></button> */}
          
-                {/* <ul>
-                  <li>{store.book.title}</li>
-                  <li>{store.book.title}</li>
-                  <li>Random book 3</li>
-                </ul> */}
+                <ul>
+                  <li>
+                    {/* {store.book.title} */}
+                  </li>
+                  <li>
+                    {/* {store.book.title} */}
+                    </li>
+                  <li>
+                    {/* {store.book.title} */}
+                  </li> 
+                </ul> 
                 {/* <Booklist
                   id={store.book.book_id}
                   title={store.book.title}
@@ -155,15 +161,16 @@ export const MyProfile = (props) => {
                 </button>
               </Link>
               <hr />
-              <div className="col-md-12">
+
+              {/* <div className="col-md-12">
                 <label className="labels"><strong>My Swapped Books</strong></label>
-                {/* <Booklist /> */}
                 <ul>
                   <li>{store.book.title}</li>
                   <li>{store.book.title}</li>
                   <li>Random book 3</li>
                 </ul>
-              </div>
+              </div> */}
+
             </div>
           </div>
           {/* Book History Ends */}

@@ -38,23 +38,35 @@ export const ProfileShort = (props) => {
             width="150px"
             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
           />
-          <p>Name: {store.user.name} </p>
-          <p>City: {store.user.city} </p>
+          <p>Name: 
+            Olga Golovina
+            {/* {store.user.name}  */}
+          </p>
+          <p>City: 
+            Barcelona
+            {/* {store.user.city}  */}
+          </p>
           {/* <p>Rating: </p> */}
 
 
           <hr />
 
           <ul>
-          <Link to="/formswap">
-            <li>{store.book.title}</li>
+          <Link style={{textDecoration: 'none', color: 'black', fontfamily: 'Libre Baskerville', }} to="/formswap">
+            <li>
+              {/* {store.book.title} */}
+              The Catcher in the Rye
+            </li>
           </Link>
-          <Link to="/formswap">
-            <li>{store.book.title}</li>
+          <Link style={{textDecoration: 'none', color: 'black', fontfamily: 'Libre Baskerville', }} to="/formswap">
+            <li>
+              Limón
+              {/* {store.book.title} */}
+            </li>
           </Link>
-          <Link to="/formswap">
+          {/* <Link to="/formswap">
             <li>{store.book.title}</li>
-          </Link>
+          </Link> */}
           </ul>
           
           {/* <Link to="/my-profile"> */}
