@@ -26,47 +26,71 @@ function Map() {
   const [activeMarker, setActiveMarker] = useState(null);
   const { store, actions } = useContext(Context);
 
+  const { latitude, longitude } = store.userPosition;
+  const center = { lat: latitude, lng: longitude }
+
   const list = [
     {
       id: 1,
-      title: "Jose",
+      title: "The Ghost Sequences",
+      author: "A. C. Wise",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat pharetra pulvinar. Integer gravida arcu turpis, et lacinia lectus finibus quis.",
       buttonLabel: "Find Out More!",
       position: { lat: 42.110053, lng: -8.836440 }
     },
     {
       id: 2,
       title: "We",
-      title2: "by Yevgeny Zamyatin",
+      author: "by Yevgeny Zamyatin",
       imageUrl: 'we.jpg',
       description:
         "We is set in the twenty-sixth century AD in the OneState: a totalitarian society completely based on rationality and mathematics.",
       buttonLabel: "Find Out More!",
       position: { lat: 42.119510, lng: -8.851057 }
     },
+    {
+      id: 3,
+      title: "Tyll-ebook",
+      author: "Daniel Kehlmann",
+      imageUrl: 'we.jpg',
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat pharetra pulvinar. Integer gravida arcu turpis, et lacinia lectus finibus quis. In sit amet aliquam libero, et convallis magna.",
+      buttonLabel: "Find Out More!",
+      position: { lat: 53.3379936, lng: -6.2575734 }
+    },
+    {
+      id: 4,
+      title: "Nature and Value",
+      author: "Akeel Bilgrami",
+      imageUrl: 'we.jpg',
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat pharetra pulvinar. Integer gravida arcu turpis, et lacinia lectus finibus quis. In sit amet aliquam libero, et convallis magna.",
+      buttonLabel: "Find Out More!",
+      position: { lat: 53.3279736, lng: -6.2372734 }
+    },
+    {
+      id: 5,
+      title: "The Everlasting",
+      author: "Katy Simpson Smith",
+      imageUrl: 'we.jpg',
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat pharetra pulvinar. Integer gravida arcu turpis, et lacinia lectus finibus quis.",
+      buttonLabel: "Find Out More!",
+      position: { lat: 53.3479736, lng: -6.2792734 }
+    },
+    {
+      id: 6,
+      title: "Hamlet",
+      author: "William Shakespeare",
+      imageUrl: 'we.jpg',
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat pharetra pulvinar. Integer gravida arcu turpis, et lacinia lectus finibus quis. In sit amet aliquam libero, et convallis magna. Etiam vulputate maximus libero, in fermentum turpis laoreet eget. Integer lobortis auctor cursus.",
+      buttonLabel: "Find Out More!",
+      position: { lat: 53.3179736, lng: -6.2972734 }
+    },
 
   ];
-  const listOfCards = list.map((cardItem) => {
-    return (
-      <Card
-        id={cardItem.id}
-        title={cardItem.title}
-        title2={cardItem.title2}
-        description={cardItem.description}
-        buttonLabel={cardItem.buttonLabel}
-      />
-    );
-  });
-
-  console.log('hola', store.userPosition)
-
-  const { latitude, longitude } = store.userPosition;
-  const center = useMemo(() => ({ lat: latitude, lng: longitude }), []); //useMemo hook basically memorize the result when  we move around the map, performs the calculation once everytime the dependencies which is the array argument at the end. And because there  is no dependendencies (empty array) it will calculate the value we put (exe: { lat: 44, lng: -80 }) and reuse that every time we rerender so it fix a problem in wich the maps reset everynow and then.
-
-  const divStyle = {
-    background: `white`,
-    border: `1px solid #ccc`,
-    padding: 15
-  }
 
   const handleActiveMarker = (list) => {
     if (list === activeMarker) {
@@ -75,12 +99,20 @@ function Map() {
     setActiveMarker(list);
   };
 
+  const handleOnClick = async () => {
+    actions.getUserPosition()
+  }
+
+
+
+
   return (
     <div className="container center">
       <h1 className="text-center pt-5">Books Nearby</h1>
       <br></br>
       <div id="map"></div>
-      <div className="container center p-5">
+      <div className="container center m-5">
+        <button onClick={() => handleOnClick()}> Get coord</button>
         <div class="row">
           <GoogleMap
             zoom={13}
@@ -88,15 +120,23 @@ function Map() {
             mapContainerClassName="map-container"
           >
             {
-              list.map(({ id, position }) => (
+              list.map(({ id, title, author, description, buttonLabel, position }) => (
                 <Marker
                   key={id}
                   position={position}
                   onClick={() => handleActiveMarker(id)}
                 >
                   {activeMarker === id ? (
-                    <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                      <div>{listOfCards}</div>
+                    <InfoWindow onCloseClick={() => setActiveMarker([])}>
+                      <div>
+                        <Card
+                          id={id}
+                          title={title}
+                          author={author}
+                          description={description}
+                          buttonLabel={buttonLabel}
+                        />
+                      </div>
                     </InfoWindow>
                   ) : null}
                 </Marker>
@@ -104,7 +144,7 @@ function Map() {
             }
             {/* <Marker position={{ lat: 44.015, lng: -80.005 }} />
             <Marker position={{ lat: 44.016, lng: -80.006 }} /> */}
-            <Circle center={center} radius={7000} />
+            <Circle center={center} radius={5000} />
           </GoogleMap>
         </div>
       </div>

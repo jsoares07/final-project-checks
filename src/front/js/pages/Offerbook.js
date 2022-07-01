@@ -21,9 +21,7 @@ export const Offerbook = () => {
   // const [book_picture, setBookPicture] = useState();
 
 
-
-  // const URLbase = "https://3001-heylga-finalproject-59atkmezlzj.ws-eu47.gitpod.io"
-
+  const URLbase = process.env.URLbase
 
   const onSubmit = () => {
     console.log("submit working");

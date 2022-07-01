@@ -17,7 +17,7 @@ export const EditProfile = () => {
 
   console.log('params', params)
 
-  // const URLbase = "https://3001-heylga-finalproject-59atkmezlzj.ws-eu47.gitpod.io"
+  const URLbase = process.env.URLbase;
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -70,9 +70,9 @@ export const EditProfile = () => {
 
   return (
     <div className="">
-            
-     {/* Navbar */}
-     <Navbarlogin />
+
+      {/* Navbar */}
+      <Navbarlogin />
 
       <div className="container rounded bg-white mt-5 mb-5 border border-dark">
         <div className="row">
@@ -89,10 +89,10 @@ export const EditProfile = () => {
                   <input
                     type="text"
                     className="form-control"
-                     placeholder={store.user.name}
+                    placeholder={store.user.name}
                   />
                 </div>
-                </div>
+              </div>
 
 
               <div className="row mt-3">
@@ -115,7 +115,7 @@ export const EditProfile = () => {
                 </div>
                 <div className="col-md-8">
                   <label className="labels">Birthday</label>
-                  <input className="form-control" type="date" id="birthday" name="birthday" style={{color: "grey"}}/>
+                  <input className="form-control" type="date" id="birthday" name="birthday" style={{ color: "grey" }} />
                 </div>
                 <div className="col-md-8">
                   <label className="labels">Address Line</label>
@@ -187,7 +187,7 @@ export const EditProfile = () => {
                   event.preventDefault();
                   actions.editUserInformation();
                 }}
-                //  onClick={onSubmitClicked}
+              //  onClick={onSubmitClicked}
               >
                 Save Changes
               </button>
@@ -201,18 +201,18 @@ export const EditProfile = () => {
             </div>
           </div>
           {/* Profile photo ends */}
-          
+
         </div>
       </div>
       <Footer />
     </div>
   );
 
-//  Profile.propTypes = {
-//     name: propTypes.string,
-//     city: propTypes.string,
-//     email: propTypes.string,
-//     id: propTypes.string,
-//   }
+  //  Profile.propTypes = {
+  //     name: propTypes.string,
+  //     city: propTypes.string,
+  //     email: propTypes.string,
+  //     id: propTypes.string,
+  //   }
 
 };

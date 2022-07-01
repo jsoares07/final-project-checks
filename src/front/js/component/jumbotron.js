@@ -6,26 +6,26 @@ import "../../styles/home.css";
 const Jumbotron = () => {
 	return (
 		<div className="container center">
-		<div className="jumbotron jumbotron-fluid p-5" style={{backgroundImage: `url(${background})`}}>
-			<h1 className="display-1 justify-content-center"style={{color: "white"}}>SwopBook</h1>
-			<p className="lead fs-4">
-				
-<div className="input-group rounded center">
-  <input type="search" className="form-control rounded" placeholder="Search for a book nearby you" aria-label="Search" aria-describedby="search-addon" />
-  <span className="input-group-text border-0" id="search-addon">
-    <i className="fas fa-search"></i>
-  </span>
-</div>
-			</p>
-			<div className="my-5">
-				{/* <a className="btn btn-primary btn-lg" href="#" role="button">
+			<div className="jumbotron jumbotron-fluid p-5" style={{ backgroundImage: `url(${background})` }}>
+				<h1 className="display-1 justify-content-center" style={{ color: "white" }}>SwopBook</h1>
+				<p className="lead fs-4">
+
+					<div className="input-group rounded center">
+						<input type="search" className="form-control rounded" placeholder="Search for a book nearby you" aria-label="Search" aria-describedby="search-addon" />
+						<span className="input-group-text border-0" id="search-addon">
+							<i className="fas fa-search"></i>
+						</span>
+					</div>
+				</p>
+				<div className="my-5">
+					{/* <a className="btn btn-primary btn-lg" href="#" role="button">
 					Call to action!
 				</a> */}
 
+				</div>
 			</div>
 		</div>
-		</div>
-		
+
 	);
 };
 

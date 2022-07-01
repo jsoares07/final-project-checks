@@ -11,7 +11,7 @@ import { URLbase } from "../../../../secrets.js";
 
 export const Login = () => {
 
-  // const URLbase = "https://3001-heylga-finalproject-59atkmezlzj.ws-eu47.gitpod.io"
+  const URLbase = process.env.URLbase;
 
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState();
