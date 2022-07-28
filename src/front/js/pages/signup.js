@@ -119,12 +119,12 @@ export const Signup = () => {
     <div className="">
       <Navbar />
 
-      <div className="container center mt-5 mb-5">
-        <h1>Sign Up</h1>
+      <div className="container mt-5 mb-5">
+        <h1 className="col-md-6 center mx-auto">Sign Up</h1>
 
-        <div className="col-md-12 border-right border border-dark p-5">
+        <div className="col-md-6 border-right border border-dark p-5 center mx-auto">
           <div className="row">
-            <div className="col-md-6 pt-5">
+            {/* <div className="col-md-6 pt-5"> */}
               <div className="Form" action="/signup" method="post">
                 <label for="exampleInputEmail1" className="form-label">
                   Email address
@@ -178,29 +178,38 @@ export const Signup = () => {
                 ></input>
 
               </div>
-            </div>
-
-            <div className="col-md-6">
-              <div className="wrapper">
+            {/* </div> */}
+            {/* 
+            <div className="col-md-6"> */}
+            {/* <div className="wrapper">
                 <input type="file" className="my_file mt-1"
                 // onChange={onTypePicture}
                 >
                 </input>
-              </div>
+              </div> */}
 
-              <div className="col text-center">
-                <button
-                  type="submit"
-                  onClick={onSubmitClicked}
+            <div className="col text-center">
+              <button
+                type="submit"
+                className="btn btn-primary float-end mt-5 me-5"
+                onClick={onSubmitClicked}
 
-                  className="btn btnsign btn-outline-light-me me-1 btn-primary text-center"
-                >
-                  Submit
-                </button>
-              </div>
+              // className="btn btnsign btn-outline-light-me me-1 btn-primary text-center"
+              >
+                Submit
+              </button>
             </div>
+            {/* </div> */}
           </div>
+
+
+
+
+
         </div>
+
+
+
       </div>
 
       {/* <Link to="/">
