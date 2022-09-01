@@ -40,7 +40,7 @@ export const Swapmessage = () =>  {
       <div className="row mt-5">
 
       <p>
-      We sent email to {store.user.name}. You will get feedback within the next 24 hours
+      We sent email to <a href="" style={{textDecoration: 'bold', color: '#7d6757', fontfamily: 'Libre Baskerville', }}>Olga</a>. You will get feedback within the next 24 hours
               </p>
       </div>
 
@@ -61,7 +61,7 @@ export const Swapmessage = () =>  {
 
           <h6>You want to swap more books?
 
-          <Link to="/allbooks">
+          <Link to="/allbooks" style={{textDecoration: 'bold', color: '#7d6757', fontfamily: 'Libre Baskerville', }}>
           <a>Check all books</a>
           </Link> 
           </h6>
