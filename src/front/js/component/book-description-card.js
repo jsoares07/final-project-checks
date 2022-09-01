@@ -29,7 +29,7 @@ const BookCard = (props) => {
             <p>
               <Link style={{textDecoration: 'bold', color: '#7d6757', fontfamily: 'Libre Baskerville', }} to={`/user/${id}`}>
                 {/* {store.book.owner_id} */}
-                Olga Golovina
+                Olga
                 </Link> is offering: 
             </p>
           </div>

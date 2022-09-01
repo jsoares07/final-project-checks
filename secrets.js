@@ -1,2 +1,2 @@
-export const GoogleMapAPIKEY = "AIzaSyA1TIZKAjdpA5iq5SjHtHaHpXSQeJQFAIc" 
-export const URLbase = "https://3001-heylga-finalproject-swgu894h2js.ws-eu63.gitpod.io"
+export const GoogleMapAPIKEY = "" 
+export const URLbase = "https://3001-heylga-finalproject-ed9825kp6kc.ws-eu63.gitpod.io"

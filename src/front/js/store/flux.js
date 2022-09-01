@@ -102,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         console.log("info login desde las actions", put);
 
-        fetch("https://3001-heylga-finalproject-swgu894h2js.ws-eu63.gitpod.io"  + "/api/edit-profile/" + user_id, put)
+        fetch("https://3001-heylga-finalproject-ed9825kp6kc.ws-eu63.gitpod.io"  + "/api/edit-profile/" + user_id, put)
 
           .then(response => response.text())
           .then(result => console.log('>>>> result from actions', result))
@@ -123,7 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         console.log("info login desde las actions", put);
 
-        fetch("https://3001-heylga-finalproject-swgu894h2js.ws-eu63.gitpod.io" + "/api/security", put)
+        fetch("https://3001-heylga-finalproject-ed9825kp6kc.ws-eu63.gitpod.io" + "/api/security", put)
 
           .then(response => response.text())
           .then(result => console.log('>>>> result from actions', result))
@@ -190,7 +190,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       fetchUsers: () => {
 
         // fetch(process.env.BACKEND_URL + "/api/users", {
-        fetch("https://3001-heylga-finalproject-swgu894h2js.ws-eu63.gitpod.io" + "/api/users", {
+        fetch("https://3001-heylga-finalproject-ed9825kp6kc.ws-eu63.gitpod.io" + "/api/users", {
 
           method: "GET",
           headers: {

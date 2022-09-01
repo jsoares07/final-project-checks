@@ -39,7 +39,7 @@ export const ProfileShort = (props) => {
             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
           />
           <p>Name: 
-            Olga Golovina
+            Olga
             {/* {store.user.name}  */}
           </p>
           <p>City: 
@@ -52,13 +52,13 @@ export const ProfileShort = (props) => {
           <hr />
 
           <ul>
-          <Link style={{textDecoration: 'none', color: 'black', fontfamily: 'Libre Baskerville', }} to="/formswap">
+          <Link style={{textDecoration: '', color: '#7d6757', fontfamily: 'Libre Baskerville', }} to="/formswap">
             <li>
               {/* {store.book.title} */}
               The Catcher in the Rye
             </li>
           </Link>
-          <Link style={{textDecoration: 'none', color: 'black', fontfamily: 'Libre Baskerville', }} to="/formswap">
+          <Link style={{textDecoration: '', color: '#7d6757', fontfamily: 'Libre Baskerville', }} to="/formswap">
             <li>
               Limón
               {/* {store.book.title} */}
