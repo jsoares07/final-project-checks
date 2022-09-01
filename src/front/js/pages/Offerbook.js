@@ -220,7 +220,7 @@ export const Offerbook = () => {
                 type="description"
                 className="form-control"
                 id="description"
-                placeholder="Decribe briefly the synopsis of the book"
+                placeholder="Describe briefly the synopsis of the book"
                 value={description}
                 onChange={onTypeDescription}
               />
