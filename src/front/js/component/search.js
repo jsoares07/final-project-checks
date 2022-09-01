@@ -52,12 +52,31 @@ export default function Search() {
 
 
     return (
+
+
+        
         <div className="Search">
             <h1>Search</h1>
+
             <div className="search-container">
-                <div className="search-inner">
-                    <input type="text" value={value} onChange={onChange} />
-                    <button onClick={() => onSearch(value)}> Search </button>
+                <div className="search-inner mt-3 mb-5">
+                    <input 
+                    className="form-control rounded" placeholder="Book"
+    
+                    type="text" 
+                    value={value} 
+                    onChange={onChange} />
+                    <button onClick={() => onSearch(value)}
+                    aria-label="Search" aria-describedby="search-addon"
+                    > 
+                    
+                    <span className=" input-group-text border-0 "
+                    style={{borderColor: "transparent"}}
+                    >
+							<i className="fas fa-search"></i>
+						</span>
+                    
+                     </button>
                 </div>
 
                 <div className="dropdown">
