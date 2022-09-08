@@ -31,7 +31,7 @@ export const Formswap = (props) => {
 
 
 
-            <form action="https://formsubmit.co/5c9ae7eaeea71f3f2d11a1bde0fd6b67" method="POST">
+            <form action="https://formsubmit.co/4bb407f262693426f05ff357e1c49be2" method="POST">
 
               <div className="row mt-3">
                 <div className="col-md-8">
@@ -61,7 +61,7 @@ export const Formswap = (props) => {
                 </div>
               </div>
 
-              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-q1phrzohaoa.ws-eu47.gitpod.io/swapmessage" />
+              <input type="hidden" name="_next" value="https://3000-heylga-finalproject-h03o5cax6rs.ws-eu63.gitpod.io/swapmessage" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_subject" value=" I want to swap a book with you!" />
               <input type="hidden" name="_template" value="box" />

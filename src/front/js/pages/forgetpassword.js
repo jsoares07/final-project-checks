@@ -59,7 +59,7 @@ export const Forgetpassword = () => {
   
               <h6>You are registered?   
     
-              <Link to="/signup">
+              <Link to="/signup" tysle={{textDecoration: 'bold', color: '#7d6757', fontfamily: 'Libre Baskerville', }}>
               <a>Sign Up here</a>
               </Link> 
               </h6>

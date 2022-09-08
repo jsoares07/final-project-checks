@@ -119,7 +119,7 @@ export const Login = () => {
           <div className="col-md-6 center mx-auto">
             <h6>
               You are NOT registered?
-              <Link to="/signup">
+              <Link to="/signup"  style={{textDecoration: 'bold', color: '#7d6757', fontfamily: 'Libre Baskerville', }}>
                 <a>Sign Up here</a>
               </Link>
             </h6>
@@ -130,7 +130,7 @@ export const Login = () => {
           <div className="col-md-6 center mx-auto">
             <h6>
               You forgot your password
-              <Link to="/forgetpassword">
+              <Link to="/forgetpassword"  style={{textDecoration: 'bold', color: '#7d6757', fontfamily: 'Libre Baskerville', }}>
                 <a>Click here</a>
               </Link>
             </h6>

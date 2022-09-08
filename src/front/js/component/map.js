@@ -110,9 +110,15 @@ function Map() {
     <div className="container center">
       <h1 className="text-center pt-5">Books Nearby</h1>
       <br></br>
+      <div class="col-md-12 text-center m-5">
+      <button 
+        className="btn btn-primary text-center"
+        onClick={() => handleOnClick()}> Get coord</button>
+            </div>
       <div id="map"></div>
-      <div className="container center m-5">
-        <button onClick={() => handleOnClick()}> Get coord</button>
+
+      <div className="container center my-5">
+        
         <div class="row">
           <GoogleMap
             zoom={13}
