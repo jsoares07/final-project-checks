@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
-import { GoogleMapAPIKEY } from "../../../../secrets.js";
+
 import { Circle } from '@react-google-maps/api';
 import { Rectangle } from '@react-google-maps/api';
 import { InfoWindow } from '@react-google-maps/api';
@@ -15,7 +15,7 @@ import "../../styles/home.css";
 export default function MapTest() {
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: GoogleMapAPIKEY,
+    googleMapsApiKey: process.env.GOOGLE_MAP_API_KEY,
   });
 
   if (!isLoaded) return <div>Loading ...</div>;

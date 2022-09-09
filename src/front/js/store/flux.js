@@ -1,4 +1,4 @@
-import { URLbase } from "../../../../secrets.js";
+
 const getState = ({ getStore, getActions, setStore }) => {
 
   return {
@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("info login desde las actions", post);
         fetch(
 
-          URLbase + "/api/login/",
+          process.env.BACKEND_URL + "/api/login/",
           post
         )
 
@@ -136,7 +136,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       fetchUsersBooks: () => {
 
 
-        fetch(URLbase + "/api/booksbyuser", {
+        fetch(process.env.BACKEND_URL + "/api/booksbyuser", {
 
           method: "GET",
           headers: {
@@ -155,7 +155,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("fechtBook");
         const store = getStore();
 
-        fetch(URLbase + "/api/book/" + book_id, {
+        fetch(process.env.BACKEND_URL + "/api/book/" + book_id, {
 
           method: "GET",
           headers: {
@@ -172,7 +172,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       fetchBooks: () => {
 
-          fetch(URLbase + "/api/books", 
+          fetch(process.env.BACKEND_URL + "/api/books", 
 
           {
             method: "GET",
@@ -190,7 +190,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       fetchUsers: () => {
 
         // fetch(process.env.BACKEND_URL + "/api/users", {
-        fetch("https://3001-heylga-finalproject-h03o5cax6rs.ws-eu63.gitpod.io" + "/api/users", {
+        fetch(process.env.BACKEND_URL + "/api/users", {
 
           method: "GET",
           headers: {
@@ -206,7 +206,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         const store = getStore();
 
-        fetch(URLbase + "/api/user/" + user_id, 
+        fetch(process.env.BACKEND_URL + "/api/user/" + user_id, 
         {
           method: "GET",
           headers: {

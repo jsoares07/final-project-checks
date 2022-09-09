@@ -7,7 +7,6 @@ import "../../styles/home.css";
 import Footer from "./../component/footer";
 import Navbarlogin from "../component/navbar-login";
 
-import { URLbase } from "../../../../secrets.js";
 
 export const Offerbook = () => {
   const { store, actions } = useContext(Context);
@@ -21,7 +20,7 @@ export const Offerbook = () => {
   // const [book_picture, setBookPicture] = useState();
 
 
-  const URLbase = process.env.URLbase
+  const URLbase = process.env.BACKEND_URL
 
   const onSubmit = () => {
     console.log("submit working");
