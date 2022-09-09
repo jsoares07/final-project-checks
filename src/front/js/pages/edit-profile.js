@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
 import "../../styles/home.css";
 import Navbarlogin from "../component/navbar-login";
-import { URLbase } from "../../../../secrets.js";
+
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 export const EditProfile = () => {
@@ -17,7 +17,7 @@ export const EditProfile = () => {
 
   console.log('params', params)
 
-  const URLbase = process.env.URLbase;
+  const URLbase = process.env.BACKEND_URL;
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();

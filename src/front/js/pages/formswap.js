@@ -10,13 +10,12 @@ import "../../styles/index.css";
 import "../../styles/home.css";
 import e from "cors";
 
-import { URLbase } from "../../../../secrets.js";
 
 export const Formswap = (props) => {
   const { store, actions } = useContext(Context);
   const { id } = props;
 
-  const URLbase = process.env.URLbase;
+  const URLbase = process.env.BACKEND_URL;
 
 
   return (

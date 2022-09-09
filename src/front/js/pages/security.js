@@ -6,7 +6,6 @@ import { Link, useParams } from "react-router-dom";
 import "../../styles/index.css";
 import "../../styles/home.css";
 
-import { URLbase } from "../../../../secrets.js";
 
 export const Security = () => {
   const { store, actions } = useContext(Context);
@@ -15,7 +14,7 @@ export const Security = () => {
 
   console.log('params', params)
 
-  // const URLbase = "https://3001-heylga-finalproject-59atkmezlzj.ws-eu47.gitpod.io"
+
 
   const [password, setPassword] = useState();
 
